@@ -5,9 +5,10 @@ import LandingPage from './pages/landingPage';
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<LandingPage/> }/>
-      </Routes>
+
+    <Routes>
+      <Route path="/" element={<LandingPage/>}/>
+    </Routes>
     </div>
   );
 }
