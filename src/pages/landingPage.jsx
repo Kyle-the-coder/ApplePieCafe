@@ -13,17 +13,17 @@ const LandingPage = () => {
             </section>
 
             <section>
-                <div>
+                <div className="w-full h-[200px] bg-slate-200">
                     <h1>"Where Every Slice Feels Like Home" -Grace Johnson(owner)</h1>
                 </div>
             </section>
 
             <section>
-                <div>
-                    <div>
-                        <img src={restInside} className="w-[500px]" />
+                <div className="flex mb-12">
+                    <div className="w-1/2 h-[500px]">
+                        <img src={restInside} className="w-full h-full object-cover" />
                     </div>
-                    <div>
+                    <div className="w-1/2">
                         <h1>About Apple Pie Cafe:</h1>
                         <p>
                             Welcome to Apple Pie Cafe, where the inviting aroma of freshly baked pies fills the air and the essence of classic American comfort food comes to life. 
