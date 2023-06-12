@@ -1,6 +1,7 @@
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import restOutside from "../assets/images/restOutside.jpeg"
+import avatar from "../assets/images/avatar.png"
 import "../styles/font.css"
 
 const LandingPage = () => {
@@ -21,7 +22,7 @@ const LandingPage = () => {
             </section>
 
             <section>
-                <div className="flex mb-12">
+                <div className="flex mb-5">
                     <div className="w-1/2 h-[500px]">
                         <img src={restInside} className="w-full h-full object-cover" />
                     </div>
@@ -44,10 +45,14 @@ const LandingPage = () => {
 
             <section>
                 <div>
-                    <h1>Few Reviews:</h1>
+                    <h1 className="fontWriting text-4xl">Few Reviews:</h1>
                 </div>
-                <div>
-                    
+                <div className="flex w-full h-600px bg-red-200">
+                    <div className="flex flex-col items-center w-[300px] h-[350px] bg-slate-200 border rounded border-[3px] border-black m-4">
+                        <div className="w-11/12 bg-blue-200 h-1/2 mt-3">
+                            <img />
+                        </div>
+                    </div>
                 </div>
             </section>
 
