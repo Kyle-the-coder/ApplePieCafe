@@ -42,6 +42,15 @@ const LandingPage = () => {
                 </div>
             </section>
 
+            <section>
+                <div>
+                    <h1>Few Reviews:</h1>
+                </div>
+                <div>
+                    
+                </div>
+            </section>
+
 
 
 
