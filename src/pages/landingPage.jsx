@@ -1,4 +1,5 @@
 import applePie from "../assets/images/apphoto.jpeg"
+import restInside from "../assets/images/restInside.jpeg"
 
 const LandingPage = () =>{
     return(
