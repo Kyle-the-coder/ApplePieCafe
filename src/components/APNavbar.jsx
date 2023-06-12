@@ -7,7 +7,7 @@ const APNavbar = () => {
                 <img src={APLogo} className="w-[200px] ml-[60px]" />
             </div>
 
-            <div className="flex justify-evenly w-[500px]">
+            <div className="flex justify-evenly w-[500px] fontWriting text-2xl">
                 <h1>Home</h1>
                 <h1>Menu</h1>
                 <h1>About</h1>

@@ -1,20 +1,22 @@
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import restOutside from "../assets/images/restOutside.jpeg"
+import "../styles/font.css"
 
 const LandingPage = () => {
     return (
         <div>
 
             <section>
-                <div className="w-full h-[500px]">
-                    <img src={applePie} className="w-full h-[500px] object-cover" />
+                <div className="w-full h-[600px]">
+                    <img src={applePie} className="w-full h-full object-cover" />
                 </div>
             </section>
 
             <section>
-                <div className="w-full h-[200px] bg-slate-200">
-                    <h1>"Where Every Slice Feels Like Home" -Grace Johnson(owner)</h1>
+                <div className="w-full h-[250px] bg-slate-200 flex flex-col justify-center items-center">
+                    <h1 className="handWriting text-7xl mb-3"> "Where Every Slice Feels Like Home"</h1>
+                    <h1 className="text-bold text-xl">-Grace Johnson(Owner)</h1>
                 </div>
             </section>
 
@@ -23,9 +25,9 @@ const LandingPage = () => {
                     <div className="w-1/2 h-[500px]">
                         <img src={restInside} className="w-full h-full object-cover" />
                     </div>
-                    <div className="w-1/2">
-                        <h1>About Apple Pie Cafe:</h1>
-                        <p>
+                    <div className="w-1/2 flex flex-col justify-center">
+                        <h1 className="handWriting text-4xl mt-3 fontWriting">About Apple Pie Cafe:</h1>
+                        <p className="p-[20px]">
                             Welcome to Apple Pie Cafe, where the inviting aroma of freshly baked pies fills the air and the essence of classic American comfort food comes to life. 
                             Nestled in the heart of town, our cozy café is a haven for pie enthusiasts and those seeking a taste of nostalgia.
                             Step into our warm and charming space, adorned with rustic decor and a touch of vintage flair. Indulge in a delightful array of homemade apple pies, 

@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
+
 
 .handWriting{
     font-family: 'Grand Hotel', cursive;
+}
+
+.fontWriting{
+    font-family: 'Croissant One', cursive;
 }
