@@ -118,7 +118,7 @@ const LandingPage = () => {
                         <div className="w-11/12  h-1/2 mt-3">
                             <div className="flex items-center">
                                 <img src={avatar} width="60px" />
-                                <h1 className="ml-3">Benjamin Anderson</h1>
+                                <h1 >Benjamin Anderson</h1>
                             </div>
                             <div className="w-full h-full border border-2 border-black overflow-y-scroll " >
                                 <p className="bg-white ">"Unfortunately, my experience at Apple Pie Cafe was quite disappointing. The apple pie lacked flavor and had a dry crust, and the overall ambiance felt lackluster and unwelcoming."</p>
