@@ -46,14 +46,14 @@ const LandingPage = () => {
                 </div>
             </section>
 
+
+
             <section className="mb-12">
                 <div>
                     <h1 className="fontWriting text-4xl">Few Reviews:</h1>
                 </div>
 
-
                 <div className="flex w-full h-600px bg-slate-100 justify-center">
-
 
                     {/* Review Card */}
                     <div className="flex flex-col items-center w-[300px] h-[350px] bg-blue-200 border rounded border-[3px] border-black m-4">
@@ -132,7 +132,6 @@ const LandingPage = () => {
                             <img src={starBlank} className="w-[40px]" />
                         </div>
                     </div>
-
                 </div>
             </section>
 
