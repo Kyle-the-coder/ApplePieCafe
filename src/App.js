@@ -5,14 +5,19 @@ import APNavbar from './components/APNavbar';
 import MenuPage from './pages/menuPage';
 import AdminPage from './pages/adminPage';
 import AdminLandingView from './views/adminLandingView';
+import { useContext } from "react"
+import { AuthContext } from "./context/AuthContext"
 
 function App() {
 
-  const currentUser = false;
+
+  const { currentUser } = useContext(AuthContext)
 
   const RequireAuth = ({ children }) => {
     return currentUser ? (children) : <Navigate to="/admin" />
   }
+
+  console.log(currentUser)
 
   return (
     <div className="App">
@@ -28,7 +33,7 @@ function App() {
         {/* Private Routes */}
         <Route path="/adminLp" element={<RequireAuth><AdminLandingView /></RequireAuth>} />
 
-        
+
       </Routes>
     </div>
   );

@@ -1,8 +1,10 @@
 import "../styles/font.css"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../config/firebase"
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
 
 
 const AdminPage = () => {
@@ -10,6 +12,7 @@ const AdminPage = () => {
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUserPassword] = useState("")
     const navigate = useNavigate()
+    const {dispatch} = useContext(AuthContext)
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -17,8 +20,9 @@ const AdminPage = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                dispatch({type: "LOGIN", payload:user})
                 navigate("/adminLp")
-                console.log(user)
+                
             })
             .catch((error) => {
                 const errorCode = error.code;
