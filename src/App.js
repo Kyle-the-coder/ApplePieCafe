@@ -3,6 +3,7 @@ import './App.css';
 import LandingPage from './pages/landingPage';
 import APNavbar from './components/APNavbar';
 import MenuPage from './pages/menuPage';
+import AdminPage from './pages/adminPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<LandingPage/>}/>
       <Route path="/menu" element={<MenuPage/>}/>
+      <Route path="/admin" element={<AdminPage/>}/>
     </Routes>
     </div>
   );
