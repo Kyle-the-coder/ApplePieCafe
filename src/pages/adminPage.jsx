@@ -1,6 +1,11 @@
 import "../styles/font.css"
+import { useState } from "react"
+
 
 const AdminPage = () => {
+    const [error, setError] = useState(false)
+
+    
     return(
         <div>
             <div className="w-full h-[500px] flex justify-center items-center">
@@ -13,6 +18,7 @@ const AdminPage = () => {
                             <input type="text" placeholder="email..." className="w-[450px] p-2 border border-1 border-slate-900" />
                             <input type="password" placeholder="password..." className="w-[450px] p-2 mt-4 border border-1 border-slate-900"/>
                             <button type="submit" className="py-2 px-3 w-[200px] mt-5 bg-slate-900 text-white">Login</button>
+                            {error ? <h1>Wrong Email or Password</h1> : <></>}
                         </form> 
                     </div>
                 </div>
