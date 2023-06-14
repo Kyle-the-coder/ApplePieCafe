@@ -1,4 +1,5 @@
 import APLogo from "../assets/images/ApcBlack.PNG"
+import { Link } from "react-router-dom"
 
 const APNavbar = () => {
     return (
@@ -8,8 +9,8 @@ const APNavbar = () => {
             </div>
 
             <div className="flex justify-evenly w-[500px] fontWriting text-2xl">
-                <h1>Home</h1>
-                <h1>Menu</h1>
+                <Link to="/">Home</Link>
+                <Link to="/menu">Menu</Link>
                 <h1>About</h1>
             </div>
 
