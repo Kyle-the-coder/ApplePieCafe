@@ -2,12 +2,14 @@ import "../styles/font.css"
 import { useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../config/firebase"
+import { useNavigate } from "react-router-dom";
 
 
 const AdminPage = () => {
     const [error, setError] = useState(false)
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUserPassword] = useState("")
+    const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -15,6 +17,7 @@ const AdminPage = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                navigate("/adminLp")
                 console.log(user)
             })
             .catch((error) => {
