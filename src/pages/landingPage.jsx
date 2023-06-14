@@ -1,10 +1,6 @@
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import restOutside from "../assets/images/restOutside.jpeg"
-import avatar from "../assets/images/avatar.png"
-import wAvatar from "../assets/images/woman.png"
-import starBlank from "../assets/images/starBlank.png"
-import starFill from "../assets/images/starFill.png"
 import "../styles/font.css"
 import ReviewModal from "../components/reviewModal"
 import leftArrow from "../assets/images/left-arrow.png"
@@ -14,12 +10,14 @@ const LandingPage = () => {
     return (
         <div>
 
+            {/* Opening Image Section */}
             <section>
                 <div className="w-full h-[600px]">
                     <img src={applePie} className="w-full h-full object-cover" />
                 </div>
             </section>
 
+            {/* Quote Section */}
             <section>
                 <div className="w-full h-[250px] bg-slate-200 flex flex-col justify-center items-center">
                     <h1 className="handWriting text-7xl mb-3"> "Where Every Slice Feels Like Home"</h1>
@@ -27,6 +25,7 @@ const LandingPage = () => {
                 </div>
             </section>
 
+            {/* About Section */}
             <section>
                 <div className="flex ">
                     <div className="w-1/2 h-[500px]">
@@ -50,10 +49,10 @@ const LandingPage = () => {
             </section>
 
 
-
+            {/* Review Modal Section */}
             <section className="mb-12 flex items-center p-[5px] py-4 bg-slate-100">
                 <div>
-                    <img src={leftArrow} width="100px"/>
+                    <img src={leftArrow} width="100px" />
                 </div>
                 <div>
                     <ReviewModal />
