@@ -17,8 +17,6 @@ function App() {
     return currentUser ? (children) : <Navigate to="/admin" />
   }
 
-  console.log(currentUser)
-
   return (
     <div className="App">
 
@@ -28,7 +26,7 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/menu" element={<MenuPage />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin" element={<AdminPage currentUser={currentUser} />} />
 
         {/* Private Routes */}
         <Route path="/adminLp" element={<RequireAuth><AdminLandingView /></RequireAuth>} />

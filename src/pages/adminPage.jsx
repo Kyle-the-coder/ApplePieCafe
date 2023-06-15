@@ -1,5 +1,5 @@
 import "../styles/font.css"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../config/firebase"
 import { useNavigate } from "react-router-dom";
@@ -7,12 +7,19 @@ import { AuthContext } from "../context/AuthContext";
 
 
 
-const AdminPage = () => {
+const AdminPage = (props) => {
     const [error, setError] = useState(false)
     const [userEmail, setUserEmail] = useState("")
     const [userPassword, setUserPassword] = useState("")
     const navigate = useNavigate()
     const {dispatch} = useContext(AuthContext)
+    const {currentUser} = props
+
+    useEffect(()=>{
+        if(currentUser != null){
+            navigate("/adminLp")
+        }
+    },[])
 
     const handleLogin = (e) => {
         e.preventDefault()
