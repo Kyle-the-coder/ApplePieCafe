@@ -1,12 +1,33 @@
 
 
-const MenuSidebar = () => {
+const MenuSidebar = (props) => {
+    const {bFastImg, setBFastImg} = props
+    const {lunchImg, setLunchImg} = props
+    const {dessertImg, setDessertImg} = props
 
     const options = [
-        { name: "Breakfast" },
-        { name: "Lunch" },
-        { name: "Dessert" },
+        { name: "Breakfast", idx: "1" },
+        { name: "Lunch", idx: "2" },
+        { name: "Dessert", idx: "3" },
     ]
+
+    const handleOptions = (idx) =>{
+        if(idx == "1"){
+            setBFastImg(true)
+            setLunchImg(false)
+            setDessertImg(false)
+        }
+        else if(idx == "2"){
+            setLunchImg(true)
+            setBFastImg(false)
+            setDessertImg(false)
+        }
+        else if(idx == "3"){
+            setDessertImg(true)
+            setBFastImg(false)
+            setLunchImg(false)
+        }
+    }
 
     return (
         <div className="w-content h-full bg-slate-800 flex flex-col justify-top">
@@ -16,7 +37,7 @@ const MenuSidebar = () => {
                 </div> 
                 {options.map((name, i) => (
                     <div key={i} className="w-full flex flex-col items-center justify-center">
-                        <h1 className="w-full text-slate-500 text-2xl cursor-pointer transformation-all duration-200 py-5 px-4 hover:text-slate-100">{name.name}</h1>
+                        <h1 className="w-full text-slate-500 text-2xl cursor-pointer transformation-all duration-200 py-5 px-4 hover:text-slate-100" onClick={()=>handleOptions(name.idx)}>{name.name}</h1>
                     </div>
                 ))}
             </div>

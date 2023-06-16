@@ -2,8 +2,18 @@ import fruits from "../assets/images/fruits1.jpeg"
 import MenuSidebar from "../components/menuSidebar";
 import bfast1 from "../assets/images/bfast1.jpeg"
 import bfast2 from "../assets/images/bfast2.jpeg"
+import lunch1 from "../assets/images/lunch1.webp"
+import bdessert from "../assets/images/bdessert1.webp"
+import { useState } from "react";
 
 const MenuPage = () => {
+    const [bFastImg, setBFastImg]= useState(false)
+    const [lunchImg, setLunchImg]= useState(false)
+    const [dessertImg, setDessertImg]=useState(false)
+
+    console.log("bfast -", bFastImg)
+    console.log("lunch - ", lunchImg)
+    console.log("dessert -", dessertImg)
     return (
         <div>
             {/* Title Section */}
@@ -18,10 +28,16 @@ const MenuPage = () => {
             <section>
                 <div className="w-full bg-slate-200 h-[600px] flex ">
                     <div>
-                        <MenuSidebar/>
+                        <MenuSidebar 
+                        bFastImg={bFastImg} setBFastImg={setBFastImg}
+                        lunchImg={lunchImg} setLunchImg={setLunchImg}
+                        dessertImg={dessertImg} setDessertImg={setDessertImg}
+                        />
                     </div>
                     <div>
-                        <img src={bfast2} className="w-[800px] h-full object-cover" />
+                        {bFastImg &&  <img src={bfast2} className="w-[800px] transition-all duration-200 h-full object-cover" />}
+                        {lunchImg && <img src={lunch1} className="w-[800px] h-full object-cover"  />}
+                        {dessertImg && <img src={bdessert} className="w-[800px] h-full object-cover" />}
                     </div>
 
                 </div>
