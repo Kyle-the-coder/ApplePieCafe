@@ -14,7 +14,7 @@ const MenuPage = () => {
 
             {/* Menu Section */}
             <section>
-                <div className="w-full bg-slate-200 h-[600px] flex">
+                <div className="w-full bg-slate-200 h-[600px] flex ">
                     <div>
                         <MenuSidebar/>
                     </div>
