@@ -1,4 +1,5 @@
 import fruits from "../assets/images/fruits1.jpeg"
+import MenuSidebar from "../components/menuSidebar";
 
 const MenuPage = () => {
     return (
@@ -13,8 +14,10 @@ const MenuPage = () => {
 
             {/* Menu Section */}
             <section>
-                <div className="w-full bg-slate-200 h-[600px]">
-                
+                <div className="w-full bg-slate-200 h-[600px] flex">
+                    <div>
+                        <MenuSidebar/>
+                    </div>
                 </div>
             </section>
         </div>
