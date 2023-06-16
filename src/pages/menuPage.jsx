@@ -1,5 +1,7 @@
 import fruits from "../assets/images/fruits1.jpeg"
 import MenuSidebar from "../components/menuSidebar";
+import bfast1 from "../assets/images/bfast1.jpeg"
+import bfast2 from "../assets/images/bfast2.jpeg"
 
 const MenuPage = () => {
     return (
@@ -18,6 +20,10 @@ const MenuPage = () => {
                     <div>
                         <MenuSidebar/>
                     </div>
+                    <div>
+                        <img src={bfast2} className="w-[800px] h-full object-cover" />
+                    </div>
+
                 </div>
             </section>
         </div>
