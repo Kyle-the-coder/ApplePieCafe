@@ -11,9 +11,6 @@ const MenuPage = () => {
     const [lunchImg, setLunchImg]= useState(false)
     const [dessertImg, setDessertImg]=useState(false)
 
-    console.log("bfast -", bFastImg)
-    console.log("lunch - ", lunchImg)
-    console.log("dessert -", dessertImg)
     return (
         <div>
             {/* Title Section */}
