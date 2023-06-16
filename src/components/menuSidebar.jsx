@@ -1,9 +1,10 @@
-
+import { useState } from "react"
 
 const MenuSidebar = (props) => {
     const {bFastImg, setBFastImg} = props
     const {lunchImg, setLunchImg} = props
     const {dessertImg, setDessertImg} = props
+    const {pingTracker, setPingTracker} = useState(false)
 
     const options = [
         { name: "Breakfast", idx: "1" },
