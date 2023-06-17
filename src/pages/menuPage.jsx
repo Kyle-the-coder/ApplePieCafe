@@ -4,6 +4,7 @@ import bfast1 from "../assets/images/bfast1.jpeg"
 import bfast2 from "../assets/images/bfast2.jpeg"
 import lunch1 from "../assets/images/lunch1.webp"
 import bdessert from "../assets/images/bdessert1.webp"
+import RandPage from "./randPage";
 import { useState } from "react";
 
 const MenuPage = () => {
@@ -37,6 +38,12 @@ const MenuPage = () => {
                         {dessertImg && <img src={bdessert} className="w-[800px] h-full object-cover" />}
                     </div>
 
+                </div>
+            </section>
+
+            <section>
+                <div>
+                    <RandPage/>
                 </div>
             </section>
         </div>
