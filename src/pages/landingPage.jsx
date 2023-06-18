@@ -19,7 +19,7 @@ const LandingPage = () => {
 
             {/* Quote Section */}
             <section>
-                <div className="w-full h-[250px] bg-slate-200 flex flex-col justify-center items-center">
+                <div className="w-full h-[250px] bg-slate-800 flex flex-col justify-center items-center text-white">
                     <h1 className="handWriting text-7xl mb-3"> "Where Every Slice Feels Like Home"</h1>
                     <h1 className="text-bold text-xl">-Grace Johnson(Owner)</h1>
                 </div>
@@ -31,7 +31,7 @@ const LandingPage = () => {
                     <div className="w-1/2 h-[500px]">
                         <img src={restInside} className="w-full h-full object-cover" />
                     </div>
-                    <div className="w-1/2 flex flex-col justify-center">
+                    <div className="w-1/2 flex flex-col justify-center bg-slate-100">
                         <h1 className="handWriting text-4xl mt-3 fontWriting">About Apple Pie Cafe:</h1>
                         <p className="p-[20px]">
                             Welcome to Apple Pie Cafe, where the inviting aroma of freshly baked pies fills the air and the essence of classic American comfort food comes to life.
@@ -50,9 +50,9 @@ const LandingPage = () => {
 
 
             {/* Review Modal Section */}
-            <section className="mb-12 flex items-center p-[5px] py-4 bg-slate-100">
+            <section className=" flex items-center p-[5px] py-4 bg-slate-800">
                 <div>
-                    <img src={leftArrow} width="100px" />
+                    <img src={leftArrow} className="" width="100px" />
                 </div>
                 <div>
                     <ReviewModal />

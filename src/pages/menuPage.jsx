@@ -27,7 +27,7 @@ const MenuPage = () => {
         <div>
             {/* Title Section */}
             <section>
-                <div className="bg-gradient-to-r from-orange-200 to-red-400 relative flex w-full justify-center items-center h-[200px] mb-5">
+                <div className="bg-gradient-to-r from-orange-200 to-red-400 relative flex w-full justify-center items-center h-[200px]">
                     <h1 className="fontWriting text-7xl font-bold ">Menu</h1>
                     <img className="w-full h-full object-cover absolute  mix-blend-overlay" src={fruits} />
                 </div>
@@ -35,7 +35,7 @@ const MenuPage = () => {
 
             {/* Menu Section */}
             <section>
-                <div className="w-full bg-slate-800 h-[750px] flex relative">
+                <div className="w-full bg-slate-800 h-[750px] flex relative py-6">
                     <div>
                         <MenuSidebar
                             bFastImg={bFastImg} setBFastImg={setBFastImg}
@@ -125,7 +125,7 @@ const MenuPage = () => {
 
             <section>
                 <div>
-                    <RandPage />
+                    
                 </div>
             </section>
         </div>

@@ -7,7 +7,7 @@ const ReviewModal = () => {
     return (
         <div>
             <div>
-                <h1 className="fontWriting text-4xl">Few Reviews:</h1>
+                <h1 className="fontWriting text-4xl text-white">Few Reviews:</h1>
             </div>
 
             <div className="flex w-full h-600px justify-center">
