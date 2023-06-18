@@ -35,7 +35,7 @@ const MenuPage = () => {
 
             {/* Menu Section */}
             <section>
-                <div className="w-full bg-slate-800 h-[600px] flex relative">
+                <div className="w-full bg-slate-800 h-[750px] flex relative">
                     <div>
                         <MenuSidebar
                             bFastImg={bFastImg} setBFastImg={setBFastImg}
@@ -57,27 +57,40 @@ const MenuPage = () => {
                         </div>
                         <div>
                             {bFastImg &&
-                                <p>
-                                    Start your day off right with a delicious breakfast featuring perfectly cooked eggs, accompanied by crispy bacon and
-                                    golden toast. Add a refreshing salad on the side, filled with crisp greens, vibrant vegetables, and a light
-                                    dressing, creating a well-rounded and nutritious meal to kickstart your morning.
-                                </p>}
+                                <>
+
+                                    <h1 className="text-xl underline mb-2">Golden Sunrise</h1>
+                                    <p>
+                                        Start your day off right with a delicious breakfast featuring perfectly cooked eggs, accompanied by crispy bacon and
+                                        golden toast. Add a refreshing salad on the side, filled with crisp greens, vibrant vegetables, and a light
+                                        dressing, creating a well-rounded and nutritious meal to kickstart your morning.
+                                    </p>
+                                </>
+                            }
                             {lunchImg &&
-                                <p>
-                                    Indulge in a mouthwatering chicken and ham sandwich, nestled between toasted bread, with layers of savory flavors and satisfying textures.
-                                    Accompanied by a generous side of golden fries, this classic combination delivers a satisfying meal
-                                    that will leave you fully satisfied.
-                                </p>}
+                                <>
+                                    <h1 className="text-xl underline mb-2">Chicken and Ham Sammi</h1>
+                                    <p>
+                                        Indulge in a mouthwatering chicken and ham sandwich, nestled between toasted bread, with layers of savory flavors and satisfying textures.
+                                        Accompanied by a generous side of golden fries, this classic combination delivers a satisfying meal
+                                        that will leave you fully satisfied.
+                                    </p>
+                                </>
+                            }
                             {dessertImg &&
-                                <p>
-                                    Treat yourself to a heavenly dessert waffle topped with a colorful medley of fresh, juicy berries, and crowned with a generous scoop of velvety ice cream.
-                                    The warm, fluffy waffle pairs perfectly with the sweet-tart berries and the cool, creamy ice cream,
-                                    creating a delightful symphony of flavors and textures in every delightful bite.
-                                </p>}
+                                <>
+                                    <h1 className="underline text-xl mb-2">Never Forget</h1>
+                                    <p>
+                                        Treat yourself to a heavenly dessert waffle topped with a colorful medley of fresh, juicy berries, and crowned with a generous scoop of velvety ice cream.
+                                        The warm, fluffy waffle pairs perfectly with the sweet-tart berries and the cool, creamy ice cream,
+                                        creating a delightful symphony of flavors and textures in every delightful bite.
+                                    </p>
+                                </>
+                            }
                         </div>
                     </div>
 
-                    <div className="w-[770px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[10px]">
+                    <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[10px]">
                         {bFastImg &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
@@ -99,7 +112,7 @@ const MenuPage = () => {
                         {dessertImg &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={apPhoto} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer"  />
+                                <img src={apPhoto} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={chocoCake} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={tart} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
