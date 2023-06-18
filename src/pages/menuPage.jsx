@@ -1,9 +1,9 @@
-import fruits from "../assets/images/fruits1.jpeg"
+import fruits from "../assets/images/fruits1.jpeg";
 import MenuSidebar from "../components/menuSidebar";
-import bfast1 from "../assets/images/bfast1.jpeg"
-import bfast2 from "../assets/images/bfast2.jpeg"
-import lunch1 from "../assets/images/lunch1.webp"
-import bdessert from "../assets/images/bdessert1.webp"
+import bfast1 from "../assets/images/bfast1.jpeg";
+import bfast2 from "../assets/images/bfast2.jpeg";
+import lunch1 from "../assets/images/lunch1.webp";
+import bdessert from "../assets/images/bdessert1.webp";
 import RandPage from "./randPage";
 import { useState } from "react";
 
