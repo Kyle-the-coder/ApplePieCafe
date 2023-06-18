@@ -37,6 +37,13 @@ const MenuPage = () => {
                         {lunchImg && <img src={lunch1} className="w-[800px] h-full object-cover"  />}
                         {dessertImg && <img src={bdessert} className="w-[800px] h-full object-cover" />}
                     </div>
+                    <div>
+                        <div>
+                            {bFastImg && <h1>Breakfast</h1>}
+                            {lunchImg && <h1>Lunch</h1>}
+                            {dessertImg && <h1>Dinner</h1>}
+                        </div>
+                    </div>
 
                 </div>
             </section>
