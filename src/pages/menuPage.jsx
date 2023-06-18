@@ -11,6 +11,9 @@ import yogurt from "../assets/images/yogurt.webp"
 import turkeyWrap from "../assets/images/turkeyWrap.jpeg"
 import beef from "../assets/images/beef.webp"
 import burger from "../assets/images/burger.jpeg"
+import apPhoto from "../assets/images/apphoto.jpeg"
+import chocoCake from "../assets/images/chocoCake.jpeg"
+import tart from "../assets/images/tart.jpeg"
 import rightArrow from '../assets/images/right-arrow.png'
 import leftArrow from "../assets/images/left-arrow.png"
 import { useState } from "react";
@@ -32,7 +35,7 @@ const MenuPage = () => {
 
             {/* Menu Section */}
             <section>
-                <div className="w-full bg-slate-200 h-[600px] flex relative">
+                <div className="w-full bg-slate-800 h-[600px] flex relative">
                     <div>
                         <MenuSidebar
                             bFastImg={bFastImg} setBFastImg={setBFastImg}
@@ -46,11 +49,11 @@ const MenuPage = () => {
                         {dessertImg && <img src={bdessert} className="w-full h-full object-cover" />}
                     </div>
 
-                    <div className="w-[400px]">
+                    <div className="w-[500px] px-3 py-2 text-white">
                         <div >
-                            {bFastImg && <h1>Breakfast</h1>}
-                            {lunchImg && <h1>Lunch</h1>}
-                            {dessertImg && <h1>Dessert</h1>}
+                            {bFastImg && <h1 className="fontWriting text-4xl mb-5 underline">Breakfast</h1>}
+                            {lunchImg && <h1 className="fontWriting text-4xl mb-5 underline">Lunch</h1>}
+                            {dessertImg && <h1 className="fontWriting text-4xl mb-5 underline">Dessert</h1>}
                         </div>
                         <div>
                             {bFastImg &&
@@ -74,23 +77,32 @@ const MenuPage = () => {
                         </div>
                     </div>
 
-                    <div className="w-[700px] h-[200px] justify-evenly flex items-center py-2 bg-slate-800 absolute right-[30px] bottom-[10px]">
+                    <div className="w-[770px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[10px]">
                         {bFastImg &&
                             <>
-                                <img src={leftArrow} className="w-[20px] h-[20px]" />
-                                <img src={avaToast} className="w-[200px] h-full object-cover" />
-                                <img src={chileQuilles} className="w-[200px] h-full object-cover" />
-                                <img src={yogurt} className="w-[200px] h-full object-cover" />
-                                <img src={rightArrow} className="w-[20px] h-[20px]" />
+                                <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
+                                <img src={avaToast} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={chileQuilles} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={yogurt} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
                         {lunchImg &&
                             <>
-                                <img src={leftArrow} className="w-[20px] h-[20px]" />
-                                <img src={turkeyWrap} className="w-[200px] h-full object-cover" />
-                                <img src={beef} className="w-[200px] h-full object-cover" />
-                                <img src={burger} className="w-[200px] h-full object-cover" />
-                                <img src={rightArrow} className="w-[20px] h-[20px]" />
+                                <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
+                                <img src={turkeyWrap} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={beef} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={burger} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
+                            </>
+                        }
+                        {dessertImg &&
+                            <>
+                                <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
+                                <img src={apPhoto} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer"  />
+                                <img src={chocoCake} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={tart} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
                     </div>
