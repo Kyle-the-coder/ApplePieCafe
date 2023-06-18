@@ -5,6 +5,14 @@ import bfast2 from "../assets/images/bfast2.jpeg";
 import lunch1 from "../assets/images/lunch1.webp";
 import bdessert from "../assets/images/bdessert1.webp";
 import RandPage from "./randPage";
+import avaToast from "../assets/images/avaToast.jpeg"
+import chileQuilles from "../assets/images/chileQuilles.jpeg"
+import yogurt from "../assets/images/yogurt.webp"
+import turkeyWrap from "../assets/images/turkeyWrap.jpeg"
+import beef from "../assets/images/beef.webp"
+import burger from "../assets/images/burger.jpeg"
+import rightArrow from '../assets/images/right-arrow.png'
+import leftArrow from "../assets/images/left-arrow.png"
 import { useState } from "react";
 
 const MenuPage = () => {
@@ -24,7 +32,7 @@ const MenuPage = () => {
 
             {/* Menu Section */}
             <section>
-                <div className="w-full bg-slate-200 h-[600px] flex ">
+                <div className="w-full bg-slate-200 h-[600px] flex relative">
                     <div>
                         <MenuSidebar
                             bFastImg={bFastImg} setBFastImg={setBFastImg}
@@ -64,6 +72,27 @@ const MenuPage = () => {
                                     creating a delightful symphony of flavors and textures in every delightful bite.
                                 </p>}
                         </div>
+                    </div>
+
+                    <div className="w-[700px] h-[200px] justify-evenly flex items-center py-2 bg-slate-800 absolute right-[30px] bottom-[10px]">
+                        {bFastImg &&
+                            <>
+                                <img src={leftArrow} className="w-[20px] h-[20px]" />
+                                <img src={avaToast} className="w-[200px] h-full object-cover" />
+                                <img src={chileQuilles} className="w-[200px] h-full object-cover" />
+                                <img src={yogurt} className="w-[200px] h-full object-cover" />
+                                <img src={rightArrow} className="w-[20px] h-[20px]" />
+                            </>
+                        }
+                        {lunchImg &&
+                            <>
+                                <img src={leftArrow} className="w-[20px] h-[20px]" />
+                                <img src={turkeyWrap} className="w-[200px] h-full object-cover" />
+                                <img src={beef} className="w-[200px] h-full object-cover" />
+                                <img src={burger} className="w-[200px] h-full object-cover" />
+                                <img src={rightArrow} className="w-[20px] h-[20px]" />
+                            </>
+                        }
                     </div>
 
                 </div>
