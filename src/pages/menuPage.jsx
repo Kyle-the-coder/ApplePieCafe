@@ -8,9 +8,9 @@ import RandPage from "./randPage";
 import { useState } from "react";
 
 const MenuPage = () => {
-    const [bFastImg, setBFastImg]= useState(false)
-    const [lunchImg, setLunchImg]= useState(false)
-    const [dessertImg, setDessertImg]=useState(false)
+    const [bFastImg, setBFastImg] = useState(false)
+    const [lunchImg, setLunchImg] = useState(false)
+    const [dessertImg, setDessertImg] = useState(false)
 
     return (
         <div>
@@ -26,22 +26,43 @@ const MenuPage = () => {
             <section>
                 <div className="w-full bg-slate-200 h-[600px] flex ">
                     <div>
-                        <MenuSidebar 
-                        bFastImg={bFastImg} setBFastImg={setBFastImg}
-                        lunchImg={lunchImg} setLunchImg={setLunchImg}
-                        dessertImg={dessertImg} setDessertImg={setDessertImg}
+                        <MenuSidebar
+                            bFastImg={bFastImg} setBFastImg={setBFastImg}
+                            lunchImg={lunchImg} setLunchImg={setLunchImg}
+                            dessertImg={dessertImg} setDessertImg={setDessertImg}
                         />
                     </div>
-                    <div>
-                        {bFastImg &&  <img src={bfast2} className="w-[800px] transition-all duration-200 h-full object-cover" />}
-                        {lunchImg && <img src={lunch1} className="w-[800px] h-full object-cover"  />}
-                        {dessertImg && <img src={bdessert} className="w-[800px] h-full object-cover" />}
+                    <div className="w-[800px]">
+                        {bFastImg && <img src={bfast2} className="w-full transition-all duration-200 h-full object-cover" />}
+                        {lunchImg && <img src={lunch1} className="w-full h-full object-cover" />}
+                        {dessertImg && <img src={bdessert} className="w-full h-full object-cover" />}
                     </div>
-                    <div>
-                        <div>
+
+                    <div className="w-[400px]">
+                        <div >
                             {bFastImg && <h1>Breakfast</h1>}
                             {lunchImg && <h1>Lunch</h1>}
                             {dessertImg && <h1>Dessert</h1>}
+                        </div>
+                        <div>
+                            {bFastImg &&
+                                <p>
+                                    Start your day off right with a delicious breakfast featuring perfectly cooked eggs, accompanied by crispy bacon and
+                                    golden toast. Add a refreshing salad on the side, filled with crisp greens, vibrant vegetables, and a light
+                                    dressing, creating a well-rounded and nutritious meal to kickstart your morning.
+                                </p>}
+                            {lunchImg &&
+                                <p>
+                                    Indulge in a mouthwatering chicken and ham sandwich, nestled between toasted bread, with layers of savory flavors and satisfying textures.
+                                    Accompanied by a generous side of golden fries, this classic combination delivers a satisfying meal
+                                    that will leave you fully satisfied.
+                                </p>}
+                            {dessertImg &&
+                                <p>
+                                    Treat yourself to a heavenly dessert waffle topped with a colorful medley of fresh, juicy berries, and crowned with a generous scoop of velvety ice cream.
+                                    The warm, fluffy waffle pairs perfectly with the sweet-tart berries and the cool, creamy ice cream,
+                                    creating a delightful symphony of flavors and textures in every delightful bite.
+                                </p>}
                         </div>
                     </div>
 
@@ -50,7 +71,7 @@ const MenuPage = () => {
 
             <section>
                 <div>
-                    <RandPage/>
+                    <RandPage />
                 </div>
             </section>
         </div>
