@@ -41,7 +41,7 @@ const MenuPage = () => {
                         <div>
                             {bFastImg && <h1>Breakfast</h1>}
                             {lunchImg && <h1>Lunch</h1>}
-                            {dessertImg && <h1>Dinner</h1>}
+                            {dessertImg && <h1>Dessert</h1>}
                         </div>
                     </div>
 
