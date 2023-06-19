@@ -28,7 +28,7 @@ const MenuPage = () => {
         setBFastImg(bfast2)
     }, [])
 
-    const handleMenuItem = (menuItem) => {
+    const handleBFastMenuItem = (menuItem) => {
         setBFastImg(menuItem)
     }
 
@@ -103,9 +103,9 @@ const MenuPage = () => {
                         {bFastImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={bfast2} onClick={() => handleMenuItem(bfast2)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={avaToast} onClick={() => handleMenuItem(avaToast)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={chileQuilles} onClick={() => handleMenuItem(chileQuilles)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={bfast2} onClick={() => handleBFastMenuItem(bfast2)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={avaToast} onClick={() => handleBFastMenuItem(avaToast)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={chileQuilles} onClick={() => handleBFastMenuItem(chileQuilles)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
