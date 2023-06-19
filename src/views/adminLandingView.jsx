@@ -11,10 +11,18 @@ const AdminLandingView = () => {
                 <div className="w-[400px] flex flex-col bg-slate-800 text-white px-4 py-6">
                     <form className="flex-col flex">
                         <h1 className="fontWriting">Add a Menu Item</h1>
-                        <label>Menu Item Name:</label>
-                        <input type="text" />
-                        <label>Menu Item Description:</label>
-                        <input type="text" />
+                        <div className="w-full my-2">
+                            <label className="mb-2">Menu Item Name:</label>
+                            <input type="text" className="w-full"/>
+                        </div>
+                        <div className="w-full my-2">
+                            <label className="mb-2">Menu Item Description:</label>
+                            <input type="text" className="w-full"/>
+                        </div>
+                        <div className="w-full my-2">
+                            <label className="mb-2">Menu Item Photo:</label>
+                            <input type="file"  />
+                        </div>
                     </form>
                 </div>
             </div>
