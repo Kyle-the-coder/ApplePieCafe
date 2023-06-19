@@ -38,9 +38,9 @@ const MenuPage = () => {
                 <div className="w-full bg-slate-800 h-[750px] flex relative py-6">
                     <div>
                         <MenuSidebar
-                            bFastImg={bFastImg} setBFastImg={setBFastImg}
-                            lunchImg={lunchImg} setLunchImg={setLunchImg}
-                            dessertImg={dessertImg} setDessertImg={setDessertImg}
+                            setBFastImg={setBFastImg}
+                            setLunchImg={setLunchImg}
+                            setDessertImg={setDessertImg}
                         />
                     </div>
                     <div className="w-[800px]">
@@ -125,7 +125,7 @@ const MenuPage = () => {
 
             <section>
                 <div>
-                    
+
                 </div>
             </section>
         </div>
