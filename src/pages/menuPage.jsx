@@ -16,12 +16,21 @@ import chocoCake from "../assets/images/chocoCake.jpeg"
 import tart from "../assets/images/tart.jpeg"
 import rightArrow from '../assets/images/right-arrow.png'
 import leftArrow from "../assets/images/left-arrow.png"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const MenuPage = () => {
-    const [bFastImg, setBFastImg] = useState(false)
-    const [lunchImg, setLunchImg] = useState(false)
-    const [dessertImg, setDessertImg] = useState(false)
+    const [bFastImgTracker, setBFastImgTracker] = useState(false)
+    const [bFastImg, setBFastImg] = useState(null)
+    const [lunchImgTracker, setLunchImgTracker] = useState(false)
+    const [dessertImgTracker, setDessertImgTracker] = useState(false)
+
+    useEffect(() => {
+        setBFastImg(bfast2)
+    }, [])
+
+    const handleMenuItem = (menuItem) => {
+        setBFastImg(menuItem)
+    }
 
     return (
         <div>
@@ -38,25 +47,25 @@ const MenuPage = () => {
                 <div className="w-full bg-slate-800 h-[750px] flex relative py-6">
                     <div>
                         <MenuSidebar
-                            setBFastImg={setBFastImg}
-                            setLunchImg={setLunchImg}
-                            setDessertImg={setDessertImg}
+                            setBFastImgTracker={setBFastImgTracker}
+                            setLunchImgTracker={setLunchImgTracker}
+                            setDessertImgTracker={setDessertImgTracker}
                         />
                     </div>
                     <div className="w-[800px]">
-                        {bFastImg && <img src={bfast2} className="w-full transition-all duration-200 h-full object-cover" />}
-                        {lunchImg && <img src={lunch1} className="w-full h-full object-cover" />}
-                        {dessertImg && <img src={bdessert} className="w-full h-full object-cover" />}
+                        {bFastImgTracker && <img src={bFastImg} className="w-full transition-all duration-200 h-full object-cover" />}
+                        {lunchImgTracker && <img src={lunch1} className="w-full h-full object-cover" />}
+                        {dessertImgTracker && <img src={bdessert} className="w-full h-full object-cover" />}
                     </div>
 
                     <div className="w-[500px] px-3 py-2 text-white">
                         <div >
-                            {bFastImg && <h1 className="fontWriting text-4xl mb-5 underline">Breakfast</h1>}
-                            {lunchImg && <h1 className="fontWriting text-4xl mb-5 underline">Lunch</h1>}
-                            {dessertImg && <h1 className="fontWriting text-4xl mb-5 underline">Dessert</h1>}
+                            {bFastImgTracker && <h1 className="fontWriting text-4xl mb-5 underline">Breakfast</h1>}
+                            {lunchImgTracker && <h1 className="fontWriting text-4xl mb-5 underline">Lunch</h1>}
+                            {dessertImgTracker && <h1 className="fontWriting text-4xl mb-5 underline">Dessert</h1>}
                         </div>
                         <div>
-                            {bFastImg &&
+                            {bFastImgTracker &&
                                 <>
 
                                     <h1 className="text-xl underline mb-2">Golden Sunrise</h1>
@@ -67,7 +76,7 @@ const MenuPage = () => {
                                     </p>
                                 </>
                             }
-                            {lunchImg &&
+                            {lunchImgTracker &&
                                 <>
                                     <h1 className="text-xl underline mb-2">Chicken and Ham Sammi</h1>
                                     <p>
@@ -77,7 +86,7 @@ const MenuPage = () => {
                                     </p>
                                 </>
                             }
-                            {dessertImg &&
+                            {dessertImgTracker &&
                                 <>
                                     <h1 className="underline text-xl mb-2">Never Forget</h1>
                                     <p>
@@ -91,16 +100,16 @@ const MenuPage = () => {
                     </div>
 
                     <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[10px]">
-                        {bFastImg &&
+                        {bFastImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={avaToast} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={chileQuilles} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={yogurt} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={bfast2} onClick={() => handleMenuItem(bfast2)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={avaToast} onClick={() => handleMenuItem(avaToast)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={chileQuilles} onClick={() => handleMenuItem(chileQuilles)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
-                        {lunchImg &&
+                        {lunchImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
                                 <img src={turkeyWrap} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
@@ -109,7 +118,7 @@ const MenuPage = () => {
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
-                        {dessertImg &&
+                        {dessertImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
                                 <img src={apPhoto} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />

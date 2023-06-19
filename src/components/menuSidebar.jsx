@@ -1,9 +1,9 @@
 import { useState } from "react"
 
 const MenuSidebar = (props) => {
-    const { setBFastImg } = props
-    const { setLunchImg } = props
-    const { setDessertImg } = props
+    const { setBFastImgTracker } = props
+    const { setLunchImgTracker } = props
+    const { setDessertImgTracker } = props
     const [pingTracker, setPingTracker] = useState(false)
     const [isTimeoutComplete, setIsTimeoutComplete] = useState(false);
 
@@ -15,19 +15,19 @@ const MenuSidebar = (props) => {
 
     const handleOptions = (idx) => {
         if (idx == "1") {
-            setBFastImg(true)
-            setLunchImg(false)
-            setDessertImg(false)
+            setBFastImgTracker(true)
+            setLunchImgTracker(false)
+            setDessertImgTracker(false)
         }
         else if (idx == "2") {
-            setLunchImg(true)
-            setBFastImg(false)
-            setDessertImg(false)
+            setLunchImgTracker(true)
+            setBFastImgTracker(false)
+            setDessertImgTracker(false)
         }
         else if (idx == "3") {
-            setDessertImg(true)
-            setBFastImg(false)
-            setLunchImg(false)
+            setDessertImgTracker(true)
+            setBFastImgTracker(false)
+            setLunchImgTracker(false)
         }
     }
 
