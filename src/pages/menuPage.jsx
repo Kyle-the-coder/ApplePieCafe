@@ -17,6 +17,8 @@ import tart from "../assets/images/tart.jpeg"
 import rightArrow from '../assets/images/right-arrow.png'
 import leftArrow from "../assets/images/left-arrow.png"
 import { useEffect, useState } from "react";
+import { doc, getDocs, collection } from "firebase/firestore"
+import { db } from "../config/firebase"
 
 const MenuPage = () => {
     const [bFastImgTracker, setBFastImgTracker] = useState(false)
@@ -24,13 +26,27 @@ const MenuPage = () => {
     const [lunchImgTracker, setLunchImgTracker] = useState(false)
     const [dessertImgTracker, setDessertImgTracker] = useState(false)
     const [data, setData] = useState({})
+
+
     useEffect(() => {
-        setBFastImg(bfast2)
+        const getData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, "menuItems"));
+                const documents = querySnapshot.docs.map((doc) => doc.data());
+                setData(documents);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        getData();
     }, [])
 
     const handleBFastMenuItem = (menuItem) => {
         setBFastImg(menuItem)
     }
+
+    console.log(data)
 
     return (
         <div>
@@ -53,7 +69,7 @@ const MenuPage = () => {
                         />
                     </div>
                     <div className="w-[800px]">
-                        {bFastImgTracker && <img src={bFastImg} className="w-full transition-all duration-200 h-full object-cover" />}
+                        {bFastImgTracker && <img src={data[0].menuItemImg} className="w-full transition-all duration-200 h-full object-cover" />}
                         {lunchImgTracker && <img src={lunch1} className="w-full h-full object-cover" />}
                         {dessertImgTracker && <img src={bdessert} className="w-full h-full object-cover" />}
                     </div>
