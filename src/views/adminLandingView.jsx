@@ -17,7 +17,7 @@ const AdminLandingView = () => {
                         </div>
                         <div className="w-full my-2">
                             <label className="mb-2">Menu Item Description:</label>
-                            <input type="text" className="w-full"/>
+                            <textarea rows="10" col="12" type="text" className="w-full"/>
                         </div>
                         <div className="w-full my-2">
                             <label className="mb-2">Menu Item Photo:</label>
