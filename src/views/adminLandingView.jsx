@@ -7,11 +7,12 @@ const AdminLandingView = () => {
     const [menuItemName, setMenuItemName] = useState("")
     const [menuItemDesc, setMenuItemDesc] = useState("")
     const [menuItemImg, setMenuItemImg] = useState(null)
+    const [menuItemImgRef, setMenuItemImgRef] = useState("")
 
     useEffect(() => {
         const uploadMenuItemImg = () => {
             const name = new Date().getTime() + menuItemImg.name
-            const itemImgRef = ref(storage, $`menuItemImgs/{name}`)
+            const itemImgRef = ref(storage, `menuItemImgs/${name}` )
 
             const uploadTask = uploadBytesResumable(itemImgRef, menuItemImg);
 
@@ -33,12 +34,13 @@ const AdminLandingView = () => {
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        console.log('File available at', downloadURL);
+                        setMenuItemImgRef(downloadURL)
                     });
                 }
             );
         }
         menuItemImg && uploadMenuItemImg();
+        
     }, [menuItemImg])
 
     const handleAdd = async (e) => {
@@ -47,10 +49,10 @@ const AdminLandingView = () => {
         await addDoc(collection(db, "menuItems"), {
             menuItemName: menuItemName,
             menuItemDescription: menuItemDesc,
-            menuItemImg: menuItemImg,
+            menuItemImg: menuItemImgRef,
         });
     }
-
+    console.log("file looks like: " + menuItemImg)
 
     return (
         <div>
