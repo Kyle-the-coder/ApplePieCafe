@@ -23,7 +23,7 @@ const MenuPage = () => {
     const [bFastImg, setBFastImg] = useState(null)
     const [lunchImgTracker, setLunchImgTracker] = useState(false)
     const [dessertImgTracker, setDessertImgTracker] = useState(false)
-
+    const [data, setData] = useState({})
     useEffect(() => {
         setBFastImg(bfast2)
     }, [])
