@@ -1,21 +1,31 @@
-import { useState } from "react";
-import {db} from "../config/firebase"
-import {doc, setDoc} from "firebase/firestore"
+import { useEffect, useState } from "react";
+import { db, storage } from "../config/firebase"
+import { doc, addDoc, collection } from "firebase/firestore"
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 const AdminLandingView = () => {
-    const [menuItemName, setMenuItemName] = useState()
-    const [menuItemDesc, setMenuItemDesc] = useState()
-    const [menuItemImg, setMenuItemImg] = useState()
+    const [menuItemName, setMenuItemName] = useState("")
+    const [menuItemDesc, setMenuItemDesc] = useState("")
+    const [menuItemImg, setMenuItemImg] = useState(null)
 
-    const handleAdd = async(e) => {
+    useEffect(() => {
+        const uploadMenuItemImg = () => {
+            const itemImgRef = ref(storage, "menuItemImgs")
+        }
+        menuItemImg && uploadMenuItemImg();
+    }, [menuItemImg])
+
+    const handleAdd = async (e) => {
         e.preventDefault()
         // Add a new document in collection "cities"
-        await setDoc(doc(db, "menuItems", process.env.REACT_APP_DOC_ID), {
+        await addDoc(collection(db, "menuItems"), {
             menuItemName: menuItemName,
             menuItemDescription: menuItemDesc,
             menuItemImg: menuItemImg,
         });
     }
+
+
     return (
         <div>
             <h1>welcome to admin page</h1>
@@ -36,7 +46,7 @@ const AdminLandingView = () => {
                         </div>
                         <div className="w-full my-2">
                             <label className="mb-2">Menu Item Photo:</label>
-                            <input type="file" onChange={(e) => { setMenuItemImg(e.target.value) }} />
+                            <input type="file" onChange={(e) => { setMenuItemImg(e.target.files[0]) }} />
                         </div>
                         <div>
                             <button type="submit" className="bg-orange-200 text-black px-3 py-1 mt-5">Submit</button>
