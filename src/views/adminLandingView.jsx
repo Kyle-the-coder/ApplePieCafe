@@ -10,6 +10,7 @@ const AdminLandingView = () => {
 
     useEffect(() => {
         const uploadMenuItemImg = () => {
+            const name = new Date().getTime() + menuItemImg.name
             const itemImgRef = ref(storage, "menuItemImgs")
         }
         menuItemImg && uploadMenuItemImg();
