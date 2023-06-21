@@ -46,7 +46,7 @@ const AdminLandingView = () => {
     const handleAdd = async (e) => {
         e.preventDefault()
         // Add a new document in collection "cities"
-        await addDoc(collection(db, "menuItems"), {
+        await addDoc(collection(db, "breakfastMenuItems"), {
             menuItemName: menuItemName,
             menuItemDescription: menuItemDesc,
             menuItemImg: menuItemImgRef,
