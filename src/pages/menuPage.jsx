@@ -21,17 +21,25 @@ import { doc, getDocs, collection } from "firebase/firestore"
 import { db } from "../config/firebase"
 
 const MenuPage = () => {
-    const [bFastImgTracker, setBFastImgTracker] = useState(false)
-    const [bFastImg, setBFastImg] = useState(null)
-    const [lunchImgTracker, setLunchImgTracker] = useState(false)
     const [dessertImgTracker, setDessertImgTracker] = useState(false)
-    const [breakfastData, setBreakfastData] = useState({})
+    // BREAKFAST ITEMS
+    const [bFastImg, setBFastImg] = useState(null)
     const [breakfastMenuItemName, setBreakfastMenuItemName] = useState("")
     const [breakfastMenuItemDesc, setBreakfastMenuItemDesc] = useState("")
+    const [bFastImgTracker, setBFastImgTracker] = useState(false)
+    const [breakfastData, setBreakfastData] = useState({})
+    // LUNCH ITEMS
+    const [lunchImg, setLunchImg] = useState(null)
+    const [lunchMenuItemName, setLunchMenuItemName] = useState("")
+    const [lunchMenuItemDesc, setLunchMenuItemDesc] = useState("")
+    const [lunchImgTracker, setLunchImgTracker] = useState(false)
+    const [lunchData, setLunchData] = useState({})
+
 
 
     useEffect(() => {
-        const getData = async () => {
+        // GET BREAKFAST DATA
+        const getBreakfastData = async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, "breakfastMenuItems"));
                 const documents = querySnapshot.docs.map((doc) => doc.data());
@@ -40,19 +48,36 @@ const MenuPage = () => {
                 console.log(error);
             }
         };
+        getBreakfastData();
 
-        getData();
-        
+        // GET LUNCH DATA
+        const getLunchData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, "lunchMenuItems"));
+                const documents = querySnapshot.docs.map((doc) => doc.data());
+                setLunchData(documents);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        getLunchData();
+
     }, [])
 
-    const handleBFastMenuItem = (menuItem, menuName, menuDesc) => {
-        setBFastImg(menuItem)
+    // HANDLE BREAKFAST UI
+    const handleBFastMenuItem = (menuImg, menuName, menuDesc) => {
+        setBFastImg(menuImg)
         setBreakfastMenuItemName(menuName)
         setBreakfastMenuItemDesc(menuDesc)
-        console.log("menu item -", menuItem)
     }
 
-    console.log(breakfastData)
+    // HANDLE LUNCH UI
+    const handleLunchMenuItem = (menuImg, menuName, menuDesc) => {
+        setLunchImg(menuImg)
+        setLunchMenuItemName(menuName)
+        setLunchMenuItemDesc(menuDesc)
+    }
 
     return (
         <div>
@@ -72,15 +97,19 @@ const MenuPage = () => {
                             setBFastImgTracker={setBFastImgTracker}
                             setLunchImgTracker={setLunchImgTracker}
                             setDessertImgTracker={setDessertImgTracker}
-                            setBFastImg={setBFastImg}
                             breakfastData={breakfastData}
+                            setBFastImg={setBFastImg}
                             setBreakfastMenuItemDesc={setBreakfastMenuItemDesc}
                             setBreakfastMenuItemName={setBreakfastMenuItemName}
+                            setLunchImg={setLunchImg}
+                            setLunchMenuItemName={setLunchMenuItemName}
+                            setLunchMenuItemDesc={setLunchMenuItemDesc}
+                            lunchData={lunchData}
                         />
                     </div>
                     <div className="w-[800px]">
                         {bFastImgTracker && <img src={bFastImg} className="w-full transition-all duration-200 h-full object-cover" />}
-                        {lunchImgTracker && <img src={lunch1} className="w-full h-full object-cover" />}
+                        {lunchImgTracker && <img src={lunchImg} className="w-full h-full object-cover" />}
                         {dessertImgTracker && <img src={bdessert} className="w-full h-full object-cover" />}
                     </div>
 
@@ -93,7 +122,6 @@ const MenuPage = () => {
                         <div>
                             {bFastImgTracker &&
                                 <>
-
                                     <h1 className="text-xl underline mb-2">{breakfastMenuItemName}</h1>
                                     <p>
                                         {breakfastMenuItemDesc}
@@ -102,11 +130,9 @@ const MenuPage = () => {
                             }
                             {lunchImgTracker &&
                                 <>
-                                    <h1 className="text-xl underline mb-2">Chicken and Ham Sammi</h1>
+                                    <h1 className="text-xl underline mb-2">{lunchMenuItemName}</h1>
                                     <p>
-                                        Indulge in a mouthwatering chicken and ham sandwich, nestled between toasted bread, with layers of savory flavors and satisfying textures.
-                                        Accompanied by a generous side of golden fries, this classic combination delivers a satisfying meal
-                                        that will leave you fully satisfied.
+                                        {lunchMenuItemDesc}
                                     </p>
                                 </>
                             }
@@ -127,7 +153,7 @@ const MenuPage = () => {
                         {bFastImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={breakfastData[0].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[0].menuItemImg, breakfastData[0].menuItemName, breakfastData[0].menuItemDescription )} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={breakfastData[0].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[0].menuItemImg, breakfastData[0].menuItemName, breakfastData[0].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={breakfastData[1].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[1].menuItemImg, breakfastData[1].menuItemName, breakfastData[1].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={breakfastData[2].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[2].menuItemImg, breakfastData[2].menuItemName, breakfastData[2].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
@@ -136,9 +162,9 @@ const MenuPage = () => {
                         {lunchImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={turkeyWrap} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={beef} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={burger} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={lunchData[0].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[0].menuItemImg, lunchData[0].menuItemName, lunchData[0].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={lunchData[1].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[1].menuItemImg, lunchData[1].menuItemName, lunchData[1].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={lunchData[2].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[2].menuItemImg, lunchData[2].menuItemName, lunchData[2].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }

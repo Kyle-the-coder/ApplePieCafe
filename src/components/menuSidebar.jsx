@@ -1,13 +1,20 @@
 import { useState } from "react"
 
 const MenuSidebar = (props) => {
-    const { setBFastImgTracker } = props
     const { setLunchImgTracker } = props
     const { setDessertImgTracker } = props
+    // BREAKFAST 
     const { breakfastData } = props
+    const { setBFastImgTracker } = props
     const { setBFastImg } = props
     const { setBreakfastMenuItemDesc } = props
     const { setBreakfastMenuItemName } = props
+    // LUNCH
+    const { setLunchImg } = props
+    const { setLunchMenuItemName } = props
+    const { setLunchMenuItemDesc } = props
+    const { lunchData } = props
+
     const [pingTracker, setPingTracker] = useState(false)
     const [isTimeoutComplete, setIsTimeoutComplete] = useState(false);
 
@@ -30,6 +37,9 @@ const MenuSidebar = (props) => {
             setLunchImgTracker(true)
             setBFastImgTracker(false)
             setDessertImgTracker(false)
+            setLunchImg(lunchData[0].menuItemImg)
+            setLunchMenuItemName(lunchData[0].menuItemName)
+            setLunchMenuItemDesc(lunchData[0].menuItemDescription)
         }
         else if (idx == "3") {
             setDessertImgTracker(true)
