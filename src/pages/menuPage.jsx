@@ -97,6 +97,15 @@ const MenuPage = () => {
         setLunchMenuItemDesc(menuDesc)
     }
 
+    // HANDLE DESSERT UI
+    const handleDessertMenuItem = (menuImg, menuName, menuDesc) => {
+        setDessertImg(menuImg)
+        setDessertMenuItemName(menuName)
+        setDessertMenuItemDesc(menuDesc)
+    }
+
+
+
     return (
         <div>
             {/* Title Section */}
@@ -112,17 +121,24 @@ const MenuPage = () => {
                 <div className="w-full bg-slate-800 h-[750px] flex relative py-6">
                     <div>
                         <MenuSidebar
-                            setBFastImgTracker={setBFastImgTracker}
-                            setLunchImgTracker={setLunchImgTracker}
-                            setDessertImgTracker={setDessertImgTracker}
+                            // BREAKFAST PROPS
                             breakfastData={breakfastData}
                             setBFastImg={setBFastImg}
+                            setBFastImgTracker={setBFastImgTracker}
                             setBreakfastMenuItemDesc={setBreakfastMenuItemDesc}
                             setBreakfastMenuItemName={setBreakfastMenuItemName}
+                            // LUNCH PROPS
                             setLunchImg={setLunchImg}
+                            setLunchImgTracker={setLunchImgTracker}
                             setLunchMenuItemName={setLunchMenuItemName}
                             setLunchMenuItemDesc={setLunchMenuItemDesc}
                             lunchData={lunchData}
+                            // DESSERT PROPS
+                            setDessertImg={setDessertImg}
+                            setDessertImgTracker={setDessertImgTracker}
+                            setDessertMenuItemName={setDessertMenuItemName}
+                            setDessertMenuItemDesc={setDessertMenuItemDesc}
+                            dessertData={dessertData}
                         />
                     </div>
                     <div className="w-[800px]">

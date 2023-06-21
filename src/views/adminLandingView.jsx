@@ -1,9 +1,9 @@
 import BreakfastMenuItem from "../components/breakfastMenuItem";
 import LunchMenuItems from "../components/lunchMenuItems";
 import DessertMenuItems from "../components/dessertMenuItems";
+
+
 const AdminLandingView = () => {
-
-
     return (
         <div>
             <h1>welcome to admin page</h1>
