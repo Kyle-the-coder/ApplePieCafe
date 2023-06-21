@@ -21,7 +21,6 @@ import { doc, getDocs, collection } from "firebase/firestore"
 import { db } from "../config/firebase"
 
 const MenuPage = () => {
-    const [dessertImgTracker, setDessertImgTracker] = useState(false)
     // BREAKFAST ITEMS
     const [bFastImg, setBFastImg] = useState(null)
     const [breakfastMenuItemName, setBreakfastMenuItemName] = useState("")
@@ -34,7 +33,12 @@ const MenuPage = () => {
     const [lunchMenuItemDesc, setLunchMenuItemDesc] = useState("")
     const [lunchImgTracker, setLunchImgTracker] = useState(false)
     const [lunchData, setLunchData] = useState({})
-
+    //DESSERT ITEMS
+    const [dessertImg, setDessertImg] = useState(null)
+    const [dessertMenuItemName, setDessertMenuItemName] = useState("")
+    const [dessertMenuItemDesc, setDessertMenuItemDesc] = useState("")
+    const [dessertImgTracker, setDessertImgTracker] = useState(false)
+    const [dessertData, setDessertData] = useState("")
 
 
     useEffect(() => {
@@ -62,6 +66,20 @@ const MenuPage = () => {
         };
 
         getLunchData();
+
+        // GET DESSERT DATA
+        // GET LUNCH DATA
+        const getDessertData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, "dessertMenuItems"));
+                const documents = querySnapshot.docs.map((doc) => doc.data());
+                setLunchData(documents);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        getDessertData();
 
     }, [])
 
