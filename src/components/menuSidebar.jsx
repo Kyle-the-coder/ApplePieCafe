@@ -14,6 +14,11 @@ const MenuSidebar = (props) => {
     const { setLunchMenuItemName } = props
     const { setLunchMenuItemDesc } = props
     const { lunchData } = props
+    // DESSERT
+    const { setDessertImg } = props
+    const { setDessertMenuItemName } = props
+    const { setDessertMenuItemDesc } = props
+    const { dessertData } = props
 
     const [pingTracker, setPingTracker] = useState(false)
     const [isTimeoutComplete, setIsTimeoutComplete] = useState(false);
@@ -45,6 +50,10 @@ const MenuSidebar = (props) => {
             setDessertImgTracker(true)
             setBFastImgTracker(false)
             setLunchImgTracker(false)
+            setDessertImg(dessertData[0].menuItemImg)
+            setDessertMenuItemName(dessertData[0].menuItemName)
+            setDessertMenuItemDesc(dessertData[0].menuItemDescription)
+            
         }
     }
 

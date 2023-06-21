@@ -68,12 +68,11 @@ const MenuPage = () => {
         getLunchData();
 
         // GET DESSERT DATA
-        // GET LUNCH DATA
         const getDessertData = async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, "dessertMenuItems"));
                 const documents = querySnapshot.docs.map((doc) => doc.data());
-                setLunchData(documents);
+                setDessertData(documents);
             } catch (error) {
                 console.log(error);
             }
@@ -172,11 +171,9 @@ const MenuPage = () => {
                             }
                             {dessertImgTracker &&
                                 <>
-                                    <h1 className="underline text-xl mb-2">Never Forget</h1>
+                                    <h1 className="underline text-xl mb-2">{dessertMenuItemName}</h1>
                                     <p>
-                                        Treat yourself to a heavenly dessert waffle topped with a colorful medley of fresh, juicy berries, and crowned with a generous scoop of velvety ice cream.
-                                        The warm, fluffy waffle pairs perfectly with the sweet-tart berries and the cool, creamy ice cream,
-                                        creating a delightful symphony of flavors and textures in every delightful bite.
+                                        {dessertMenuItemDesc}
                                     </p>
                                 </>
                             }
@@ -205,9 +202,9 @@ const MenuPage = () => {
                         {dessertImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={apPhoto} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={chocoCake} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={tart} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={dessertData[0].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[0].menuItemImg, dessertData[0].menuItemName, dessertData[0].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={dessertData[1].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[1].menuItemImg, dessertData[1].menuItemName, dessertData[1].menuItemDescription)}  className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={dessertData[2].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[2].menuItemImg, dessertData[2].menuItemName, dessertData[2].menuItemDescription)}  className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
