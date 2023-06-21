@@ -26,6 +26,8 @@ const MenuPage = () => {
     const [lunchImgTracker, setLunchImgTracker] = useState(false)
     const [dessertImgTracker, setDessertImgTracker] = useState(false)
     const [breakfastData, setBreakfastData] = useState({})
+    const [breakfastMenuItemName, setBreakfastMenuItemName] = useState("")
+    const [breakfastMenuItemDesc, setBreakfastMenuItemDesc] = useState("")
 
 
     useEffect(() => {
@@ -43,8 +45,10 @@ const MenuPage = () => {
         
     }, [])
 
-    const handleBFastMenuItem = (menuItem) => {
+    const handleBFastMenuItem = (menuItem, menuName, menuDesc) => {
         setBFastImg(menuItem)
+        setBreakfastMenuItemName(menuName)
+        setBreakfastMenuItemDesc(menuDesc)
         console.log("menu item -", menuItem)
     }
 
@@ -88,11 +92,9 @@ const MenuPage = () => {
                             {bFastImgTracker &&
                                 <>
 
-                                    <h1 className="text-xl underline mb-2">Golden Sunrise</h1>
+                                    <h1 className="text-xl underline mb-2">{breakfastMenuItemName}</h1>
                                     <p>
-                                        Start your day off right with a delicious breakfast featuring perfectly cooked eggs, accompanied by crispy bacon and
-                                        golden toast. Add a refreshing salad on the side, filled with crisp greens, vibrant vegetables, and a light
-                                        dressing, creating a well-rounded and nutritious meal to kickstart your morning.
+                                        {breakfastMenuItemDesc}
                                     </p>
                                 </>
                             }
@@ -123,9 +125,9 @@ const MenuPage = () => {
                         {bFastImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={breakfastData[0].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[0].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={breakfastData[1].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[1].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={breakfastData[2].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[2].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={breakfastData[0].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[0].menuItemImg, breakfastData[0].menuItemName, breakfastData[0].menuItemDescription )} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={breakfastData[1].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[1].menuItemImg, breakfastData[1].menuItemName, breakfastData[1].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={breakfastData[2].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[2].menuItemImg, breakfastData[2].menuItemName, breakfastData[2].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
