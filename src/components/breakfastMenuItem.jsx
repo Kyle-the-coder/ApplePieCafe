@@ -59,7 +59,7 @@ const BreakfastMenuItem = () => {
             <div className="w-full flex justify-center">
                 <div className="w-[400px] flex flex-col bg-slate-800 text-white px-4 py-6">
                     <form className="flex-col flex" onSubmit={handleAdd}>
-                        <h1 className="fontWriting">Add a Menu Item</h1>
+                        <h1 className="fontWriting">Add a Breakfast Menu Item</h1>
                         <div className="w-full my-2">
                             <label className="mb-2">Menu Item Name:</label>
                             <input type="text" className="w-full text-black px-2 py-1" onChange={(e) => { setMenuItemName(e.target.value) }} />
