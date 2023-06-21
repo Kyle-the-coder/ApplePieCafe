@@ -13,7 +13,7 @@ const BreakfastMenuItem = () => {
     useEffect(() => {
         const uploadMenuItemImg = () => {
             const name = new Date().getTime() + menuItemImg.name
-            const itemImgRef = ref(storage, `menuItemImgs/${name}`)
+            const itemImgRef = ref(storage, `breakfastMenuItemImgs/${name}`)
 
             const uploadTask = uploadBytesResumable(itemImgRef, menuItemImg);
 
@@ -62,11 +62,11 @@ const BreakfastMenuItem = () => {
                         <h1 className="fontWriting">Add a Menu Item</h1>
                         <div className="w-full my-2">
                             <label className="mb-2">Menu Item Name:</label>
-                            <input type="text" className="w-full text-black" onChange={(e) => { setMenuItemName(e.target.value) }} />
+                            <input type="text" className="w-full text-black px-2 py-1" onChange={(e) => { setMenuItemName(e.target.value) }} />
                         </div>
                         <div className="w-full my-2">
                             <label className="mb-2">Menu Item Description:</label>
-                            <textarea rows="10" col="12" type="text" className="w-full text-black" onChange={(e) => { setMenuItemDesc(e.target.value) }} />
+                            <textarea rows="10" col="12" type="text" className="w-full text-black px-2 py-1" onChange={(e) => { setMenuItemDesc(e.target.value) }} />
                         </div>
                         <div className="w-full my-2">
                             <label className="mb-2">Menu Item Photo:</label>

@@ -25,15 +25,15 @@ const MenuPage = () => {
     const [bFastImg, setBFastImg] = useState(null)
     const [lunchImgTracker, setLunchImgTracker] = useState(false)
     const [dessertImgTracker, setDessertImgTracker] = useState(false)
-    const [data, setData] = useState({})
+    const [breakfastData, setBreakfastData] = useState({})
 
 
     useEffect(() => {
         const getData = async () => {
             try {
-                const querySnapshot = await getDocs(collection(db, "menuItems"));
+                const querySnapshot = await getDocs(collection(db, "breakfastMenuItems"));
                 const documents = querySnapshot.docs.map((doc) => doc.data());
-                setData(documents);
+                setBreakfastData(documents);
             } catch (error) {
                 console.log(error);
             }
@@ -48,7 +48,7 @@ const MenuPage = () => {
         console.log("menu item -", menuItem)
     }
 
-    console.log(data)
+    console.log(breakfastData)
 
     return (
         <div>
@@ -69,7 +69,7 @@ const MenuPage = () => {
                             setLunchImgTracker={setLunchImgTracker}
                             setDessertImgTracker={setDessertImgTracker}
                             setBFastImg={setBFastImg}
-                            data={data}
+                            breakfastData={breakfastData}
                         />
                     </div>
                     <div className="w-[800px]">
@@ -123,9 +123,9 @@ const MenuPage = () => {
                         {bFastImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={data[0].menuItemImg} onClick={() => handleBFastMenuItem(data[0].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={data[1].menuItemImg} onClick={() => handleBFastMenuItem(data[1].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={data[2].menuItemImg} onClick={() => handleBFastMenuItem(data[2].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={breakfastData[0].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[0].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={breakfastData[1].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[1].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={breakfastData[2].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[2].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
