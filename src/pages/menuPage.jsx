@@ -1,19 +1,5 @@
 import fruits from "../assets/images/fruits1.jpeg";
 import MenuSidebar from "../components/menuSidebar";
-import bfast1 from "../assets/images/bfast1.jpeg";
-import bfast2 from "../assets/images/bfast2.jpeg";
-import lunch1 from "../assets/images/lunch1.webp";
-import bdessert from "../assets/images/bdessert1.webp";
-import RandPage from "./randPage";
-import avaToast from "../assets/images/avaToast.jpeg"
-import chileQuilles from "../assets/images/chileQuilles.jpeg"
-import yogurt from "../assets/images/yogurt.webp"
-import turkeyWrap from "../assets/images/turkeyWrap.jpeg"
-import beef from "../assets/images/beef.webp"
-import burger from "../assets/images/burger.jpeg"
-import apPhoto from "../assets/images/apphoto.jpeg"
-import chocoCake from "../assets/images/chocoCake.jpeg"
-import tart from "../assets/images/tart.jpeg"
 import rightArrow from '../assets/images/right-arrow.png'
 import leftArrow from "../assets/images/left-arrow.png"
 import { useEffect, useState } from "react";
@@ -143,7 +129,7 @@ const MenuPage = () => {
                     <div className="w-[800px]">
                         {bFastImgTracker && <img src={bFastImg} className="w-full transition-all duration-200 h-full object-cover" />}
                         {lunchImgTracker && <img src={lunchImg} className="w-full h-full object-cover" />}
-                        {dessertImgTracker && <img src={bdessert} className="w-full h-full object-cover" />}
+                        {dessertImgTracker && <img src={dessertImg} className="w-full h-full object-cover" />}
                     </div>
 
                     <div className="w-[500px] px-3 py-2 text-white">
