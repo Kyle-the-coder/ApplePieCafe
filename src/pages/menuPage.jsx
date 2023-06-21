@@ -40,6 +40,7 @@ const MenuPage = () => {
         };
 
         getData();
+        
     }, [])
 
     const handleBFastMenuItem = (menuItem) => {
@@ -67,6 +68,8 @@ const MenuPage = () => {
                             setBFastImgTracker={setBFastImgTracker}
                             setLunchImgTracker={setLunchImgTracker}
                             setDessertImgTracker={setDessertImgTracker}
+                            setBFastImg={setBFastImg}
+                            data={data}
                         />
                     </div>
                     <div className="w-[800px]">

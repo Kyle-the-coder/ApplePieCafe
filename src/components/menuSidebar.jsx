@@ -4,6 +4,8 @@ const MenuSidebar = (props) => {
     const { setBFastImgTracker } = props
     const { setLunchImgTracker } = props
     const { setDessertImgTracker } = props
+    const { data } = props
+    const { setBFastImg } = props
     const [pingTracker, setPingTracker] = useState(false)
     const [isTimeoutComplete, setIsTimeoutComplete] = useState(false);
 
@@ -18,6 +20,7 @@ const MenuSidebar = (props) => {
             setBFastImgTracker(true)
             setLunchImgTracker(false)
             setDessertImgTracker(false)
+            setBFastImg(data[0].menuItemImg)
         }
         else if (idx == "2") {
             setLunchImgTracker(true)
