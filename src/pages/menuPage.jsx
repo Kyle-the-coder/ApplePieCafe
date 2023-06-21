@@ -44,6 +44,7 @@ const MenuPage = () => {
 
     const handleBFastMenuItem = (menuItem) => {
         setBFastImg(menuItem)
+        console.log("menu item -", menuItem)
     }
 
     console.log(data)
@@ -69,7 +70,7 @@ const MenuPage = () => {
                         />
                     </div>
                     <div className="w-[800px]">
-                        {bFastImgTracker && <img src={data[0].menuItemImg} className="w-full transition-all duration-200 h-full object-cover" />}
+                        {bFastImgTracker && <img src={bFastImg} className="w-full transition-all duration-200 h-full object-cover" />}
                         {lunchImgTracker && <img src={lunch1} className="w-full h-full object-cover" />}
                         {dessertImgTracker && <img src={bdessert} className="w-full h-full object-cover" />}
                     </div>
@@ -119,9 +120,9 @@ const MenuPage = () => {
                         {bFastImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={bfast2} onClick={() => handleBFastMenuItem(bfast2)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={avaToast} onClick={() => handleBFastMenuItem(avaToast)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={chileQuilles} onClick={() => handleBFastMenuItem(chileQuilles)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={data[0].menuItemImg} onClick={() => handleBFastMenuItem(data[0].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={data[1].menuItemImg} onClick={() => handleBFastMenuItem(data[1].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={data[2].menuItemImg} onClick={() => handleBFastMenuItem(data[2].menuItemImg)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
