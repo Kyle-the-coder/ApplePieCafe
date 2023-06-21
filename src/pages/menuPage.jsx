@@ -74,6 +74,8 @@ const MenuPage = () => {
                             setDessertImgTracker={setDessertImgTracker}
                             setBFastImg={setBFastImg}
                             breakfastData={breakfastData}
+                            setBreakfastMenuItemDesc={setBreakfastMenuItemDesc}
+                            setBreakfastMenuItemName={setBreakfastMenuItemName}
                         />
                     </div>
                     <div className="w-[800px]">
