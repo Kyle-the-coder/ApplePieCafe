@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const APNavbar = () => {
     return (
-        <div className="w-full bg-slate-800 h-[270px] flex items-center justify-between">
+        <div className="w-full bg-slate-900 h-[270px] flex items-center justify-between">
             <div>
                 <img src={APLogo} className="w-[200px] ml-[60px]" />
             </div>
