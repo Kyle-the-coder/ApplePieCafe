@@ -56,7 +56,7 @@ const LunchMenuItems = () => {
     return(
         <div>
             <div className="w-full flex justify-center">
-                <div className="w-[400px] flex flex-col bg-orange-900 text-white px-4 py-6">
+                <div className="w-[400px] flex flex-col bg-slate-800 text-white px-4 py-6">
                     <form className="flex-col flex" onSubmit={handleAdd}>
                         <h1 className="fontWriting">Add a Lunch Menu Item</h1>
                         <div className="w-full my-2">
@@ -72,7 +72,7 @@ const LunchMenuItems = () => {
                             <input type="file" onChange={(e) => { setMenuItemImg(e.target.files[0]) }} />
                         </div>
                         <div>
-                            <button type="submit" className="bg-orange-200 text-black px-3 py-1 mt-5">Submit</button>
+                            <button type="submit" className="bg-slate-800 text-white px-3 py-1 mt-5">Submit</button>
                         </div>
                     </form>
                 </div>

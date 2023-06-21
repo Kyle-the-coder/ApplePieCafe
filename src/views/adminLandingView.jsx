@@ -1,5 +1,6 @@
 import BreakfastMenuItem from "../components/breakfastMenuItem";
 import LunchMenuItems from "../components/lunchMenuItems";
+import DessertMenuItems from "../components/dessertMenuItems";
 const AdminLandingView = () => {
 
 
@@ -13,6 +14,7 @@ const AdminLandingView = () => {
             <div className="w-full flex justify-center justify-evenly">
                 <BreakfastMenuItem />
                 <LunchMenuItems />
+                <DessertMenuItems />
             </div>
         </div>
     )
