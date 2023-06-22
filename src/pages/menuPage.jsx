@@ -179,18 +179,18 @@ const MenuPage = () => {
                         {lunchImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={lunchData[0].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[0].menuItemImg, lunchData[0].menuItemName, lunchData[0].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={lunchData[1].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[1].menuItemImg, lunchData[1].menuItemName, lunchData[1].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
-                                <img src={lunchData[2].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[2].menuItemImg, lunchData[2].menuItemName, lunchData[2].menuItemDescription)} className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={lunchData[0].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[0].menuItemImg, lunchData[0].menuItemName, lunchData[0].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[0].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover hover:opacity-100 cursor-pointer`} />
+                                <img src={lunchData[1].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[1].menuItemImg, lunchData[1].menuItemName, lunchData[1].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[1].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover  hover:opacity-100 cursor-pointer`} />
+                                <img src={lunchData[2].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[2].menuItemImg, lunchData[2].menuItemName, lunchData[2].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[2].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover  hover:opacity-100 cursor-pointer`} />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
                         {dessertImgTracker &&
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={dessertData[0].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[0].menuItemImg, dessertData[0].menuItemName, dessertData[0].menuItemDescription)} className={`${dessertImgTracker && dessertImg === dessertData[0].menuItemImg ? "opacity-100" : "opacity-70 "} w-[200px] hover:opacity-100 h-full object-cover  cursor-pointer`} />
-                                <img src={dessertData[1].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[1].menuItemImg, dessertData[1].menuItemName, dessertData[1].menuItemDescription)}  className={` ${dessertImgTracker && dessertImg === dessertData[1].menuItemImg ? "opacity-100" : "opacity-70 "} w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
-                                <img src={dessertData[2].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[2].menuItemImg, dessertData[2].menuItemName, dessertData[2].menuItemDescription)}  className="w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer" />
+                                <img src={dessertData[0].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[0].menuItemImg, dessertData[0].menuItemName, dessertData[0].menuItemDescription)} className={`${dessertImgTracker && dessertImg === dessertData[0].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] hover:opacity-100 h-full object-cover  cursor-pointer`} />
+                                <img src={dessertData[1].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[1].menuItemImg, dessertData[1].menuItemName, dessertData[1].menuItemDescription)}  className={` ${dessertImgTracker && dessertImg === dessertData[1].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
+                                <img src={dessertData[2].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[2].menuItemImg, dessertData[2].menuItemName, dessertData[2].menuItemDescription)}  className={` ${dessertImgTracker && dessertImg === dessertData[2].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
