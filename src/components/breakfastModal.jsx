@@ -49,15 +49,22 @@ const BreakfastCarousel = () => {
         }
     };
 
+    const isPrevButtonDisabled = currentIndex === 0;
+    const isNextButtonDisabled = currentIndex + 3 >= breakfastData.length;
+
     
     console.log(currentIndex)
     return (
         <div className="flex w-full h-full justify-evenly items-center">
-            <img className="h-[50px] w-[50px]" src={leftArrow} onClick={prevSet} disabled={currentIndex === 0} />
+            <button src={leftArrow} className={`${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={prevSet} disabled={isPrevButtonDisabled}>
+                <img className="h-[50px] w-[50px]" src={leftArrow}/>
+            </button>
             {activeSet.map((picture, index) => (
                 <img key={index} src={picture.menuItemImg} className={`   w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} alt={`Picture ${index}`} />
             ))}
-            <img className="h-[50px] w-[50px]" src={rightArrow} onClick={nextSet} disabled={currentIndex + 3 >= breakfastData.length} />
+            <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"}`} src={rightArrow} onClick={nextSet} disabled={isNextButtonDisabled}>
+                <img className={` h-[50px] w-[50px]`} src={rightArrow}/>
+            </button>
         </div>
     )
 }
