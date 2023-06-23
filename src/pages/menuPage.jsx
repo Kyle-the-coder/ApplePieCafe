@@ -170,11 +170,11 @@ const MenuPage = () => {
                     <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[10px]">
                         {bFastImgTracker &&
                             <>
-                                <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
+                                {/* <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
                                 <img src={breakfastData[0].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[0].menuItemImg, breakfastData[0].menuItemName, breakfastData[0].menuItemDescription)} className={` ${bFastImgTracker && bFastImg === breakfastData[0].menuItemImg ? "opacity-100" : "opacity-20 "}  w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
                                 <img src={breakfastData[1].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[1].menuItemImg, breakfastData[1].menuItemName, breakfastData[1].menuItemDescription)} className={`${bFastImgTracker && bFastImg === breakfastData[1].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
                                 <img src={breakfastData[2].menuItemImg} onClick={() => handleBFastMenuItem(breakfastData[2].menuItemImg, breakfastData[2].menuItemName, breakfastData[2].menuItemDescription)} className={`${bFastImgTracker && bFastImg === breakfastData[2].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
-                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
+                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" /> */}
                                 <BreakfastCarousel/>
                             </>
                         }
