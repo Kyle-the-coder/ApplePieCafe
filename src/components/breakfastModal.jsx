@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { doc, getDocs, collection } from "firebase/firestore"
+import { doc, getDocs, collection, arrayRemove } from "firebase/firestore"
 import { db } from "../config/firebase"
 
 
@@ -20,16 +20,13 @@ const BreakfastCarousel = () => {
         };
         getBreakfastData();
 
+
+        
     }, [])
 
-    const items = [
-        {item: "bfast1", idx: "0"},
-        {item: "bfast2", idx: "1"},
-        {item: "bfast3", idx: "2"}
-    ]
     return (
         <div>
-            
+
         </div>
     )
 }
