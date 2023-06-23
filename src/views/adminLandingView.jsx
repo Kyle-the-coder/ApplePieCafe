@@ -17,12 +17,6 @@ const AdminLandingView = () => {
                 <LunchMenuItems />
                 <DessertMenuItems />
             </div>
-
-            <div>
-                <RandPage/>
-            </div>
-
-
         </div>
     )
 }
