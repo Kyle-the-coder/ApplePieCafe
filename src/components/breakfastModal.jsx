@@ -20,7 +20,14 @@ const BreakfastCarousel = () => {
         };
         getBreakfastData();
         
-        
+        const createActiveSet = ( ) => {
+            if(Object.keys(breakfastData).length == 0){
+                
+            } else {
+                console.log("yes")
+            }
+        }
+        createActiveSet()
 
         
     }, [])
