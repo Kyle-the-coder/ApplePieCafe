@@ -69,7 +69,6 @@ const MenuSidebar = (props) => {
         return () => clearTimeout(timeoutId);
     }
 
-    console.log(isTimeoutComplete)
     return (
         <div className="w-content h-full bg-slate-800 flex flex-col justify-top">
             <div className="w-full h-content">

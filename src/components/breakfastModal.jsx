@@ -5,6 +5,7 @@ import { db } from "../config/firebase"
 
 const BreakfastCarousel = () => {
     const [breakfastData, setBreakfastData] = useState({})
+    const [activeSet, setActiveSet] = useState([])
 
     useEffect(() => {
         // GET BREAKFAST DATA
@@ -28,7 +29,7 @@ const BreakfastCarousel = () => {
     ]
     return (
         <div>
-
+            
         </div>
     )
 }
