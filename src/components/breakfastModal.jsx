@@ -19,14 +19,20 @@ const BreakfastCarousel = () => {
             }
         };
         getBreakfastData();
-
+        
+        
 
         
     }, [])
 
+    const pizzaSlice = () =>{
+        setActiveSet(breakfastData.slice(0,3))
+    }
+    console.log(breakfastData)
+    console.log(activeSet)
     return (
         <div>
-
+            <button onClick={pizzaSlice}>Slice</button>
         </div>
     )
 }
