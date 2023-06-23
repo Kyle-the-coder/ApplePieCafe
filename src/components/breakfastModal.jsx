@@ -1,6 +1,6 @@
 
 
-const BreakfastModal = () =>{
+const BreakfastCarousel = () =>{
     return(
         <div>
             
@@ -8,4 +8,4 @@ const BreakfastModal = () =>{
     )
 }
 
-export default BreakfastModal;
+export default BreakfastCarousel;
