@@ -5,7 +5,7 @@ import leftArrow from "../assets/images/left-arrow.png"
 import { useEffect, useState } from "react";
 import { doc, getDocs, collection } from "firebase/firestore"
 import { db } from "../config/firebase"
-import BreakfastCarousel from "../components/breakfastModal";
+import BreakfastCarousel from "../components/breakfastCarousel";
 
 const MenuPage = () => {
     // BREAKFAST ITEMS
