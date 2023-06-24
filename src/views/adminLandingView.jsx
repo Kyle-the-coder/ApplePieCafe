@@ -1,7 +1,6 @@
 import BreakfastMenuItem from "../components/breakfastMenuItem";
 import LunchMenuItems from "../components/lunchMenuItems";
 import DessertMenuItems from "../components/dessertMenuItems";
-import RandPage from "../pages/randPage";
 
 
 const AdminLandingView = () => {
