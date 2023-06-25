@@ -7,11 +7,16 @@ import { Transition } from '@headlessui/react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 
-const BreakfastCarousel = () => {
+const BreakfastCarousel = (props) => {
     const [breakfastData, setBreakfastData] = useState({})
     const [activeSet, setActiveSet] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0);
     const [activeSetTracker, setActiveSetTracker] = useState(false)
+    const {setBFastImg}=props
+    const {setBreakfastMenuItemDesc}=props
+    const {setBreakfastMenuItemName}=props
+    const {bFastImg} = props
+    const {bFastImgTracker} = props
 
     useEffect(() => {
         // GET BREAKFAST DATA
@@ -51,18 +56,23 @@ const BreakfastCarousel = () => {
         }
     };
 
+    // HANDLE BREAKFAST UI
+    const handleBFastMenuItem = (menuImg, menuName, menuDesc) => {
+        setBFastImg(menuImg)
+        setBreakfastMenuItemName(menuName)
+        setBreakfastMenuItemDesc(menuDesc)
+    }
+
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 3 >= breakfastData.length;
-
-
-    console.log(currentIndex)
+    console.log(bFastImgTracker)
     return (
         <div className="flex w-full h-full justify-evenly items-center">
             <button src={leftArrow} className={`${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={prevSet} disabled={isPrevButtonDisabled}>
                 <img className="h-[50px] w-[50px]" src={leftArrow} />
             </button>
                 {activeSet.map((picture, index) => (
-                    <img key={index} src={picture.menuItemImg} className={`   w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
+                    <img key={index} src={picture.menuItemImg} onClick={()=>handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-20 "}   w-[200px] h-full object-cover hover:opacity-100 cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
                 ))}
             <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"}`} src={rightArrow} onClick={nextSet} disabled={isNextButtonDisabled}>
                 <img className={` h-[50px] w-[50px]`} src={rightArrow} />

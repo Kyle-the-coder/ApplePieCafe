@@ -88,7 +88,7 @@ const MenuPage = () => {
         setDessertMenuItemDesc(menuDesc)
     }
 
-
+console.log(bFastImgTracker)
 
     return (
         <div>
@@ -168,7 +168,7 @@ const MenuPage = () => {
                     <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[10px]">
                         {bFastImgTracker &&
                             <>
-                                <BreakfastCarousel/>
+                                <BreakfastCarousel bFastImgTracker={bFastImgTracker} bFastImg={bFastImg} setBFastImg={setBFastImg} setBreakfastMenuItemDesc={setBreakfastMenuItemDesc} setBreakfastMenuItemName={setBreakfastMenuItemName}/>
                             </>
                         }
                         {lunchImgTracker &&
