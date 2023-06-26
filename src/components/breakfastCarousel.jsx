@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { doc, getDocs, collection, arrayRemove } from "firebase/firestore"
 import { db } from "../config/firebase"
-import leftArrow from "../assets/images/modalArrowLeft.png"
-import rightArrow from "../assets/images/modalArrowRight.png"
+import pieRight from "../assets/images/pieRight.PNG"
+import pieLeft from "../assets/images/pieLeft.png"
 import { Transition } from '@headlessui/react';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
@@ -12,6 +12,7 @@ const BreakfastCarousel = (props) => {
     const [activeSet, setActiveSet] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0);
     const [activeSetTracker, setActiveSetTracker] = useState(false)
+    const [transitionTracker, setTransitionTracker] = useState(false)
     const {setBFastImg}=props
     const {setBreakfastMenuItemDesc}=props
     const {setBreakfastMenuItemName}=props
@@ -40,6 +41,7 @@ const BreakfastCarousel = (props) => {
     const nextSet = () => {
         const newIndex = currentIndex + 3;
         const newSet = breakfastData.slice(newIndex, newIndex + 3);
+        setTransitionTracker(true)
         setActiveSet(newSet);
         setCurrentIndex(newIndex);
     };
@@ -68,14 +70,14 @@ const BreakfastCarousel = (props) => {
     console.log(bFastImgTracker)
     return (
         <div className="flex w-full h-full justify-evenly items-center">
-            <button src={leftArrow} className={`${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={prevSet} disabled={isPrevButtonDisabled}>
-                <img className="h-[50px] w-[50px]" src={leftArrow} />
+            <button className={`${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={prevSet} disabled={isPrevButtonDisabled}>
+                <img className="h-[50px] w-[50px]" src={pieLeft} />
             </button>
                 {activeSet.map((picture, index) => (
-                    <img key={index} src={picture.menuItemImg} onClick={()=>handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-20 "}   w-[200px] h-full object-cover hover:opacity-100 cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
+                    <img key={index} src={picture.menuItemImg} onClick={()=>handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover hover:opacity-100 cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
                 ))}
-            <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"}`} src={rightArrow} onClick={nextSet} disabled={isNextButtonDisabled}>
-                <img className={` h-[50px] w-[50px]`} src={rightArrow} />
+            <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={nextSet} disabled={isNextButtonDisabled}>
+                <img className={` h-[50px] w-[50px]`} src={pieRight} />
             </button>
         </div>
     )
