@@ -10,15 +10,16 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 const BreakfastCarousel = (props) => {
     const [breakfastData, setBreakfastData] = useState({})
     const [activeSet, setActiveSet] = useState([])
+    const [inactiveSet, setInactiveSet] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0);
     const [activeSetTracker, setActiveSetTracker] = useState(false)
     const [nextTransitionTracker, setNextTransitionTracker] = useState(false)
     const [prevTransitionTracker, setPrevTransitionTracker] = useState(false)
-    const {setBFastImg}=props
-    const {setBreakfastMenuItemDesc}=props
-    const {setBreakfastMenuItemName}=props
-    const {bFastImg} = props
-    const {bFastImgTracker} = props
+    const { setBFastImg } = props
+    const { setBreakfastMenuItemDesc } = props
+    const { setBreakfastMenuItemName } = props
+    const { bFastImg } = props
+    const { bFastImgTracker } = props
 
     useEffect(() => {
         // GET BREAKFAST DATA
@@ -42,10 +43,13 @@ const BreakfastCarousel = (props) => {
     const nextSet = () => {
         const newIndex = currentIndex + 3;
         const newSet = breakfastData.slice(newIndex, newIndex + 3);
-        setNextTransitionTracker(true)
-        setActiveSet(newSet);
+        const oldSet = breakfastData.slice(0, newIndex)
+        setNextTransitionTracker(false)
+        setActiveSet(oldSet);
+        setInactiveSet(newSet)
+        setPrevTransitionTracker(true)
         setCurrentIndex(newIndex);
-        
+
     };
 
     const prevSet = () => {
@@ -56,7 +60,7 @@ const BreakfastCarousel = (props) => {
         } else {
             setActiveSet(newSet);
             setCurrentIndex(newIndex);
-            setNextTransitionTracker(false)
+            setNextTransitionTracker(true)
 
         }
     };
@@ -73,15 +77,26 @@ const BreakfastCarousel = (props) => {
     console.log(bFastImgTracker)
     return (
         <div className="flex w-full h-full justify-evenly items-center">
-            <button className={`${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={prevSet} disabled={isPrevButtonDisabled}>
-                <img className="h-[50px] w-[50px]" src={pieLeft} />
-            </button>
+            <div className="h-full flex items-center">
+                <button className={`${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={prevSet} disabled={isPrevButtonDisabled}>
+                    <img className="h-[45px] w-[50px]" src={pieLeft} />
+                </button>
+            </div>
+
+            <div className="flex h-full justify-evenly w-5/6 overflow-hidden bg-slate-200">
                 {activeSet.map((picture, index) => (
-                    <img key={index} src={picture.menuItemImg} onClick={()=>handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`transition-transform duration-500 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'} ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
+                    <img key={index} src={picture.menuItemImg} onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`transition-transform duration-500 ease-in-out ${nextTransitionTracker ? 'translate-x-100 opacity-100' : '-translate-x-full opacity-0'}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-100 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
                 ))}
-            <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={nextSet} disabled={isNextButtonDisabled}>
-                <img className={` h-[50px] w-[50px]`} src={pieRight} />
-            </button>
+                {inactiveSet.map((picture, index)=>(
+                    <img key={index} src={picture.menuItemImg} onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`transition-transform duration-500 ease-in-out ${prevTransitionTracker ?  'translate-x-100 opacity-100' :'-translate-x-full opacity-0'}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-100 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`} />
+                ))}
+            </div>
+
+            <div className="h-full flex items-center">
+                <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={nextSet} disabled={isNextButtonDisabled}>
+                    <img className={` h-[40px] w-[50px]`} src={pieRight} />
+                </button>
+            </div>
         </div>
     )
 }
