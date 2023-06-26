@@ -12,7 +12,8 @@ const BreakfastCarousel = (props) => {
     const [activeSet, setActiveSet] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0);
     const [activeSetTracker, setActiveSetTracker] = useState(false)
-    const [transitionTracker, setTransitionTracker] = useState(false)
+    const [nextTransitionTracker, setNextTransitionTracker] = useState(false)
+    const [prevTransitionTracker, setPrevTransitionTracker] = useState(false)
     const {setBFastImg}=props
     const {setBreakfastMenuItemDesc}=props
     const {setBreakfastMenuItemName}=props
@@ -41,9 +42,10 @@ const BreakfastCarousel = (props) => {
     const nextSet = () => {
         const newIndex = currentIndex + 3;
         const newSet = breakfastData.slice(newIndex, newIndex + 3);
-        setTransitionTracker(true)
+        setNextTransitionTracker(true)
         setActiveSet(newSet);
         setCurrentIndex(newIndex);
+        
     };
 
     const prevSet = () => {
@@ -54,6 +56,7 @@ const BreakfastCarousel = (props) => {
         } else {
             setActiveSet(newSet);
             setCurrentIndex(newIndex);
+            setNextTransitionTracker(false)
 
         }
     };
@@ -74,7 +77,7 @@ const BreakfastCarousel = (props) => {
                 <img className="h-[50px] w-[50px]" src={pieLeft} />
             </button>
                 {activeSet.map((picture, index) => (
-                    <img key={index} src={picture.menuItemImg} onClick={()=>handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover hover:opacity-100 cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
+                    <img key={index} src={picture.menuItemImg} onClick={()=>handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`transition-transform duration-500 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'} ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
                 ))}
             <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={nextSet} disabled={isNextButtonDisabled}>
                 <img className={` h-[50px] w-[50px]`} src={pieRight} />
