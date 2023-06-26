@@ -91,7 +91,7 @@ const MenuPage = () => {
 console.log(bFastImgTracker)
 
     return (
-        <div>
+        <div className="bg-slate-900 h-content">
             {/* Title Section */}
             <section>
                 <div className="bg-gradient-to-r from-orange-200 to-red-400 relative flex w-full justify-center items-center h-[200px]">
@@ -101,8 +101,8 @@ console.log(bFastImgTracker)
             </section>
 
             {/* Menu Section */}
-            <section>
-                <div className="w-full bg-slate-900 h-[750px] flex relative py-6">
+            <section className="h-[900px] bg-slate-900 ">
+                <div className="w-full bg-slate-900 h-[750px] flex py-6 relative">
                     <div>
                         <MenuSidebar
                             // BREAKFAST PROPS
@@ -165,7 +165,7 @@ console.log(bFastImgTracker)
                         </div>
                     </div>
 
-                    <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[10px]">
+                    <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[-100px]">
                         {bFastImgTracker &&
                             <>
                                 <BreakfastCarousel bFastImgTracker={bFastImgTracker} bFastImg={bFastImg} setBFastImg={setBFastImg} setBreakfastMenuItemDesc={setBreakfastMenuItemDesc} setBreakfastMenuItemName={setBreakfastMenuItemName}/>
