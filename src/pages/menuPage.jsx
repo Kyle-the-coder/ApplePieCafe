@@ -88,10 +88,10 @@ const MenuPage = () => {
         setDessertMenuItemDesc(menuDesc)
     }
 
-console.log(bFastImgTracker)
+    console.log(bFastImgTracker)
 
     return (
-        <div className="bg-slate-900 h-content">
+        <div className="w-full">
             {/* Title Section */}
             <section>
                 <div className="bg-gradient-to-r from-orange-200 to-red-400 relative flex w-full justify-center items-center h-[200px]">
@@ -101,37 +101,38 @@ console.log(bFastImgTracker)
             </section>
 
             {/* Menu Section */}
-            <section className="h-[900px] bg-slate-900 ">
-                <div className="w-full bg-slate-900 h-[750px] flex py-6 relative">
-                    <div>
-                        <MenuSidebar
-                            // BREAKFAST PROPS
-                            breakfastData={breakfastData}
-                            setBFastImg={setBFastImg}
-                            setBFastImgTracker={setBFastImgTracker}
-                            setBreakfastMenuItemDesc={setBreakfastMenuItemDesc}
-                            setBreakfastMenuItemName={setBreakfastMenuItemName}
-                            // LUNCH PROPS
-                            setLunchImg={setLunchImg}
-                            setLunchImgTracker={setLunchImgTracker}
-                            setLunchMenuItemName={setLunchMenuItemName}
-                            setLunchMenuItemDesc={setLunchMenuItemDesc}
-                            lunchData={lunchData}
-                            // DESSERT PROPS
-                            setDessertImg={setDessertImg}
-                            setDessertImgTracker={setDessertImgTracker}
-                            setDessertMenuItemName={setDessertMenuItemName}
-                            setDessertMenuItemDesc={setDessertMenuItemDesc}
-                            dessertData={dessertData}
-                        />
-                    </div>
-                    <div className="w-[800px]">
-                        {bFastImgTracker && <img src={bFastImg} className="w-full transition-all duration-200 h-full object-cover" />}
-                        {lunchImgTracker && <img src={lunchImg} className="w-full h-full object-cover" />}
-                        {dessertImgTracker && <img src={dessertImg} className="w-full h-full object-cover" />}
+            <section className="h-[900px] w-full bg-slate-900 flex">
+
+                <div className="h-full">
+                    <MenuSidebar
+                        // BREAKFAST PROPS
+                        breakfastData={breakfastData}
+                        setBFastImg={setBFastImg}
+                        setBFastImgTracker={setBFastImgTracker}
+                        setBreakfastMenuItemDesc={setBreakfastMenuItemDesc}
+                        setBreakfastMenuItemName={setBreakfastMenuItemName}
+                        // LUNCH PROPS
+                        setLunchImg={setLunchImg}
+                        setLunchImgTracker={setLunchImgTracker}
+                        setLunchMenuItemName={setLunchMenuItemName}
+                        setLunchMenuItemDesc={setLunchMenuItemDesc}
+                        lunchData={lunchData}
+                        // DESSERT PROPS
+                        setDessertImg={setDessertImg}
+                        setDessertImgTracker={setDessertImgTracker}
+                        setDessertMenuItemName={setDessertMenuItemName}
+                        setDessertMenuItemDesc={setDessertMenuItemDesc}
+                        dessertData={dessertData}
+                    />
+                </div>
+                <div className="w-full h-[750px] flex py-6 relative">
+                    <div className="w-full">
+                        {bFastImgTracker && <img src={bFastImg} className="w-[800px] transition-all duration-200 h-full object-cover" />}
+                        {lunchImgTracker && <img src={lunchImg} className="w-[800px] h-full object-cover" />}
+                        {dessertImgTracker && <img src={dessertImg} className="w-[800px] h-full object-cover" />}
                     </div>
 
-                    <div className="w-[500px] px-3 py-2 text-white">
+                    <div className="w-2/3 px-3 py-2 text-white">
                         <div >
                             {bFastImgTracker && <h1 className="fontWriting text-4xl mb-5 underline">Breakfast</h1>}
                             {lunchImgTracker && <h1 className="fontWriting text-4xl mb-5 underline">Lunch</h1>}
@@ -165,10 +166,10 @@ console.log(bFastImgTracker)
                         </div>
                     </div>
 
-                    <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[-100px]">
+                    <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[-100px] overflow-hidden">
                         {bFastImgTracker &&
                             <>
-                                <BreakfastCarousel bFastImgTracker={bFastImgTracker} bFastImg={bFastImg} setBFastImg={setBFastImg} setBreakfastMenuItemDesc={setBreakfastMenuItemDesc} setBreakfastMenuItemName={setBreakfastMenuItemName}/>
+                                <BreakfastCarousel bFastImgTracker={bFastImgTracker} bFastImg={bFastImg} setBFastImg={setBFastImg} setBreakfastMenuItemDesc={setBreakfastMenuItemDesc} setBreakfastMenuItemName={setBreakfastMenuItemName} />
                             </>
                         }
                         {lunchImgTracker &&
@@ -184,8 +185,8 @@ console.log(bFastImgTracker)
                             <>
                                 <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
                                 <img src={dessertData[0].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[0].menuItemImg, dessertData[0].menuItemName, dessertData[0].menuItemDescription)} className={`${dessertImgTracker && dessertImg === dessertData[0].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] hover:opacity-100 h-full object-cover  cursor-pointer`} />
-                                <img src={dessertData[1].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[1].menuItemImg, dessertData[1].menuItemName, dessertData[1].menuItemDescription)}  className={` ${dessertImgTracker && dessertImg === dessertData[1].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
-                                <img src={dessertData[2].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[2].menuItemImg, dessertData[2].menuItemName, dessertData[2].menuItemDescription)}  className={` ${dessertImgTracker && dessertImg === dessertData[2].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
+                                <img src={dessertData[1].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[1].menuItemImg, dessertData[1].menuItemName, dessertData[1].menuItemDescription)} className={` ${dessertImgTracker && dessertImg === dessertData[1].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
+                                <img src={dessertData[2].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[2].menuItemImg, dessertData[2].menuItemName, dessertData[2].menuItemDescription)} className={` ${dessertImgTracker && dessertImg === dessertData[2].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
                                 <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
                             </>
                         }
@@ -196,7 +197,7 @@ console.log(bFastImgTracker)
 
             <section>
                 <div>
-                        
+
                 </div>
             </section>
         </div>
