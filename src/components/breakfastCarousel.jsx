@@ -91,11 +91,11 @@ const BreakfastCarousel = (props) => {
             </div>
 
             <div className="flex h-full justify-evenly w-5/6 overflow-hidden ">
-                {nextSet.map((picture, index) => (
-                    <img key={index} src={picture.menuItemImg} onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] -translate-x-80 opacity-0'} hover:opacity-100  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
-                ))}
                 {prevSet.map((picture, index)=>(
                     <img key={index} src={picture.menuItemImg} onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ?  'translate-x-0 opacity-100' :'absolute  translate-x-80 z-[-1] opacity-0'}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`} />
+                ))}
+                {nextSet.map((picture, index) => (
+                    <img key={index} src={picture.menuItemImg} onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)} className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] -translate-x-80 opacity-0'} hover:opacity-100  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`} alt={`Picture ${index}`} />
                 ))}
             </div>=
 
