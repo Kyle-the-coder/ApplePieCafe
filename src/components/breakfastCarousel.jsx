@@ -3,8 +3,6 @@ import { doc, getDocs, collection, arrayRemove } from "firebase/firestore"
 import { db } from "../config/firebase"
 import pieRight from "../assets/images/pieRight.PNG"
 import pieLeft from "../assets/images/pieLeft.png"
-import { Transition } from '@headlessui/react';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 
 const BreakfastCarousel = (props) => {
