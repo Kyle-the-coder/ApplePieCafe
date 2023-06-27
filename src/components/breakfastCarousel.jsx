@@ -52,11 +52,7 @@ const BreakfastCarousel = (props) => {
         setNextSet(oldSet);
         setPrevSet(newSet)
         setCurrentIndex(newIndex);
-        setPrevTransitionComplete(!pr);
-        if(prevTransitionComplete){
-
-        }
-        setPrevTransitionTracker(!prevTransitionTracker)
+        setPrevTransitionTracker(true)
     };
 
     const handlePrevSet = () => {
@@ -104,7 +100,7 @@ const BreakfastCarousel = (props) => {
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : prevTransitionComplete ? "translate-x-0 opacity-100" : "absolute translate-x-80 z-[-1] opacity-0"}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
+                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute translate-x-80 z-[-1] opacity-0"}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
                         alt={`Picture ${index}`}
                     
                     />
