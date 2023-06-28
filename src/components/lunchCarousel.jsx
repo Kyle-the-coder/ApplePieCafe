@@ -135,12 +135,12 @@ const LunchCarousel = (props) => {
                 </button>
             </div>
 
-            <div className="flex h-full justify-evenly w-5/6 overflow-hidden ">
+            <div className="flex h-full justify-evenly w-5/6 overflow-hidden">
                 {prevSet.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleLunchMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${lunchImgTracker && lunchImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
+                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80  z-[-1] "}  ${lunchImgTracker && lunchImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
