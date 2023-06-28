@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { doc, getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import BreakfastCarousel from "../components/breakfastCarousel";
+import LunchCarousel from "../components/lunchCarousel";
 
 const MenuPage = () => {
     // BREAKFAST ITEMS
@@ -169,16 +170,25 @@ const MenuPage = () => {
                     <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[-100px] overflow-hidden">
                         {bFastImgTracker &&
                             <>
-                                <BreakfastCarousel bFastImgTracker={bFastImgTracker} bFastImg={bFastImg} setBFastImg={setBFastImg} setBreakfastMenuItemDesc={setBreakfastMenuItemDesc} setBreakfastMenuItemName={setBreakfastMenuItemName} />
+                                <BreakfastCarousel bFastImgTracker={bFastImgTracker} bFastImg={bFastImg} 
+                                setBFastImg={setBFastImg} setBreakfastMenuItemDesc={setBreakfastMenuItemDesc} 
+                                setBreakfastMenuItemName={setBreakfastMenuItemName} 
+                                />
                             </>
                         }
                         {lunchImgTracker &&
                             <>
-                                <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
+                                {/* <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
                                 <img src={lunchData[0].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[0].menuItemImg, lunchData[0].menuItemName, lunchData[0].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[0].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover hover:opacity-100 cursor-pointer`} />
                                 <img src={lunchData[1].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[1].menuItemImg, lunchData[1].menuItemName, lunchData[1].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[1].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover  hover:opacity-100 cursor-pointer`} />
                                 <img src={lunchData[2].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[2].menuItemImg, lunchData[2].menuItemName, lunchData[2].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[2].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover  hover:opacity-100 cursor-pointer`} />
-                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" />
+                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" /> */}
+                                <LunchCarousel lunchImgTracker={lunchImgTracker} 
+                                    lunchImg={lunchImg}
+                                    setLunchImg={setLunchImg}
+                                    setLunchMenuItemDesc={setLunchMenuItemDesc}
+                                    setLunchMenuItemName={setLunchMenuItemName}
+                                />
                             </>
                         }
                         {dessertImgTracker &&
