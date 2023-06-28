@@ -6,8 +6,8 @@ import pieLeft from "../assets/images/pieLeft.png"
 
 
 const BreakfastCarousel = (props) => {
-    const {breakfastData, setBreakfastData} = props
-    const {breakfastDataTracker} = props
+    const { breakfastData, setBreakfastData } = props
+    const { breakfastDataTracker } = props
     const [nextSet, setNextSet] = useState([])
     const [activeSet, setActiveSet] = useState([])
     const [prevSet, setPrevSet] = useState([])
@@ -23,17 +23,12 @@ const BreakfastCarousel = (props) => {
     const { bFastImgTracker } = props
 
     useEffect(() => {
-        if(breakfastDataTracker){
+        if (breakfastDataTracker) {
             setActiveSetTracker(true)
         }
-
-        if (activeSetTracker) {
-            setActiveSet(breakfastData.slice(0, 3))
-            setNextSet(breakfastData.slice(3))
-        }
-
-
-    }, [breakfastDataTracker])
+        setActiveSet(breakfastData.slice(0, 3))
+        setNextSet(breakfastData.slice(3))
+    }, [])
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 3;
@@ -75,7 +70,7 @@ const BreakfastCarousel = (props) => {
         //Next Set
         setNextTransitionTracker(false)
         setNextSet(oldSet)
-        
+
 
         //Active Set
         setActiveSetTracker(false)
@@ -116,6 +111,7 @@ const BreakfastCarousel = (props) => {
     console.log("prev set", prevSet, "prev tracker", prevTransitionTracker)
     console.log('active set', activeSet, "active tracker", activeSetTracker)
     console.log("next set", nextSet, "next Tracker", nextTransitionTracker)
+    console.log(breakfastData)
     return (
         <div className="flex w-full h-full justify-evenly items-center overflow-hidden">
             <div className="h-full flex items-center">
