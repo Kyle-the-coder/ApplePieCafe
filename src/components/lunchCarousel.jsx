@@ -6,7 +6,7 @@ import pieLeft from "../assets/images/pieLeft.png"
 
 
 const BreakfastCarousel = (props) => {
-    const [lunchData, setlunchData] = useState({})
+    const [lunchData, setLunchData] = useState({})
     const [lunchDataTracker, setLunchDataTracker] = useState(false)
     const [nextSet, setNextSet] = useState([])
     const [activeSet, setActiveSet] = useState([])
@@ -23,23 +23,24 @@ const BreakfastCarousel = (props) => {
     const { lunchImgTracker } = props
 
     useEffect(() => {
-        // GET BREAKFAST DATA
-        const getBreakfastData = async () => {
+        // GET LUNCH DATA
+        const getLunchData = async () => {
             try {
-                const querySnapshot = await getDocs(collection(db, "breakfastMenuItems"));
+                const querySnapshot = await getDocs(collection(db, "lunchMenuItems"));
                 const documents = querySnapshot.docs.map((doc) => doc.data());
-                setBreakfastData(documents);
+                setLunchData(documents);
                 setActiveSetTracker(true)
-                setBreakDataTracker(true)
+                setLunchDataTracker(true)
             } catch (error) {
                 console.log(error);
             }
         };
-        getBreakfastData();
+        getLunchData();
+
 
         if (activeSetTracker) {
-            setActiveSet(breakfastData.slice(0, 3))
-            setNextSet(breakfastData.slice(3))
+            setActiveSet(lunchData.slice(0, 3))
+            setNextSet(lunchData.slice(3))
         }
 
 
