@@ -157,7 +157,7 @@ const BreakfastCarousel = (props) => {
                 {nextSet.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
-                        onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        onClick={() => handleLunchMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
                         className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
                         alt={`Picture ${index}`}
 
