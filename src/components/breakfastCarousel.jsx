@@ -7,7 +7,7 @@ import pieLeft from "../assets/images/pieLeft.png"
 
 const BreakfastCarousel = (props) => {
     const {breakfastData, setBreakfastData} = props
-    const [breakfastDataTracker, setBreakfastDataTracker] = useState(false)
+    const {breakfastDataTracker} = props
     const [nextSet, setNextSet] = useState([])
     const [activeSet, setActiveSet] = useState([])
     const [prevSet, setPrevSet] = useState([])
@@ -23,19 +23,9 @@ const BreakfastCarousel = (props) => {
     const { bFastImgTracker } = props
 
     useEffect(() => {
-        // GET BREAKFAST DATA
-        const getBreakfastData = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, "breakfastMenuItems"));
-                const documents = querySnapshot.docs.map((doc) => doc.data());
-                setBreakfastData(documents);
-                setActiveSetTracker(true)
-                setBreakfastDataTracker(true)
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getBreakfastData();
+        if(breakfastDataTracker){
+            setActiveSetTracker(true)
+        }
 
         if (activeSetTracker) {
             setActiveSet(breakfastData.slice(0, 3))

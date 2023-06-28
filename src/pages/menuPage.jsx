@@ -68,7 +68,7 @@ const MenuPage = () => {
         };
         getDessertData();
 
-    }, [])
+    }, [breakfastDataTracker])
 
     // HANDLE BREAKFAST UI
     const handleBFastMenuItem = (menuImg, menuName, menuDesc) => {
@@ -90,9 +90,7 @@ const MenuPage = () => {
         setDessertMenuItemName(menuName)
         setDessertMenuItemDesc(menuDesc)
     }
-
-    console.log(bFastImgTracker)
-
+    console.log(breakfastDataTracker)
     return (
         <div className="w-full">
             {/* Title Section */}
@@ -182,11 +180,6 @@ const MenuPage = () => {
                         }
                         {lunchImgTracker &&
                             <>
-                                {/* <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={lunchData[0].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[0].menuItemImg, lunchData[0].menuItemName, lunchData[0].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[0].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover hover:opacity-100 cursor-pointer`} />
-                                <img src={lunchData[1].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[1].menuItemImg, lunchData[1].menuItemName, lunchData[1].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[1].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover  hover:opacity-100 cursor-pointer`} />
-                                <img src={lunchData[2].menuItemImg} onClick={() => handleLunchMenuItem(lunchData[2].menuItemImg, lunchData[2].menuItemName, lunchData[2].menuItemDescription)} className={` ${lunchImgTracker && lunchImg === lunchData[2].menuItemImg ? "opacity-100" : "opacity-20 "} w-[200px] h-full object-cover  hover:opacity-100 cursor-pointer`} />
-                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" /> */}
                                 <LunchCarousel lunchImgTracker={lunchImgTracker} 
                                     lunchImg={lunchImg}
                                     setLunchImg={setLunchImg}
