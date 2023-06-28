@@ -6,8 +6,8 @@ import pieLeft from "../assets/images/pieLeft.png"
 
 
 const BreakfastCarousel = (props) => {
-    const [breakfastData, setBreakfastData] = useState({})
-    const [breakfastDataTracker, setBreakDataTracker] = useState(false)
+    const [lunchData, setlunchData] = useState({})
+    const [lunchDataTracker, setLunchDataTracker] = useState(false)
     const [nextSet, setNextSet] = useState([])
     const [activeSet, setActiveSet] = useState([])
     const [prevSet, setPrevSet] = useState([])
@@ -16,11 +16,11 @@ const BreakfastCarousel = (props) => {
     const [nextTransitionTracker, setNextTransitionTracker] = useState(false)
     const [prevTransitionTracker, setPrevTransitionTracker] = useState(false)
     const [prevTransitionComplete, setPrevTransitionComplete] = useState(false);
-    const { setBFastImg } = props
-    const { setBreakfastMenuItemDesc } = props
-    const { setBreakfastMenuItemName } = props
-    const { bFastImg } = props
-    const { bFastImgTracker } = props
+    const { setLunchImg } = props
+    const { setLunchMenuItemDesc } = props
+    const { setLunchMenuItemName } = props
+    const { lunchImg } = props
+    const { lunchImgTracker } = props
 
     useEffect(() => {
         // GET BREAKFAST DATA
