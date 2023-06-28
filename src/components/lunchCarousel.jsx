@@ -44,12 +44,12 @@ const BreakfastCarousel = (props) => {
         }
 
 
-    }, [breakfastDataTracker])
+    }, [lunchDataTracker])
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 3;
-        const newSet = breakfastData.slice(newIndex, newIndex + 3);
-        const oldSet = breakfastData.slice(newIndex - 3, newIndex)
+        const newSet = lunchData.slice(newIndex, newIndex + 3);
+        const oldSet = lunchData.slice(newIndex - 3, newIndex)
 
 
         //Next Transition
