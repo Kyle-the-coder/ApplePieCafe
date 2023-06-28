@@ -5,7 +5,7 @@ import pieRight from "../assets/images/pieRight.PNG"
 import pieLeft from "../assets/images/pieLeft.png"
 
 
-const BreakfastCarousel = (props) => {
+const LunchCarousel = (props) => {
     const [lunchData, setLunchData] = useState({})
     const [lunchDataTracker, setLunchDataTracker] = useState(false)
     const [nextSet, setNextSet] = useState([])
@@ -174,4 +174,4 @@ const BreakfastCarousel = (props) => {
     )
 }
 
-export default BreakfastCarousel;
+export default LunchCarousel;
