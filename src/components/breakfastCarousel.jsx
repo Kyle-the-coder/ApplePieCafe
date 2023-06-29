@@ -8,14 +8,18 @@ import pieLeft from "../assets/images/pieLeft.png"
 const BreakfastCarousel = (props) => {
     const { breakfastData, setBreakfastData } = props
     const { breakfastDataTracker } = props
-    const [nextSet, setNextSet] = useState([])
-    const [activeSet, setActiveSet] = useState([])
-    const [prevSet, setPrevSet] = useState([])
+    const [next1Set, setNext1Set] = useState([])
+    const [next2Set, setNext2Set] = useState([])
+    // const [activeSet, setActiveSet] = useState([])
+    const [prev1Set, setPrev1Set] = useState([])
+    const [prev2Set, setPrev2Set] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [activeSetTracker, setActiveSetTracker] = useState(false)
-    const [nextTransitionTracker, setNextTransitionTracker] = useState(false)
-    const [prevTransitionTracker, setPrevTransitionTracker] = useState(false)
-    const [prevTransitionComplete, setPrevTransitionComplete] = useState(false);
+    // const [activeSetTracker, setActiveSetTracker] = useState(false)
+    const [next1TransitionTracker, setNext1TransitionTracker] = useState(false)
+    const [next2TransitionTracker, setNext2TransitionTracker] = useState(false)
+    const [nextSetTracker, setNextSetTracker] = useState(true)
+    const [prev1TransitionTracker, setPrev1TransitionTracker] = useState(false)
+    const [prev2TransitionTracker, setPrev2TransitionTracker] = useState(false)
     const { setBFastImg } = props
     const { setBreakfastMenuItemDesc } = props
     const { setBreakfastMenuItemName } = props
@@ -24,41 +28,65 @@ const BreakfastCarousel = (props) => {
 
     useEffect(() => {
         if (breakfastDataTracker) {
-            setActiveSetTracker(true)
+            setPrev1TransitionTracker(true)
         }
-        setActiveSet(breakfastData.slice(0, 3))
-        setNextSet(breakfastData.slice(3))
+        setPrev1Set(breakfastData.slice(0, 3))
+        setNext1Set(breakfastData.slice(3))
     }, [])
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 3;
         const newSet = breakfastData.slice(newIndex, newIndex + 3);
         const oldSet = breakfastData.slice(newIndex - 3, newIndex)
+        const newerIndex = newIndex + 3
+        const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
 
 
-        //Next Transition
-        setNextTransitionTracker(true)
-        setNextSet(newSet);
+        if (nextSetTracker) {
+            // Next 1 Transition
+            setNext1TransitionTracker(true)
+            setNext1Set(newSet)
+
+            //Next 2 Transition
+            setNext2TransitionTracker(false)
+            setNext2Set(newerSet);
+
+        }
+
+        if (!nextSetTracker) {
+            // Next 1 Reload
+            setNext1TransitionTracker(false)
+            setNext1Set(newerSet)
+
+            //Next 2 Transition
+            setNext2TransitionTracker(true)
+            setNext2Set(newSet);
+        }
+
+
+
 
         //Active Set
-        setActiveSetTracker(false)
+        // setActiveSetTracker(false)
 
-        //Prev Transition
-        setPrevSet(oldSet);
-        setPrevTransitionTracker(false)
+        //Prev 1 Transition
+        setPrev1Set(oldSet);
+        setPrev1TransitionTracker(false)
 
         //Index
         setCurrentIndex(newIndex);
 
-        //Re-Active Set
-        const reActiveSet = setTimeout(() => {
-            setActiveSet(newSet)
-            setActiveSetTracker(true)
-            setNextTransitionTracker(false)
-            const newerIndex = newIndex + 3
-            const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
-            setNextSet(newerSet)
-        }, 650);
+        setNextSetTracker(!nextSetTracker)
+
+        // //Re-Active Set
+        // const reActiveSet = setTimeout(() => {
+        //     setActiveSet(newSet)
+        //     setActiveSetTracker(true)
+        //     setNextTransitionTracker(false)
+        //     const newerIndex = newIndex + 3
+        //     const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
+        //     setNextSet(newerSet)
+        // }, 650);
 
     };
 
@@ -68,34 +96,34 @@ const BreakfastCarousel = (props) => {
         const oldSet = breakfastData.slice(newIndex + 3)
 
         //Next Set
-        setNextTransitionTracker(false)
-        setNextSet(oldSet)
+        setNext1TransitionTracker(false)
+        setNext1Set(oldSet)
 
 
         //Active Set
-        setActiveSetTracker(false)
+        // setActiveSetTracker(false)
 
         //Prev Set
-        setPrevSet(newSet)
-        setPrevTransitionTracker(true)
+        setPrev1Set(newSet)
+        setPrev1TransitionTracker(true)
 
         //Index
         setCurrentIndex(newIndex);
 
         //Re-ActiveSet
-        const reActiveSet = setTimeout(() => {
-            setActiveSet(newSet)
-            setActiveSetTracker(true)
-            setPrevTransitionTracker(false)
-            const newerIndex = newIndex - 3
-            const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
-            setPrevSet(newerSet)
-        }, 650);
+        // const reActiveSet = setTimeout(() => {
+        //     setActiveSet(newSet)
+        //     setActiveSetTracker(true)
+        //     setPrevTransitionTracker(false)
+        //     const newerIndex = newIndex - 3
+        //     const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
+        //     setPrevSet(newerSet)
+        // }, 650);
 
     };
 
     const handlePrevSetTransition = () => {
-        setPrevTransitionTracker(false)
+        setPrev1TransitionTracker(false)
 
     }
 
@@ -108,10 +136,11 @@ const BreakfastCarousel = (props) => {
 
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 3 >= breakfastData.length;
-    console.log("prev set", prevSet, "prev tracker", prevTransitionTracker)
-    console.log('active set', activeSet, "active tracker", activeSetTracker)
-    console.log("next set", nextSet, "next Tracker", nextTransitionTracker)
-    console.log(breakfastData)
+    console.log("prev1 set", prev1Set, "prev1 tracker", prev1TransitionTracker)
+    console.log('prev2 set', prev2Set, "prev2 tracker", prev2TransitionTracker)
+    console.log("next1 set", next1Set, "next1 Tracker", next1TransitionTracker)
+    console.log("next2 set", next2Set, "next2 Tracker", next2TransitionTracker)
+    console.log(currentIndex)
     return (
         <div className="flex w-full h-full justify-evenly items-center overflow-hidden">
             <div className="h-full flex items-center">
@@ -121,29 +150,38 @@ const BreakfastCarousel = (props) => {
             </div>
 
             <div className="flex h-full justify-evenly w-5/6 overflow-hidden ">
-                {prevSet.map((picture, index) => (
+                {prev1Set.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
+                        className={` transition-transform duration-700 ease-in-out ${prev1TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
                 ))}
-                {activeSet.map((picture, index) => (
+                {prev2Set.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` ${activeSetTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
+                        className={` ${prev2TransitionTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
                 ))}
-                {nextSet.map((picture, index) => (
+                {next1Set.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
+                        className={`transition-transform duration-700 ease-in-out ${next1TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
+                        alt={`Picture ${index}`}
+
+                    />
+                ))}
+                {next2Set.map((picture, index) => (
+                    <img key={index}
+                        src={picture.menuItemImg}
+                        onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        className={`transition-transform duration-700 ease-in-out ${next2TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
                         alt={`Picture ${index}`}
 
                     />
