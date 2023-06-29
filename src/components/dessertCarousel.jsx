@@ -6,8 +6,8 @@ import pieLeft from "../assets/images/pieLeft.png"
 
 
 const BreakfastCarousel = (props) => {
-    const { breakfastData, setBreakfastData } = props
-    const { breakfastDataTracker } = props
+    const { dessertData, setDessertData } = props
+    const { dessertDataTracker } = props
     const [nextSet, setNextSet] = useState([])
     const [activeSet, setActiveSet] = useState([])
     const [prevSet, setPrevSet] = useState([])
@@ -16,24 +16,24 @@ const BreakfastCarousel = (props) => {
     const [nextTransitionTracker, setNextTransitionTracker] = useState(false)
     const [prevTransitionTracker, setPrevTransitionTracker] = useState(false)
     const [prevTransitionComplete, setPrevTransitionComplete] = useState(false);
-    const { setBFastImg } = props
-    const { setBreakfastMenuItemDesc } = props
-    const { setBreakfastMenuItemName } = props
-    const { bFastImg } = props
-    const { bFastImgTracker } = props
+    const { setDessertImg } = props
+    const { setDessertMenuItemDesc } = props
+    const { setDessertMenuItemName } = props
+    const { dessertImg } = props
+    const { dessertImgTracker } = props
 
     useEffect(() => {
-        if (breakfastDataTracker) {
+        if (dessertDataTracker) {
             setActiveSetTracker(true)
         }
-        setActiveSet(breakfastData.slice(0, 3))
-        setNextSet(breakfastData.slice(3))
+        setActiveSet(dessertData.slice(0, 3))
+        setNextSet(dessertData.slice(3))
     }, [])
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 3;
-        const newSet = breakfastData.slice(newIndex, newIndex + 3);
-        const oldSet = breakfastData.slice(newIndex - 3, newIndex)
+        const newSet = dessertData.slice(newIndex, newIndex + 3);
+        const oldSet = dessertData.slice(newIndex - 3, newIndex)
 
 
         //Next Transition
@@ -56,7 +56,7 @@ const BreakfastCarousel = (props) => {
             setActiveSetTracker(true)
             setNextTransitionTracker(false)
             const newerIndex = newIndex + 3
-            const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
+            const newerSet = dessertData.slice(newerIndex, newerIndex + 3)
             setNextSet(newerSet)
         }, 650);
 
@@ -64,8 +64,8 @@ const BreakfastCarousel = (props) => {
 
     const handlePrevSet = () => {
         const newIndex = currentIndex - 3;
-        const newSet = breakfastData.slice(newIndex, newIndex + 3);
-        const oldSet = breakfastData.slice(newIndex + 3)
+        const newSet = dessertData.slice(newIndex, newIndex + 3);
+        const oldSet = dessertData.slice(newIndex + 3)
 
         //Next Set
         setNextTransitionTracker(false)
@@ -88,7 +88,7 @@ const BreakfastCarousel = (props) => {
             setActiveSetTracker(true)
             setPrevTransitionTracker(false)
             const newerIndex = newIndex - 3
-            const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
+            const newerSet = dessertData.slice(newerIndex, newerIndex - 3)
             setPrevSet(newerSet)
         }, 650);
 
@@ -100,18 +100,18 @@ const BreakfastCarousel = (props) => {
     }
 
     // HANDLE BREAKFAST UI
-    const handleBFastMenuItem = (menuImg, menuName, menuDesc) => {
-        setBFastImg(menuImg)
-        setBreakfastMenuItemName(menuName)
-        setBreakfastMenuItemDesc(menuDesc)
+    const handleDessertMenuItem = (menuImg, menuName, menuDesc) => {
+        setDessertImg(menuImg)
+        setDessertMenuItemName(menuName)
+        setDessertMenuItemDesc(menuDesc)
     }
 
     const isPrevButtonDisabled = currentIndex === 0;
-    const isNextButtonDisabled = currentIndex + 3 >= breakfastData.length;
+    const isNextButtonDisabled = currentIndex + 3 >= dessertData.length;
     console.log("prev set", prevSet, "prev tracker", prevTransitionTracker)
     console.log('active set', activeSet, "active tracker", activeSetTracker)
     console.log("next set", nextSet, "next Tracker", nextTransitionTracker)
-    console.log(breakfastData)
+    console.log(dessertData)
     return (
         <div className="flex w-full h-full justify-evenly items-center overflow-hidden">
             <div className="h-full flex items-center">
@@ -124,8 +124,8 @@ const BreakfastCarousel = (props) => {
                 {prevSet.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
-                        onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
+                        onClick={() => handleDessertMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
@@ -133,7 +133,7 @@ const BreakfastCarousel = (props) => {
                 {activeSet.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
-                        onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        onClick={() => handleDessertMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
                         className={` ${activeSetTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
                         alt={`Picture ${index}`}
 
