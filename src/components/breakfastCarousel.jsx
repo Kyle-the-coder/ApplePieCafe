@@ -3,6 +3,7 @@ import { doc, getDocs, collection, arrayRemove } from "firebase/firestore"
 import { db } from "../config/firebase"
 import pieRight from "../assets/images/pieRight.PNG"
 import pieLeft from "../assets/images/pieLeft.png"
+import { set } from "mongoose";
 
 
 const BreakfastCarousel = (props) => {
@@ -13,6 +14,7 @@ const BreakfastCarousel = (props) => {
     // const [activeSet, setActiveSet] = useState([])
     const [prev1Set, setPrev1Set] = useState([])
     const [prev2Set, setPrev2Set] = useState([])
+    const [prevSetTracker, setPrevSetTracker] = useState(true)
     const [currentIndex, setCurrentIndex] = useState(0);
     // const [activeSetTracker, setActiveSetTracker] = useState(false)
     const [next1TransitionTracker, setNext1TransitionTracker] = useState(false)
@@ -94,6 +96,30 @@ const BreakfastCarousel = (props) => {
         const newIndex = currentIndex - 3;
         const newSet = breakfastData.slice(newIndex, newIndex + 3);
         const oldSet = breakfastData.slice(newIndex + 3)
+        const newerIndex = newIndex - 3
+        const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
+
+        if (prevSetTracker) {
+            // Next 1 Transition
+            setPrev1TransitionTracker(true)
+            setPrev1Set(newSet)
+
+            //Next 2 Transition
+            setPrev2TransitionTracker(false)
+            setPrev2Set(newerSet);
+
+        }
+
+        if (!nextSetTracker) {
+            // Next 1 Reload
+            setPrev1TransitionTracker(false)
+            setPrev1Set(newerSet)
+
+            //Next 2 Transition
+            setPrev2TransitionTracker(true)
+            setPrev2Set(newSet);
+        }
+
 
         //Next Set
         setNext1TransitionTracker(false)
@@ -102,10 +128,6 @@ const BreakfastCarousel = (props) => {
 
         //Active Set
         // setActiveSetTracker(false)
-
-        //Prev Set
-        setPrev1Set(newSet)
-        setPrev1TransitionTracker(true)
 
         //Index
         setCurrentIndex(newIndex);
@@ -119,13 +141,9 @@ const BreakfastCarousel = (props) => {
         //     const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
         //     setPrevSet(newerSet)
         // }, 650);
+        setPrevSetTracker(!prevSetTracker)
 
     };
-
-    const handlePrevSetTransition = () => {
-        setPrev1TransitionTracker(false)
-
-    }
 
     // HANDLE BREAKFAST UI
     const handleBFastMenuItem = (menuImg, menuName, menuDesc) => {
