@@ -5,7 +5,7 @@ import pieRight from "../assets/images/pieRight.PNG"
 import pieLeft from "../assets/images/pieLeft.png"
 
 
-const BreakfastCarousel = (props) => {
+const DessertCarousel = (props) => {
     const { dessertData, setDessertData } = props
     const { dessertDataTracker } = props
     const [nextSet, setNextSet] = useState([])
@@ -134,7 +134,7 @@ const BreakfastCarousel = (props) => {
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleDessertMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` ${activeSetTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
+                        className={` ${activeSetTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
@@ -142,8 +142,8 @@ const BreakfastCarousel = (props) => {
                 {nextSet.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
-                        onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
+                        onClick={() => handleDessertMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
                         alt={`Picture ${index}`}
 
                     />
@@ -159,4 +159,4 @@ const BreakfastCarousel = (props) => {
     )
 }
 
-export default BreakfastCarousel;
+export default DessertCarousel;
