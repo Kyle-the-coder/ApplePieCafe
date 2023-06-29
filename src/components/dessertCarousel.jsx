@@ -5,9 +5,9 @@ import pieRight from "../assets/images/pieRight.PNG"
 import pieLeft from "../assets/images/pieLeft.png"
 
 
-const LunchCarousel = (props) => {
-    const [lunchData, setLunchData] = useState({})
-    const [lunchDataTracker, setLunchDataTracker] = useState(false)
+const BreakfastCarousel = (props) => {
+    const { breakfastData, setBreakfastData } = props
+    const { breakfastDataTracker } = props
     const [nextSet, setNextSet] = useState([])
     const [activeSet, setActiveSet] = useState([])
     const [prevSet, setPrevSet] = useState([])
@@ -16,40 +16,24 @@ const LunchCarousel = (props) => {
     const [nextTransitionTracker, setNextTransitionTracker] = useState(false)
     const [prevTransitionTracker, setPrevTransitionTracker] = useState(false)
     const [prevTransitionComplete, setPrevTransitionComplete] = useState(false);
-    const { setLunchImg } = props
-    const { setLunchMenuItemDesc } = props
-    const { setLunchMenuItemName } = props
-    const { lunchImg } = props
-    const { lunchImgTracker } = props
+    const { setBFastImg } = props
+    const { setBreakfastMenuItemDesc } = props
+    const { setBreakfastMenuItemName } = props
+    const { bFastImg } = props
+    const { bFastImgTracker } = props
 
     useEffect(() => {
-        // GET LUNCH DATA
-        const getLunchData = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, "lunchMenuItems"));
-                const documents = querySnapshot.docs.map((doc) => doc.data());
-                setLunchData(documents);
-                setActiveSetTracker(true)
-                setLunchDataTracker(true)
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        getLunchData();
-
-
-        if (activeSetTracker) {
-            setActiveSet(lunchData.slice(0, 3))
-            setNextSet(lunchData.slice(3))
+        if (breakfastDataTracker) {
+            setActiveSetTracker(true)
         }
-
-
-    }, [lunchDataTracker])
+        setActiveSet(breakfastData.slice(0, 3))
+        setNextSet(breakfastData.slice(3))
+    }, [])
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 3;
-        const newSet = lunchData.slice(newIndex, newIndex + 3);
-        const oldSet = lunchData.slice(newIndex - 3, newIndex)
+        const newSet = breakfastData.slice(newIndex, newIndex + 3);
+        const oldSet = breakfastData.slice(newIndex - 3, newIndex)
 
 
         //Next Transition
@@ -72,7 +56,7 @@ const LunchCarousel = (props) => {
             setActiveSetTracker(true)
             setNextTransitionTracker(false)
             const newerIndex = newIndex + 3
-            const newerSet = lunchData.slice(newerIndex, newerIndex + 3)
+            const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
             setNextSet(newerSet)
         }, 650);
 
@@ -80,13 +64,13 @@ const LunchCarousel = (props) => {
 
     const handlePrevSet = () => {
         const newIndex = currentIndex - 3;
-        const newSet = lunchData.slice(newIndex, newIndex + 3);
-        const oldSet = lunchData.slice(newIndex + 3)
+        const newSet = breakfastData.slice(newIndex, newIndex + 3);
+        const oldSet = breakfastData.slice(newIndex + 3)
 
         //Next Set
         setNextTransitionTracker(false)
         setNextSet(oldSet)
-        
+
 
         //Active Set
         setActiveSetTracker(false)
@@ -104,7 +88,7 @@ const LunchCarousel = (props) => {
             setActiveSetTracker(true)
             setPrevTransitionTracker(false)
             const newerIndex = newIndex - 3
-            const newerSet = lunchData.slice(newerIndex, newerIndex - 3)
+            const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
             setPrevSet(newerSet)
         }, 650);
 
@@ -116,17 +100,18 @@ const LunchCarousel = (props) => {
     }
 
     // HANDLE BREAKFAST UI
-    const handleLunchMenuItem = (menuImg, menuName, menuDesc) => {
-        setLunchImg(menuImg)
-        setLunchMenuItemName(menuName)
-        setLunchMenuItemDesc(menuDesc)
+    const handleBFastMenuItem = (menuImg, menuName, menuDesc) => {
+        setBFastImg(menuImg)
+        setBreakfastMenuItemName(menuName)
+        setBreakfastMenuItemDesc(menuDesc)
     }
 
     const isPrevButtonDisabled = currentIndex === 0;
-    const isNextButtonDisabled = currentIndex + 3 >= lunchData.length;
+    const isNextButtonDisabled = currentIndex + 3 >= breakfastData.length;
     console.log("prev set", prevSet, "prev tracker", prevTransitionTracker)
     console.log('active set', activeSet, "active tracker", activeSetTracker)
     console.log("next set", nextSet, "next Tracker", nextTransitionTracker)
+    console.log(breakfastData)
     return (
         <div className="flex w-full h-full justify-evenly items-center overflow-hidden">
             <div className="h-full flex items-center">
@@ -135,12 +120,12 @@ const LunchCarousel = (props) => {
                 </button>
             </div>
 
-            <div className="flex h-full justify-evenly w-5/6 overflow-hidden">
+            <div className="flex h-full justify-evenly w-5/6 overflow-hidden ">
                 {prevSet.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
-                        onClick={() => handleLunchMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80  z-[-1] "}  ${lunchImgTracker && lunchImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
+                        onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
@@ -148,8 +133,8 @@ const LunchCarousel = (props) => {
                 {activeSet.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
-                        onClick={() => handleLunchMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` ${activeSetTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${lunchImgTracker && lunchImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
+                        onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        className={` ${activeSetTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
@@ -157,8 +142,8 @@ const LunchCarousel = (props) => {
                 {nextSet.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
-                        onClick={() => handleLunchMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${lunchImgTracker && lunchImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
+                        onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
                         alt={`Picture ${index}`}
 
                     />
@@ -174,4 +159,4 @@ const LunchCarousel = (props) => {
     )
 }
 
-export default LunchCarousel;
+export default BreakfastCarousel;
