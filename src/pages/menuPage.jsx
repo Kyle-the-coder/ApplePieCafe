@@ -29,6 +29,7 @@ const MenuPage = () => {
     const [dessertMenuItemDesc, setDessertMenuItemDesc] = useState("")
     const [dessertImgTracker, setDessertImgTracker] = useState(false)
     const [dessertData, setDessertData] = useState("")
+    const [dessertDataTracker, setDessertDataTracker] = useState(false)
 
 
     useEffect(() => {
@@ -63,6 +64,7 @@ const MenuPage = () => {
                 const querySnapshot = await getDocs(collection(db, "dessertMenuItems"));
                 const documents = querySnapshot.docs.map((doc) => doc.data());
                 setDessertData(documents);
+                setDessertDataTracker(true)
             } catch (error) {
                 console.log(error);
             }
@@ -171,17 +173,17 @@ const MenuPage = () => {
                     <div className="w-[800px] h-[200px] justify-evenly flex items-center py-2  absolute right-[0px] bottom-[-100px] overflow-hidden">
                         {bFastImgTracker &&
                             <>
-                                <BreakfastCarousel bFastImgTracker={bFastImgTracker} bFastImg={bFastImg} 
-                                setBFastImg={setBFastImg} setBreakfastMenuItemDesc={setBreakfastMenuItemDesc} 
-                                setBreakfastMenuItemName={setBreakfastMenuItemName} 
-                                breakfastData={breakfastData}
-                                breakfastDataTracker={breakfastDataTracker}
+                                <BreakfastCarousel bFastImgTracker={bFastImgTracker} bFastImg={bFastImg}
+                                    setBFastImg={setBFastImg} setBreakfastMenuItemDesc={setBreakfastMenuItemDesc}
+                                    setBreakfastMenuItemName={setBreakfastMenuItemName}
+                                    breakfastData={breakfastData}
+                                    breakfastDataTracker={breakfastDataTracker}
                                 />
                             </>
                         }
                         {lunchImgTracker &&
                             <>
-                                <LunchCarousel lunchImgTracker={lunchImgTracker} 
+                                <LunchCarousel lunchImgTracker={lunchImgTracker}
                                     lunchImg={lunchImg}
                                     setLunchImg={setLunchImg}
                                     setLunchMenuItemDesc={setLunchMenuItemDesc}
@@ -191,11 +193,15 @@ const MenuPage = () => {
                         }
                         {dessertImgTracker &&
                             <>
-                                {/* <img src={leftArrow} className="w-[40px] h-[40px] cursor-pointer" />
-                                <img src={dessertData[0].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[0].menuItemImg, dessertData[0].menuItemName, dessertData[0].menuItemDescription)} className={`${dessertImgTracker && dessertImg === dessertData[0].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] hover:opacity-100 h-full object-cover  cursor-pointer`} />
-                                <img src={dessertData[1].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[1].menuItemImg, dessertData[1].menuItemName, dessertData[1].menuItemDescription)} className={` ${dessertImgTracker && dessertImg === dessertData[1].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
-                                <img src={dessertData[2].menuItemImg} onClick={() => handleDessertMenuItem(dessertData[2].menuItemImg, dessertData[2].menuItemName, dessertData[2].menuItemDescription)} className={` ${dessertImgTracker && dessertImg === dessertData[2].menuItemImg ? "opacity-100" : "opacity-20 "} transition-all duration-600 w-[200px] h-full object-cover opacity-70 hover:opacity-100 cursor-pointer`} />
-                                <img src={rightArrow} className="w-[40px] h-[40px] cursor-pointer" /> */}
+                                <DessertCarousel
+                                    dessertImgTracker={dessertImgTracker}
+                                    dessertImg={dessertImg}
+                                    setDessertImg={setDessertImg}
+                                    setDessertMenuItemDesc={setDessertMenuItemDesc}
+                                    setDessertMenuItemName={setDessertMenuItemName}
+                                    dessertData={dessertData}
+                                    dessertDataTracker={dessertDataTracker}
+                                />
 
                             </>
                         }
