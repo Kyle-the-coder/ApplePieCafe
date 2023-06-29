@@ -39,56 +39,38 @@ const BreakfastCarousel = (props) => {
     const handleNextSet = () => {
         const newIndex = currentIndex + 3;
         const newSet = breakfastData.slice(newIndex, newIndex + 3);
-        const oldSet = breakfastData.slice(newIndex - 3, newIndex)
         const newerIndex = newIndex + 3
         const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
 
+        //Prev Transition
+        setPrev1TransitionTracker(false)
+        setPrev2TransitionTracker(false)
 
         if (nextSetTracker) {
             // Next 1 Transition
-            setNext1TransitionTracker(true)
             setNext1Set(newSet)
+            setNext1TransitionTracker(true)
 
             //Next 2 Transition
             setNext2TransitionTracker(false)
-            setNext2Set(newerSet);
-
         }
 
         if (!nextSetTracker) {
             // Next 1 Reload
             setNext1TransitionTracker(false)
-            setNext1Set(newerSet)
 
             //Next 2 Transition
-            setNext2TransitionTracker(true)
             setNext2Set(newSet);
+            setNext2TransitionTracker(true)
         }
 
 
-
-
-        //Active Set
-        // setActiveSetTracker(false)
-
-        //Prev 1 Transition
-        setPrev1Set(oldSet);
-        setPrev1TransitionTracker(false)
 
         //Index
         setCurrentIndex(newIndex);
 
         setNextSetTracker(!nextSetTracker)
-
-        // //Re-Active Set
-        // const reActiveSet = setTimeout(() => {
-        //     setActiveSet(newSet)
-        //     setActiveSetTracker(true)
-        //     setNextTransitionTracker(false)
-        //     const newerIndex = newIndex + 3
-        //     const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
-        //     setNextSet(newerSet)
-        // }, 650);
+        setPrevSetTracker(true)
 
     };
 
@@ -101,29 +83,27 @@ const BreakfastCarousel = (props) => {
 
         if (prevSetTracker) {
             // Next 1 Transition
-            setPrev1TransitionTracker(true)
             setPrev1Set(newSet)
+            setPrev1TransitionTracker(true)
 
             //Next 2 Transition
             setPrev2TransitionTracker(false)
-            setPrev2Set(newerSet);
 
         }
 
-        if (!nextSetTracker) {
-            // Next 1 Reload
+        if (!prevSetTracker) {
+            // Next 1 Transition
             setPrev1TransitionTracker(false)
-            setPrev1Set(newerSet)
 
             //Next 2 Transition
-            setPrev2TransitionTracker(true)
             setPrev2Set(newSet);
+            setPrev2TransitionTracker(true)
         }
 
 
         //Next Set
         setNext1TransitionTracker(false)
-        setNext1Set(oldSet)
+        setNext2TransitionTracker(false)
 
 
         //Active Set
@@ -142,6 +122,7 @@ const BreakfastCarousel = (props) => {
         //     setPrevSet(newerSet)
         // }, 650);
         setPrevSetTracker(!prevSetTracker)
+        setNextSetTracker(true)
 
     };
 
@@ -181,11 +162,12 @@ const BreakfastCarousel = (props) => {
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleBFastMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` ${prev2TransitionTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
+                        className={` transition-transform duration-700 ease-in-out ${prev2TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${bFastImgTracker && bFastImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
                 ))}
+
                 {next1Set.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
