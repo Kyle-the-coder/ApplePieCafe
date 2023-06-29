@@ -81,6 +81,8 @@ const BreakfastCarousel = (props) => {
         const newerIndex = newIndex - 3
         const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
 
+        setNext1TransitionTracker(false)
+        setNext2TransitionTracker(false)
         setNext1Set(oldSet)
 
         if (prevSetTracker) {
@@ -91,7 +93,6 @@ const BreakfastCarousel = (props) => {
             //Next 2 Transition
             setPrev2TransitionTracker(false)
             setPrev2Set(newerSet)
-
         }
 
         if (!prevSetTracker) {
