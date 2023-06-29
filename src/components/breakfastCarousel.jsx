@@ -41,10 +41,12 @@ const BreakfastCarousel = (props) => {
         const newSet = breakfastData.slice(newIndex, newIndex + 3);
         const newerIndex = newIndex + 3
         const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
+        const oldSet = breakfastData.slice(newIndex - 3, newIndex)
 
         //Prev Transition
         setPrev1TransitionTracker(false)
         setPrev2TransitionTracker(false)
+        setPrev1Set(oldSet)
 
         if (nextSetTracker) {
             // Next 1 Transition
@@ -53,11 +55,13 @@ const BreakfastCarousel = (props) => {
 
             //Next 2 Transition
             setNext2TransitionTracker(false)
+            setNext2Set(newerSet)
         }
 
         if (!nextSetTracker) {
             // Next 1 Reload
             setNext1TransitionTracker(false)
+            setNext1Set(newerSet)
 
             //Next 2 Transition
             setNext2Set(newSet);
@@ -81,6 +85,8 @@ const BreakfastCarousel = (props) => {
         const newerIndex = newIndex - 3
         const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
 
+        setNext1Set(oldSet)
+
         if (prevSetTracker) {
             // Next 1 Transition
             setPrev1Set(newSet)
@@ -88,16 +94,20 @@ const BreakfastCarousel = (props) => {
 
             //Next 2 Transition
             setPrev2TransitionTracker(false)
+            setPrev2Set(newerSet)
 
         }
 
         if (!prevSetTracker) {
             // Next 1 Transition
             setPrev1TransitionTracker(false)
+            setPrev1Set(newerSet)
 
             //Next 2 Transition
             setPrev2Set(newSet);
-            setPrev2TransitionTracker(true)
+            const timeoutId = setTimeout(() => {
+                setPrev2TransitionTracker(true)
+            }, 50);
         }
 
 
@@ -105,22 +115,9 @@ const BreakfastCarousel = (props) => {
         setNext1TransitionTracker(false)
         setNext2TransitionTracker(false)
 
-
-        //Active Set
-        // setActiveSetTracker(false)
-
         //Index
         setCurrentIndex(newIndex);
 
-        //Re-ActiveSet
-        // const reActiveSet = setTimeout(() => {
-        //     setActiveSet(newSet)
-        //     setActiveSetTracker(true)
-        //     setPrevTransitionTracker(false)
-        //     const newerIndex = newIndex - 3
-        //     const newerSet = breakfastData.slice(newerIndex, newerIndex - 3)
-        //     setPrevSet(newerSet)
-        // }, 650);
         setPrevSetTracker(!prevSetTracker)
         setNextSetTracker(true)
 
