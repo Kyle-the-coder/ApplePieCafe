@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { doc, getDocs, collection, arrayRemove } from "firebase/firestore"
-import { db } from "../config/firebase"
 import pieRight from "../assets/images/pieRight.PNG"
 import pieLeft from "../assets/images/pieLeft.png"
-import { set } from "mongoose";
 
 
 const BreakfastCarousel = (props) => {
@@ -68,11 +65,10 @@ const BreakfastCarousel = (props) => {
             setNext2TransitionTracker(true)
         }
 
-
-
         //Index
         setCurrentIndex(newIndex);
 
+        //Handle Trackers
         setNextSetTracker(!nextSetTracker)
         setPrevSetTracker(true)
 
