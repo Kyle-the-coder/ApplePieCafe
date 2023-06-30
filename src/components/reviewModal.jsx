@@ -103,12 +103,12 @@ const ReviewModal = (props) => {
             <div className="w-full h-full bg-blue-200 absolute blur">
                 <img src={applePie} className="w-full h-full object-cover" />
             </div>
-            <div className="w-[800px] h-content bg-red-200 z-[10] mb-5 rounded flex flex-col items-center justify-between" id="reviewStart">
+            <div className="w-[800px] h-content bg-orange-100 z-[10] mb-5 rounded flex flex-col items-center justify-between" id="reviewStart">
                 <div className="w-full py-2 bg-slate-900 rounded flex justify-center" >
                     <img src={logo} width="200px" />
                 </div>
                 <div className="w-full py-10 flex justify-center">
-                    <form className="flex flex-col items-center bg-slate-200 w-3/4 p-5">
+                    <form className="flex flex-col items-center bg-slate-300 w-3/4 p-5">
                         <div className="mb-3s fontWriting text-2xl">
                             <h1>Leave us a Review!</h1>
                         </div>
@@ -132,7 +132,7 @@ const ReviewModal = (props) => {
                             <label className="font-bold">Rating:</label>
                             <div className="flex w-full">
                                 {starSet.map((star, index) => (
-                                    <img src={star.img} onClick={() => handleStarFill(star.idx)} key={index} />
+                                    <img src={star.img} className="w-[50px] mx-[2px]" onClick={() => handleStarFill(star.idx)} key={index} />
                                 ))}
                             </div>
                         </div>
@@ -142,7 +142,7 @@ const ReviewModal = (props) => {
                 </div>
 
 
-                <button className="px-3 py-1 bg-red-800 text-white rounded mb-10" onClick={() => handleReviewModal()}>Close</button>
+                <button className="px-3 py-1 bg-orange-700 text-white rounded mb-10" onClick={() => handleReviewModal()}>Close</button>
             </div>
         </div>
     )
