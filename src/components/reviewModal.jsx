@@ -1,4 +1,4 @@
-
+import applePie from "../assets/images/apphoto.jpeg"
 
 const ReviewModal = (props) => {
     const {setReviewModalTracker} = props
@@ -6,11 +6,11 @@ const ReviewModal = (props) => {
 
 
     return(
-        <div className="w-full absolute bottom-0 left-0 h-[1200px] flex justify-center items-center ">
+        <div className="w-full absolute bottom-0 left-0 h-[3200px] flex justify-center items-end">
             <div className="w-full h-full bg-blue-200 absolute blur">
-
+                <img src={applePie} className="w-full h-full object-cover" />
             </div>
-            <div className="w-[500px] h-[500px] bg-red-200 mt-[600px] z-[10]">
+            <div className="w-[800px] h-[700px] bg-red-200 z-[10] mb-5">
                 <h1> Review Modal!</h1>
 
 
