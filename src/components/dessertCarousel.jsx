@@ -6,16 +6,26 @@ import pieLeft from "../assets/images/pieLeft.png"
 
 
 const DessertCarousel = (props) => {
+
+    //CAROUSEL STATES
+    const [next1Set, setNext1Set] = useState([])
+    const [next2Set, setNext2Set] = useState([])
+    const [prev1Set, setPrev1Set] = useState([])
+    const [prev2Set, setPrev2Set] = useState([])
+    const [prevSetTracker, setPrevSetTracker] = useState(true)
+
+    //INDEX
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    //CAROUSEL TRANSITIONS
+    const [next1TransitionTracker, setNext1TransitionTracker] = useState(false)
+    const [next2TransitionTracker, setNext2TransitionTracker] = useState(false)
+    const [nextSetTracker, setNextSetTracker] = useState(true)
+    const [prev1TransitionTracker, setPrev1TransitionTracker] = useState(false)
+    const [prev2TransitionTracker, setPrev2TransitionTracker] = useState(false)
+
     const { dessertData, setDessertData } = props
     const { dessertDataTracker } = props
-    const [nextSet, setNextSet] = useState([])
-    const [activeSet, setActiveSet] = useState([])
-    const [prevSet, setPrevSet] = useState([])
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [activeSetTracker, setActiveSetTracker] = useState(false)
-    const [nextTransitionTracker, setNextTransitionTracker] = useState(false)
-    const [prevTransitionTracker, setPrevTransitionTracker] = useState(false)
-    const [prevTransitionComplete, setPrevTransitionComplete] = useState(false);
     const { setDessertImg } = props
     const { setDessertMenuItemDesc } = props
     const { setDessertMenuItemName } = props
@@ -24,42 +34,50 @@ const DessertCarousel = (props) => {
 
     useEffect(() => {
         if (dessertDataTracker) {
-            setActiveSetTracker(true)
+            setPrev1TransitionTracker(true)
         }
-        setActiveSet(dessertData.slice(0, 3))
-        setNextSet(dessertData.slice(3))
+        setPrev1Set(dessertData.slice(0, 3))
+        setNext1Set(dessertData.slice(3))
     }, [])
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 3;
-        const newSet = dessertData.slice(newIndex, newIndex + 3);
-        const oldSet = dessertData.slice(newIndex - 3, newIndex)
-
-
-        //Next Transition
-        setNextTransitionTracker(true)
-        setNextSet(newSet);
-
-        //Active Set
-        setActiveSetTracker(false)
+        const newSet = breakfastData.slice(newIndex, newIndex + 3);
+        const newerIndex = newIndex + 3
+        const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
+        const oldSet = breakfastData.slice(newIndex - 3, newIndex)
 
         //Prev Transition
-        setPrevSet(oldSet);
-        setPrevTransitionTracker(false)
+        setPrev1TransitionTracker(false)
+        setPrev2TransitionTracker(false)
+        setPrev1Set(oldSet)
+
+        if (nextSetTracker) {
+            // Next 1 Transition
+            setNext1Set(newSet)
+            setNext1TransitionTracker(true)
+
+            //Next 2 Transition
+            setNext2TransitionTracker(false)
+            setNext2Set(newerSet)
+        }
+
+        if (!nextSetTracker) {
+            // Next 1 Reload
+            setNext1TransitionTracker(false)
+            setNext1Set(newerSet)
+
+            //Next 2 Transition
+            setNext2Set(newSet);
+            setNext2TransitionTracker(true)
+        }
 
         //Index
         setCurrentIndex(newIndex);
 
-        //Re-Active Set
-        const reActiveSet = setTimeout(() => {
-            setActiveSet(newSet)
-            setActiveSetTracker(true)
-            setNextTransitionTracker(false)
-            const newerIndex = newIndex + 3
-            const newerSet = dessertData.slice(newerIndex, newerIndex + 3)
-            setNextSet(newerSet)
-        }, 650);
-
+        //Handle Trackers
+        setNextSetTracker(!nextSetTracker)
+        setPrevSetTracker(true)
     };
 
     const handlePrevSet = () => {
