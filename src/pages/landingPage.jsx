@@ -2,7 +2,7 @@ import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import restOutside from "../assets/images/restOutside.jpeg"
 import "../styles/font.css"
-import ReviewModal from "../components/reviewModal"
+import ReviewCarousel from "../components/reviewCarousel"
 import leftArrow from "../assets/images/left-arrow.png"
 import rightArrow from "../assets/images/right-arrow.png"
 
@@ -55,7 +55,7 @@ const LandingPage = () => {
                     <img src={leftArrow} className="" width="100px" />
                 </div>
                 <div>
-                    <ReviewModal />
+                    <ReviewCarousel />
                 </div>
                 <div>
                     <img src={rightArrow} width="100px" />

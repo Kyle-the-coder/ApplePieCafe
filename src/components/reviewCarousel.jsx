@@ -3,7 +3,7 @@ import wAvatar from "../assets/images/woman.png"
 import starBlank from "../assets/images/starBlank.png"
 import starFill from "../assets/images/starFill.png"
 
-const ReviewModal = () => {
+const ReviewCarousel = () => {
     return (
         <div>
             <div>
@@ -94,4 +94,4 @@ const ReviewModal = () => {
     )
 }
 
-export default ReviewModal;
+export default ReviewCarousel;
