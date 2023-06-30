@@ -3,10 +3,18 @@ import restInside from "../assets/images/restInside.jpeg"
 import restOutside from "../assets/images/restOutside.jpeg"
 import "../styles/font.css"
 import ReviewCarousel from "../components/reviewCarousel"
+import ReviewModal from "../components/reviewModal"
 import leftArrow from "../assets/images/left-arrow.png"
 import rightArrow from "../assets/images/right-arrow.png"
+import { useState } from "react"
 
 const LandingPage = () => {
+    const [reviewModalTracker, setReviewModalTracker] = useState(false)
+
+    const handleReviewModal = () => {
+        setReviewModalTracker(true)
+    }
+
     return (
         <div>
 
@@ -64,7 +72,13 @@ const LandingPage = () => {
 
             {/* REVIEW MODAL FORM */}
             <section>
+                <div className="py-5">
+                    <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
+                    <button className="px-3 py-1 bg-red-300 rounded" onClick={()=>handleReviewModal()}>Leave a review!</button>
+                </div>
+                <div>
 
+                </div>
             </section>
 
 
