@@ -10,14 +10,14 @@ const LandingPage = () => {
     return (
         <div>
 
-            {/* Opening Image Section */}
+            {/* OPENING IMAGE SECTION */}
             <section>
                 <div className="w-full h-[600px]">
                     <img src={applePie} className="w-full h-full object-cover" />
                 </div>
             </section>
 
-            {/* Quote Section */}
+            {/* QUOTE SECTION */}
             <section>
                 <div className="w-full h-[250px] bg-slate-800 flex flex-col justify-center items-center text-white">
                     <h1 className="handWriting text-7xl mb-3"> "Where Every Slice Feels Like Home"</h1>
@@ -25,7 +25,7 @@ const LandingPage = () => {
                 </div>
             </section>
 
-            {/* About Section */}
+            {/* ABOUT SECTION */}
             <section>
                 <div className="flex ">
                     <div className="w-1/2 h-[500px]">
@@ -49,7 +49,7 @@ const LandingPage = () => {
             </section>
 
 
-            {/* Review Modal Section */}
+            {/* REVIEW CAROUSEL SECTION */}
             <section className=" flex items-center p-[5px] py-4 bg-slate-800">
                 <div>
                     <img src={leftArrow} className="" width="100px" />
@@ -60,6 +60,11 @@ const LandingPage = () => {
                 <div>
                     <img src={rightArrow} width="100px" />
                 </div>
+            </section>
+
+            {/* REVIEW MODAL FORM */}
+            <section>
+
             </section>
 
 
