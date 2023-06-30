@@ -23,6 +23,7 @@ const MenuPage = () => {
     const [lunchMenuItemDesc, setLunchMenuItemDesc] = useState("")
     const [lunchImgTracker, setLunchImgTracker] = useState(false)
     const [lunchData, setLunchData] = useState({})
+    const [lunchDataTracker, setLunchDataTracker] = useState(false)
     //DESSERT ITEMS
     const [dessertImg, setDessertImg] = useState(null)
     const [dessertMenuItemName, setDessertMenuItemName] = useState("")
@@ -52,6 +53,7 @@ const MenuPage = () => {
                 const querySnapshot = await getDocs(collection(db, "lunchMenuItems"));
                 const documents = querySnapshot.docs.map((doc) => doc.data());
                 setLunchData(documents);
+                setLunchDataTracker(true)
             } catch (error) {
                 console.log(error);
             }
@@ -191,6 +193,8 @@ const MenuPage = () => {
                                     setLunchImg={setLunchImg}
                                     setLunchMenuItemDesc={setLunchMenuItemDesc}
                                     setLunchMenuItemName={setLunchMenuItemName}
+                                    lunchData={lunchData}
+                                    lunchDataTracker={lunchDataTracker}
                                 />
                             </>
                         }
