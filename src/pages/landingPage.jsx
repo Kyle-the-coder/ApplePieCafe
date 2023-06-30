@@ -16,7 +16,7 @@ const LandingPage = () => {
     }
 
     return (
-        <div>
+        <div className="relative">
 
             {/* OPENING IMAGE SECTION */}
             <section>
@@ -77,7 +77,7 @@ const LandingPage = () => {
                     <button className="px-3 py-1 bg-red-300 rounded" onClick={()=>handleReviewModal()}>Leave a review!</button>
                 </div>
                 <div>
-                    {reviewModalTracker && <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal}/>}
+                    {reviewModalTracker && <ReviewModal  setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal}/>}
                 </div>
             </section>
 
