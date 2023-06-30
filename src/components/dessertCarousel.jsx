@@ -42,10 +42,10 @@ const DessertCarousel = (props) => {
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 3;
-        const newSet = breakfastData.slice(newIndex, newIndex + 3);
+        const newSet = dessertData.slice(newIndex, newIndex + 3);
         const newerIndex = newIndex + 3
-        const newerSet = breakfastData.slice(newerIndex, newerIndex + 3)
-        const oldSet = breakfastData.slice(newIndex - 3, newIndex)
+        const newerSet = dessertData.slice(newerIndex, newerIndex + 3)
+        const oldSet = dessertData.slice(newIndex - 3, newIndex)
 
         //Prev Transition
         setPrev1TransitionTracker(false)
@@ -84,38 +84,47 @@ const DessertCarousel = (props) => {
         const newIndex = currentIndex - 3;
         const newSet = dessertData.slice(newIndex, newIndex + 3);
         const oldSet = dessertData.slice(newIndex + 3)
+        const newerIndex = newIndex - 3
+        const newerSet = dessertData.slice(newerIndex, newerIndex - 3)
+
+        setNext1TransitionTracker(false)
+        setNext2TransitionTracker(false)
+        setNext1Set(oldSet)
+
+        if (prevSetTracker) {
+            // Next 1 Transition
+            setPrev1Set(newSet)
+            setPrev1TransitionTracker(true)
+
+            //Next 2 Transition
+            setPrev2TransitionTracker(false)
+            setPrev2Set(newerSet)
+        }
+
+        if (!prevSetTracker) {
+            // Next 1 Transition
+            setPrev1TransitionTracker(false)
+            setPrev1Set(newerSet)
+
+            //Next 2 Transition
+            setPrev2Set(newSet);
+            const timeoutId = setTimeout(() => {
+                setPrev2TransitionTracker(true)
+            }, 50);
+        }
+
 
         //Next Set
-        setNextTransitionTracker(false)
-        setNextSet(oldSet)
-
-
-        //Active Set
-        setActiveSetTracker(false)
-
-        //Prev Set
-        setPrevSet(newSet)
-        setPrevTransitionTracker(true)
+        setNext1TransitionTracker(false)
+        setNext2TransitionTracker(false)
 
         //Index
         setCurrentIndex(newIndex);
 
-        //Re-ActiveSet
-        const reActiveSet = setTimeout(() => {
-            setActiveSet(newSet)
-            setActiveSetTracker(true)
-            setPrevTransitionTracker(false)
-            const newerIndex = newIndex - 3
-            const newerSet = dessertData.slice(newerIndex, newerIndex - 3)
-            setPrevSet(newerSet)
-        }, 650);
+        setPrevSetTracker(!prevSetTracker)
+        setNextSetTracker(true)
 
     };
-
-    const handlePrevSetTransition = () => {
-        setPrevTransitionTracker(false)
-
-    }
 
     // HANDLE BREAKFAST UI
     const handleDessertMenuItem = (menuImg, menuName, menuDesc) => {
@@ -126,10 +135,11 @@ const DessertCarousel = (props) => {
 
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 3 >= dessertData.length;
-    console.log("prev set", prevSet, "prev tracker", prevTransitionTracker)
-    console.log('active set', activeSet, "active tracker", activeSetTracker)
-    console.log("next set", nextSet, "next Tracker", nextTransitionTracker)
-    console.log(dessertData)
+    console.log("prev1 set", prev1Set, "prev1 tracker", prev1TransitionTracker)
+    console.log('prev2 set', prev2Set, "prev2 tracker", prev2TransitionTracker)
+    console.log("next1 set", next1Set, "next1 Tracker", next1TransitionTracker)
+    console.log("next2 set", next2Set, "next2 Tracker", next2TransitionTracker)
+    console.log(currentIndex)
     return (
         <div className="flex w-full h-full justify-evenly items-center overflow-hidden">
             <div className="h-full flex items-center">
@@ -139,29 +149,39 @@ const DessertCarousel = (props) => {
             </div>
 
             <div className="flex h-full justify-evenly w-5/6 overflow-hidden ">
-                {prevSet.map((picture, index) => (
+                {prev1Set.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleDessertMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` transition-transform duration-700 ease-in-out ${prevTransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
+                        className={` transition-transform duration-1000  ${prev1TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
                 ))}
-                {activeSet.map((picture, index) => (
+                {prev2Set.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleDessertMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={` ${activeSetTracker ? "opacity-100" : "absolute z-[-1]  opacity-0"}  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer hover:opacity-100`}
+                        className={` transition-transform duration-1000  ${prev2TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40"}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500 hover:opacity-100`}
                         alt={`Picture ${index}`}
 
                     />
                 ))}
-                {nextSet.map((picture, index) => (
+
+                {next1Set.map((picture, index) => (
                     <img key={index}
                         src={picture.menuItemImg}
                         onClick={() => handleDessertMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
-                        className={`transition-transform duration-700 ease-in-out ${nextTransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
+                        className={`transition-transform duration-1000 ease-in-out ${next1TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
+                        alt={`Picture ${index}`}
+
+                    />
+                ))}
+                {next2Set.map((picture, index) => (
+                    <img key={index}
+                        src={picture.menuItemImg}
+                        onClick={() => handleDessertMenuItem(picture.menuItemImg, picture.menuItemName, picture.menuItemDescription)}
+                        className={`transition-transform duration-1000 ease-in-out ${next2TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '} hover:opacity-100  ${dessertImgTracker && dessertImg === picture.menuItemImg ? "opacity-100" : "opacity-40 "}   w-[200px] h-full object-cover cursor-pointer transition-all duration-500`}
                         alt={`Picture ${index}`}
 
                     />
