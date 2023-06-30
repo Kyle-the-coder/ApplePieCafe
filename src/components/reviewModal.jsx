@@ -1,12 +1,103 @@
 import applePie from "../assets/images/apphoto.jpeg"
 import logo from "../assets/images/ApcWhite.PNG"
 import blank from "../assets/images/starBlank.png"
+import fill from "../assets/images/starFill.png"
+import { useEffect, useState } from "react"
 
 const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
     const { handleReviewModal } = props
+    const [starFillTracker, setStarFillTracker] = useState(false)
+    const [starSet, setStarSet] = useState([])
 
 
+    useEffect(() => {
+        setStarSet([
+            { img: blank, idx: 1 },
+            { img: blank, idx: 2 },
+            { img: blank, idx: 3 },
+            { img: blank, idx: 4 },
+            { img: blank, idx: 5 },
+        ])
+
+    }, [])
+
+    const handleStarFill = (index) => {
+        console.log(index, "index")
+        if (index == 1) {
+            setStarFillTracker(!starFillTracker)
+
+            if (starFillTracker == true) {
+                const newSet = [
+                    { img: fill, idx: 1 },
+                    { img: blank, idx: 2 },
+                    { img: blank, idx: 3 },
+                    { img: blank, idx: 4 },
+                    { img: blank, idx: 5 },
+                ]
+                setStarSet(newSet)
+            }
+
+            if (starFillTracker == false) {
+                const newSet = [
+                    { img: blank, idx: 1 },
+                    { img: blank, idx: 2 },
+                    { img: blank, idx: 3 },
+                    { img: blank, idx: 4 },
+                    { img: blank, idx: 5 },
+                ]
+                setStarSet(newSet)
+            }
+        }
+
+        if (index == 2) {
+            const newSet = [
+                { img: fill, idx: 1 },
+                { img: fill, idx: 2 },
+                { img: blank, idx: 3 },
+                { img: blank, idx: 4 },
+                { img: blank, idx: 5 },
+            ]
+            setStarSet(newSet)
+        }
+
+        if (index == 3) {
+            const newSet = [
+                { img: fill, idx: 1 },
+                { img: fill, idx: 2 },
+                { img: fill, idx: 3 },
+                { img: blank, idx: 4 },
+                { img: blank, idx: 5 },
+            ]
+            setStarSet(newSet)
+        }
+
+        if (index == 4) {
+            const newSet = [
+                { img: fill, idx: 1 },
+                { img: fill, idx: 2 },
+                { img: fill, idx: 3 },
+                { img: fill, idx: 4 },
+                { img: blank, idx: 5 },
+            ]
+            setStarSet(newSet)
+        }
+
+        if (index == 5) {
+            const newSet = [
+                { img: fill, idx: 1 },
+                { img: fill, idx: 2 },
+                { img: fill, idx: 3 },
+                { img: fill, idx: 4 },
+                { img: fill, idx: 5 },
+            ]
+            setStarSet(newSet)
+        }
+    }
+
+
+
+    console.log(starSet)
     return (
         <div className="w-full absolute bottom-0 left-0 h-[3200px] flex justify-center items-end ">
             <div className="w-full h-full bg-blue-200 absolute blur">
@@ -40,11 +131,9 @@ const ReviewModal = (props) => {
                         <div className="flex flex-col py-2 mb-4">
                             <label className="font-bold">Rating:</label>
                             <div className="flex w-full">
-                                <img  src={blank} />
-                                <img  src={blank} />
-                                <img src={blank}  />
-                                <img  src={blank} />
-                                <img  src={blank} />
+                                {starSet.map((star, index) => (
+                                    <img src={star.img} onClick={() => handleStarFill(star.idx)} key={index} />
+                                ))}
                             </div>
                         </div>
 
