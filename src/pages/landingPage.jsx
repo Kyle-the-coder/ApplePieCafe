@@ -16,12 +16,9 @@ const LandingPage = () => {
     const reviewButton = useRef(null)
 
     const handleReviewModal = () => {
-        setReviewModalTracker(!reviewModalTracker)
-        if (reviewModalTracker === false) {
-            const buttonElement = document.getElementById("reviewButton");
-            buttonElement.scrollIntoView({ behavior: "smooth" });
-
-        }
+        setReviewModalTracker(!reviewModalTracker);
+        reviewButton.current.scrollIntoView({ behavior: "smooth" });
+        
     }
     console.log(reviewModalTracker)
     return (
@@ -81,7 +78,7 @@ const LandingPage = () => {
 
             {/* REVIEW MODAL FORM */}
             <section>
-                <div className="py-5" id="reviewButton">
+                <div className="py-5" ref={reviewButton}>
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
                     <button className="px-3 py-1 bg-red-300 rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
