@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
     const { handleReviewModal } = props
+    const {reviewModalTracker} = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
 
@@ -99,7 +100,7 @@ const ReviewModal = (props) => {
 
     console.log(starSet)
     return (
-        <div className="w-full absolute bottom-0 left-0 h-[3200px] flex justify-center items-end ">
+        <div className={`${reviewModalTracker ? "opacity-100" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
             <div className="w-full h-full bg-blue-200 absolute blur">
                 <img src={applePie} className="w-full h-full object-cover" />
             </div>
