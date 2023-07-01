@@ -11,7 +11,6 @@ const ReviewModal = (props) => {
     const {reviewModalTracker} = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
-    const reviewStart = useRef(null)
 
 
 
@@ -103,15 +102,14 @@ const ReviewModal = (props) => {
         }
     }
 
-
-
-    console.log(starSet)
     return (
-        <div className={`${reviewModalTracker ? "opacity-100" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
-            <div className="w-full h-full bg-blue-200 absolute blur">
+        <div className={`${reviewModalTracker ? "opacity-100" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
+            <div className="w-full h-full bg-blue-200 absolute blur" >
                 <img src={applePie} className="w-full h-full object-cover" />
             </div>
-            <div className="w-[800px] h-content bg-orange-100 z-[10] mb-5 rounded flex flex-col items-center justify-between" id="reviewStart">
+            <div className="w-full h-[10px]" id="reviewStart">
+            </div>
+            <div className="w-[800px] h-content bg-orange-100 z-[10] mb-5 rounded flex flex-col items-center justify-between mt-5">
                 <div className="w-full py-2 bg-slate-900 rounded flex justify-center" >
                     <img src={logo} width="200px" />
                 </div>
