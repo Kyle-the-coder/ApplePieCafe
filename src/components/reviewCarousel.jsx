@@ -81,8 +81,8 @@ const ReviewCarousel = () => {
                             <p className="bg-white p-2">"Unfortunately, my experience at Apple Pie Cafe was quite disappointing. The apple pie lacked flavor and had a dry crust, and the overall ambiance felt lackluster and unwelcoming."</p>
                         </div>
                     </div>
-                    <div className="flex mt-16">
-                        <img src={starFill} className="w-[40px]" />
+                    <div className="flex mt-16  ">
+                        <img src={starFill} className="w-[40px] " />
                         <img src={starBlank} className="w-[40px]" />
                         <img src={starBlank} className="w-[40px]" />
                         <img src={starBlank} className="w-[40px]" />
