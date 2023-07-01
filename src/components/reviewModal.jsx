@@ -7,7 +7,7 @@ import { useEffect, useState } from "react"
 const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
     const { handleReviewModal } = props
-    const [starFillTracker, setStarFillTracker] = useState(false)
+    const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
 
 
@@ -132,7 +132,7 @@ const ReviewModal = (props) => {
                             <label className="font-bold">Rating:</label>
                             <div className="flex w-full">
                                 {starSet.map((star, index) => (
-                                    <img src={star.img} className="w-[50px] mx-[2px]" onClick={() => handleStarFill(star.idx)} key={index} />
+                                    <img src={star.img} className="w-[50px] mx-[2px] cursor-pointer" onClick={() => handleStarFill(star.idx)} key={index} />
                                 ))}
                             </div>
                         </div>
