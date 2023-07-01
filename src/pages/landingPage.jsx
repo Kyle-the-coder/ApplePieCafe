@@ -10,6 +10,7 @@ import { useState } from "react"
 
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
+    
 
     const handleReviewModal = () => {
         setReviewModalTracker(!reviewModalTracker)
@@ -74,10 +75,10 @@ const LandingPage = () => {
             <section>
                 <div className="py-5">
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
-                    <button className="px-3 py-1 bg-red-300 rounded" onClick={() => handleReviewModal()}><a href="#reviewStart">Leave a review!</a></button>
+                    <button className="px-3 py-1 bg-red-300 rounded " onClick={() => handleReviewModal()}><a >Leave a review!</a></button>
                 </div>
                 <div>
-                    {reviewModalTracker && <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} />}
+                    <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker}/>
                 </div>
             </section>
 
