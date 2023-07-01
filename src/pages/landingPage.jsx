@@ -13,11 +13,17 @@ import { useRef } from "react"
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
     const navigate = useNavigate()
+    const reviewButton = useRef(null)
 
     const handleReviewModal = () => {
         setReviewModalTracker(!reviewModalTracker)
-    }
+        if (reviewModalTracker === false) {
+            const buttonElement = document.getElementById("reviewButton");
+            buttonElement.scrollIntoView({ behavior: "smooth" });
 
+        }
+    }
+    console.log(reviewModalTracker)
     return (
         <div className="relative">
 
@@ -75,12 +81,12 @@ const LandingPage = () => {
 
             {/* REVIEW MODAL FORM */}
             <section>
-                <div className="py-5">
+                <div className="py-5" id="reviewButton">
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
                     <button className="px-3 py-1 bg-red-300 rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
-                <div>
-                    <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker}/>
+                <div >
+                    <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker} />
                 </div>
             </section>
 
