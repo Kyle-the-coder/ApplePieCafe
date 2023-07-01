@@ -3,6 +3,7 @@ import logo from "../assets/images/ApcWhite.PNG"
 import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
 import { useEffect, useState } from "react"
+import React, { useRef } from "react"
 
 const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
@@ -10,6 +11,8 @@ const ReviewModal = (props) => {
     const {reviewModalTracker} = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
+    const reviewStart = useRef(null)
+
 
 
     useEffect(() => {
@@ -21,7 +24,11 @@ const ReviewModal = (props) => {
             { img: blank, idx: 5 },
         ])
 
-    }, [])
+        if(reviewModalTracker){
+            document.getElementById("reviewStart").scrollIntoView({behavior: "smooth"})
+
+        }
+    }, [reviewModalTracker])
 
     const handleStarFill = (index) => {
         console.log(index, "index")

@@ -6,11 +6,13 @@ import ReviewCarousel from "../components/reviewCarousel"
 import ReviewModal from "../components/reviewModal"
 import leftArrow from "../assets/images/left-arrow.png"
 import rightArrow from "../assets/images/right-arrow.png"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { useRef } from "react"
 
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
-    
+    const navigate = useNavigate()
 
     const handleReviewModal = () => {
         setReviewModalTracker(!reviewModalTracker)
@@ -75,7 +77,7 @@ const LandingPage = () => {
             <section>
                 <div className="py-5">
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
-                    <button className="px-3 py-1 bg-red-300 rounded " onClick={() => handleReviewModal()}><a >Leave a review!</a></button>
+                    <button className="px-3 py-1 bg-red-300 rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
                 <div>
                     <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker}/>
