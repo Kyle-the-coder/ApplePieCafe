@@ -7,6 +7,7 @@ import React, { useRef } from "react"
 import { db, storage } from "../config/firebase"
 import { doc, addDoc, collection } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
+import avatarPic from "../assets/images/avatar.png"
 
 const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
@@ -176,8 +177,10 @@ const ReviewModal = (props) => {
 
                         <div className="flex flex-col w-full items-center justify-center py-2">
                             <label className="font-bold mb-2">Photo(optional):</label>
-                            <input className="w-[300px]" type="file" onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
-                            <img  className="w-[50px] h-[50px]"/>
+                            <div className="flex w-full justify-evenly items-center">
+                                <input className="w-[260px]" type="file" onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
+                                <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" />
+                            </div>
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
