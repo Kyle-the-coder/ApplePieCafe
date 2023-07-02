@@ -18,7 +18,7 @@ const LandingPage = () => {
     const handleReviewModal = () => {
         setReviewModalTracker(!reviewModalTracker);
         reviewButton.current.scrollIntoView({ behavior: "smooth" });
-        
+
     }
     console.log(reviewModalTracker)
     return (
@@ -64,16 +64,11 @@ const LandingPage = () => {
 
 
             {/* REVIEW CAROUSEL SECTION */}
-            <section className=" flex items-center p-[5px] py-4 bg-slate-800">
-                <div>
-                    <img src={leftArrow} className="" width="100px" />
-                </div>
+            <section className=" flex items-center p-[5px] py-4 bg-slate-800 overflow-x-auto">
                 <div>
                     <ReviewCarousel />
                 </div>
-                <div>
-                    <img src={rightArrow} width="100px" />
-                </div>
+
             </section>
 
             {/* REVIEW MODAL FORM */}
