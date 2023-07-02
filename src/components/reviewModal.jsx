@@ -4,6 +4,9 @@ import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
 import { useEffect, useState } from "react"
 import React, { useRef } from "react"
+import { db, storage } from "../config/firebase"
+import { doc, addDoc, collection } from "firebase/firestore"
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 
 const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
@@ -11,6 +14,53 @@ const ReviewModal = (props) => {
     const {reviewModalTracker} = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
+    const [menuItemName, setMenuItemName] = useState("")
+    const [menuItemDesc, setMenuItemDesc] = useState("")
+    const [menuItemImg, setMenuItemImg] = useState(null)
+    const [menuItemImgRef, setMenuItemImgRef] = useState("")
+
+    useEffect(() => {
+        const uploadMenuItemImg = () => {
+            const name = new Date().getTime() + menuItemImg.name
+            const itemImgRef = ref(storage, `breakfastMenuItemImgs/${name}`)
+
+            const uploadTask = uploadBytesResumable(itemImgRef, menuItemImg);
+
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    console.log('Upload is ' + progress + '% done');
+                    switch (snapshot.state) {
+                        case 'paused':
+                            console.log('Upload is paused');
+                            break;
+                        case 'running':
+                            console.log('Upload is running');
+                            break;
+                    }
+                },
+                (error) => {
+                    console.log(error)
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                        setMenuItemImgRef(downloadURL)
+                    });
+                }
+            );
+        }
+        menuItemImg && uploadMenuItemImg();
+
+    }, [menuItemImg])
+
+    const handleAdd = async (e) => {
+        e.preventDefault()
+        await addDoc(collection(db, "breakfastMenuItems"), {
+            menuItemName: menuItemName,
+            menuItemDescription: menuItemDesc,
+            menuItemImg: menuItemImgRef,
+        });
+    }
 
 
 
