@@ -88,12 +88,12 @@ const ReviewCarousel = () => {
         }
 
 
-        
+
     }, [reviewDataTracker])
 
     console.log(reviewData)
     return (
-        <div>
+        <div className="w-full overflow-x-auto">
             <div>
                 <h1 className="fontWriting text-4xl text-white">Recent Reviews:</h1>
             </div>
@@ -105,10 +105,10 @@ const ReviewCarousel = () => {
                     <div className="flex flex-col items-center w-[300px] h-content bg-orange-600 border rounded border-[3px] border-black m-4 px-1 py-2" key={index}>
                         <div className="w-11/12  h-content  mt-3">
                             <div className="flex items-center mb-2">
-                                <div className="w-1/3 bg-red-200">
+                                <div className="w-1/3 ">
                                     <img src={data.reviewAvatarImg} className="w-[75px] h-[75px] rounded-full object-cover object-center" />
                                 </div>
-                                <div className="overflow-hidden hover:overflow-x-scroll px-2 w-2/3">
+                                <div className="overflow-hidden hover:overflow-x-auto px-2 w-2/3">
                                     <h1 className="font-bold">{data.reviewInfoName}</h1>
                                 </div>
                             </div>
@@ -117,51 +117,51 @@ const ReviewCarousel = () => {
                             </div>
                         </div>
                         <div className="flex mt-3">
-                            {data.reviewInfoRating === 1 ? 
-                            <div  className="w-full flex justify-evenly"> 
-                                <img src = {fill} className="w-[35px] h-[35px]" />
-                                <img src = {blank}  className="w-[35px] h-[35px]"/>
-                                <img src = {blank}  className="w-[35px] h-[35px]"/>
-                                <img  src = {blank} className="w-[35px] h-[35px]"/>
-                                <img src = {blank}  className="w-[35px] h-[35px]"/>
-                            </div> 
-                            :
-                            data.reviewInfoRating === 2 ? 
-                            <div className="w-full flex justify-evenly"> 
-                                <img src = {fill} className="w-[35px] h-[35px]"/>
-                                <img src = {fill}  className="w-[35px] h-[35px]"/>
-                                <img src = {blank} className="w-[35px] h-[35px]"/>
-                                <img src = {blank} className="w-[35px] h-[35px]" />
-                                <img src = {blank} className="w-[35px] h-[35px]"/>
-                            </div>
-                            : 
-                            data.reviewInfoRating === 3 ? 
-                            <div className="w-full flex justify-evenly"> 
-                                <img  className="w-[35px] h-[35px]"/>
-                                <img className="w-[35px] h-[35px]" />
-                                <img  className="w-[35px] h-[35px]"/>
-                                <img  className="w-[35px] h-[35px]"/>
-                                <img className="w-[35px] h-[35px]" />
-                            </div>
-                            :
-                            data.reviewInfoRating === 4 ? 
-                            <div className="w-full flex justify-evenly"> 
-                                <img  className="w-[35px] h-[35px]"/>
-                                <img className="w-[35px] h-[35px]"/>
-                                <img  className="w-[35px] h-[35px]"/>
-                                <img className="w-[35px] h-[35px]" />
-                                <img className="w-[35px] h-[35px]"/>
-                            </div>
-                            : 
-                            data.reviewInfoRating === 5 ? 
-                            <div className="w-full flex justify-evenly"> 
-                                <img  className="w-[35px] h-[35px]"/>
-                                <img  className="w-[35px] h-[35px]"/>
-                                <img className="w-[35px] h-[35px]"/>
-                                <img  className="w-[35px] h-[35px]"/>
-                                <img  className="w-[35px] h-[35px]"/>
-                            </div>
-                            : ""}
+                            {data.reviewInfoRating === 1 ?
+                                <div className="w-full flex justify-evenly">
+                                    <img src={fill} className="w-[35px] h-[35px]" />
+                                    <img src={blank} className="w-[35px] h-[35px]" />
+                                    <img src={blank} className="w-[35px] h-[35px]" />
+                                    <img src={blank} className="w-[35px] h-[35px]" />
+                                    <img src={blank} className="w-[35px] h-[35px]" />
+                                </div>
+                                :
+                                data.reviewInfoRating === 2 ?
+                                    <div className="w-full flex justify-evenly">
+                                        <img src={fill} className="w-[35px] h-[35px]" />
+                                        <img src={fill} className="w-[35px] h-[35px]" />
+                                        <img src={blank} className="w-[35px] h-[35px]" />
+                                        <img src={blank} className="w-[35px] h-[35px]" />
+                                        <img src={blank} className="w-[35px] h-[35px]" />
+                                    </div>
+                                    :
+                                    data.reviewInfoRating === 3 ?
+                                        <div className="w-full flex justify-evenly">
+                                            <img src={fill} className="w-[35px] h-[35px]" />
+                                            <img src={fill} className="w-[35px] h-[35px]" />
+                                            <img src={fill} className="w-[35px] h-[35px]" />
+                                            <img src={blank} className="w-[35px] h-[35px]" />
+                                            <img src={blank} className="w-[35px] h-[35px]" />
+                                        </div>
+                                        :
+                                        data.reviewInfoRating === 4 ?
+                                            <div className="w-full flex justify-evenly">
+                                                <img src={fill} className="w-[35px] h-[35px]" />
+                                                <img src={fill} className="w-[35px] h-[35px]" />
+                                                <img src={fill} className="w-[35px] h-[35px]" />
+                                                <img src={fill} className="w-[35px] h-[35px]" />
+                                                <img src={blank} className="w-[35px] h-[35px]" />
+                                            </div>
+                                            :
+                                            data.reviewInfoRating === 5 ?
+                                                <div className="w-full flex justify-evenly">
+                                                    <img src={fill} className="w-[35px] h-[35px]" />
+                                                    <img src={fill} className="w-[35px] h-[35px]" />
+                                                    <img src={fill} className="w-[35px] h-[35px]" />
+                                                    <img src={fill} className="w-[35px] h-[35px]" />
+                                                    <img src={fill} className="w-[35px] h-[35px]" />
+                                                </div>
+                                                : ""}
                         </div>
                     </div>
                 ))}
