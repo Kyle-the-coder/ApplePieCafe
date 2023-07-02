@@ -11,20 +11,21 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
     const { handleReviewModal } = props
-    const {reviewModalTracker} = props
+    const { reviewModalTracker } = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
-    const [menuItemName, setMenuItemName] = useState("")
-    const [menuItemDesc, setMenuItemDesc] = useState("")
-    const [menuItemImg, setMenuItemImg] = useState(null)
-    const [menuItemImgRef, setMenuItemImgRef] = useState("")
+    const [reviewInfoName, setReviewInfoName] = useState("")
+    const [reviewInfoDesc, setReviewInfoDesc] = useState("")
+    const [reviewInfoRating, setReviewInfoRating] = useState("")
+    const [reviewAvatarImg, setReviewAvatarImg] = useState(null)
+    const [reviewAvatarImgRef, setReviewAvatarImgRef] = useState("")
 
     useEffect(() => {
-        const uploadMenuItemImg = () => {
-            const name = new Date().getTime() + menuItemImg.name
-            const itemImgRef = ref(storage, `breakfastMenuItemImgs/${name}`)
+        const uploadReviewAvatarImg = () => {
+            const name = new Date().getTime() + reviewAvatarImg.name
+            const itemImgRef = ref(storage, `reviewAvatarImgs/${name}`)
 
-            const uploadTask = uploadBytesResumable(itemImgRef, menuItemImg);
+            const uploadTask = uploadBytesResumable(itemImgRef, reviewAvatarImg);
 
             uploadTask.on('state_changed',
                 (snapshot) => {
@@ -44,21 +45,22 @@ const ReviewModal = (props) => {
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        setMenuItemImgRef(downloadURL)
+                        setReviewAvatarImgRef(downloadURL)
                     });
                 }
             );
         }
-        menuItemImg && uploadMenuItemImg();
+        reviewAvatarImg && uploadReviewAvatarImg();
 
-    }, [menuItemImg])
+    }, [reviewAvatarImg])
 
     const handleAdd = async (e) => {
         e.preventDefault()
-        await addDoc(collection(db, "breakfastMenuItems"), {
-            menuItemName: menuItemName,
-            menuItemDescription: menuItemDesc,
-            menuItemImg: menuItemImgRef,
+        await addDoc(collection(db, "reviewInfo"), {
+            reviewInfoName: reviewInfoName,
+            reviewInfoDescription: reviewInfoDesc,
+            reviewInfoRating: reviewInfoRating,
+            reviewAvatarImg: reviewAvatarImgRef,
         });
     }
 
@@ -73,8 +75,8 @@ const ReviewModal = (props) => {
             { img: blank, idx: 5 },
         ])
 
-        if(reviewModalTracker){
-            document.getElementById("reviewStart").scrollIntoView({behavior: "smooth"})
+        if (reviewModalTracker) {
+            document.getElementById("reviewStart").scrollIntoView({ behavior: "smooth" })
 
         }
     }, [reviewModalTracker])
@@ -151,6 +153,9 @@ const ReviewModal = (props) => {
             setStarSet(newSet)
         }
     }
+    console.log(reviewInfoDesc, "desc")
+    console.log(reviewInfoName, "name")
+    console.log(reviewInfoRating, "rating")
 
     return (
         <div className={`${reviewModalTracker ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
@@ -164,31 +169,34 @@ const ReviewModal = (props) => {
                     <img src={logo} width="200px" />
                 </div>
                 <div className="w-full py-10 flex justify-center">
-                    <form className="flex flex-col items-center bg-slate-300 w-3/4 p-5">
+                    <form className="flex flex-col items-center bg-slate-300 w-3/4 p-5" onSubmit={handleAdd}>
                         <div className="mb-3s fontWriting text-2xl">
                             <h1>Leave us a Review!</h1>
                         </div>
 
                         <div className="flex flex-col w-full items-center justify-center py-2">
                             <label className="font-bold mb-2">Photo(optional):</label>
-                            <input className="w-[300px]" type="file" />
+                            <input className="w-[300px]" type="file" onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
+                            <img  className="w-[50px] h-[50px]"/>
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Name:</label>
-                            <input className="w-full p-1" type="text"></input>
+                            <input className="w-full p-1" type="text" onChange={(e) => setReviewInfoName(e.target.value)} />
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Review:</label>
-                            <textarea col="10" rows="10" className="w-full p-1" type="text"></textarea>
+                            <textarea col="10" rows="10" className="w-full p-1" type="text" onChange={(e) => setReviewInfoDesc(e.target.value)} />
                         </div>
 
                         <div className="flex flex-col py-2 mb-4">
                             <label className="font-bold">Rating:</label>
                             <div className="flex w-full">
                                 {starSet.map((star, index) => (
-                                    <img src={star.img} className="w-[50px] mx-[2px] cursor-pointer" onClick={() => handleStarFill(star.idx)} key={index} />
+                                    <div key={index} className="w-full">
+                                        <img src={star.img} className="w-[50px] mx-[2px] cursor-pointer" onClick={() => { handleStarFill(star.idx); setReviewInfoRating(star.idx) }} />
+                                    </div>
                                 ))}
                             </div>
                         </div>
