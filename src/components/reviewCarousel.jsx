@@ -93,8 +93,8 @@ const ReviewCarousel = () => {
 
     console.log(reviewData)
     return (
-        <div className="w-full overflow-x-auto">
-            <div>
+        <div className="w-full">
+            <div className="w-full flex justify-begin ml-5">
                 <h1 className="fontWriting text-4xl text-white">Recent Reviews:</h1>
             </div>
 
@@ -104,15 +104,15 @@ const ReviewCarousel = () => {
                 {reviewDataTracker && reviewData.map((data, index) => (
                     <div className="flex flex-col items-center w-[300px] h-content bg-orange-600 border rounded border-[3px] border-black m-4 px-1 py-2" key={index}>
                         <div className="w-11/12  h-content  mt-3">
-                            <div className="flex items-center mb-2">
-                                <div className="w-1/3 ">
+                            <div className="flex items-center mb-2 bg-red-200 p-1 w-full h-content">
+                                <div className="w-1/3 z-[10] absolute">
                                     <img src={data.reviewAvatarImg} className="w-[75px] h-[75px] rounded-full object-cover object-center" />
                                 </div>
-                                <div className="overflow-hidden hover:overflow-x-auto px-2 w-2/3">
+                                <div className="overflow-hidden hover:overflow-x-auto bg-red-300 px-2  w-content flex items-center justify-center">
                                     <h1 className="font-bold">{data.reviewInfoName}</h1>
                                 </div>
                             </div>
-                            <div className="w-full h-[200px] bg-white border border-2 border-black overflow-y-scroll " >
+                            <div className="w-full h-[200px] bg-white border border-2 border-black overflow-y-auto " >
                                 <p className="bg-white p-2">{data.reviewInfoDescription}</p>
                             </div>
                         </div>
