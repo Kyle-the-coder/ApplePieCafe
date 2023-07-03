@@ -1,12 +1,9 @@
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
-import restOutside from "../assets/images/restOutside.jpeg"
 import "../styles/font.css"
 import ReviewCarousel from "../components/reviewCarousel"
 import ReviewModal from "../components/reviewModal"
-import leftArrow from "../assets/images/left-arrow.png"
-import rightArrow from "../assets/images/right-arrow.png"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
 
@@ -20,7 +17,7 @@ const LandingPage = () => {
         reviewButton.current.scrollIntoView({ behavior: "smooth" });
 
     }
-    console.log(reviewModalTracker)
+    
     return (
         <div className="relative">
 
