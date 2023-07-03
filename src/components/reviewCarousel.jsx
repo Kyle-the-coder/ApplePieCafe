@@ -39,19 +39,21 @@ const ReviewCarousel = () => {
                 {/* Review Card */}
                 {reviewDataTracker && reviewData.map((data, index) => (
                     <div className="reviewCard" key={index}>
-                        <div className="w-11/12  h-content  mt-3">
-                            <div className="flex items-center mb-2 p-1 w-full h-content relative">
-                                <div className="w-1/3 z-[10] ">
-                                    <img src={data.reviewAvatarImg} className="w-[75px] h-[75px] rounded-full object-cover object-center" />
-                                </div>
-                                <div className="overflow-hidden hover:overflow-x-auto text-white px-2  w-content flex items-center justify-center">
-                                    <h1 className="font-bold">{data.reviewInfoName}</h1>
-                                </div>
+
+                        <div className="reviewCardTitle">
+                            <div className="reviewCardAvatarImgContainer">
+                                <img src={data.reviewAvatarImg} className="reviewCardAvatarImg" />
                             </div>
-                            <div className="w-full h-[200px] text-white border border-2 border-black overflow-y-auto " >
-                                <p className=" p-2">{data.reviewInfoDescription}</p>
+                            <div className="reviewCardTitleNameContainer">
+                                <h1 className="font-bold">{data.reviewInfoName}</h1>
                             </div>
                         </div>
+
+
+                        <div className="reviewCardDescriptionContainer" >
+                            <p className="reviewCardDescription">{data.reviewInfoDescription}</p>
+                        </div>
+
                         <div className="flex mt-3 ">
                             {data.reviewInfoRating === 1 ?
                                 <div className="w-full flex justify-evenly">
