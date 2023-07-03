@@ -1,6 +1,7 @@
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import "../styles/font.css"
+import "../styles/darkBg.css"
 import ReviewCarousel from "../components/reviewCarousel"
 import ReviewModal from "../components/reviewModal"
 import { useState } from "react"
@@ -17,7 +18,7 @@ const LandingPage = () => {
         reviewButton.current.scrollIntoView({ behavior: "smooth" });
 
     }
-    
+
     return (
         <div className="relative">
 
@@ -61,7 +62,7 @@ const LandingPage = () => {
 
 
             {/* REVIEW CAROUSEL SECTION */}
-            <section className=" flex items-center p-[5px] py-4 bg-slate-800 overflow-x-auto">
+            <section className=" flex items-center p-[5px] py-4 darkBg overflow-x-auto">
                 <div>
                     <ReviewCarousel />
                 </div>
