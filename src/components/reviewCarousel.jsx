@@ -1,19 +1,14 @@
-import avatar from "../assets/images/avatar.png"
-import wAvatar from "../assets/images/woman.png"
-import starBlank from "../assets/images/starBlank.png"
-import starFill from "../assets/images/starFill.png"
+
 import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
 import { useEffect, useState } from "react";
-import { doc, getDocs, collection } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import "../styles/scrollbar.css"
 
 const ReviewCarousel = () => {
     const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
-    const [starSet, setStarSet] = useState([])
-    const [starFillTracker, setStarFillTracker] = useState(false)
 
     useEffect(() => {
         // GET REVIEW DATA
@@ -28,78 +23,17 @@ const ReviewCarousel = () => {
             }
         };
         getReviewData();
-
-        const handleStarFill = (index) => {
-            console.log(index, "index")
-            if (index == 1) {
-                const newSet = [
-                    { img: fill, idx: 1 },
-                    { img: blank, idx: 2 },
-                    { img: blank, idx: 3 },
-                    { img: blank, idx: 4 },
-                    { img: blank, idx: 5 },
-                ]
-                setStarSet(newSet)
-            }
-
-            if (index == 2) {
-                const newSet = [
-                    { img: fill, idx: 1 },
-                    { img: fill, idx: 2 },
-                    { img: blank, idx: 3 },
-                    { img: blank, idx: 4 },
-                    { img: blank, idx: 5 },
-                ]
-                setStarSet(newSet)
-            }
-
-            if (index == 3) {
-                const newSet = [
-                    { img: fill, idx: 1 },
-                    { img: fill, idx: 2 },
-                    { img: fill, idx: 3 },
-                    { img: blank, idx: 4 },
-                    { img: blank, idx: 5 },
-                ]
-                setStarSet(newSet)
-            }
-
-            if (index == 4) {
-                const newSet = [
-                    { img: fill, idx: 1 },
-                    { img: fill, idx: 2 },
-                    { img: fill, idx: 3 },
-                    { img: fill, idx: 4 },
-                    { img: blank, idx: 5 },
-                ]
-                setStarSet(newSet)
-            }
-
-            if (index == 5) {
-                const newSet = [
-                    { img: fill, idx: 1 },
-                    { img: fill, idx: 2 },
-                    { img: fill, idx: 3 },
-                    { img: fill, idx: 4 },
-                    { img: fill, idx: 5 },
-                ]
-                setStarSet(newSet)
-            }
-        }
-
-
-
     }, [reviewDataTracker])
 
-    console.log(reviewData)
+
     return (
         <div className="w-full">
+
             <div className="w-full flex justify-begin ml-5">
                 <h1 className="fontWriting text-4xl text-white">Recent Reviews:</h1>
             </div>
 
             <div className="flex w-full h-600px justify-center">
-
                 {/* Review Card */}
                 {reviewDataTracker && reviewData.map((data, index) => (
                     <div className="flex flex-col items-center w-[300px] h-content bg-orange-600 border rounded border-[3px] border-black m-4 px-1 py-2" key={index}>
