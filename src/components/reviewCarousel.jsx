@@ -37,8 +37,8 @@ const ReviewCarousel = () => {
             <div className="flex w-full h-600px justify-center">
                 {/* Review Card */}
                 {reviewDataTracker && reviewData.map((data, index) => (
-                    <div className="flex flex-col items-center w-[300px] h-content bg-orange-600 border rounded border-[3px] border-black m-4 px-1 py-2 card" key={index}>
-                        <div className="w-11/12  h-content  mt-3 card-info">
+                    <div className="flex flex-col items-center w-[300px] h-content bg-orange-600 border rounded border-[3px] border-black m-4 px-1 py-2 rounded-tl-[3rem]" key={index}>
+                        <div className="w-11/12  h-content  mt-3">
                             <div className="flex items-center mb-2 p-1 w-full h-content relative">
                                 <div className="w-1/3 z-[10] ">
                                     <img src={data.reviewAvatarImg} className="w-[75px] h-[75px] rounded-full object-cover object-center" />
@@ -51,7 +51,7 @@ const ReviewCarousel = () => {
                                 <p className=" p-2">{data.reviewInfoDescription}</p>
                             </div>
                         </div>
-                        <div className="flex mt-3 cardInfo">
+                        <div className="flex mt-3 ">
                             {data.reviewInfoRating === 1 ?
                                 <div className="w-full flex justify-evenly">
                                     <img src={fill} className="w-[35px] h-[35px]" />
