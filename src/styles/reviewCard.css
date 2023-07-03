@@ -12,9 +12,7 @@
     border-top-right-radius: .5rem;
     border-bottom-left-radius: .5rem;
     transition: all .8s;
-    transform: rotateX(45deg) rotateY(45deg);
-    perspective: 800px;
-    backface-visibility: hidden;
+    transform: rotate3d(1, 2, 1, 45deg);
 }
 
 .reviewCard:hover{
