@@ -12,11 +12,12 @@
     border-top-right-radius: .5rem;
     border-bottom-left-radius: .5rem;
     transition: all .8s;
-    transform: rotate3d(1, 2, 1, 45deg);
+    box-shadow: 8px 10px 10px 5px rgba(245, 235, 235, 0.5);
+
 }
 
-.reviewCard:hover{
-    transform: rotate3d(0,0,0, 0deg);
+.reviewCard:hover {
+    transform: rotate3d(0, 0, 0, 0deg);
     transition: all .8s;
 }
 
@@ -29,10 +30,10 @@
     padding: 2px;
     justify-content: space-between;
     flex-direction: column;
-    
+
 }
 
-.reviewCardTitleNameContainer{
+.reviewCardTitleNameContainer {
     width: 100%;
     height: 100%;
     display: flex;
@@ -41,8 +42,24 @@
     align-items: center;
     padding: 12px;
     flex-wrap: wrap;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #888 #f1f1f1;
+
+}
+
+.reviewCardTitleNameContainer::-webkit-scrollbar {
+    height: 7px;
+    background: #0f100ef2;
+}
+
+.reviewCardTitleNameContainer::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+.reviewCardTitleNameContainer:hover {
+    overflow-x: auto;
 }
 
 .reviewCardAvatarImgContainer {
@@ -52,7 +69,7 @@
     padding: 2px;
 }
 
-.reviewCardAvatarImg{
+.reviewCardAvatarImg {
     width: 100px;
     height: 100px;
     border-radius: 100%;
@@ -60,15 +77,16 @@
     object-position: center;
 }
 
-.reviewCardDescriptionContainer{
-    width: 100%;
+.reviewCardDescriptionContainer {
+    width: 85%;
     height: 200px;
     border: 2px solid black;
     overflow: auto;
     background-color: white;
+    border-radius: .6rem;
 }
 
-.reviewCardDescription{
+.reviewCardDescription {
     width: 100%;
     height: 100%;
     padding: 2px;
