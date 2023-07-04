@@ -32,7 +32,7 @@ const ReviewCarousel = () => {
         <div className="w-full">
 
             <div className="w-full flex justify-begin ml-5">
-                <h1 className="fontWriting text-4xl text-white">Recent Reviews:</h1>
+                <h1 className="fontWriting text-4xl">Recent Reviews:</h1>
             </div>
 
             <div className="flex w-full h-600px justify-center">
