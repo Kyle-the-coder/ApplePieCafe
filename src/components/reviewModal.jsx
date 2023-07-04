@@ -8,6 +8,7 @@ import { db, storage } from "../config/firebase"
 import { doc, addDoc, collection } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import avatarPic from "../assets/images/avatar.png"
+import "../styles/bgColors.css"
 
 const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
@@ -165,8 +166,8 @@ const ReviewModal = (props) => {
             </div>
             <div className="w-full h-[10px]" id="reviewStart">
             </div>
-            <div className="w-[800px] h-content bg-orange-100 z-[10] mb-5 rounded flex flex-col items-center justify-between mt-5">
-                <div className="w-full py-2 bg-slate-900 rounded flex justify-center" >
+            <div className="w-[800px] h-content beigeBg z-[10] mb-5 rounded flex flex-col items-center justify-between mt-5">
+                <div className="w-full py-2 darkBg rounded flex justify-center" >
                     <img src={logo} width="200px" />
                 </div>
                 <div className="w-full py-10 flex justify-center">
