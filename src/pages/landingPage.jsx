@@ -1,7 +1,7 @@
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import "../styles/font.css"
-import "../styles/darkBg.css"
+import "../styles/bgColors.css"
 import ReviewCarousel from "../components/reviewCarousel"
 import ReviewModal from "../components/reviewModal"
 import { useState } from "react"
