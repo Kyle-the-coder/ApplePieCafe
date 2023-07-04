@@ -171,7 +171,7 @@ const ReviewModal = (props) => {
                     <img src={logo} width="200px" />
                 </div>
                 <div className="w-full py-10 flex justify-center">
-                    <form className="flex flex-col items-center bg-slate-300 w-3/4 p-5" onSubmit={handleAdd}>
+                    <form className="flex flex-col items-center darkBg text-white w-3/4 p-5" onSubmit={handleAdd}>
                         <div className="mb-3s fontWriting text-2xl">
                             <h1>Leave us a Review!</h1>
                         </div>
@@ -186,12 +186,12 @@ const ReviewModal = (props) => {
 
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Name:</label>
-                            <input className="w-full p-1" type="text" onChange={(e) => setReviewInfoName(e.target.value)} />
+                            <input className="w-full p-1 text-black" type="text" onChange={(e) => setReviewInfoName(e.target.value)} />
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Review:</label>
-                            <textarea col="10" rows="10" className="w-full p-1" type="text" onChange={(e) => setReviewInfoDesc(e.target.value)} />
+                            <textarea col="10" rows="10" className="w-full p-1 text-black" type="text" onChange={(e) => setReviewInfoDesc(e.target.value)} />
                         </div>
 
                         <div className="flex flex-col py-2 mb-4">
@@ -205,12 +205,12 @@ const ReviewModal = (props) => {
                             </div>
                         </div>
 
-                        <button className="px-3 py-1 bg-slate-900 text-white w-[100px] rounded" type="submit">Submit</button>
+                        <button className="px-3 py-1 beigeBg text-black w-[100px] rounded" type="submit">Submit</button>
                     </form>
                 </div>
 
 
-                <button className="px-3 py-1 bg-orange-700 text-white rounded mb-10" onClick={() => handleReviewModal()}>Close</button>
+                <button className="px-3 py-1 darkRedBg text-white rounded mb-10" onClick={() => handleReviewModal()}>Close</button>
             </div>
         </div>
     )
