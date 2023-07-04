@@ -73,7 +73,7 @@ const LandingPage = () => {
             <section>
                 <div className="py-5" ref={reviewButton}>
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
-                    <button className="px-3 py-1 bg-red-300 rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
+                    <button className="px-3 py-1 darkRedBg text-white rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
                 <div >
                     <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker} />
