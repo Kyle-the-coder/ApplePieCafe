@@ -1,5 +1,5 @@
 
-import blank from "../assets/images/starBlank.png"
+import blank from "../assets/images/whiteStar.png"
 import fill from "../assets/images/starFill.png"
 import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
