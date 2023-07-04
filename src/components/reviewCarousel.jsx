@@ -39,67 +39,71 @@ const ReviewCarousel = () => {
                 {/* Review Card */}
                 {reviewDataTracker && reviewData.map((data, index) => (
                     <div className="reviewCard" key={index}>
-
-                        <div className="reviewCardTitle">
-                            <div className="reviewCardAvatarImgContainer">
-                                <img src={data.reviewAvatarImg} className="reviewCardAvatarImg" />
-                            </div>
-                            <div className="reviewCardTitleNameContainer">
-                                <h1 className="font-bold">{data.reviewInfoName}</h1>
-                            </div>
-                        </div>
+                        <div className="reviewCardInner">
 
 
-                        <div className="reviewCardDescriptionContainer" >
-                            <p className="reviewCardDescription">{data.reviewInfoDescription}</p>
-                        </div>
 
-                        <div className="flex mt-3 ">
-                            {data.reviewInfoRating === 1 ?
-                                <div className="w-full flex justify-evenly">
-                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
+                            <div className="reviewCardTitle">
+                                <div className="reviewCardAvatarImgContainer">
+                                    <img src={data.reviewAvatarImg} className="reviewCardAvatarImg" />
                                 </div>
-                                :
-                                data.reviewInfoRating === 2 ?
+                                <div className="reviewCardTitleNameContainer">
+                                    <h1 className="font-bold">{data.reviewInfoName}</h1>
+                                </div>
+                            </div>
+
+
+                            <div className="reviewCardDescriptionContainer" >
+                                <p className="reviewCardDescription">{data.reviewInfoDescription}</p>
+                            </div>
+
+                            <div className="flex mt-3 ">
+                                {data.reviewInfoRating === 1 ?
                                     <div className="w-full flex justify-evenly">
                                         <img src={fill} className="w-[35px] h-[35px]" />
-                                        <img src={fill} className="w-[35px] h-[35px]" />
+                                        <img src={blank} className="w-[35px] h-[35px]" />
                                         <img src={blank} className="w-[35px] h-[35px]" />
                                         <img src={blank} className="w-[35px] h-[35px]" />
                                         <img src={blank} className="w-[35px] h-[35px]" />
                                     </div>
                                     :
-                                    data.reviewInfoRating === 3 ?
+                                    data.reviewInfoRating === 2 ?
                                         <div className="w-full flex justify-evenly">
                                             <img src={fill} className="w-[35px] h-[35px]" />
                                             <img src={fill} className="w-[35px] h-[35px]" />
-                                            <img src={fill} className="w-[35px] h-[35px]" />
+                                            <img src={blank} className="w-[35px] h-[35px]" />
                                             <img src={blank} className="w-[35px] h-[35px]" />
                                             <img src={blank} className="w-[35px] h-[35px]" />
                                         </div>
                                         :
-                                        data.reviewInfoRating === 4 ?
+                                        data.reviewInfoRating === 3 ?
                                             <div className="w-full flex justify-evenly">
                                                 <img src={fill} className="w-[35px] h-[35px]" />
                                                 <img src={fill} className="w-[35px] h-[35px]" />
                                                 <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={fill} className="w-[35px] h-[35px]" />
+                                                <img src={blank} className="w-[35px] h-[35px]" />
                                                 <img src={blank} className="w-[35px] h-[35px]" />
                                             </div>
                                             :
-                                            data.reviewInfoRating === 5 ?
+                                            data.reviewInfoRating === 4 ?
                                                 <div className="w-full flex justify-evenly">
                                                     <img src={fill} className="w-[35px] h-[35px]" />
                                                     <img src={fill} className="w-[35px] h-[35px]" />
                                                     <img src={fill} className="w-[35px] h-[35px]" />
                                                     <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
+                                                    <img src={blank} className="w-[35px] h-[35px]" />
                                                 </div>
-                                                : ""}
+                                                :
+                                                data.reviewInfoRating === 5 ?
+                                                    <div className="w-full flex justify-evenly">
+                                                        <img src={fill} className="w-[35px] h-[35px]" />
+                                                        <img src={fill} className="w-[35px] h-[35px]" />
+                                                        <img src={fill} className="w-[35px] h-[35px]" />
+                                                        <img src={fill} className="w-[35px] h-[35px]" />
+                                                        <img src={fill} className="w-[35px] h-[35px]" />
+                                                    </div>
+                                                    : ""}
+                            </div>
                         </div>
                     </div>
                 ))}
