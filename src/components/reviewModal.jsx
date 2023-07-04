@@ -1,6 +1,6 @@
 import applePie from "../assets/images/apphoto.jpeg"
 import logo from "../assets/images/ApcWhite.PNG"
-import blank from "../assets/images/starBlank.png"
+import blank from "../assets/images/whiteStar.png"
 import fill from "../assets/images/starFill.png"
 import { useEffect, useState } from "react"
 import React, { useRef } from "react"
