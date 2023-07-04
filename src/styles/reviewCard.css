@@ -38,7 +38,7 @@
 }
 
 .reviewCard:hover .reviewCardAvatarImg{
-    box-shadow: 1px 1px 2px 2px #ff5101;
+    box-shadow: 0px 1px 2px 2px #ff5101;
 }
 
 .reviewCardTitle {
