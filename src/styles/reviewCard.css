@@ -33,8 +33,12 @@
 }
 
 .reviewCard:hover {
-    box-shadow: 8px 10px 10px 5px rgba(253, 0, 0, 0.712);
+    box-shadow: 8px 10px 10px 5px #ff5101;
     transition: all .8s;
+}
+
+.reviewCard:hover .reviewCardAvatarImg{
+    box-shadow: 1px 1px 2px 2px #ff5101;
 }
 
 .reviewCardTitle {
@@ -104,7 +108,8 @@
     border-radius: 100%;
     object-fit: cover;
     object-position: center;
-    box-shadow: 3px 3px 5px 5px rgba(216, 211, 211, 0.712);
+    box-shadow: 5px 5px 3px 3px rgba(216, 211, 211, 0.712);
+    transition: all .8s;
 }
 
 .reviewCardDescriptionContainer {
