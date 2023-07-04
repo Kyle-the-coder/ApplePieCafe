@@ -31,7 +31,7 @@ const LandingPage = () => {
 
             {/* QUOTE SECTION */}
             <section>
-                <div className="w-full h-[250px] bg-slate-800 flex flex-col justify-center items-center text-white">
+                <div className="w-full h-[250px] darkBg flex flex-col justify-center items-center text-white">
                     <h1 className="handWriting text-7xl mb-3"> "Where Every Slice Feels Like Home"</h1>
                     <h1 className="text-bold text-xl">-Grace Johnson(Owner)</h1>
                 </div>
@@ -62,7 +62,7 @@ const LandingPage = () => {
 
 
             {/* REVIEW CAROUSEL SECTION */}
-            <section className=" flex items-center p-[5px] py-4 darkBg overflow-x-auto">
+            <section className=" flex items-center p-[5px] py-4 beigeBg overflow-x-auto">
                 <div>
                     <ReviewCarousel />
                 </div>
