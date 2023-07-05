@@ -31,7 +31,7 @@ const ReviewCarousel = (props) => {
     const [prev2TransitionTracker, setPrev2TransitionTracker] = useState(false)
 
     //PROPS
-    const {reviewModalTracker} = props
+    const { reviewModalTracker } = props
 
     useEffect(() => {
         // GET REVIEW DATA
@@ -47,10 +47,13 @@ const ReviewCarousel = (props) => {
         };
         getReviewData();
 
-        if (reviewDataTracker) {
+        if (reviewDataTracker && reviewModalTracker == false) {
             setPrev1TransitionTracker(true)
             setPrev1Set(reviewData.slice(0, 4))
             setNext1Set(reviewData.slice(4))
+            setNext1TransitionTracker(false)
+            setNext2TransitionTracker(false)
+            setPrev2TransitionTracker(false)
         }
 
     }, [reviewDataTracker, reviewModalTracker])
@@ -67,6 +70,7 @@ const ReviewCarousel = (props) => {
         setPrev1TransitionTracker(false)
         setPrev2TransitionTracker(false)
         setPrev1Set(oldSet)
+        setPrev2Set([])
 
         if (nextSetTracker) {
             // Next 1 Transition
@@ -104,7 +108,7 @@ const ReviewCarousel = (props) => {
         const newerIndex = newIndex - 4
         const newerSet = reviewData.slice(newerIndex, newerIndex - 4)
 
-        console.log(newerIndex, "newerIndex")
+        console.log("newerSet", newerSet)
 
         setNext1TransitionTracker(false)
         setNext2TransitionTracker(false)
@@ -146,7 +150,18 @@ const ReviewCarousel = (props) => {
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
-    console.log(prev2Set)
+    console.log("prev2 set", prev2Set)
+    console.log("prevSetTracker", prevSetTracker)
+
+    console.log("prev 1 set", prev1Set)
+
+    // console.log(reviewModalTracker)
+    // console.log("prev 1", prev1TransitionTracker)
+    console.log("prev 2", prev2TransitionTracker)
+
+    console.log("currentIndex", currentIndex)
+    // console.log("next 1", next1TransitionTracker)
+    // console.log("next 2", next2TransitionTracker)
     return (
         <div className="w-full flex justify-center flex-col">
 
