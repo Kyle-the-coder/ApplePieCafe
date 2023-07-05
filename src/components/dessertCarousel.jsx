@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { doc, getDocs, collection, arrayRemove } from "firebase/firestore"
 import { db } from "../config/firebase"
-import pieRight from "../assets/images/pieRight.PNG"
-import pieLeft from "../assets/images/pieLeft.png"
+import pieRight from "../assets/images/appliePieRight.png"
+import pieLeft from "../assets/images/applePieLeft.png"
 
 
 const DessertCarousel = (props) => {
