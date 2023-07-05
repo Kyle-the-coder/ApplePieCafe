@@ -85,7 +85,7 @@ const DessertCarousel = (props) => {
         const newSet = dessertData.slice(newIndex, newIndex + 3);
         const oldSet = dessertData.slice(newIndex + 3)
         const newerIndex = newIndex - 3
-        const newerSet = dessertData.slice(newerIndex, newerIndex - 3)
+        const newerSet = dessertData.slice(newerIndex, newIndex)
 
         setNext1TransitionTracker(false)
         setNext2TransitionTracker(false)
@@ -108,9 +108,7 @@ const DessertCarousel = (props) => {
 
             //Next 2 Transition
             setPrev2Set(newSet);
-            const timeoutId = setTimeout(() => {
-                setPrev2TransitionTracker(true)
-            }, 50);
+            setPrev2TransitionTracker(true)
         }
 
 
