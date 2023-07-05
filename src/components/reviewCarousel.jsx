@@ -62,6 +62,7 @@ const ReviewCarousel = (props) => {
         const newerSet = reviewData.slice(newerIndex, newerIndex + 4)
         const oldSet = reviewData.slice(newIndex - 4, newIndex)
 
+
         //Prev Transition
         setPrev1TransitionTracker(false)
         setPrev2TransitionTracker(false)
@@ -103,6 +104,8 @@ const ReviewCarousel = (props) => {
         const newerIndex = newIndex - 4
         const newerSet = reviewData.slice(newerIndex, newerIndex - 4)
 
+        console.log(newerIndex, "newerIndex")
+
         setNext1TransitionTracker(false)
         setNext2TransitionTracker(false)
         setNext1Set(oldSet)
@@ -124,9 +127,7 @@ const ReviewCarousel = (props) => {
 
             //Next 2 Transition
             setPrev2Set(newSet);
-            const timeoutId = setTimeout(() => {
-                setPrev2TransitionTracker(true)
-            }, 50);
+            setPrev2TransitionTracker(true)
         }
 
 
@@ -144,6 +145,8 @@ const ReviewCarousel = (props) => {
 
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
+
+    console.log(prev2Set)
     return (
         <div className="w-full flex justify-center flex-col">
 
