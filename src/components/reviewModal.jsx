@@ -63,6 +63,7 @@ const ReviewModal = (props) => {
             reviewInfoRating: reviewInfoRating,
             reviewAvatarImg: reviewAvatarImgRef,
         });
+        handleReviewModal()
     }
 
 
