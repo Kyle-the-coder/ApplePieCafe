@@ -62,7 +62,7 @@ const LandingPage = () => {
 
 
             {/* REVIEW CAROUSEL SECTION */}
-            <section className=" flex items-center p-[5px] py-4 beigeBg ">
+            <section className=" flex items-center p-[5px] py-4 beigeBg " ref={reviewButton}>
                 <div className="w-full flex ">
                     <ReviewCarousel />
                 </div>
@@ -71,7 +71,7 @@ const LandingPage = () => {
 
             {/* REVIEW MODAL FORM */}
             <section>
-                <div className="py-5 darkBg text-white" ref={reviewButton}>
+                <div className="py-5 darkBg text-white" >
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
                     <button className="px-3 py-1 darkRedBg text-white rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
