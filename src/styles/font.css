@@ -9,3 +9,8 @@
 .fontWriting{
     font-family: 'Croissant One', cursive;
 }
+
+.titleWriting{
+    font: bold;
+    color: rgb(29, 28, 28);
+}

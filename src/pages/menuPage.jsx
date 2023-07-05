@@ -101,13 +101,13 @@ const MenuPage = () => {
             {/* Title Section */}
             <section>
                 <div className="bg-gradient-to-r from-orange-200 to-red-400 relative flex w-full justify-center items-center h-[200px]">
-                    <h1 className="fontWriting text-7xl font-bold ">Menu</h1>
+                    <h1 className="fontWriting text-7xl titleWriting">Menu</h1>
                     <img className="w-full h-full object-cover absolute  mix-blend-overlay" src={fruits} />
                 </div>
             </section>
 
             {/* Menu Section */}
-            <section className="h-[900px] w-full bg-slate-900 flex">
+            <section className="h-[900px] w-full darkBg flex">
 
                 <div className="h-full">
                     <MenuSidebar
