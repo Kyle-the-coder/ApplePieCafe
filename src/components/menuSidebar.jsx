@@ -70,7 +70,7 @@ const MenuSidebar = (props) => {
     }
 
     return (
-        <div className="w-content h-full dualBg  flex flex-col justify-top p-1">
+        <div className="w-content h-full dualBg  flex flex-col justify-top pt-1 px-1">
             <div className="w-full h-full darkBg">
                 <div>
                     <h1 className="text-white text-2xl p-2 underline py-3 fontWriting">Options:</h1>
