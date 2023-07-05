@@ -85,7 +85,7 @@ const LunchCarousel = (props) => {
         const newSet = lunchData.slice(newIndex, newIndex + 3);
         const oldSet = lunchData.slice(newIndex + 3)
         const newerIndex = newIndex - 3
-        const newerSet = lunchData.slice(newerIndex, newerIndex - 3)
+        const newerSet = lunchData.slice(newerIndex, newIndex)
 
         setNext1TransitionTracker(false)
         setNext2TransitionTracker(false)
