@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import pieRight from "../assets/images/pieRight.PNG"
-import pieLeft from "../assets/images/pieLeft.png"
+import pieRight from "../assets/images/bluePieRight.png"
+import pieLeft from "../assets/images/bluePieLeft.png"
 
 
 const BreakfastCarousel = (props) => {
