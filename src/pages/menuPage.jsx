@@ -1,9 +1,7 @@
 import fruits from "../assets/images/fruits1.jpeg";
 import MenuSidebar from "../components/menuSidebar";
-import rightArrow from '../assets/images/right-arrow.png';
-import leftArrow from "../assets/images/left-arrow.png";
 import { useEffect, useState } from "react";
-import { doc, getDocs, collection } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import BreakfastCarousel from "../components/breakfastCarousel";
 import LunchCarousel from "../components/lunchCarousel";
