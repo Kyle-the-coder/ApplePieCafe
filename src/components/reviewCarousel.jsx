@@ -6,8 +6,8 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import "../styles/scrollbar.css"
 import "../styles/reviewCard.css"
-import pieRight from "../assets/images/pieRight.PNG"
-import pieLeft from "../assets/images/pieLeft.png"
+import pieRight from "../assets/images/modalArrowRight.png"
+import pieLeft from "../assets/images/modalArrowLeft.png"
 
 const ReviewCarousel = () => {
     const [reviewData, setReviewData] = useState({})
@@ -142,24 +142,24 @@ const ReviewCarousel = () => {
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
     return (
-        <div className="w-full">
+        <div className="w-full flex justify-center flex-col">
 
-            <div className="w-full flex justify-begin ml-5">
+            <div className="w-full flex justify-center ml-5">
                 <h1 className="fontWriting text-4xl">Recent Reviews:</h1>
             </div>
 
-            <div className="flex w-full bg-red-200 h-600px items-center">
-                <div className="h-full flex items-center">
-                    <button className={`${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={handlePrevSet} disabled={isPrevButtonDisabled}>
-                        <img className="h-[45px] w-[50px]" src={pieLeft} />
+            <div className="flex w-full h-600px px-[5px] justify-between items-center">
+                <div className="h-full  flex items-center">
+                    <button className={`h-[45px] w-[50px] ${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={handlePrevSet} disabled={isPrevButtonDisabled}>
+                        <img className="h-[55px] w-[80px]" src={pieLeft} />
                     </button>
                 </div>
 
-                <div className="w-5/6 bg-slate-200 flex h-full justify-evenly">
+                <div className="w-full flex h-full justify-evenly transition-all duration-1000">
                     {/* Review Card */}
                     {prev1Set.map((data, index) => (
 
-                        <div className={`${prev1TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-1000  ${prev1TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -227,7 +227,7 @@ const ReviewCarousel = () => {
                     ))}
                     {prev2Set.map((data, index) => (
 
-                        <div className={`${prev2TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-1000  ${prev2TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-80 z-[-1] "}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -295,7 +295,7 @@ const ReviewCarousel = () => {
                     ))}
                     {next1Set.map((data, index) => (
 
-                        <div className={`${next1TransitionTracker ? 'translate-x-0 opacity-100' : "absolute z-[-1] translate-x-80 "}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-1000  ${next1TransitionTracker ? 'translate-x-0 opacity-100' : "absolute z-[-1] translate-x-80 "}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -363,7 +363,7 @@ const ReviewCarousel = () => {
                     ))}
                     {next2Set.map((data, index) => (
 
-                        <div className={`${next2TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-1000 ${next2TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-1] translate-x-80 '}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -431,8 +431,8 @@ const ReviewCarousel = () => {
                     ))}
                 </div>
                 <div className="h-full flex items-center">
-                    <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={handleNextSet} disabled={isNextButtonDisabled}>
-                        <img className={` h-[40px] w-[50px]`} src={pieRight} />
+                    <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"} `} onClick={handleNextSet} disabled={isNextButtonDisabled}>
+                        <img className={` h-[45px] w-[50px]`} src={pieRight} />
                     </button>
                 </div>
             </div>
