@@ -63,7 +63,7 @@ const LandingPage = () => {
 
             {/* REVIEW CAROUSEL SECTION */}
             <section className=" flex items-center p-[5px] py-4 beigeBg ">
-                <div>
+                <div className="w-full flex ">
                     <ReviewCarousel />
                 </div>
 
