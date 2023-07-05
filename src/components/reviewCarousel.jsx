@@ -54,7 +54,8 @@ const ReviewCarousel = (props) => {
             setNext1TransitionTracker(false)
             setNext2TransitionTracker(false)
             setPrev2TransitionTracker(false)
-        }
+            setCurrentIndex(0)
+        } 
 
     }, [reviewDataTracker, reviewModalTracker])
 
