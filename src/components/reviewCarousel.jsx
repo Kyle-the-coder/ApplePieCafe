@@ -9,7 +9,7 @@ import "../styles/reviewCard.css"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 
-const ReviewCarousel = () => {
+const ReviewCarousel = (props) => {
     const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
 
@@ -29,6 +29,9 @@ const ReviewCarousel = () => {
     const [nextSetTracker, setNextSetTracker] = useState(true)
     const [prev1TransitionTracker, setPrev1TransitionTracker] = useState(false)
     const [prev2TransitionTracker, setPrev2TransitionTracker] = useState(false)
+
+    //PROPS
+    const {reviewModalTracker} = props
 
     useEffect(() => {
         // GET REVIEW DATA
@@ -50,7 +53,7 @@ const ReviewCarousel = () => {
             setNext1Set(reviewData.slice(4))
         }
 
-    }, [reviewDataTracker])
+    }, [reviewDataTracker, reviewModalTracker])
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 4;
@@ -155,7 +158,7 @@ const ReviewCarousel = () => {
                     </button>
                 </div>
 
-                <div className="w-full flex h-full justify-evenly transition-all duration-1000">
+                <div className="w-full flex h-full justify-evenly transition-all duration-1000 overflow-hidden">
                     {/* Review Card */}
                     {prev1Set.map((data, index) => (
 
