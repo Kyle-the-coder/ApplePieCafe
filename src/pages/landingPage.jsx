@@ -64,7 +64,7 @@ const LandingPage = () => {
             {/* REVIEW CAROUSEL SECTION */}
             <section className=" flex items-center p-[5px] py-4 beigeBg " ref={reviewButton}>
                 <div className="w-full flex ">
-                    <ReviewCarousel />
+                    <ReviewCarousel reviewModalTracker={reviewModalTracker} />
                 </div>
 
             </section>
