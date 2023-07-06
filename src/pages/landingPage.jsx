@@ -1,12 +1,13 @@
-import applePie from "../assets/images/apphoto.jpeg"
-import restInside from "../assets/images/restInside.jpeg"
-import "../styles/font.css"
-import "../styles/bgColors.css"
-import ReviewCarousel from "../components/reviewCarousel"
-import ReviewModal from "../components/reviewModal"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
+import ReviewCarousel from "../components/reviewCarousel"
+import ReviewModal from "../components/reviewModal"
+import ReviewStats from "../components/reviewStats"
+import "../styles/font.css"
+import "../styles/bgColors.css"
+import applePie from "../assets/images/apphoto.jpeg"
+import restInside from "../assets/images/restInside.jpeg"
 
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
@@ -16,7 +17,6 @@ const LandingPage = () => {
     const handleReviewModal = () => {
         setReviewModalTracker(!reviewModalTracker);
         reviewButton.current.scrollIntoView({ behavior: "smooth" });
-
     }
 
     return (
@@ -60,13 +60,14 @@ const LandingPage = () => {
                 </div>
             </section>
 
-
             {/* REVIEW CAROUSEL SECTION */}
-            <section className=" flex items-center p-[5px] py-4 beigeBg " ref={reviewButton}>
+            <section className=" flex items-center p-[5px] py-4 beigeBg flex-col" ref={reviewButton}>
                 <div className="w-full flex ">
                     <ReviewCarousel reviewModalTracker={reviewModalTracker} />
                 </div>
-
+                <div className="w-full">
+                    <ReviewStats />
+                </div>
             </section>
 
             {/* REVIEW MODAL FORM */}
@@ -79,10 +80,6 @@ const LandingPage = () => {
                     <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker} />
                 </div>
             </section>
-
-
-
-
 
         </div>
     )
