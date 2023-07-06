@@ -23,7 +23,7 @@ const ReviewStats = () => {
         };
         getReviewData();
 
-        if(reviewDataTracker){
+        if (reviewDataTracker) {
             const reviews = reviewData.map(item => item.reviewInfoRating)
             const sum = reviews.reduce((acc, curr) => acc + curr, 0);
             const average = Math.floor(sum / reviewData.length);
@@ -35,9 +35,17 @@ const ReviewStats = () => {
 
     console.log(reviewAverage)
 
-    return(
-        <div className="w-1/2 darkRedBg ">
+    return (
+        <div className="reviewAverageCardContainer">
             <div className="reviewAverageCard">
+                <div className="reviewAverageCardTop">
+                    <div className="reviewAverageCardNumberContainer">
+                        <h1>hello</h1>
+                    </div>
+                    <div className="reviewAverageCardStatsContainer">
+                        <h1>goodbye</h1>
+                    </div>
+                </div>
 
             </div>
 
