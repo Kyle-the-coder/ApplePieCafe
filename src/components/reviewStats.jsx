@@ -58,7 +58,7 @@ const ReviewStats = () => {
                                     <stop offset="100%" stopColor="#673ab7" />
                                 </linearGradient>
                             </defs>
-                            <circle cx="130" cy="120"  rx="50" ry="50" strokeLinecap="round" />
+                            <circle cx="130" cy="120"  r="95" strokeLinecap="round" />
                         </svg>
                     </div>
 
