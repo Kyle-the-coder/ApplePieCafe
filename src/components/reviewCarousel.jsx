@@ -1,11 +1,11 @@
 
-import blank from "../assets/images/whiteStar.png"
-import fill from "../assets/images/starFill.png"
 import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import "../styles/scrollbar.css"
 import "../styles/reviewCard.css"
+import blank from "../assets/images/whiteStar.png"
+import fill from "../assets/images/starFill.png"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 
@@ -56,7 +56,7 @@ const ReviewCarousel = (props) => {
             setPrev2TransitionTracker(false)
             setCurrentIndex(0)
             setNextSetTracker(true)
-        } 
+        }
 
     }, [reviewDataTracker, reviewModalTracker])
 
@@ -66,7 +66,6 @@ const ReviewCarousel = (props) => {
         const newerIndex = newIndex + 4
         const newerSet = reviewData.slice(newerIndex, newerIndex + 4)
         const oldSet = reviewData.slice(newIndex - 4, newIndex)
-
 
         //Prev Transition
         setPrev1TransitionTracker(false)
@@ -110,8 +109,6 @@ const ReviewCarousel = (props) => {
         const newerIndex = newIndex - 4
         const newerSet = reviewData.slice(newerIndex, newIndex)
 
-        console.log("newerSet", newerSet)
-
         setNext1TransitionTracker(false)
         setNext2TransitionTracker(false)
         setNext1Set(oldSet)
@@ -136,7 +133,6 @@ const ReviewCarousel = (props) => {
             setPrev2TransitionTracker(true)
         }
 
-
         //Next Set
         setNext1TransitionTracker(false)
         setNext2TransitionTracker(false)
@@ -146,22 +142,19 @@ const ReviewCarousel = (props) => {
 
         setPrevSetTracker(!prevSetTracker)
         setNextSetTracker(true)
-
     };
 
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
-   
-
     // console.log(reviewModalTracker)
     // console.log("prev 1", prev1TransitionTracker)
-    
-    console.log("next 1 set", next1Set)
-    console.log("currentIndex", currentIndex)
-    console.log("next 1", next1TransitionTracker)
-    console.log("next 2", next2TransitionTracker)
-    console.log( "next 2 set", next2Set)
+    // console.log("next 1 set", next1Set)
+    // console.log("currentIndex", currentIndex)
+    // console.log("next 1", next1TransitionTracker)
+    // console.log("next 2", next2TransitionTracker)
+    // console.log( "next 2 set", next2Set)
+
     return (
         <div className="w-full flex justify-center flex-col">
 
