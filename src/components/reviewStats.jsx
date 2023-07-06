@@ -40,9 +40,16 @@ const ReviewStats = () => {
             <div className="reviewAverageCard">
                 <div className="reviewAverageCardTop">
                     <div className="reviewAverageCardNumberContainer">
-                        <h1>hello</h1>
+                        <div className="reviewAverageCardNumberOuterCircle">
+                            <div className="reviewAverageCardNumberInnerCircle">
+                                <h1 className="fontWriting">{reviewAverage}</h1>
+                            </div>
+                        </div>
                     </div>
                     <div className="reviewAverageCardStatsContainer">
+                        <div className="pie-div">
+
+                        </div>
                         <h1>goodbye</h1>
                     </div>
                 </div>
