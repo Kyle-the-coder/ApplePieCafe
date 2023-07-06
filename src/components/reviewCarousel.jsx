@@ -55,6 +55,7 @@ const ReviewCarousel = (props) => {
             setNext2TransitionTracker(false)
             setPrev2TransitionTracker(false)
             setCurrentIndex(0)
+            setNextSetTracker(true)
         } 
 
     }, [reviewDataTracker, reviewModalTracker])
@@ -151,18 +152,16 @@ const ReviewCarousel = (props) => {
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
-    console.log("prev2 set", prev2Set)
-    console.log("prevSetTracker", prevSetTracker)
-
-    console.log("prev 1 set", prev1Set)
+   
 
     // console.log(reviewModalTracker)
     // console.log("prev 1", prev1TransitionTracker)
-    console.log("prev 2", prev2TransitionTracker)
-
+    
+    console.log("next 1 set", next1Set)
     console.log("currentIndex", currentIndex)
-    // console.log("next 1", next1TransitionTracker)
-    // console.log("next 2", next2TransitionTracker)
+    console.log("next 1", next1TransitionTracker)
+    console.log("next 2", next2TransitionTracker)
+    console.log( "next 2 set", next2Set)
     return (
         <div className="w-full flex justify-center flex-col">
 
