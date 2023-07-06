@@ -1,4 +1,4 @@
-.reviewAverageCardContainer{
+.reviewAverageCardContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     background-color: rgb(68, 140, 203);
 }
 
-.reviewAverageCard{
+.reviewAverageCard {
     width: 75%;
     height: 95%;
     background-color: aliceblue;
@@ -17,22 +17,48 @@
     border-bottom-left-radius: .5rem;
 }
 
-.reviewAverageCardTop{
+.reviewAverageCardTop {
     width: 100%;
     height: 50%;
     display: flex;
 }
 
-.reviewAverageCardNumberContainer{
+.reviewAverageCardNumberContainer {
     width: 50%;
     background-color: aqua;
     height: 100%;
     border-top-left-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.reviewAverageCardStatsContainer{
+.reviewAverageCardNumberOuterCircle {
+    width: 75%;
+    height: 90%;
+    background-color: blanchedalmond;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+}
+
+.reviewAverageCardNumberInnerCircle {
+    width: 90%;
+    height: 90%;
+    background-color: rgb(179, 113, 15);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+}
+
+.reviewAverageCardStatsContainer {
     width: 50%;
     background-color: aquamarine;
     height: 100%;
     border-top-right-radius: .5rem;
 }
+
