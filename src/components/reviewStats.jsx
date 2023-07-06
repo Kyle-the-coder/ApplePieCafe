@@ -47,8 +47,9 @@ const ReviewStats = () => {
                         </div>
                     </div>
                     <div className="reviewAverageCardStatsContainer">
-                        <div className="pie-div">
-
+                        <div class="average-card">
+                            <div class="circle"></div>
+                            <div class="average-number">75%</div>
                         </div>
                         <h1>goodbye</h1>
                     </div>
