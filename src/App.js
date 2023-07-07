@@ -31,7 +31,6 @@ function App() {
         {/* Private Routes */}
         <Route path="/adminLp" element={<RequireAuth><AdminLandingView /></RequireAuth>} />
 
-
       </Routes>
     </div>
   );
