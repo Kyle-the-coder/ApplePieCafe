@@ -8,6 +8,7 @@ const ReviewStats = () => {
     const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
     const [reviewAverage, setReviewAverage] = useState(0)
+    const [reviewCircle, setReviewCircle] = useState("")
 
     useEffect(() => {
         // GET REVIEW DATA
@@ -29,11 +30,32 @@ const ReviewStats = () => {
             const average = Math.floor(sum / reviewData.length);
             setReviewAverage(average)
         }
-
     }, [reviewDataTracker])
 
+    useEffect(()=>{
+        const circleOffsetHandler = [
+            { 1: "480" },
+            { 2: "360" },
+            { 3: "180" },
+            { 4: "120" },
+            { 5: "0" }
+        ]
 
-    console.log(reviewAverage)
+        for (let i = 0; i < circleOffsetHandler.length; i++) {
+            const keys = Object.keys(circleOffsetHandler[i]);
+            if (reviewAverage == keys[0]) {
+                setReviewCircle(circleOffsetHandler[i][keys[0]]);
+                break; 
+            }
+        }
+    },[reviewAverage])
+
+
+    const circleStyle = {
+        strokeDashoffset: `${reviewCircle}`,
+    }
+
+    console.log("circle", reviewCircle)
 
     return (
         <div className="reviewAverageCardContainer">
@@ -58,25 +80,16 @@ const ReviewStats = () => {
                                     <stop offset="100%" stopColor="#673ab7" />
                                 </linearGradient>
                             </defs>
-                            <circle cx="132" cy="120"  r="85" strokeLinecap="round" />
+                            <circle cx="132" cy="120" r="85" strokeLinecap="round" style={circleStyle}/>
                         </svg>
                     </div>
 
                     {/* REVIEW STATS DISPLAY */}
                     <div className="reviewAverageCardStatsContainer">
-                        <div class="average-card">
-                            <div class="circle"></div>
-                            <div class="average-number">75%</div>
-                        </div>
                         <h1>goodbye</h1>
                     </div>
-
                 </div>
-
-
-
             </div>
-
         </div>
     )
 }
