@@ -59,12 +59,12 @@
 .reviewAverageCardNumberInnerCircle {
     width: 100%;
     height: 100%;
-    border-radius: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 4rem;
     color: white;
+    font-size: 4rem;
+    flex-direction: column;
 }
 
 .reviewAverageCardStatsContainer {
