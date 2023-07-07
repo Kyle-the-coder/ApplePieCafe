@@ -64,7 +64,6 @@ circle {
     stroke: url(#gradientColor);
     stroke-width: 15px;
     stroke-dasharray: 600;
-    stroke-dashoffset: 600;
     animation: anim 2s linear forwards;
 }
 
@@ -72,10 +71,4 @@ svg {
     position: absolute;
     bottom: 20;
     left: 50;
-}
-
-@keyframes anim{
-    100%{
-        stroke-dashoffset: 180;
-    }
 }
