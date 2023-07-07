@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import "../styles/reviewAverageCard.css"
-import starFill from "../assets/images/starFill.png"
 
 const ReviewStats = () => {
     const [reviewData, setReviewData] = useState({})
