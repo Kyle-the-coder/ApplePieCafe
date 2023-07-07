@@ -31,7 +31,6 @@ const ReviewStats = () => {
             const average = Math.floor(sum / reviewData.length);
             setReviewAverage(average)
         }
-
     }, [reviewDataTracker])
 
     useEffect(() => {
@@ -52,24 +51,12 @@ const ReviewStats = () => {
         }
     }, [reviewAverage])
 
-
-    const circleStyleStart = {
-        strokeDashoffset: "600"
-    }
-
-    const circleStyleEnd = {
-        strokeDashoffset: `${reviewCircle}`,
-    }
-
     const handleCircleStyleTracker = () => {
         setReviewCircleTracker(true)
         setTimeout(() => {
             setReviewCircleTracker(false)
         }, 2000);
-
     }
-
-    console.log(reviewCircleTracker)
 
     return (
         <div className="reviewAverageCardContainer">
