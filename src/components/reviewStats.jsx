@@ -69,21 +69,25 @@ const ReviewStats = () => {
 
                         {/* REVIEW STATS NUMBER */}
                         <div className="reviewAverageCardNumberContainer darkBg cursor-pointer" onClick={handleCircleStyleTracker}>
+                            <div>
+                                <h1 className="text-white">Overall:</h1>
+                            </div>
                             <div className="reviewAverageCardNumberOuterCircle">
                                 <div className="reviewAverageCardNumberInnerCircle">
-                                    <h1 className="fontWriting">{reviewAverage}</h1>
+                                    <h1 className="fontWriting ">{reviewAverage}</h1>
+                                    <img className="w-[40px] h-[40px]" src={starFill} />
                                 </div>
                             </div>
 
                             <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-                                width="100%" height="100%">
+                                width="80%" height="80%">
                                 <defs>
                                     <linearGradient id="gradientColor" >
                                         <stop offest="0%" stopColor="#e1c7a8" />
                                         <stop offset="100%" stopColor="#ff5101" />
                                     </linearGradient>
                                 </defs>
-                                <circle cx="132" cy="120" r="85" strokeLinecap="round" style={{
+                                <circle cx="50%" cy="50%" r="40%" strokeLinecap="round" style={{
                                     animation: `${reviewCircleTracker ? 'anim 1s linear forwards' : ''}`,
                                     strokeDashoffset: reviewCircle
                                 }} />
@@ -94,10 +98,10 @@ const ReviewStats = () => {
                         <div className="reviewAverageCardStatsContainer">
                             <div className="reviewStatsInfoContainer">
                                 <h1>Average:</h1>
-                                <div className="flex">
-                                    <h1 className="text-4xl">{reviewAverage}</h1>
-                                    <img src={starFill} />
-                                    <h1 className="text-4xl">'s</h1>
+                                <div className="flex items-center">
+                                    <h1 className="text-6xl">{reviewAverage}</h1>
+
+                                    <h1 className="text-6xl">'s</h1>
                                 </div>
                             </div>
                         </div>
