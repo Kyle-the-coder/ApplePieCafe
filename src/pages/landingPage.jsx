@@ -61,18 +61,18 @@ const LandingPage = () => {
             </section>
 
             {/* REVIEW CAROUSEL SECTION */}
-            <section className=" flex items-center p-[5px] py-4 beigeBg flex-col" ref={reviewButton}>
+            <section className=" flex items-center  beigeBg flex-col" ref={reviewButton}>
                 <div className="w-full flex mb-5">
                     <ReviewCarousel reviewModalTracker={reviewModalTracker} />
                 </div>
-                <div className="w-full">
+                <div className="w-full darkBg py-5">
                     <ReviewStats />
                 </div>
             </section>
 
             {/* REVIEW MODAL FORM */}
             <section>
-                <div className="py-5 darkBg text-white" >
+                <div className="py-5  " >
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
                     <button className="px-3 py-1 darkRedBg text-white rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
