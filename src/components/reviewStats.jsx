@@ -121,9 +121,12 @@ const ReviewStats = (props) => {
                                 </div>
                             </div>
                         </div>
+                    </div>
 
                         {/* REVIEW STATS BOTTOM */}
-                    </div>
+                        <div>
+                            <h1> hellloooo</h1>
+                        </div>
                 </div>
             </div>
         </div>
