@@ -31,14 +31,17 @@ const ReviewStats = () => {
             const average = Math.floor(sum / reviewData.length);
             setReviewAverage(average)
         }
+
+        
     }, [reviewDataTracker])
+
 
     useEffect(() => {
         const circleOffsetHandler = [
-            { 1: "480" },
-            { 2: "360" },
-            { 3: "180" },
-            { 4: "120" },
+            { 1: "580" },
+            { 2: "460" },
+            { 3: "280" },
+            { 4: "220" },
             { 5: "0" }
         ]
 
@@ -70,10 +73,10 @@ const ReviewStats = () => {
                         {/* REVIEW STATS NUMBER */}
                         <div className="reviewAverageCardNumberContainer darkBg cursor-pointer" onClick={handleCircleStyleTracker}>
                             <div>
-                                <h1 className="text-white">Overall:</h1>
+                                <h1 className="text-white mb-1">Overall:</h1>
                             </div>
                             <div className="reviewAverageCardNumberOuterCircle">
-                                <div className="reviewAverageCardNumberInnerCircle">
+                                <div className="reviewAverageCardNumberInnerCircle ml-1">
                                     <h1 className="fontWriting ">{reviewAverage}</h1>
                                     <img className="w-[40px] h-[40px]" src={starFill} />
                                 </div>
@@ -87,7 +90,7 @@ const ReviewStats = () => {
                                         <stop offset="100%" stopColor="#ff5101" />
                                     </linearGradient>
                                 </defs>
-                                <circle cx="50%" cy="50%" r="40%" strokeLinecap="round" style={{
+                                <circle cx="50%" cy="52%" r="40%" strokeLinecap="round" style={{
                                     animation: `${reviewCircleTracker ? 'anim 1s linear forwards' : ''}`,
                                     strokeDashoffset: reviewCircle
                                 }} />
