@@ -31,17 +31,16 @@ const ReviewStats = () => {
             const average = Math.floor(sum / reviewData.length);
             setReviewAverage(average)
         }
-
         
     }, [reviewDataTracker])
 
 
     useEffect(() => {
         const circleOffsetHandler = [
-            { 1: "580" },
-            { 2: "460" },
-            { 3: "280" },
-            { 4: "220" },
+            { 1: "400" },
+            { 2: "300" },
+            { 3: "200" },
+            { 4: "100" },
             { 5: "0" }
         ]
 
@@ -90,7 +89,7 @@ const ReviewStats = () => {
                                         <stop offset="100%" stopColor="#ff5101" />
                                     </linearGradient>
                                 </defs>
-                                <circle cx="50%" cy="52%" r="40%" strokeLinecap="round" style={{
+                                <circle cx="50%" cy="50.5%" r="40%" strokeLinecap="round" style={{
                                     animation: `${reviewCircleTracker ? 'anim 1s linear forwards' : ''}`,
                                     strokeDashoffset: reviewCircle
                                 }} />
