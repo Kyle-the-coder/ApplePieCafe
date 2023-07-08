@@ -1,12 +1,6 @@
 {
   "hosting": {
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ],
-    "public": "build",
+    "public": "restuarant-app/build",
     "ignore": [
       "firebase.json",
       "**/.*",
