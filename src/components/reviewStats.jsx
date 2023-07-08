@@ -92,7 +92,7 @@ const ReviewStats = () => {
 
                         {/* REVIEW STATS DISPLAY */}
                         <div className="reviewAverageCardStatsContainer">
-                            <div>
+                            <div className="reviewStatsInfoContainer">
                                 <h1>Average:</h1>
                                 <div className="flex">
                                     <h1 className="text-4xl">{reviewAverage}</h1>
