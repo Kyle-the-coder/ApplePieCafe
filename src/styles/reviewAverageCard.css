@@ -73,6 +73,11 @@
     border-top-right-radius: .5rem;
 }
 
+.reviewStatsInfoContainer{
+    display: flex;
+    
+}
+
 circle {
     fill: none;
     stroke: url(#gradientColor);
