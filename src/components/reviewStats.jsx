@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
+import starFill from "../assets/images/starFill.png"
 import { db } from "../config/firebase";
 import "../styles/reviewAverageCard.css"
 
@@ -91,7 +92,13 @@ const ReviewStats = () => {
 
                         {/* REVIEW STATS DISPLAY */}
                         <div className="reviewAverageCardStatsContainer">
-                            <h1>goodbye</h1>
+                            <div>
+                                <h1>Average:</h1>
+                                <div className="flex">
+                                    <h1 className="text-4xl">{reviewAverage}</h1>
+                                    <img src={starFill} />
+                                </div>
+                            </div>
                         </div>
 
                         {/* REVIEW STATS BOTTOM */}
