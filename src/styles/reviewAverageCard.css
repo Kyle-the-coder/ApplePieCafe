@@ -83,7 +83,7 @@ circle {
     fill: none;
     stroke: url(#gradientColor);
     stroke-width: 15px;
-    stroke-dasharray: 600;
+    stroke-dasharray: 500;
 }
 
 svg {
@@ -98,6 +98,6 @@ svg {
 
 @keyframes anim{
     0%{
-        stroke-dashoffset: 600;
+        stroke-dashoffset: 500;
     }
 }
