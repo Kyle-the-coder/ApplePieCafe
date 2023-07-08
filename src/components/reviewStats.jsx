@@ -97,6 +97,7 @@ const ReviewStats = () => {
                                 <div className="flex">
                                     <h1 className="text-4xl">{reviewAverage}</h1>
                                     <img src={starFill} />
+                                    <h1 className="text-4xl">'s</h1>
                                 </div>
                             </div>
                         </div>
