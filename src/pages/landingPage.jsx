@@ -11,6 +11,7 @@ import restInside from "../assets/images/restInside.jpeg"
 
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
+    const [reviewAverageTracker, setReviewAverageTracker] = useState(false)
     const navigate = useNavigate()
     const reviewButton = useRef(null)
 
@@ -66,18 +67,18 @@ const LandingPage = () => {
                     <ReviewCarousel reviewModalTracker={reviewModalTracker} />
                 </div>
                 <div className="w-full darkBg py-5">
-                    <ReviewStats />
+                    <ReviewStats reviewAverageTracker={reviewAverageTracker} setReviewAverageTracker={setReviewAverageTracker}  />
                 </div>
             </section>
 
             {/* REVIEW MODAL FORM */}
             <section>
-                <div className="py-5  " >
+                <div className="py-5" >
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
                     <button className="px-3 py-1 darkRedBg text-white rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
                 <div >
-                    <ReviewModal setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker} />
+                    <ReviewModal setReviewAverageTracker={setReviewAverageTracker}  setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker} />
                 </div>
             </section>
 
