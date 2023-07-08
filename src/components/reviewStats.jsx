@@ -4,12 +4,15 @@ import starFill from "../assets/images/starFill.png"
 import { db } from "../config/firebase";
 import "../styles/reviewAverageCard.css"
 
-const ReviewStats = () => {
+const ReviewStats = (props) => {
     const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
+    const [reviewStarAverage, setReviewStarAverage] = useState(0)
     const [reviewAverage, setReviewAverage] = useState(0)
     const [reviewCircle, setReviewCircle] = useState("")
     const [reviewCircleTracker, setReviewCircleTracker] = useState(false)
+    const {reviewAverageTracker, setReviewAverageTracker} = props
+    
 
     useEffect(() => {
         // GET REVIEW DATA
@@ -29,10 +32,16 @@ const ReviewStats = () => {
             const reviews = reviewData.map(item => item.reviewInfoRating)
             const sum = reviews.reduce((acc, curr) => acc + curr, 0);
             const average = Math.floor(sum / reviewData.length);
-            setReviewAverage(average)
+            const tempAvg = sum / reviewData.length
+            const newAvg = parseFloat(tempAvg.toFixed(1))
+            setReviewStarAverage(average)
+            setReviewAverage(newAvg)
+            console.log(tempAvg)
         }
+
+        setReviewAverageTracker(false)
         
-    }, [reviewDataTracker])
+    }, [reviewDataTracker, reviewAverageTracker])
 
 
     useEffect(() => {
@@ -46,12 +55,12 @@ const ReviewStats = () => {
 
         for (let i = 0; i < circleOffsetHandler.length; i++) {
             const keys = Object.keys(circleOffsetHandler[i]);
-            if (reviewAverage == keys[0]) {
+            if (reviewStarAverage == keys[0]) {
                 setReviewCircle(circleOffsetHandler[i][keys[0]]);
                 break;
             }
         }
-    }, [reviewAverage])
+    }, [reviewStarAverage, reviewAverageTracker])
 
     const handleCircleStyleTracker = () => {
         setReviewCircleTracker(true)
@@ -76,7 +85,7 @@ const ReviewStats = () => {
                             </div>
                             <div className="reviewAverageCardNumberOuterCircle">
                                 <div className="reviewAverageCardNumberInnerCircle ml-1">
-                                    <h1 className="fontWriting ">{reviewAverage}</h1>
+                                    <h1 className="fontWriting ">{reviewStarAverage}</h1>
                                     <img className="w-[40px] h-[40px]" src={starFill} />
                                 </div>
                             </div>
@@ -101,9 +110,14 @@ const ReviewStats = () => {
                             <div className="reviewStatsInfoContainer">
                                 <h1>Average:</h1>
                                 <div className="flex items-center">
-                                    <h1 className="text-6xl">{reviewAverage}</h1>
-
-                                    <h1 className="text-6xl">'s</h1>
+                                    <h1 className="text-4xl">{reviewAverage}</h1>
+                                </div>
+                                <div className="flex flex-col w-full items-start ml-3">
+                                    <h1>1</h1>
+                                    <h1>2</h1>
+                                    <h1>3</h1>
+                                    <h1>4</h1>
+                                    <h1>5</h1>
                                 </div>
                             </div>
                         </div>
