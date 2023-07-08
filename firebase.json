@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "restuarant-app/build",
+    "public": "build",
     "ignore": [
       "firebase.json",
       "**/.*",
