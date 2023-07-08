@@ -13,6 +13,7 @@ const ReviewModal = (props) => {
     const { setReviewModalTracker } = props
     const { handleReviewModal } = props
     const { reviewModalTracker } = props
+    const {setReviewAverageTracker} = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
     const [reviewInfoName, setReviewInfoName] = useState("")
@@ -64,6 +65,7 @@ const ReviewModal = (props) => {
             reviewAvatarImg: reviewAvatarImgRef,
         });
         handleReviewModal()
+        setReviewAverageTracker(true)
     }
 
 
@@ -155,9 +157,6 @@ const ReviewModal = (props) => {
             setStarSet(newSet)
         }
     }
-    console.log(reviewInfoDesc, "desc")
-    console.log(reviewInfoName, "name")
-    console.log(reviewInfoRating, "rating")
 
     return (
         <div className={`${reviewModalTracker ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
