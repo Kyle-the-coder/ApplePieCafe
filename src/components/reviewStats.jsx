@@ -11,6 +11,11 @@ const ReviewStats = (props) => {
     const [reviewAverage, setReviewAverage] = useState(0)
     const [reviewCircle, setReviewCircle] = useState("")
     const [reviewCircleTracker, setReviewCircleTracker] = useState(false)
+    const [reviewNum1Percentage, setReviewNum1Percentage] = useState(0)
+    const [reviewNum2Percentage, setReviewNum2Percentage] = useState(0)
+    const [reviewNum3Percentage, setReviewNum3Percentage] = useState(0)
+    const [reviewNum4Percentage, setReviewNum4Percentage] = useState(0)
+    const [reviewNum5Percentage, setReviewNum5Percentage] = useState(0)
     const { reviewAverageTracker, setReviewAverageTracker } = props
 
 
@@ -29,8 +34,12 @@ const ReviewStats = (props) => {
         getReviewData();
 
         if (reviewDataTracker) {
+
+            //ARRAY OF REVIEWS
             const reviews = reviewData.map(item => item.reviewInfoRating)
-            
+
+
+            // CALCULATE REVIEWS STARS AND AVERAGE
             const weights = {
                 1: .2,
                 2: .4,
@@ -38,20 +47,37 @@ const ReviewStats = (props) => {
                 4: .8,
                 5: 1,
             };
-            
             const sumWeightedRatings = reviews.reduce((sum, rating) => {
                 return sum + (rating * weights[rating]);
             }, 0);
-            
             const sumWeights = reviews.reduce((sum, rating) => {
                 return sum + weights[rating];
             }, 0);
-            
             const averageRating = sumWeightedRatings / sumWeights;
             const newAvgRating = parseFloat(averageRating.toFixed(1))
             const newAvgStarRating = parseFloat(averageRating.toFixed(0))
             setReviewStarAverage(newAvgStarRating)
             setReviewAverage(newAvgRating)
+
+            // CALCULATE SPECIFIC NUM AVERAGE
+
+            const total = reviews.length
+
+            const targetNum1 = 1;
+            const count1 = reviews.filter((number) => number === targetNum1).length;
+            const percentage1 = (count1 / total) * 100
+            setReviewNum1Percentage(percentage1)
+
+            const targetNum2 = 2;
+            const count2 = reviews.filter((number) => number === targetNum2).length;
+            const percentage2 = (count2 / total) * 100
+            setReviewNum2Percentage(percentage2)
+
+            const targetNum3 = 3;
+            const count3 = reviews.filter((number) => number === targetNum3).length;
+            const percentage3 = (count3 / total) * 100
+            setReviewNum3Percentage(percentage3)
+
         }
 
         setReviewAverageTracker(false)
@@ -128,11 +154,11 @@ const ReviewStats = (props) => {
                                     <h1 className="text-4xl">{reviewAverage}</h1>
                                 </div>
                                 <div className="flex flex-col w-full items-start ml-3">
-                                    <h1>1</h1>
-                                    <h1>2</h1>
-                                    <h1>3</h1>
-                                    <h1>4</h1>
-                                    <h1>5</h1>
+                                    <h1>1: <span> {reviewNum1Percentage}%</span></h1>
+                                    <h1>2: <span> {reviewNum2Percentage}%</span></h1>
+                                    <h1>3: <span> {reviewNum3Percentage}%</span></h1>
+                                    <h1>4: <span> {reviewNum4Percentage}%</span></h1>
+                                    <h1>5: <span> {reviewNum5Percentage}%</span></h1>
                                 </div>
                             </div>
                         </div>
