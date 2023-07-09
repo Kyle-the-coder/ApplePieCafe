@@ -32,11 +32,11 @@ const ReviewStats = (props) => {
             const reviews = reviewData.map(item => item.reviewInfoRating)
             
             const weights = {
-                1: 1,
-                2: 2,
-                3: 3,
-                4: 4,
-                5: 5,
+                1: .2,
+                2: .4,
+                3: .6,
+                4: .8,
+                5: 1,
             };
             
             const sumWeightedRatings = reviews.reduce((sum, rating) => {
