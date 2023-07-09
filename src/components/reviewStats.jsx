@@ -38,7 +38,6 @@ const ReviewStats = (props) => {
             //ARRAY OF REVIEWS
             const reviews = reviewData.map(item => item.reviewInfoRating)
 
-
             // CALCULATE REVIEWS STARS AND AVERAGE
             const weights = {
                 1: .2,
@@ -60,7 +59,6 @@ const ReviewStats = (props) => {
             setReviewAverage(newAvgRating)
 
             // CALCULATE SPECIFIC NUM AVERAGE
-
             const total = reviews.length
 
             const targetNum1 = 1;
@@ -79,9 +77,14 @@ const ReviewStats = (props) => {
             setReviewNum3Percentage(percentage3)
 
             const targetNum4 = 4;
-            const count4 = reviews.filter((number)=> number === targetNum4).length;
+            const count4 = reviews.filter((number) => number === targetNum4).length;
             const percentage4 = (count4 / total) * 100
             setReviewNum4Percentage(percentage4)
+
+            const targetNum5 = 5;
+            const count5 = reviews.filter((number) => number === targetNum5).length;
+            const percentage5 = (count5 / total) * 100
+            setReviewNum5Percentage(percentage5)
         }
 
         setReviewAverageTracker(false)
@@ -135,7 +138,7 @@ const ReviewStats = (props) => {
                                 </div>
                             </div>
 
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                            <svg className="circleSvg" xmlns="http://www.w3.org/2000/svg" version="1.1"
                                 width="80%" height="80%">
                                 <defs>
                                     <linearGradient id="gradientColor" >
@@ -153,12 +156,25 @@ const ReviewStats = (props) => {
                         {/* REVIEW STATS DISPLAY */}
                         <div className="reviewAverageCardStatsContainer">
                             <div className="reviewStatsInfoContainer">
+
                                 <h1>Average:</h1>
                                 <div className="flex items-center">
                                     <h1 className="text-4xl">{reviewAverage}</h1>
                                 </div>
+
                                 <div className="flex flex-col w-full items-start ml-3">
-                                    <h1>1: <span> {reviewNum1Percentage}%</span></h1>
+
+                                    <div className="w-full flex bg-slate-200 justify-center items-center">
+                                        <h1>1:</h1>
+                                        
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="10">
+                                                <rect width="100%" height="100%" fill="#ccc" />
+                                                <rect width={`${reviewNum1Percentage}%`} height="100%" fill="#ff0000" />
+                                            </svg>
+                                        
+                                        <h1>{reviewNum1Percentage}%</h1>
+                                    </div>
+
                                     <h1>2: <span> {reviewNum2Percentage}%</span></h1>
                                     <h1>3: <span> {reviewNum3Percentage}%</span></h1>
                                     <h1>4: <span> {reviewNum4Percentage}%</span></h1>
