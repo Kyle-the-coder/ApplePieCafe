@@ -78,6 +78,10 @@ const ReviewStats = (props) => {
             const percentage3 = (count3 / total) * 100
             setReviewNum3Percentage(percentage3)
 
+            const targetNum4 = 4;
+            const count4 = reviews.filter((number)=> number === targetNum4).length;
+            const percentage4 = (count4 / total) * 100
+            setReviewNum4Percentage(percentage4)
         }
 
         setReviewAverageTracker(false)
