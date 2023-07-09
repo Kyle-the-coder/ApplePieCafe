@@ -11,8 +11,8 @@ const ReviewStats = (props) => {
     const [reviewAverage, setReviewAverage] = useState(0)
     const [reviewCircle, setReviewCircle] = useState("")
     const [reviewCircleTracker, setReviewCircleTracker] = useState(false)
-    const {reviewAverageTracker, setReviewAverageTracker} = props
-    
+    const { reviewAverageTracker, setReviewAverageTracker } = props
+
 
     useEffect(() => {
         // GET REVIEW DATA
@@ -30,17 +30,32 @@ const ReviewStats = (props) => {
 
         if (reviewDataTracker) {
             const reviews = reviewData.map(item => item.reviewInfoRating)
-            const sum = reviews.reduce((acc, curr) => acc + curr, 0);
-            const average = Math.floor(sum / reviewData.length);
-            const tempAvg = sum / reviewData.length
-            const newAvg = parseFloat(tempAvg.toFixed(1))
-            setReviewStarAverage(average)
-            setReviewAverage(newAvg)
-            console.log(tempAvg)
+            
+            const weights = {
+                1: 1,
+                2: 2,
+                3: 3,
+                4: 4,
+                5: 5,
+            };
+            
+            const sumWeightedRatings = reviews.reduce((sum, rating) => {
+                return sum + (rating * weights[rating]);
+            }, 0);
+            
+            const sumWeights = reviews.reduce((sum, rating) => {
+                return sum + weights[rating];
+            }, 0);
+            
+            const averageRating = sumWeightedRatings / sumWeights;
+            const newAvgRating = parseFloat(averageRating.toFixed(1))
+            const newAvgStarRating = parseFloat(averageRating.toFixed(0))
+            setReviewStarAverage(newAvgStarRating)
+            setReviewAverage(newAvgRating)
         }
 
         setReviewAverageTracker(false)
-        
+
     }, [reviewDataTracker, reviewAverageTracker])
 
 
@@ -123,10 +138,10 @@ const ReviewStats = (props) => {
                         </div>
                     </div>
 
-                        {/* REVIEW STATS BOTTOM */}
-                        <div>
-                            <h1> hellloooo</h1>
-                        </div>
+                    {/* REVIEW STATS BOTTOM */}
+                    <div>
+                        <h1> hellloooo</h1>
+                    </div>
                 </div>
             </div>
         </div>
