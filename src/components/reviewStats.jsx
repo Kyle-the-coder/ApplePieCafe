@@ -5,7 +5,7 @@ import { db } from "../config/firebase";
 import "../styles/reviewAverageCard.css"
 
 const ReviewStats = (props) => {
-    const [reviewData, setReviewData] = useState({})
+    const {reviewData, setReviewData} = props
     const {reviewDataTracker, setReviewDataTracker} = props
     const [reviewStarAverage, setReviewStarAverage] = useState(0)
     const [reviewAverage, setReviewAverage] = useState(0)
