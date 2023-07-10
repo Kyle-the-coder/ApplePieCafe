@@ -12,6 +12,7 @@ import restInside from "../assets/images/restInside.jpeg"
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
     const [reviewAverageTracker, setReviewAverageTracker] = useState(false)
+    const [reviewDataTracker, setReviewDataTracker] = useState(false)
     const navigate = useNavigate()
     const reviewButton = useRef(null)
 
@@ -19,6 +20,8 @@ const LandingPage = () => {
         setReviewModalTracker(!reviewModalTracker);
         reviewButton.current.scrollIntoView({ behavior: "smooth" });
     }
+
+    console.log("lp review tracker", reviewAverageTracker)
 
     return (
         <div className="relative">
@@ -67,7 +70,11 @@ const LandingPage = () => {
                     <ReviewCarousel reviewModalTracker={reviewModalTracker} />
                 </div>
                 <div className="w-full darkBg py-5">
-                    <ReviewStats reviewAverageTracker={reviewAverageTracker} setReviewAverageTracker={setReviewAverageTracker}  />
+                    <ReviewStats
+                    reviewDataTracker={reviewDataTracker} 
+                    setReviewDataTracker={setReviewDataTracker}
+                    reviewAverageTracker={reviewAverageTracker} 
+                    setReviewAverageTracker={setReviewAverageTracker} />
                 </div>
             </section>
 
@@ -78,7 +85,7 @@ const LandingPage = () => {
                     <button className="px-3 py-1 darkRedBg text-white rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
                 <div >
-                    <ReviewModal setReviewAverageTracker={setReviewAverageTracker}  setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker} />
+                    <ReviewModal reviewAverageTracker={reviewAverageTracker} setReviewAverageTracker={setReviewAverageTracker} setReviewModalTracker={setReviewModalTracker} handleReviewModal={handleReviewModal} reviewModalTracker={reviewModalTracker} />
                 </div>
             </section>
 
