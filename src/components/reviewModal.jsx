@@ -64,10 +64,8 @@ const ReviewModal = (props) => {
             reviewInfoRating: reviewInfoRating,
             reviewAvatarImg: reviewAvatarImgRef,
         });
-        const waitASec = setTimeout(() => {
-            setReviewAverageTracker(true)
-            handleReviewModal()
-        }, 5000);
+        setReviewAverageTracker(true)
+        handleReviewModal()
     }
 
 
