@@ -128,7 +128,6 @@ const ReviewStats = (props) => {
     }
 
     console.log("review stats", reviewAverageTracker)
-    console.log(reviewNum5Percentage)
     console.log(reviewDataTracker)
 
     return (
