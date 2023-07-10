@@ -6,7 +6,7 @@ import "../styles/reviewAverageCard.css"
 
 const ReviewStats = (props) => {
     const [reviewData, setReviewData] = useState({})
-    const [reviewDataTracker, setReviewDataTracker] = useState(false)
+    const {reviewDataTracker, setReviewDataTracker} = props
     const [reviewStarAverage, setReviewStarAverage] = useState(0)
     const [reviewAverage, setReviewAverage] = useState(0)
     const [reviewCircle, setReviewCircle] = useState("")
@@ -33,7 +33,7 @@ const ReviewStats = (props) => {
         };
         getReviewData();
 
-        if (reviewDataTracker) {
+        if (reviewDataTracker || reviewAverage === true) {
 
             //ARRAY OF REVIEWS
             const reviews = reviewData.map(item => item.reviewInfoRating)
@@ -90,9 +90,13 @@ const ReviewStats = (props) => {
             const percentage5 = (count5 / total) * 100
             const newPercent5 = parseFloat(percentage5.toFixed(0))
             setReviewNum5Percentage(newPercent5)
-        }
 
-        setReviewAverageTracker(false)
+
+            setReviewAverageTracker(false)
+        }
+        
+    
+
 
     }, [reviewDataTracker, reviewAverageTracker])
 
@@ -121,6 +125,10 @@ const ReviewStats = (props) => {
             setReviewCircleTracker(false)
         }, 2000);
     }
+
+    console.log("review stats", reviewAverageTracker)
+    console.log(reviewNum5Percentage)
+    console.log(reviewDataTracker)
 
     return (
         <div className="reviewAverageCardContainer">
