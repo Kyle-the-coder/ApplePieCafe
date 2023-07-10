@@ -5,8 +5,8 @@ import { db } from "../config/firebase";
 import "../styles/reviewAverageCard.css"
 
 const ReviewStats = (props) => {
-    const {reviewData, setReviewData} = props
-    const {reviewDataTracker, setReviewDataTracker} = props
+    const { reviewData, setReviewData } = props
+    const { reviewDataTracker, setReviewDataTracker } = props
     const [reviewStarAverage, setReviewStarAverage] = useState(0)
     const [reviewAverage, setReviewAverage] = useState(0)
     const [reviewCircle, setReviewCircle] = useState("")
@@ -16,8 +16,6 @@ const ReviewStats = (props) => {
     const [reviewNum3Percentage, setReviewNum3Percentage] = useState(0)
     const [reviewNum4Percentage, setReviewNum4Percentage] = useState(0)
     const [reviewNum5Percentage, setReviewNum5Percentage] = useState(0)
-    const { reviewAverageTracker, setReviewAverageTracker } = props
-
 
     useEffect(() => {
         // GET REVIEW DATA
@@ -33,7 +31,7 @@ const ReviewStats = (props) => {
         };
         getReviewData();
 
-        if (reviewDataTracker || reviewAverage === true) {
+        if (reviewDataTracker) {
 
             //ARRAY OF REVIEWS
             const reviews = reviewData.map(item => item.reviewInfoRating)
@@ -90,17 +88,8 @@ const ReviewStats = (props) => {
             const percentage5 = (count5 / total) * 100
             const newPercent5 = parseFloat(percentage5.toFixed(0))
             setReviewNum5Percentage(newPercent5)
-
-
-            setReviewAverageTracker(false)
-            
         }
-        
-    
-
-
-    }, [reviewDataTracker, reviewAverageTracker])
-
+    }, [reviewDataTracker])
 
     useEffect(() => {
         const circleOffsetHandler = [
@@ -118,7 +107,7 @@ const ReviewStats = (props) => {
                 break;
             }
         }
-    }, [reviewStarAverage, reviewAverageTracker])
+    }, [reviewStarAverage])
 
     const handleCircleStyleTracker = () => {
         setReviewCircleTracker(true)
@@ -126,9 +115,6 @@ const ReviewStats = (props) => {
             setReviewCircleTracker(false)
         }, 2000);
     }
-
-    console.log("review stats", reviewAverageTracker)
-    console.log(reviewDataTracker)
 
     return (
         <div className="reviewAverageCardContainer">
