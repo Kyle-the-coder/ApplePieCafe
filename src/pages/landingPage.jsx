@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
 import ReviewCarousel from "../components/reviewCarousel"
@@ -12,6 +12,7 @@ import restInside from "../assets/images/restInside.jpeg"
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
     const [reviewAverageTracker, setReviewAverageTracker] = useState(false)
+    const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
     const navigate = useNavigate()
     const reviewButton = useRef(null)
@@ -71,6 +72,8 @@ const LandingPage = () => {
                 </div>
                 <div className="w-full darkBg py-5">
                     <ReviewStats
+                    reviewData={reviewData}
+                    setReviewData={setReviewData}
                     reviewDataTracker={reviewDataTracker} 
                     setReviewDataTracker={setReviewDataTracker}
                     reviewAverageTracker={reviewAverageTracker} 
@@ -86,6 +89,10 @@ const LandingPage = () => {
                 </div>
                 <>
                     <ReviewModal 
+                    reviewData={reviewData}
+                    setReviewData={setReviewData}
+                    reviewDataTracker={reviewDataTracker} 
+                    setReviewDataTracker={setReviewDataTracker}
                     reviewAverageTracker={reviewAverageTracker} 
                     setReviewAverageTracker={setReviewAverageTracker} 
                     setReviewModalTracker={setReviewModalTracker} 
