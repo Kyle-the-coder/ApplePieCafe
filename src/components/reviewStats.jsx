@@ -64,27 +64,32 @@ const ReviewStats = (props) => {
             const targetNum1 = 1;
             const count1 = reviews.filter((number) => number === targetNum1).length;
             const percentage1 = (count1 / total) * 100
-            setReviewNum1Percentage(percentage1)
+            const newPercent1 = parseFloat(percentage1.toFixed(0))
+            setReviewNum1Percentage(newPercent1)
 
             const targetNum2 = 2;
             const count2 = reviews.filter((number) => number === targetNum2).length;
             const percentage2 = (count2 / total) * 100
-            setReviewNum2Percentage(percentage2)
+            const newPercent2 = parseFloat(percentage2.toFixed(0))
+            setReviewNum2Percentage(newPercent2)
 
             const targetNum3 = 3;
             const count3 = reviews.filter((number) => number === targetNum3).length;
             const percentage3 = (count3 / total) * 100
-            setReviewNum3Percentage(percentage3)
+            const newPercent3 = parseFloat(percentage3.toFixed(0))
+            setReviewNum3Percentage(newPercent3)
 
             const targetNum4 = 4;
             const count4 = reviews.filter((number) => number === targetNum4).length;
             const percentage4 = (count4 / total) * 100
-            setReviewNum4Percentage(percentage4)
+            const newPercent4 = parseFloat(percentage4.toFixed(0))
+            setReviewNum4Percentage(newPercent4)
 
             const targetNum5 = 5;
             const count5 = reviews.filter((number) => number === targetNum5).length;
             const percentage5 = (count5 / total) * 100
-            setReviewNum5Percentage(percentage5)
+            const newPercent5 = parseFloat(percentage5.toFixed(0))
+            setReviewNum5Percentage(newPercent5)
         }
 
         setReviewAverageTracker(false)
