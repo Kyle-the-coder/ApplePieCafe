@@ -11,12 +11,10 @@ import avatarPic from "../assets/images/avatar.png"
 import "../styles/bgColors.css"
 
 const ReviewModal = (props) => {
-    const { setReviewModalTracker } = props
     const { handleReviewModal } = props
     const { reviewModalTracker } = props
-    const { reviewAverageTracker, setReviewAverageTracker } = props
-    const { reviewData, setReviewData } = props
-    const {reviewDataTracker, setReviewDataTracker} = props
+    const { setReviewData } = props
+    const { setReviewDataTracker} = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
     const [reviewInfoName, setReviewInfoName] = useState("")
@@ -175,8 +173,6 @@ const ReviewModal = (props) => {
             setStarSet(newSet)
         }
     }
-
-    console.log("modal review tracker", reviewAverageTracker)
 
     return (
         <div className={`${reviewModalTracker ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
