@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { db, storage } from "../config/firebase"
 import { addDoc, collection } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
+import { getDocs } from "firebase/firestore";
 import avatarPic from "../assets/images/avatar.png"
 import "../styles/bgColors.css"
 
@@ -14,6 +15,8 @@ const ReviewModal = (props) => {
     const { handleReviewModal } = props
     const { reviewModalTracker } = props
     const { reviewAverageTracker, setReviewAverageTracker } = props
+    const { reviewData, setReviewData } = props
+    const {reviewDataTracker, setReviewDataTracker} = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
     const [reviewInfoName, setReviewInfoName] = useState("")
@@ -64,7 +67,22 @@ const ReviewModal = (props) => {
             reviewInfoRating: reviewInfoRating,
             reviewAvatarImg: reviewAvatarImgRef,
         });
-        setReviewAverageTracker(true)
+
+        setReviewDataTracker(false)
+        // GET REVIEW DATA
+        const getReviewData = async () => {
+            try {
+                const querySnapshot = await getDocs(collection(db, "reviewInfo"));
+                const documents = querySnapshot.docs.map((doc) => doc.data());
+                setReviewData(documents);
+                setReviewDataTracker(true)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        getReviewData();
+
+        // setReviewAverageTracker(true)
         handleReviewModal()
     }
 
