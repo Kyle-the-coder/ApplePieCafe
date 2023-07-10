@@ -11,7 +11,6 @@ import restInside from "../assets/images/restInside.jpeg"
 
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
-    const [reviewAverageTracker, setReviewAverageTracker] = useState(false)
     const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
     const navigate = useNavigate()
@@ -21,8 +20,6 @@ const LandingPage = () => {
         setReviewModalTracker(!reviewModalTracker);
         reviewButton.current.scrollIntoView({ behavior: "smooth" });
     }
-
-    console.log("lp review tracker", reviewAverageTracker)
 
     return (
         <div className="relative">
@@ -75,9 +72,7 @@ const LandingPage = () => {
                     reviewData={reviewData}
                     setReviewData={setReviewData}
                     reviewDataTracker={reviewDataTracker} 
-                    setReviewDataTracker={setReviewDataTracker}
-                    reviewAverageTracker={reviewAverageTracker} 
-                    setReviewAverageTracker={setReviewAverageTracker} />
+                    setReviewDataTracker={setReviewDataTracker} />
                 </div>
             </section>
 
@@ -92,9 +87,7 @@ const LandingPage = () => {
                     reviewData={reviewData}
                     setReviewData={setReviewData}
                     reviewDataTracker={reviewDataTracker} 
-                    setReviewDataTracker={setReviewDataTracker}
-                    reviewAverageTracker={reviewAverageTracker} 
-                    setReviewAverageTracker={setReviewAverageTracker} 
+                    setReviewDataTracker={setReviewDataTracker} 
                     setReviewModalTracker={setReviewModalTracker} 
                     handleReviewModal={handleReviewModal} 
                     reviewModalTracker={reviewModalTracker} />
