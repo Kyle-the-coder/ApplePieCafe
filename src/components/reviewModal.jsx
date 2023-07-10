@@ -79,9 +79,7 @@ const ReviewModal = (props) => {
             }
         };
         getReviewData();
-
-        // setReviewAverageTracker(true)
-        handleReviewModal()
+        handleReviewModal();
     }
 
 
