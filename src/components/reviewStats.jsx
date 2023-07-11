@@ -226,6 +226,7 @@ const ReviewStats = (props) => {
                     <div>
                         <h1> hellloooo</h1>
                         <h1> what should I put here?</h1>
+                        <h1>favorite comments?</h1>
                     </div>
                 </div>
             </div>
