@@ -227,7 +227,7 @@ const ReviewStats = (props) => {
                         <h1> hellloooo</h1>
                         <h1> what should I put here?</h1>
                         <h1>favorite comments?</h1>
-                        <h1> or liked comments?</h1>
+                        <h1> or most liked comments?</h1>
                     </div>
                 </div>
             </div>
