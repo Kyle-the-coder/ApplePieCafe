@@ -109,6 +109,7 @@ circle {
 .reviewFavoriteContainer {
     width: 100%;
     display: flex;
+    flex-direction: column;
 }
 
 .reviewFavoriteTitleContainer {
@@ -116,15 +117,15 @@ circle {
     width: 100%;
     justify-content: start;
     align-items: center;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
     
 }
 
 .reviewFavoriteTitleContainer>img {
     margin-right: 10px;
     border-right: 2px dotted black;
-    border-left: 2px solid black;
+    border-left: 3px solid black;
     padding: 5px;
 }
 
