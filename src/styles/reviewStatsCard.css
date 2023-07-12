@@ -135,8 +135,14 @@ circle {
 
 .reviewFavoriteDataContainer{
     width: 100%;
-    height: 100%;
-    padding: 20px 5px 20px 5px;
+    display: flex;
+    align-items: center;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+}
+
+.reviewFavoriteDataContainer2 {
+    width: 100%;
     display: flex;
     align-items: center;
 }
@@ -149,4 +155,10 @@ circle {
     object-position: center;
     box-shadow: 3px 3px 5px 5px rgba(216, 211, 211, 0.712);
     transition: all .8s;
+}
+
+.reviewFavoriteDataFront{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
 }
