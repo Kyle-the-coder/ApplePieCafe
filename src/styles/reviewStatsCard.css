@@ -105,3 +105,9 @@ circle {
         stroke-dashoffset: 500;
     }
 }
+
+.reviewFavoriteContainer{
+    width: 100%;
+    display: flex;
+    padding: 10px 15px 10px 15px;
+}
