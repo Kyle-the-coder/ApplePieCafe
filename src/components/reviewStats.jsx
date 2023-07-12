@@ -3,6 +3,7 @@ import { getDocs, collection } from "firebase/firestore";
 import starFill from "../assets/images/starFill.png"
 import { db } from "../config/firebase";
 import "../styles/reviewStatsCard.css"
+import APLogo from "../assets/images/ApcBlack.PNG"
 
 const ReviewStats = (props) => {
     const { reviewData, setReviewData } = props
@@ -226,6 +227,7 @@ const ReviewStats = (props) => {
                     <div className="reviewFavoriteContainer">
                         <div className="reviewFavoriteTitleContainer ">
                             <h1 className="fontWriting">Apple Pie Cafe Favorite Review:</h1>
+                            <img src={APLogo} classname="w-[20px] h-[20px]" />
                         </div>
                     </div>
                 </div>
