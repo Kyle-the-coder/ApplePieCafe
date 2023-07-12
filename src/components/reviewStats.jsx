@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getDocs, collection } from "firebase/firestore";
 import starFill from "../assets/images/starFill.png"
 import { db } from "../config/firebase";
-import "../styles/reviewAverageCard.css"
+import "../styles/reviewStatsCard.css"
 
 const ReviewStats = (props) => {
     const { reviewData, setReviewData } = props
@@ -223,13 +223,9 @@ const ReviewStats = (props) => {
                     </div>
 
                     {/* REVIEW STATS BOTTOM */}
-                    <div>
+                    <div className="reviewFavoriteContainer">
                         <h1> hellloooo</h1>
-                        <h1> what should I put here?</h1>
-                        <h1>favorite reviews?</h1>
-                        <h1> or most liked review?</h1>
-                        <h1> maybe something else with a statistic </h1>
-                        <h1> top meals?</h1>
+                        
                     </div>
                 </div>
             </div>
