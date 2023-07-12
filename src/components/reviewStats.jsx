@@ -33,11 +33,11 @@ const ReviewStats = (props) => {
         };
         getReviewData();
 
-        const getFavoriteReviewData = async ()=>{
+        const getFavoriteReviewData = async () => {
             const docRef = doc(db, "reviewInfo", process.env.REACT_APP_FAV_ID)
             const docSnap = await getDoc(docRef)
 
-            if(docSnap.exists()){
+            if (docSnap.exists()) {
                 console.log("yes")
                 setReviewFavData(docSnap.data())
             } else {
@@ -243,13 +243,20 @@ const ReviewStats = (props) => {
                     {/* REVIEW STATS BOTTOM */}
                     <div className="reviewFavoriteContainer">
                         <div className="reviewFavoriteTitleContainer ">
-                            <img src={APLogo} className="w-[70px] h-[70px]" />
-                            <h1 className="fontWriting">Apple Pie Cafe Favorite Review:</h1>
+                            <img src={APLogo} className="w-[80px] h-[80px]" />
+                            <h1 className="fontWriting flex justify-center w-5/6">Apple Pie Cafe Favorite Review:</h1>
                         </div>
-                        <div className="reviewFavoriteDataContainer">
+                        <div className="reviewFavoriteDataContainer darkBg">
+                            <div className="reviewFavoriteDataContainer2 ">
+                                <img className="reviewFavoriteDataImg" src={reviewFavData.reviewAvatarImg} />
                                 <div className="reviewFavoriteDataFront">
-                                    <img className="reviewFavoriteDataImg" src={reviewFavData.reviewAvatarImg} />
+                                    <img src={starFill} className="w-[55px] h-[55px]" />
+                                    <img src={starFill} className="w-[55px] h-[55px]"/>
+                                    <img src={starFill} className="w-[55px] h-[55px]" />
+                                    <img src={starFill} className="w-[55px] h-[55px]" />
+                                    <img src={starFill} className="w-[55px] h-[55px]" />
                                 </div>
+                            </div>
                         </div>
                     </div>
                 </div>
