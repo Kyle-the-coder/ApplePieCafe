@@ -224,8 +224,8 @@ const ReviewStats = (props) => {
 
                     {/* REVIEW STATS BOTTOM */}
                     <div className="reviewFavoriteContainer">
-                        <div className="reviewFavoriteTitleContainer fontWriting">
-                            Apple Pie Cafe Favorite Review:
+                        <div className="reviewFavoriteTitleContainer ">
+                            <h1 className="fontWriting">Apple Pie Cafe Favorite Review:</h1>
                         </div>
                     </div>
                 </div>
