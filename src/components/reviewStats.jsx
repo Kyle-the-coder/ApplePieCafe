@@ -247,7 +247,9 @@ const ReviewStats = (props) => {
                             <h1 className="fontWriting">Apple Pie Cafe Favorite Review:</h1>
                         </div>
                         <div className="reviewFavoriteDataContainer">
-
+                                <div className="reviewFavoriteDataFront">
+                                    <img className="reviewFavoriteDataImg" src={reviewFavData.reviewAvatarImg} />
+                                </div>
                         </div>
                     </div>
                 </div>
