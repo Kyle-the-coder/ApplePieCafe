@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, doc, getDoc } from "firebase/firestore";
 import starFill from "../assets/images/starFill.png"
 import { db } from "../config/firebase";
 import "../styles/reviewStatsCard.css"
@@ -8,6 +8,7 @@ import APLogo from "../assets/images/ApcBlack.PNG"
 const ReviewStats = (props) => {
     const { reviewData, setReviewData } = props
     const { reviewDataTracker, setReviewDataTracker } = props
+    const [reviewFavData, setReviewFavData] = useState(null)
     const [reviewStarAverage, setReviewStarAverage] = useState(0)
     const [reviewAverage, setReviewAverage] = useState(0)
     const [reviewCircle, setReviewCircle] = useState("")
@@ -31,6 +32,20 @@ const ReviewStats = (props) => {
             }
         };
         getReviewData();
+
+        const getFavoriteReviewData = async ()=>{
+            const docRef = doc(db, "reviewInfo", process.env.REACT_APP_FAV_ID)
+            const docSnap = await getDoc(docRef)
+
+            if(docSnap.exists()){
+                console.log("yes")
+                setReviewFavData(docSnap.data())
+            } else {
+                console.log("no")
+            }
+        }
+
+        getFavoriteReviewData()
 
         if (reviewDataTracker) {
 
@@ -116,6 +131,8 @@ const ReviewStats = (props) => {
             setReviewCircleTracker(false)
         }, 2000);
     }
+
+    console.log(reviewFavData)
 
     return (
         <div className="reviewAverageCardContainer">
@@ -226,11 +243,11 @@ const ReviewStats = (props) => {
                     {/* REVIEW STATS BOTTOM */}
                     <div className="reviewFavoriteContainer">
                         <div className="reviewFavoriteTitleContainer ">
-                            <img src={APLogo} className="w-[60px] h-[70px]" />
+                            <img src={APLogo} className="w-[70px] h-[70px]" />
                             <h1 className="fontWriting">Apple Pie Cafe Favorite Review:</h1>
                         </div>
                         <div className="reviewFavoriteDataContainer">
-                                
+
                         </div>
                     </div>
                 </div>
