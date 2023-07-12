@@ -226,8 +226,11 @@ const ReviewStats = (props) => {
                     {/* REVIEW STATS BOTTOM */}
                     <div className="reviewFavoriteContainer">
                         <div className="reviewFavoriteTitleContainer ">
-                            <img src={APLogo} className="w-[50px] h-[50px]" />
-                            <h1 className="fontWriting"> Favorite Review:</h1>
+                            <img src={APLogo} className="w-[60px] h-[70px]" />
+                            <h1 className="fontWriting">Apple Pie Cafe Favorite Review:</h1>
+                        </div>
+                        <div className="reviewFavoriteDataContainer">
+                                
                         </div>
                     </div>
                 </div>
