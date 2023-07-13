@@ -8,7 +8,7 @@ import "../styles/font.css"
 import "../styles/bgColors.css"
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
-import fruits from "../assets/images/fruits1.jpeg"
+import flowers from "../assets/images/flowers.jpeg"
 
 
 const LandingPage = () => {
@@ -66,10 +66,10 @@ const LandingPage = () => {
 
             {/* REVIEW CAROUSEL SECTION */}
             <section className=" flex items-center flex-col" ref={reviewButton}>
-                <div className="w-full flex relative">
+                <div className="w-full flex relative py-4">
                     <ReviewCarousel reviewModalTracker={reviewModalTracker} className="z-[1]"/>
                     <div className="w-full h-full absolute left-0 top-0 z-[-1]">
-                        <img src={fruits} className="w-full h-full object-cover opacity-70" />
+                        <img src={flowers} className="w-full h-full object-cover opacity-70" />
                     </div>
                 </div>
                 <div className="w-full darkBg py-5">
