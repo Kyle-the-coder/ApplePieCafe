@@ -8,6 +8,8 @@ import "../styles/font.css"
 import "../styles/bgColors.css"
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
+import fruits from "../assets/images/fruits1.jpeg"
+
 
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
@@ -63,17 +65,21 @@ const LandingPage = () => {
             </section>
 
             {/* REVIEW CAROUSEL SECTION */}
-            <section className=" flex items-center  beigeBg flex-col" ref={reviewButton}>
-                <div className="w-full flex mb-5">
-                    <ReviewCarousel reviewModalTracker={reviewModalTracker} />
+            <section className=" flex items-center flex-col" ref={reviewButton}>
+                <div className="w-full flex relative">
+                    <ReviewCarousel reviewModalTracker={reviewModalTracker} className="z-[1]"/>
+                    <div className="w-full h-full absolute left-0 top-0 z-[-1]">
+                        <img src={fruits} className="w-full h-full object-cover opacity-70" />
+                    </div>
                 </div>
                 <div className="w-full darkBg py-5">
                     <ReviewStats
-                    reviewData={reviewData}
-                    setReviewData={setReviewData}
-                    reviewDataTracker={reviewDataTracker} 
-                    setReviewDataTracker={setReviewDataTracker} />
+                        reviewData={reviewData}
+                        setReviewData={setReviewData}
+                        reviewDataTracker={reviewDataTracker}
+                        setReviewDataTracker={setReviewDataTracker} />
                 </div>
+
             </section>
 
             {/* REVIEW MODAL FORM */}
@@ -83,14 +89,14 @@ const LandingPage = () => {
                     <button className="px-3 py-1 darkRedBg text-white rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
                 </div>
                 <>
-                    <ReviewModal 
-                    reviewData={reviewData}
-                    setReviewData={setReviewData}
-                    reviewDataTracker={reviewDataTracker} 
-                    setReviewDataTracker={setReviewDataTracker} 
-                    setReviewModalTracker={setReviewModalTracker} 
-                    handleReviewModal={handleReviewModal} 
-                    reviewModalTracker={reviewModalTracker} />
+                    <ReviewModal
+                        reviewData={reviewData}
+                        setReviewData={setReviewData}
+                        reviewDataTracker={reviewDataTracker}
+                        setReviewDataTracker={setReviewDataTracker}
+                        setReviewModalTracker={setReviewModalTracker}
+                        handleReviewModal={handleReviewModal}
+                        reviewModalTracker={reviewModalTracker} />
                 </>
             </section>
 
