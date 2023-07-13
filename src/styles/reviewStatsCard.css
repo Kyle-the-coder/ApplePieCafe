@@ -139,12 +139,14 @@ circle {
     align-items: center;
     border-bottom-right-radius: 3rem;
     border-bottom-left-radius: .5rem;
+    flex-grow: 1;
 }
 
 .reviewFavoriteDataContainer2 {
     width: 100%;
     display: flex;
     align-items: center;
+    flex-grow: 1;
 }
 
 .reviewFavoriteDataImg{
