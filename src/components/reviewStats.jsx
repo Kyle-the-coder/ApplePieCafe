@@ -4,7 +4,7 @@ import starFill from "../assets/images/starFill.png"
 import { db } from "../config/firebase";
 import "../styles/reviewStatsCard.css"
 import APLogo from "../assets/images/ApcBlack.PNG"
-
+import avatar from "../assets/images/avatar.png"
 const ReviewStats = (props) => {
     const { reviewData, setReviewData } = props
     const { reviewDataTracker, setReviewDataTracker } = props
@@ -248,7 +248,7 @@ const ReviewStats = (props) => {
                         </div>
                         <div className="reviewFavoriteDataContainer darkBg">
                             <div className="reviewFavoriteDataContainer2 ">
-                                <img className="reviewFavoriteDataImg" src={reviewFavData.reviewAvatarImg} />
+                                <img className="reviewFavoriteDataImg" src={reviewFavData !== null ? reviewFavData.reviewAvatarImg : avatar} />
                                 <div className="reviewFavoriteDataFront">
                                     <img src={starFill} className="w-[55px] h-[55px]" />
                                     <img src={starFill} className="w-[55px] h-[55px]"/>
