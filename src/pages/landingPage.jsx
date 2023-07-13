@@ -8,7 +8,6 @@ import "../styles/font.css"
 import "../styles/bgColors.css"
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
-import flowers from "../assets/images/flowers.jpeg"
 import morning from "../assets/images/morning.webp"
 
 
