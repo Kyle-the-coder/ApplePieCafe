@@ -159,7 +159,7 @@ const ReviewCarousel = (props) => {
         <div className="w-full flex justify-center flex-col">
 
             <div className="w-full flex justify-center ml-5">
-                <h1 className="fontWriting text-4xl">Recent Reviews:</h1>
+                <h1 className="fontWriting text-4xl bg-slate-100 px-3 py-2 shadow-lg rounded">Recent Reviews:</h1>
             </div>
 
             <div className="flex w-full h-600px px-[5px] justify-between items-center">
