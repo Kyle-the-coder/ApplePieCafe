@@ -174,7 +174,7 @@ const ReviewCarousel = (props) => {
                     {/* Review Card */}
                     {prev1Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[1000ms]  ${prev1TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-[2200ms]  ${prev1TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-[1000px] z-[-1] opacity-0 "}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -242,7 +242,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {prev2Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[1000ms]  ${prev2TransitionTracker ? "translate-x-0 opacity-100" : "absolute -translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-[2200ms]  ${prev2TransitionTracker ? "translate-x-0 opacity-100" : "absolute opacity-0 -translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -310,7 +310,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {next1Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[1000ms]  ${next1TransitionTracker ? 'translate-x-0 opacity-100' : "absolute  translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-[2200ms]  ${next1TransitionTracker ? 'translate-x-0 opacity-100' : "absolute opacity-0  translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -378,7 +378,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {next2Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[1000ms] ${next2TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-10] translate-x-[1000px]  '}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-[2200ms] ${next2TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-10] opacity-0 translate-x-[1000px]  '}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
