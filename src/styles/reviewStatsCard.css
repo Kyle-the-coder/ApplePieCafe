@@ -73,7 +73,7 @@
     width: 50%;
     height: 100%;
     border-top-right-radius: .5rem;
-    border-bottom: 2px dotted black;
+    border-bottom: 2px solid black;
 }
 
 .reviewStatsInfoContainer {
@@ -121,19 +121,20 @@ circle {
     width: 100%;
     justify-content: start;
     align-items: center;
-    border-bottom: dotted solid black;
+    border-bottom: 2px dotted black;
 }
 
 .reviewFavoriteTitleContainer>img {
     margin-right: 10px;
     border-right: 2px dotted black;
+    padding: 5px;
 }
 
 .reviewFavoriteTitleContainer>h1 {
     font-size: 1.2rem;
 }
 
-.reviewFavoriteDataContainer{
+.reviewFavoriteDataFlipCard{
     width: 100%;
     display: flex;
     align-items: center;
@@ -142,10 +143,11 @@ circle {
     flex-grow: 1;
 }
 
-.reviewFavoriteDataContainer2 {
+.reviewFavoriteDataFlipCardInner {
     width: 100%;
     display: flex;
     align-items: center;
+    padding: 5px;
 }
 
 .reviewFavoriteDataImg{
