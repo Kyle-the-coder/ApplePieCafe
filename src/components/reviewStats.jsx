@@ -143,7 +143,7 @@ const ReviewStats = (props) => {
                     {/* REVIEW STATS TOP */}
                     <div className="reviewAverageCardTop">
 
-                        {/* REVIEW STATS NUMBER */}
+                        {/* REVIEW STATS NUMBER LEFT SIDE */}
                         <div className="reviewAverageCardNumberContainer darkBg cursor-pointer" onClick={handleCircleStyleTracker}>
                             <div>
                                 <h1 className="text-white mb-1">Overall:</h1>
@@ -170,7 +170,7 @@ const ReviewStats = (props) => {
                             </svg>
                         </div>
 
-                        {/* REVIEW STATS DISPLAY */}
+                        {/* REVIEW STATS DISPLAY RIGHT SIDE */}
                         <div className="reviewAverageCardStatsContainer">
                             <div className="reviewStatsInfoContainer">
 
@@ -242,11 +242,13 @@ const ReviewStats = (props) => {
 
                     {/* REVIEW STATS BOTTOM */}
                     <div className="reviewFavoriteContainer">
+                        {/* REVIEW STATS BOTTOM TITLE/LOGO */}
                         <div className="reviewFavoriteTitleContainer ">
                             <img src={APLogo} className="w-[80px] h-[80px]" />
                             <h1 className="fontWriting flex justify-center w-5/6">Apple Pie Cafe Favorite Review:</h1>
                         </div>
-                        <div className="reviewFavoriteDataContainer darkBg">
+                        {/* REVIEW STATS FAV INFO W/CARD FLIP */}
+                        <div className="reviewFavoriteDataContainer">
                             <div className="reviewFavoriteDataContainer2 ">
                                 <img className="reviewFavoriteDataImg" src={reviewFavData !== null ? reviewFavData.reviewAvatarImg : avatar} />
                                 <div className="reviewFavoriteDataFront">
