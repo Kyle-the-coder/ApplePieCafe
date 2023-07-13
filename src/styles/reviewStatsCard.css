@@ -137,17 +137,57 @@ circle {
 .reviewFavoriteDataFlipCard{
     width: 100%;
     display: flex;
+    background-color: transparent;
+    perspective: 2000px;
     align-items: center;
     border-bottom-right-radius: 3rem;
     border-bottom-left-radius: .5rem;
     flex-grow: 1;
+    padding: 5px;
 }
 
 .reviewFavoriteDataFlipCardInner {
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 5px;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.reviewFavoriteDataFlipCard:hover .reviewFavoriteDataFlipCardInner{
+    transform: rotateX(180deg)
+}
+
+.reviewFavoriteDataFlipCardFront, .reviewFavoriteDataFlipCardBack{
+    position: absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+}
+
+.reviewFavoriteDataFlipCardFront{
+    display: flex;
+    width: 98%;
+    height: 100%;
+    padding: 10px;
+    align-items: center;
+    border-bottom-right-radius: 3rem;
+}
+.reviewFavoriteDataFlipCardBack{
+    width: 98%;
+    height: 100px;
+    padding: 10px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: rotateX(180deg);
+}
+.reviewFavoriteDataFlipCardBack>p{
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 3px;
 }
 
 .reviewFavoriteDataImg{
