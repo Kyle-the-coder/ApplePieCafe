@@ -34,7 +34,7 @@ const ReviewStats = (props) => {
         getReviewData();
 
         const getFavoriteReviewData = async () => {
-            const docRef = doc(db, "reviewInfo", process.env.REACT_APP_FAV_ID)
+            const docRef = doc(db, "reviewInfo", process.env.REACT_APP_FAV_ID2)
             const docSnap = await getDoc(docRef)
 
             if (docSnap.exists()) {
@@ -249,14 +249,20 @@ const ReviewStats = (props) => {
                         </div>
                         {/* REVIEW STATS FAV INFO W/CARD FLIP */}
                         <div className="reviewFavoriteDataFlipCard">
+                            <img className="reviewFavoriteDataImg" src={reviewFavData !== null ? reviewFavData.reviewAvatarImg : avatar} />
                             <div className="reviewFavoriteDataFlipCardInner">
-                                <img className="reviewFavoriteDataImg" src={reviewFavData !== null ? reviewFavData.reviewAvatarImg : avatar} />
-                                <div className="reviewFavoriteDataFront">
-                                    <img src={starFill} className="w-[55px] h-[55px]" />
-                                    <img src={starFill} className="w-[55px] h-[55px]"/>
-                                    <img src={starFill} className="w-[55px] h-[55px]" />
-                                    <img src={starFill} className="w-[55px] h-[55px]" />
-                                    <img src={starFill} className="w-[55px] h-[55px]" />
+                                <div className="reviewFavoriteDataFlipCardFront">
+                                    <div className="reviewFavoriteDataFront">
+                                        <img src={starFill} className="w-[55px] h-[55px]" />
+                                        <img src={starFill} className="w-[55px] h-[55px]" />
+                                        <img src={starFill} className="w-[55px] h-[55px]" />
+                                        <img src={starFill} className="w-[55px] h-[55px]" />
+                                        <img src={starFill} className="w-[55px] h-[55px]" />
+                                    </div>
+                                </div>
+                                <div className="reviewFavoriteDataFlipCardBack">
+                                    <p>{reviewFavData !== null ? `"${reviewFavData.reviewInfoDescription}"` : "loading"}</p>
+                                    <h1 className="fontWriting">-{reviewFavData !== null ? reviewFavData.reviewInfoName : "loading"}</h1>
                                 </div>
                             </div>
                         </div>
