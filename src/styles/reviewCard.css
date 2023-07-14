@@ -14,7 +14,7 @@
     border-bottom-left-radius: .5rem;
     transition: all .8s;
     box-shadow: 8px 10px 10px 5px rgba(23, 23, 23, 0.5);
-
+    overflow-x: auto;
 }
 
 .reviewCardInner{
@@ -92,6 +92,7 @@
 
 
 .reviewCardTitleNameContainer:hover {
+    
     overflow-x: auto;
     scrollbar-color: #888 #f1f1f1;
 }
