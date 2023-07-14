@@ -132,8 +132,6 @@ const ReviewStats = (props) => {
         }, 2000);
     }
 
-    console.log(reviewFavData)
-
     return (
         <div className="reviewAverageCardContainer">
             <div className="reviewCardBorder">
