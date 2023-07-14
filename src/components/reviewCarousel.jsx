@@ -8,6 +8,7 @@ import blank from "../assets/images/whiteStar.png"
 import fill from "../assets/images/starFill.png"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
+import { set } from "mongoose";
 
 const ReviewCarousel = (props) => {
     const [reviewData, setReviewData] = useState({})
@@ -25,8 +26,11 @@ const ReviewCarousel = (props) => {
 
     //CAROUSEL TRANSITIONS
     const [next1TransitionTracker, setNext1TransitionTracker] = useState(false)
+    const [next1TransitionDirectionTracker, setNext1TransitionDirectionTracker] = useState(false)
     const [next2TransitionTracker, setNext2TransitionTracker] = useState(false)
+    const [next2TransitionDirectionTracker, setNext2TransitionDirectionTracker] = useState(false)
     const [nextSetTracker, setNextSetTracker] = useState(true)
+    const [nextSetDirectionTracker, setNextSetDirectionTracker] = useState(false)
     const [prev1TransitionTracker, setPrev1TransitionTracker] = useState(false)
     const [prev2TransitionTracker, setPrev2TransitionTracker] = useState(false)
 
@@ -74,23 +78,43 @@ const ReviewCarousel = (props) => {
         setPrev2Set([])
 
         if (nextSetTracker) {
+
             // Next 1 Transition
             setNext1Set(newSet)
             setNext1TransitionTracker(true)
+            setNext1TransitionDirectionTracker(false)
 
             //Next 2 Transition
             setNext2TransitionTracker(false)
             setNext2Set(newerSet)
+            if(!nextSetDirectionTracker){
+                setNext2TransitionDirectionTracker(false)
+            }
+            if(nextSetDirectionTracker){
+                setNext2TransitionDirectionTracker(true)
+            }
+            setTimeout(() => {
+                setNext2TransitionDirectionTracker(false)
+            }, 500);
+
         }
 
         if (!nextSetTracker) {
             // Next 1 Reload
             setNext1TransitionTracker(false)
+            setNext1TransitionDirectionTracker(true)
             setNext1Set(newerSet)
 
             //Next 2 Transition
             setNext2Set(newSet);
             setNext2TransitionTracker(true)
+            setNext2TransitionDirectionTracker(false)
+
+            setTimeout(() => {
+                setNext1TransitionDirectionTracker(false)
+            }, 500);
+
+            setNextSetDirectionTracker(true)
         }
 
         //Index
@@ -147,25 +171,28 @@ const ReviewCarousel = (props) => {
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
-    console.log(reviewModalTracker)
-    console.log("prev 1", prev1TransitionTracker)
-    console.log("prev 2", prev2TransitionTracker)
-    console.log("next 1 set", next1Set)
-    console.log("currentIndex", currentIndex)
-    console.log("next 1", next1TransitionTracker)
-    console.log("next 2", next2TransitionTracker)
-    console.log( "next 2 set", next2Set)
+    // console.log(reviewModalTracker)
+    // console.log("prev 1", prev1TransitionTracker)
+    // console.log("prev 2", prev2TransitionTracker)
+    // console.log("next 1 set", next1Set)
+    // console.log("currentIndex", currentIndex)
+    console.log("next 1 tracker", next1TransitionTracker)
+    console.log("next 1 direction", next1TransitionDirectionTracker)
+    console.log("next 2 tracker", next2TransitionTracker)
+    console.log("next 2 direction", next2TransitionDirectionTracker)
+    console.log("next set direction", nextSetDirectionTracker)
+    // console.log( "next 2 set", next2Set)
 
     return (
-        <div className="w-full flex justify-center flex-col">
+        <div className="w-full flex justify-center flex-col ">
 
             <div className="w-full flex justify-center ml-5">
                 <h1 className="fontWriting text-4xl bg-slate-100 px-3 py-2 shadow-lg rounded">Recent Reviews:</h1>
             </div>
 
             <div className="flex w-full h-600px px-[5px] justify-between items-center">
-                <div className="h-full  flex items-center">
-                    <button className={`h-[45px] w-[50px] ${isPrevButtonDisabled ? "opacity-50" : "opacity-100"}`} onClick={handlePrevSet} disabled={isPrevButtonDisabled}>
+                <div className="h-full  flex items-center ">
+                    <button className={`h-[45px] w-[50px] ${isPrevButtonDisabled ? "opacity-50" : "opacity-100"} `} onClick={handlePrevSet} disabled={isPrevButtonDisabled}>
                         <img className="h-[55px] w-[80px]" src={pieLeft} />
                     </button>
                 </div>
@@ -310,7 +337,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {next1Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[2200ms]  ${next1TransitionTracker ? 'translate-x-0 opacity-100' : "absolute opacity-0  translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-[2200ms]  ${next1TransitionTracker && !next1TransitionDirectionTracker ? 'translate-x-0 opacity-100' : " "} ${!next1TransitionTracker && !next1TransitionDirectionTracker ? 'absolute opacity-0  translate-x-[1000px] z-[-1]' : " "}   ${!next1TransitionTracker && next1TransitionDirectionTracker ? 'absolute opacity-0  -translate-x-[1000px] z-[-1] ' : "translate-x-0 opacity-100"}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -378,7 +405,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {next2Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[2200ms] ${next2TransitionTracker ? 'translate-x-0 opacity-100' : 'absolute z-[-10] opacity-0 translate-x-[1000px]  '}   reviewCard`} key={index}>
+                        <div className={`transition-transform duration-[2200ms]   ${next2TransitionTracker && !next2TransitionDirectionTracker ? 'translate-x-0 opacity-100' : " "} ${!next2TransitionTracker && !next2TransitionDirectionTracker ? 'absolute opacity-0  translate-x-[1000px] z-[-1]' : " "}   ${!next2TransitionTracker && next2TransitionDirectionTracker ? 'absolute opacity-0  -translate-x-[1000px] z-[-1] ' : "translate-x-0 opacity-100"}  reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
