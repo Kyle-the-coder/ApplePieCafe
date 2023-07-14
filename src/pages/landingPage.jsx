@@ -65,12 +65,12 @@ const LandingPage = () => {
             </section>
 
             {/* REVIEW CAROUSEL SECTION */}
-            <section className=" flex items-center flex-col" style={{backgroundImage: `url(${morning})`, backgroundSize: 'cover', }} ref={reviewButton}>
+            <section className=" flex items-center flex-col relative" ref={reviewButton}>
                 <div className="w-full flex relative py-4 overflow-hidden">
                     <ReviewCarousel reviewModalTracker={reviewModalTracker} />
-                    {/* <div className="w-full h-full absolute left-0 top-0 z-[-1]">
+                    <div className="w-full h-full absolute left-0 top-0 z-[-1]">
                         <img src={morning} className="w-full h-full object-cover opacity-60" />
-                    </div> */}
+                    </div>
                 </div>
                 <div className="w-full darkBg py-5">
                     <ReviewStats
