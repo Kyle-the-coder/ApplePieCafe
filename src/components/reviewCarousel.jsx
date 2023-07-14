@@ -82,39 +82,24 @@ const ReviewCarousel = (props) => {
             // Next 1 Transition
             setNext1Set(newSet)
             setNext1TransitionTracker(true)
-            setNext1TransitionDirectionTracker(false)
+
 
             //Next 2 Transition
             setNext2TransitionTracker(false)
             setNext2Set(newerSet)
-            if(!nextSetDirectionTracker){
-                setNext2TransitionDirectionTracker(false)
-            }
-            if(nextSetDirectionTracker){
-                setNext2TransitionDirectionTracker(true)
-            }
-            setTimeout(() => {
-                setNext2TransitionDirectionTracker(false)
-            }, 500);
+    
 
         }
 
         if (!nextSetTracker) {
             // Next 1 Reload
             setNext1TransitionTracker(false)
-            setNext1TransitionDirectionTracker(true)
             setNext1Set(newerSet)
 
             //Next 2 Transition
             setNext2Set(newSet);
             setNext2TransitionTracker(true)
-            setNext2TransitionDirectionTracker(false)
 
-            setTimeout(() => {
-                setNext1TransitionDirectionTracker(false)
-            }, 500);
-
-            setNextSetDirectionTracker(true)
         }
 
         //Index
@@ -187,7 +172,7 @@ const ReviewCarousel = (props) => {
         <div className="w-full flex justify-center flex-col ">
 
             <div className="w-full flex justify-center ml-5">
-                <h1 className="fontWriting text-4xl bg-slate-100 px-3 py-2 shadow-lg rounded">Recent Reviews:</h1>
+                <h1 className="fontWriting text-4xl darkBg text-white px-3 py-2 shadow-lg rounded">Recent Reviews:</h1>
             </div>
 
             <div className="flex w-full h-600px px-[5px] justify-between items-center">
@@ -337,7 +322,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {next1Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[2200ms]  ${next1TransitionTracker && !next1TransitionDirectionTracker ? 'translate-x-0 opacity-100' : " "} ${!next1TransitionTracker && !next1TransitionDirectionTracker ? 'absolute   translate-x-[1000px] z-[-1]' : " "}   ${!next1TransitionTracker && next1TransitionDirectionTracker ? 'absolute   -translate-x-[1000px]  ' : " "}   reviewCard`} key={index}>
+                        <div className={`  ${next1TransitionTracker ? "transition-transform duration-[2200ms] translate-x-0 opacity-100" : "absolute translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -405,7 +390,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {next2Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[2200ms]   ${next2TransitionTracker && !next2TransitionDirectionTracker ? 'translate-x-0 opacity-100' : " "} ${!next2TransitionTracker && !next2TransitionDirectionTracker ? 'absolute   translate-x-[1000px] z-[-1]' : " "}   ${!next2TransitionTracker && next2TransitionDirectionTracker ? 'absolute   -translate-x-[1000px] ' : ""}  reviewCard`} key={index}>
+                        <div className={`transition-transform duration-[2200ms] ${next2TransitionTracker ? "translate-x-0 opacity-100" : "absolute translate-x-[1000px] z-[-1] "}  reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
