@@ -66,6 +66,7 @@ const ReviewCarousel = (props) => {
 
     const handleNextSet = () => {
         const newIndex = currentIndex + 4;
+        const currentSet = reviewData.slice(currentIndex, currentIndex + 4)
         const newSet = reviewData.slice(newIndex, newIndex + 4);
         const newerIndex = newIndex + 4
         const newerSet = reviewData.slice(newerIndex, newerIndex + 4)
@@ -92,13 +93,19 @@ const ReviewCarousel = (props) => {
         }
 
         if (!nextSetTracker) {
+            //Pre set
+            setPrev1Set(currentSet)
+            setPrev1TransitionTracker(true)
+
             // Next 1 Reload
             setNext1TransitionTracker(false)
             setNext1Set(newerSet)
 
+
             //Next 2 Transition
             setNext2Set(newSet);
             setNext2TransitionTracker(true)
+            setPrev1TransitionTracker(false)
 
         }
 
@@ -113,6 +120,7 @@ const ReviewCarousel = (props) => {
 
     const handlePrevSet = () => {
         const newIndex = currentIndex - 4;
+        
         const newSet = reviewData.slice(newIndex, newIndex + 4);
         const oldSet = reviewData.slice(newIndex + 4)
         const newerIndex = newIndex - 4
@@ -322,7 +330,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {next1Set.map((data, index) => (
 
-                        <div className={`  ${next1TransitionTracker ? "transition-transform duration-[2200ms] translate-x-0 opacity-100" : "absolute translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
+                        <div className={`  ${next1TransitionTracker ? "transition-transform duration-[2200ms] translate-x-0 opacity-100" : " transition-none absolute translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
@@ -390,7 +398,7 @@ const ReviewCarousel = (props) => {
                     ))}
                     {next2Set.map((data, index) => (
 
-                        <div className={`transition-transform duration-[2200ms] ${next2TransitionTracker ? "translate-x-0 opacity-100" : "absolute translate-x-[1000px] z-[-1] "}  reviewCard`} key={index}>
+                        <div className={`transition-transform duration-[2200ms] ${next2TransitionTracker ? " translate-x-0 opacity-100" : "absolute translate-x-[1000px] opacity-0"}  reviewCard`} key={index}>
 
                             <div className="reviewCardInner">
                                 <div className="reviewCardTitle">
