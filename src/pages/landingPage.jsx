@@ -9,6 +9,7 @@ import "../styles/bgColors.css"
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import morning from "../assets/images/morning.webp"
+import Review2Carousel from "../components/ChatCar"
 
 
 const LandingPage = () => {
@@ -99,7 +100,6 @@ const LandingPage = () => {
                         reviewModalTracker={reviewModalTracker} />
                 </>
             </section>
-
         </div>
     )
 }
