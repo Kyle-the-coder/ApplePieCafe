@@ -1,7 +1,7 @@
 .reviewCard {
     display: flex;
     justify-content: center;
-    width: 300px;
+    width: 350px;
     height: 600px;
     background: linear-gradient(to right, #e1c7a8, #ff5101);
     border: 3px;
