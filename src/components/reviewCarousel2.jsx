@@ -19,10 +19,7 @@ const ReviewCarousel2 = (props) => {
     //CAROUSEL INDEXES
     const [activeSet, setActiveSet] = useState(null)
     const [isActiveSetDisplayed, setIsActiveSetDisplayed] = useState(false)
-    const [isActiveDivDisplayed, setIsActiveDivDisplayed] = useState(true)
-    const [inActiveSet, setInactiveSet] = useState(null)
-    const [isInActiveSetDisplayed, setIsInactiveSetDisplayed] = useState(false)
-    const [isInActiveDivDisplayed, setIsInactiveDivDisplayed] = useState(false)
+    const [activeSetDisplayDirection, setActiveSetDisplayDirection] = useState(false)
 
     //PROPS
     const { reviewModalTracker } = props
@@ -42,7 +39,7 @@ const ReviewCarousel2 = (props) => {
         getReviewData();
 
         if (reviewDataTracker && reviewModalTracker == false) {
-            setActiveSet(reviewData.slice(currentIndex, 4))
+            setActiveSet(reviewData.slice(currentIndex, 4))  
             setIsActiveSetDisplayed(true)
         }
 
@@ -52,23 +49,13 @@ const ReviewCarousel2 = (props) => {
         const currentSet = reviewData.slice(currentIndex, currentIndex + 4)
         const newIndex = currentIndex + 4;
         const newSet = reviewData.slice(newIndex, newIndex + 4);
-        // setTimeout(() => {
-            
-        //     setIsInactiveSetDisplayed(false)
-        // }, 1000);
-        // setTimeout(() => {
-        //     setIsActiveSetDisplayed(true)
-        //     setIsInactiveSetDisplayed(false)
-        //     setIsActiveDivDisplayed(true)
-        // }, 2000);
-        //Active Set
-        setIsActiveDivDisplayed(false)
+        setTimeout(() => {
+            setIsActiveSetDisplayed(true)
+        }, 50);
+        // Active Set
         setIsActiveSetDisplayed(false);
         setActiveSet(newSet)
-        //Inactive Set
-        setInactiveSet(currentSet)
-        setIsInactiveSetDisplayed(true)
-        setIsInactiveDivDisplayed(true)
+        setActiveSetDisplayDirection(false)
         //Index
         setCurrentIndex(newIndex);
     };
@@ -76,6 +63,11 @@ const ReviewCarousel2 = (props) => {
     const handlePrevSet = () => {
         const newIndex = currentIndex - 4;
         const newSet = reviewData.slice(newIndex, newIndex + 4);
+        setTimeout(() => {
+            setIsActiveSetDisplayed(true)
+        }, 50);
+        setIsActiveSetDisplayed(false)
+        setActiveSetDisplayDirection(true)
         setActiveSet(newSet)
         //Index
         setCurrentIndex(newIndex);
@@ -83,13 +75,6 @@ const ReviewCarousel2 = (props) => {
 
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
-
-    console.log("currentIndex", currentIndex)
-    console.log(activeSet)
-    console.log("inactive",inActiveSet)
-    console.log("is active div", isActiveDivDisplayed)
-    console.log("inactive div", isInActiveDivDisplayed)
-    console.log("inactive set", isInActiveSetDisplayed)
 
     return (
         <div className="w-full flex justify-center flex-col ">
@@ -106,8 +91,7 @@ const ReviewCarousel2 = (props) => {
                 </div>
 
                 <div className="w-full flex h-[610px] justify-evenly overflow-hidden">
-                    <ActiveReviewCard activeSet={activeSet} isActiveSetDisplayed={isActiveSetDisplayed} isActiveDivDisplayed={isActiveDivDisplayed} />
-                    <InActiveReviewCard inActiveSet={inActiveSet} isInActiveSetDisplayed={isInActiveSetDisplayed} />
+                    <ActiveReviewCard activeSet={activeSet} isActiveSetDisplayed={isActiveSetDisplayed} activeSetDisplayDirection={activeSetDisplayDirection}/>
                 </div>
                 <div className="h-full flex items-center">
                     <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"} `} onClick={handleNextSet} disabled={isNextButtonDisabled}>
@@ -120,15 +104,15 @@ const ReviewCarousel2 = (props) => {
 }
 
 const ActiveReviewCard = (props) => {
-    const { activeSet, isActiveSetDisplayed, isActiveDivDisplayed } = props
+    const { activeSet, isActiveSetDisplayed, activeSetDisplayDirection } = props
 
 
     return (
-        <div className={`${isActiveDivDisplayed ? "w-full flex h-[610px] justify-evenly overflow-hidden" : "z-[-1] opacity-0" }`}>
+        <div className="w-full flex h-[610px] justify-evenly overflow-hidden">
             {/* Review Card */}
             {activeSet == null ? "" : activeSet.map((data, index) => (
 
-                <div className={` ${isActiveSetDisplayed ? "transform-all duration-1000 translate-x-0 " : "absolute opacity-0 translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
+                <div className={` ${isActiveSetDisplayed ? "transform-all duration-1000 translate-x-0 " : activeSetDisplayDirection ? "absolute opacity-0 -translate-x-[1000px] z-[-1] " : "absolute opacity-0 translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
 
                     <div className="reviewCardInner">
                         <div className="reviewCardTitle">
@@ -198,81 +182,5 @@ const ActiveReviewCard = (props) => {
     )
 }
 
-const InActiveReviewCard = (props) => {
-    const { inActiveSet, isInActiveSetDisplayed, isInActiveDivDisplayed } = props
-    return (
-        <div className={`${isInActiveDivDisplayed ? "w-full flex h-[610px] justify-evenly overflow-hidden" : "z-[-1] opacity-0"}`}>
-            {/* Review Card */}
-            {inActiveSet == null ? "" : inActiveSet.map((data, index) => (
-
-                <div className={` ${isInActiveSetDisplayed ? "transform-all duration-1000 translate-x-0 " : "absolute opacity-0 -translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
-
-                    <div className="reviewCardInner">
-                        <div className="reviewCardTitle">
-                            <div className="reviewCardAvatarImgContainer">
-                                <img src={data.reviewAvatarImg} className="reviewCardAvatarImg" />
-                            </div>
-                            <div className="reviewCardTitleNameContainer">
-                                <h1 className="font-bold">{data.reviewInfoName}</h1>
-                            </div>
-                        </div>
-
-                        <div className="reviewCardDescriptionContainer" >
-                            <p className="reviewCardDescription">{data.reviewInfoDescription}</p>
-                        </div>
-
-                        <div className="flex mt-3 ">
-                            {data.reviewInfoRating === 1 ?
-                                <div className="w-full flex justify-evenly">
-                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                </div>
-                                :
-                                data.reviewInfoRating === 2 ?
-                                    <div className="w-full flex justify-evenly">
-                                        <img src={fill} className="w-[35px] h-[35px]" />
-                                        <img src={fill} className="w-[35px] h-[35px]" />
-                                        <img src={blank} className="w-[35px] h-[35px]" />
-                                        <img src={blank} className="w-[35px] h-[35px]" />
-                                        <img src={blank} className="w-[35px] h-[35px]" />
-                                    </div>
-                                    :
-                                    data.reviewInfoRating === 3 ?
-                                        <div className="w-full flex justify-evenly">
-                                            <img src={fill} className="w-[35px] h-[35px]" />
-                                            <img src={fill} className="w-[35px] h-[35px]" />
-                                            <img src={fill} className="w-[35px] h-[35px]" />
-                                            <img src={blank} className="w-[35px] h-[35px]" />
-                                            <img src={blank} className="w-[35px] h-[35px]" />
-                                        </div>
-                                        :
-                                        data.reviewInfoRating === 4 ?
-                                            <div className="w-full flex justify-evenly">
-                                                <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={blank} className="w-[35px] h-[35px]" />
-                                            </div>
-                                            :
-                                            data.reviewInfoRating === 5 ?
-                                                <div className="w-full flex justify-evenly">
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                </div>
-                                                : ""}
-                        </div>
-                    </div>
-                </div>
-            ))}
-        </div>
-    )
-}
 
 export default ReviewCarousel2;
