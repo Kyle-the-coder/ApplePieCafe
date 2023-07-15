@@ -18,7 +18,7 @@ const ReviewCarousel2 = (props) => {
 
     //CAROUSEL INDEXES
     const [activeSet, setActiveSet] = useState(null)
-    const [isActiveSetDisplayed, setIsActiveSetDisplayed] = useState(false)
+    const [isActiveSetDisplayed, setIsActiveSetDisplayed] = useState(true)
     const [activeSetDisplayDirection, setActiveSetDisplayDirection] = useState(false)
 
     //PROPS
@@ -39,14 +39,13 @@ const ReviewCarousel2 = (props) => {
         getReviewData();
 
         if (reviewDataTracker && reviewModalTracker == false) {
+            setCurrentIndex(0)
             setActiveSet(reviewData.slice(currentIndex, 4))  
-            setIsActiveSetDisplayed(true)
         }
 
     }, [reviewDataTracker, reviewModalTracker])
 
     const handleNextSet = () => {
-        const currentSet = reviewData.slice(currentIndex, currentIndex + 4)
         const newIndex = currentIndex + 4;
         const newSet = reviewData.slice(newIndex, newIndex + 4);
         setTimeout(() => {
@@ -76,6 +75,10 @@ const ReviewCarousel2 = (props) => {
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
+    console.log("active set display", isActiveSetDisplayed)
+    console.log( "revew data tracker", reviewDataTracker)
+    console.log("current index" , currentIndex)
+    console.log("review Modal tracker", reviewModalTracker)
     return (
         <div className="w-full flex justify-center flex-col ">
 
@@ -90,7 +93,7 @@ const ReviewCarousel2 = (props) => {
                     </button>
                 </div>
 
-                <div className="w-full flex h-[610px] justify-evenly overflow-hidden">
+                <div className="w-full flex h-[620px] justify-evenly overflow-hidden">
                     <ActiveReviewCard activeSet={activeSet} isActiveSetDisplayed={isActiveSetDisplayed} activeSetDisplayDirection={activeSetDisplayDirection}/>
                 </div>
                 <div className="h-full flex items-center">
@@ -108,7 +111,7 @@ const ActiveReviewCard = (props) => {
 
 
     return (
-        <div className="w-full flex h-[610px] justify-evenly overflow-hidden">
+        <div className="w-full flex h-full justify-evenly overflow-hidden">
             {/* Review Card */}
             {activeSet == null ? "" : activeSet.map((data, index) => (
 
