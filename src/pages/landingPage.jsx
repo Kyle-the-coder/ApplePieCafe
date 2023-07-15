@@ -101,9 +101,12 @@ const LandingPage = () => {
                         reviewModalTracker={reviewModalTracker} />
                 </>
             </section>
-            <div>
-                <ReviewCarousel2 reviewModalTracker={reviewModalTracker}  />
-            </div>
+            <div className="w-full flex relative py-4 overflow-hidden">
+                    <ReviewCarousel2 reviewModalTracker={reviewModalTracker} />
+                    <div className="w-full h-full absolute left-0 top-0 z-[-1]">
+                        <img src={morning} className="w-full h-full object-cover opacity-60" />
+                    </div>
+                </div>
         </div>
 
     )
