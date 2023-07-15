@@ -20,7 +20,7 @@ const ReviewCarousel2 = (props) => {
     const [activeSet, setActiveSet] = useState(null)
     const [isActiveSetDisplayed, setIsActiveSetDisplayed] = useState(true)
     const [activeSetDisplayDirection, setActiveSetDisplayDirection] = useState(false)
-
+    const [trigger, setTrigger] = useState(false)
     //PROPS
     const { reviewModalTracker } = props
 
@@ -39,8 +39,7 @@ const ReviewCarousel2 = (props) => {
         getReviewData();
 
         if (reviewDataTracker && reviewModalTracker == false) {
-            setCurrentIndex(0)
-            setActiveSet(reviewData.slice(currentIndex, 4))  
+            setActiveSet(reviewData.slice(0, 4))  
         }
 
     }, [reviewDataTracker, reviewModalTracker])
@@ -78,7 +77,9 @@ const ReviewCarousel2 = (props) => {
     console.log("active set display", isActiveSetDisplayed)
     console.log( "revew data tracker", reviewDataTracker)
     console.log("current index" , currentIndex)
-    console.log("review Modal tracker", reviewModalTracker)
+    console.log("review Modal tracker", reviewDataTracker)
+    console.log("review array", activeSet)
+    console.log("trigger", trigger)
     return (
         <div className="w-full flex justify-center flex-col ">
 
