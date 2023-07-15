@@ -33,6 +33,9 @@ const ReviewCarousel2 = (props) => {
     const [prev1TransitionTracker, setPrev1TransitionTracker] = useState(false)
     const [prev2TransitionTracker, setPrev2TransitionTracker] = useState(false)
 
+    //CAROUSEL INDEXES
+    const[activeIndex, setActiveIndex] = useState(0)
+
     //PROPS
     const { reviewModalTracker } = props
 
