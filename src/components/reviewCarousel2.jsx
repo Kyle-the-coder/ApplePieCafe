@@ -31,7 +31,6 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, setReviewData }) => {
             const documents = querySnapshot.docs.map((doc) => doc.data());
             documents.sort((a, b) => {
                 const dateA = a.timeStamp?.toDate?.();
-                console.log("dateA", dateA)
                 const dateB = b.timeStamp?.toDate?.();
                 return dateB?.getTime?.() - dateA?.getTime?.();
             });
