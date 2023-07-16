@@ -10,6 +10,7 @@ import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 
 const ReviewCarousel2 = ({ reviewModalTracker }) => {
+    //DATA
     const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
 
@@ -20,7 +21,6 @@ const ReviewCarousel2 = ({ reviewModalTracker }) => {
     const [activeSet, setActiveSet] = useState(null)
     const [isActiveSetDisplayed, setIsActiveSetDisplayed] = useState(true)
     const [activeSetDisplayDirection, setActiveSetDisplayDirection] = useState(false)
-    const [trigger, setTrigger] = useState(false)
 
     // GET REVIEW DATA
     const getReviewData = async () => {
@@ -41,6 +41,7 @@ const ReviewCarousel2 = ({ reviewModalTracker }) => {
         }
     }, [reviewDataTracker, reviewModalTracker])
 
+    //HANDLE NEXT SLIDE IN CAROUSEL
     const handleNextSet = () => {
         const newIndex = currentIndex + 4;
         const newSet = reviewData.slice(newIndex, newIndex + 4);
@@ -55,6 +56,7 @@ const ReviewCarousel2 = ({ reviewModalTracker }) => {
         setCurrentIndex(newIndex);
     };
 
+    //HANDLE PREV SLIDE IN CAROUSEL 
     const handlePrevSet = () => {
         const newIndex = currentIndex - 4;
         const newSet = reviewData.slice(newIndex, newIndex + 4);
@@ -79,15 +81,20 @@ const ReviewCarousel2 = ({ reviewModalTracker }) => {
             </div>
 
             <div className="flex w-full h-600px px-[5px] justify-between items-center">
+
+                {/* PREV SLIDE BUTTON */}
                 <div className="h-full  flex items-center ">
                     <button className={`h-[45px] w-[50px] ${isPrevButtonDisabled ? "opacity-50" : "opacity-100"} `} onClick={handlePrevSet} disabled={isPrevButtonDisabled}>
                         <img className="h-[55px] w-[80px]" src={pieLeft} alt="Previous" />
                     </button>
                 </div>
 
+                {/* ACTIVELY DISPLAYED SLIDE */}
                 <div className="w-full flex h-[620px] justify-evenly overflow-hidden">
                     <ActiveReviewCard activeSet={activeSet} isActiveSetDisplayed={isActiveSetDisplayed} activeSetDisplayDirection={activeSetDisplayDirection} />
                 </div>
+
+                {/* NEXT SLIDE BUTTON */}
                 <div className="h-full flex items-center">
                     <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"} `} onClick={handleNextSet} disabled={isNextButtonDisabled}>
                         <img className={` h-[45px] w-[50px]`} src={pieRight} alt="Next" />
@@ -101,11 +108,12 @@ const ReviewCarousel2 = ({ reviewModalTracker }) => {
 const ActiveReviewCard = ({ activeSet, isActiveSetDisplayed, activeSetDisplayDirection }) => {
     return (
         <div className="w-full flex h-full justify-evenly overflow-hidden">
+
             {/* Review Card */}
             {activeSet == null ? "" : activeSet.map((data, index) => (
 
                 <div className={` ${isActiveSetDisplayed ? "transform-all duration-1000 translate-x-0 " : activeSetDisplayDirection ? "absolute opacity-0 -translate-x-[1000px] z-[-1] " : "absolute opacity-0 translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
-
+                
                     <div className="reviewCardInner">
                         <div className="reviewCardTitle">
                             <div className="reviewCardAvatarImgContainer">
