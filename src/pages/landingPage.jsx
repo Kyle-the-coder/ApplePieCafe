@@ -27,8 +27,8 @@ const LandingPage = () => {
         reviewButton.current.scrollIntoView({ behavior: "smooth" });
     }
 
-     // GET REVIEW DATA
-     const getReviewData = async () => {
+    // GET REVIEW DATA
+    const getReviewData = async () => {
         try {
             const querySnapshot = await getDocs(collection(db, "reviewInfo"));
             const documents = querySnapshot.docs.map((doc) => doc.data());
@@ -47,7 +47,7 @@ const LandingPage = () => {
     useEffect(() => {
         getReviewData();
 
-        
+
     }, [reviewDataTracker])
 
     return (
