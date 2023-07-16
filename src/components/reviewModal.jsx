@@ -2,7 +2,7 @@ import applePie from "../assets/images/apphoto.jpeg"
 import logo from "../assets/images/ApcWhite.PNG"
 import blank from "../assets/images/whiteStar.png"
 import fill from "../assets/images/starFill.png"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { db, storage, timeStamp } from "../config/firebase"
 import { addDoc, collection } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
@@ -57,6 +57,7 @@ const ReviewModal = (props) => {
 
     }, [reviewAvatarImg])
 
+    const fileInputRef = useRef(null);
     const handleAdd = async (e) => {
         e.preventDefault()
         await addDoc(collection(db, "reviewInfo"), {
@@ -66,6 +67,14 @@ const ReviewModal = (props) => {
             reviewAvatarImg: reviewAvatarImgRef,
             timeStamp: timeStamp
         });
+
+        setReviewInfoName("")
+        setReviewInfoDesc("")
+        setReviewInfoRating("")
+        setReviewAvatarImg(null)
+        if (fileInputRef.current) {
+            fileInputRef.current.value = "";
+        }
 
         setReviewDataTracker(false)
         // GET REVIEW DATA
@@ -106,7 +115,6 @@ const ReviewModal = (props) => {
     }, [reviewModalTracker])
 
     const handleStarFill = (index) => {
-        console.log(index, "index")
         if (index == 1) {
             setStarFillTracker(!starFillTracker)
 
@@ -178,6 +186,7 @@ const ReviewModal = (props) => {
         }
     }
 
+    console.log("review info", reviewInfoName)
     return (
         <div className={`${reviewModalTracker ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
             <div className="w-full h-full bg-blue-200 absolute blur" >
@@ -198,19 +207,19 @@ const ReviewModal = (props) => {
                         <div className="flex flex-col w-full items-center justify-center py-2">
                             <label className="font-bold mb-2">Photo(optional):</label>
                             <div className="flex w-full justify-evenly items-center">
-                                <input className="w-[260px]" type="file" onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
+                                <input className="w-[260px]" type="file"  ref={fileInputRef} onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
                                 <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" />
                             </div>
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Name:</label>
-                            <input className="w-full p-1 text-black" type="text" onChange={(e) => setReviewInfoName(e.target.value)} />
+                            <input className="w-full p-1 text-black" value={reviewInfoName} type="text" onChange={(e) => setReviewInfoName(e.target.value)} />
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Review:</label>
-                            <textarea col="10" rows="10" className="w-full p-1 text-black" type="text" onChange={(e) => setReviewInfoDesc(e.target.value)} />
+                            <textarea col="10" rows="10" value={reviewInfoDesc} className="w-full p-1 text-black" type="text" onChange={(e) => setReviewInfoDesc(e.target.value)} />
                         </div>
 
                         <div className="flex flex-col py-2 mb-4">
