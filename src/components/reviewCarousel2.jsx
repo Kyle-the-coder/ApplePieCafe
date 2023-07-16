@@ -9,7 +9,7 @@ import fill from "../assets/images/starFill.png"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 
-const ReviewCarousel2 = (props) => {
+const ReviewCarousel2 = ({ reviewModalTracker }) => {
     const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
 
@@ -21,27 +21,24 @@ const ReviewCarousel2 = (props) => {
     const [isActiveSetDisplayed, setIsActiveSetDisplayed] = useState(true)
     const [activeSetDisplayDirection, setActiveSetDisplayDirection] = useState(false)
     const [trigger, setTrigger] = useState(false)
-    //PROPS
-    const { reviewModalTracker } = props
+
+    // GET REVIEW DATA
+    const getReviewData = async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "reviewInfo"));
+            const documents = querySnapshot.docs.map((doc) => doc.data());
+            setReviewData(documents);
+            setReviewDataTracker(true)
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
-        // GET REVIEW DATA
-        const getReviewData = async () => {
-            try {
-                const querySnapshot = await getDocs(collection(db, "reviewInfo"));
-                const documents = querySnapshot.docs.map((doc) => doc.data());
-                setReviewData(documents);
-                setReviewDataTracker(true)
-            } catch (error) {
-                console.log(error);
-            }
-        };
         getReviewData();
-
-        if (reviewDataTracker && reviewModalTracker == false) {
-            setActiveSet(reviewData.slice(0, 4))  
+        if (reviewDataTracker && reviewModalTracker === false) {
+            setActiveSet(reviewData.slice(0, 4))
         }
-
     }, [reviewDataTracker, reviewModalTracker])
 
     const handleNextSet = () => {
@@ -74,12 +71,6 @@ const ReviewCarousel2 = (props) => {
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
-    console.log("active set display", isActiveSetDisplayed)
-    console.log( "revew data tracker", reviewDataTracker)
-    console.log("current index" , currentIndex)
-    console.log("review Modal tracker", reviewDataTracker)
-    console.log("review array", activeSet)
-    console.log("trigger", trigger)
     return (
         <div className="w-full flex justify-center flex-col ">
 
@@ -90,16 +81,16 @@ const ReviewCarousel2 = (props) => {
             <div className="flex w-full h-600px px-[5px] justify-between items-center">
                 <div className="h-full  flex items-center ">
                     <button className={`h-[45px] w-[50px] ${isPrevButtonDisabled ? "opacity-50" : "opacity-100"} `} onClick={handlePrevSet} disabled={isPrevButtonDisabled}>
-                        <img className="h-[55px] w-[80px]" src={pieLeft} />
+                        <img className="h-[55px] w-[80px]" src={pieLeft} alt="Previous" />
                     </button>
                 </div>
 
                 <div className="w-full flex h-[620px] justify-evenly overflow-hidden">
-                    <ActiveReviewCard activeSet={activeSet} isActiveSetDisplayed={isActiveSetDisplayed} activeSetDisplayDirection={activeSetDisplayDirection}/>
+                    <ActiveReviewCard activeSet={activeSet} isActiveSetDisplayed={isActiveSetDisplayed} activeSetDisplayDirection={activeSetDisplayDirection} />
                 </div>
                 <div className="h-full flex items-center">
                     <button className={`${isNextButtonDisabled ? "opacity-50" : "opacity-100"} `} onClick={handleNextSet} disabled={isNextButtonDisabled}>
-                        <img className={` h-[45px] w-[50px]`} src={pieRight} />
+                        <img className={` h-[45px] w-[50px]`} src={pieRight} alt="Next" />
                     </button>
                 </div>
             </div>
@@ -107,10 +98,7 @@ const ReviewCarousel2 = (props) => {
     )
 }
 
-const ActiveReviewCard = (props) => {
-    const { activeSet, isActiveSetDisplayed, activeSetDisplayDirection } = props
-
-
+const ActiveReviewCard = ({ activeSet, isActiveSetDisplayed, activeSetDisplayDirection }) => {
     return (
         <div className="w-full flex h-full justify-evenly overflow-hidden">
             {/* Review Card */}
@@ -133,51 +121,14 @@ const ActiveReviewCard = (props) => {
                         </div>
 
                         <div className="flex mt-3 ">
-                            {data.reviewInfoRating === 1 ?
-                                <div className="w-full flex justify-evenly">
-                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                    <img src={blank} className="w-[35px] h-[35px]" />
-                                </div>
-                                :
-                                data.reviewInfoRating === 2 ?
-                                    <div className="w-full flex justify-evenly">
-                                        <img src={fill} className="w-[35px] h-[35px]" />
-                                        <img src={fill} className="w-[35px] h-[35px]" />
-                                        <img src={blank} className="w-[35px] h-[35px]" />
-                                        <img src={blank} className="w-[35px] h-[35px]" />
-                                        <img src={blank} className="w-[35px] h-[35px]" />
-                                    </div>
-                                    :
-                                    data.reviewInfoRating === 3 ?
-                                        <div className="w-full flex justify-evenly">
-                                            <img src={fill} className="w-[35px] h-[35px]" />
-                                            <img src={fill} className="w-[35px] h-[35px]" />
-                                            <img src={fill} className="w-[35px] h-[35px]" />
-                                            <img src={blank} className="w-[35px] h-[35px]" />
-                                            <img src={blank} className="w-[35px] h-[35px]" />
-                                        </div>
-                                        :
-                                        data.reviewInfoRating === 4 ?
-                                            <div className="w-full flex justify-evenly">
-                                                <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={fill} className="w-[35px] h-[35px]" />
-                                                <img src={blank} className="w-[35px] h-[35px]" />
-                                            </div>
-                                            :
-                                            data.reviewInfoRating === 5 ?
-                                                <div className="w-full flex justify-evenly">
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                    <img src={fill} className="w-[35px] h-[35px]" />
-                                                </div>
-                                                : ""}
+                            {[1, 2, 3, 4, 5].map((rating) => (
+                                <img
+                                    src={rating <= data.reviewInfoRating ? fill : blank}
+                                    className="w-[35px] h-[35px]"
+                                    key={rating}
+                                    alt={`Rating ${rating}`}
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
