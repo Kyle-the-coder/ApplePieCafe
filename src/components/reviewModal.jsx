@@ -14,7 +14,7 @@ const ReviewModal = (props) => {
     const { handleReviewModal } = props
     const { reviewModalTracker } = props
     const { setReviewData } = props
-    const { setReviewDataTracker} = props
+    const { setReviewDataTracker } = props
     const [starFillTracker, setStarFillTracker] = useState(true)
     const [starSet, setStarSet] = useState([])
     const [reviewInfoName, setReviewInfoName] = useState("")
