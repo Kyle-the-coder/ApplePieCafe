@@ -36,7 +36,7 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) =
         const newSet = reviewData.slice(newIndex, newIndex + 4);
         setTimeout(() => {
             setIsActiveSetDisplayed(true)
-        }, 50);
+        }, 70);
         // Active Set
         setIsActiveSetDisplayed(false);
         setActiveSet(newSet)
@@ -51,7 +51,7 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) =
         const newSet = reviewData.slice(newIndex, newIndex + 4);
         setTimeout(() => {
             setIsActiveSetDisplayed(true)
-        }, 50);
+        }, 70);
         setIsActiveSetDisplayed(false)
         setActiveSetDisplayDirection(true)
         setActiveSet(newSet)
