@@ -115,75 +115,14 @@ const ReviewModal = (props) => {
     }, [reviewModalTracker])
 
     const handleStarFill = (index) => {
-        if (index == 1) {
-            setStarFillTracker(!starFillTracker)
+        setStarFillTracker(!starFillTracker);
 
-            if (starFillTracker == true) {
-                const newSet = [
-                    { img: fill, idx: 1 },
-                    { img: blank, idx: 2 },
-                    { img: blank, idx: 3 },
-                    { img: blank, idx: 4 },
-                    { img: blank, idx: 5 },
-                ]
-                setStarSet(newSet)
-            }
+        const newSet = Array.from({ length: 5 }, (_, i) => ({
+            img: i < index ? fill : blank,
+            idx: i + 1,
+        }));
 
-            if (starFillTracker == false) {
-                const newSet = [
-                    { img: blank, idx: 1 },
-                    { img: blank, idx: 2 },
-                    { img: blank, idx: 3 },
-                    { img: blank, idx: 4 },
-                    { img: blank, idx: 5 },
-                ]
-                setStarSet(newSet)
-            }
-        }
-
-        if (index == 2) {
-            const newSet = [
-                { img: fill, idx: 1 },
-                { img: fill, idx: 2 },
-                { img: blank, idx: 3 },
-                { img: blank, idx: 4 },
-                { img: blank, idx: 5 },
-            ]
-            setStarSet(newSet)
-        }
-
-        if (index == 3) {
-            const newSet = [
-                { img: fill, idx: 1 },
-                { img: fill, idx: 2 },
-                { img: fill, idx: 3 },
-                { img: blank, idx: 4 },
-                { img: blank, idx: 5 },
-            ]
-            setStarSet(newSet)
-        }
-
-        if (index == 4) {
-            const newSet = [
-                { img: fill, idx: 1 },
-                { img: fill, idx: 2 },
-                { img: fill, idx: 3 },
-                { img: fill, idx: 4 },
-                { img: blank, idx: 5 },
-            ]
-            setStarSet(newSet)
-        }
-
-        if (index == 5) {
-            const newSet = [
-                { img: fill, idx: 1 },
-                { img: fill, idx: 2 },
-                { img: fill, idx: 3 },
-                { img: fill, idx: 4 },
-                { img: fill, idx: 5 },
-            ]
-            setStarSet(newSet)
-        }
+        setStarSet(newSet);
     }
 
     return (
@@ -206,7 +145,7 @@ const ReviewModal = (props) => {
                         <div className="flex flex-col w-full items-center justify-center py-2">
                             <label className="font-bold mb-2">Photo(optional):</label>
                             <div className="flex w-full justify-evenly items-center">
-                                <input className="w-[260px]" type="file"  ref={fileInputRef} onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
+                                <input className="w-[260px]" type="file" ref={fileInputRef} onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
                                 <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" />
                             </div>
                         </div>
