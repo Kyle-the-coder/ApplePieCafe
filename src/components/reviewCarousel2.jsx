@@ -9,9 +9,8 @@ import fill from "../assets/images/starFill.png"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 
-const ReviewCarousel2 = ({ reviewModalTracker }) => {
+const ReviewCarousel2 = ({ reviewModalTracker, reviewData, setReviewData }) => {
     //DATA
-    const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
 
     //INDEX
@@ -22,11 +21,20 @@ const ReviewCarousel2 = ({ reviewModalTracker }) => {
     const [isActiveSetDisplayed, setIsActiveSetDisplayed] = useState(true)
     const [activeSetDisplayDirection, setActiveSetDisplayDirection] = useState(false)
 
+    //TimeStamp
+    const [orderedByTimeArr, setOrderedByTimeArr] = useState([])
+
     // GET REVIEW DATA
     const getReviewData = async () => {
         try {
             const querySnapshot = await getDocs(collection(db, "reviewInfo"));
             const documents = querySnapshot.docs.map((doc) => doc.data());
+            documents.sort((a, b) => {
+                const dateA = a.timeStamp?.toDate?.();
+                console.log("dateA", dateA)
+                const dateB = b.timeStamp?.toDate?.();
+                return dateB?.getTime?.() - dateA?.getTime?.();
+            });
             setReviewData(documents);
             setReviewDataTracker(true)
         } catch (error) {
@@ -36,6 +44,7 @@ const ReviewCarousel2 = ({ reviewModalTracker }) => {
 
     useEffect(() => {
         getReviewData();
+
         if (reviewDataTracker && reviewModalTracker === false) {
             setActiveSet(reviewData.slice(0, 4))
         }
@@ -73,6 +82,7 @@ const ReviewCarousel2 = ({ reviewModalTracker }) => {
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
+    console.log(orderedByTimeArr)
     return (
         <div className="w-full flex justify-center flex-col ">
 
@@ -113,7 +123,7 @@ const ActiveReviewCard = ({ activeSet, isActiveSetDisplayed, activeSetDisplayDir
             {activeSet == null ? "" : activeSet.map((data, index) => (
 
                 <div className={` ${isActiveSetDisplayed ? "transform-all duration-1000 translate-x-0 " : activeSetDisplayDirection ? "absolute opacity-0 -translate-x-[1000px] z-[-1] " : "absolute opacity-0 translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
-                
+
                     <div className="reviewCardInner">
                         <div className="reviewCardTitle">
                             <div className="reviewCardAvatarImgContainer">
