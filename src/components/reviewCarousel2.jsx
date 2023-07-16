@@ -9,9 +9,9 @@ import fill from "../assets/images/starFill.png"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 
-const ReviewCarousel2 = ({ reviewModalTracker, reviewData, setReviewData }) => {
+const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) => {
     //DATA
-    const [reviewDataTracker, setReviewDataTracker] = useState(false)
+
 
     //INDEX
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -24,26 +24,7 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, setReviewData }) => {
     //TimeStamp
     const [orderedByTimeArr, setOrderedByTimeArr] = useState([])
 
-    // GET REVIEW DATA
-    const getReviewData = async () => {
-        try {
-            const querySnapshot = await getDocs(collection(db, "reviewInfo"));
-            const documents = querySnapshot.docs.map((doc) => doc.data());
-            documents.sort((a, b) => {
-                const dateA = a.timeStamp?.toDate?.();
-                const dateB = b.timeStamp?.toDate?.();
-                return dateB?.getTime?.() - dateA?.getTime?.();
-            });
-            setReviewData(documents);
-            setReviewDataTracker(true)
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
-        getReviewData();
-
         if (reviewDataTracker && reviewModalTracker === false) {
             setActiveSet(reviewData.slice(0, 4))
         }
