@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
+import { getDocs, collection } from "firebase/firestore";
+import { db } from "../config/firebase";
 import ReviewCarousel from "../components/reviewCarousel"
 import ReviewModal from "../components/reviewModal"
 import ReviewStats from "../components/reviewStats"
@@ -24,6 +26,29 @@ const LandingPage = () => {
         setReviewModalTracker(!reviewModalTracker);
         reviewButton.current.scrollIntoView({ behavior: "smooth" });
     }
+
+     // GET REVIEW DATA
+     const getReviewData = async () => {
+        try {
+            const querySnapshot = await getDocs(collection(db, "reviewInfo"));
+            const documents = querySnapshot.docs.map((doc) => doc.data());
+            documents.sort((a, b) => {
+                const dateA = a.timeStamp?.toDate?.();
+                const dateB = b.timeStamp?.toDate?.();
+                return dateB?.getTime?.() - dateA?.getTime?.();
+            });
+            setReviewData(documents);
+            setReviewDataTracker(true)
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    useEffect(() => {
+        getReviewData();
+
+        
+    }, [reviewDataTracker])
 
     return (
         <div className="relative">
@@ -69,7 +94,7 @@ const LandingPage = () => {
             {/* REVIEW CAROUSEL SECTION */}
             <section className=" flex items-center flex-col relative" ref={reviewButton}>
                 <div className="w-full flex relative py-4 overflow-hidden">
-                    <ReviewCarousel2 reviewModalTracker={reviewModalTracker} />
+                    <ReviewCarousel2 setReviewData={setReviewData} reviewData={reviewData} reviewModalTracker={reviewModalTracker} />
                     <div className="w-full h-full absolute left-0 top-0 z-[-1]">
                         <img src={morning} className="w-full h-full object-cover opacity-60" />
                     </div>
