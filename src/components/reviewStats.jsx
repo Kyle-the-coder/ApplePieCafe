@@ -67,8 +67,9 @@ const ReviewStats = (props) => {
                 return sum + weights[rating];
             }, 0);
             const averageRating = sumWeightedRatings / sumWeights;
+            console.log(averageRating)
             const newAvgRating = parseFloat(averageRating.toFixed(1))
-            const newAvgStarRating = parseFloat(averageRating.toFixed(0))
+            const newAvgStarRating = Math.trunc(averageRating);
             setReviewStarAverage(newAvgStarRating)
             setReviewAverage(newAvgRating)
 
