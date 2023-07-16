@@ -3,7 +3,7 @@ import logo from "../assets/images/ApcWhite.PNG"
 import blank from "../assets/images/whiteStar.png"
 import fill from "../assets/images/starFill.png"
 import { useEffect, useState } from "react"
-import { db, storage } from "../config/firebase"
+import { db, storage, timeStamp } from "../config/firebase"
 import { addDoc, collection } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import { getDocs } from "firebase/firestore";
@@ -64,6 +64,7 @@ const ReviewModal = (props) => {
             reviewInfoDescription: reviewInfoDesc,
             reviewInfoRating: reviewInfoRating,
             reviewAvatarImg: reviewAvatarImgRef,
+            timeStamp: timeStamp
         });
 
         setReviewDataTracker(false)
@@ -72,6 +73,11 @@ const ReviewModal = (props) => {
             try {
                 const querySnapshot = await getDocs(collection(db, "reviewInfo"));
                 const documents = querySnapshot.docs.map((doc) => doc.data());
+                documents.sort((a, b) => {
+                    const dateA = a.timeStamp?.toDate?.();
+                    const dateB = b.timeStamp?.toDate?.();
+                    return dateB?.getTime?.() - dateA?.getTime?.();
+                });
                 setReviewData(documents);
                 setReviewDataTracker(true)
             } catch (error) {
