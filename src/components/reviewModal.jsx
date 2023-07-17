@@ -23,23 +23,23 @@ const ReviewModal = (props) => {
     const [reviewInfoRating, setReviewInfoRating] = useState("")
     const [reviewAvatarImg, setReviewAvatarImg] = useState(null)
     const [reviewAvatarImgRef, setReviewAvatarImgRef] = useState("")
-    const [loadTime, setLoadTime] = useState(0)
-    const [submitLoadTime, setSubmitLoadTime] = useState(0)
+    const [itsLoadTime, setItsLoadTime] = useState(false)
+    const [submitLoadTime, setSubmitLoadTime] = useState(false)
 
     useEffect(() => {
         const uploadReviewAvatarImg = () => {
             const name = new Date().getTime() + reviewAvatarImg.name
             const itemImgRef = ref(storage, `reviewAvatarImgs/${name}`)
-
             const uploadTask = uploadBytesResumable(itemImgRef, reviewAvatarImg);
-
             uploadTask.on('state_changed',
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    
-                    setTimeout(() => {
-                        setLoadTime(progress)
-                    }, 2000);
+                    setItsLoadTime(true)
+                    if (progress == 100) {
+                        setTimeout(() => {
+                            setItsLoadTime(false)
+                        }, 2000);
+                    }
                     console.log('Upload is ' + progress + '% done');
                     switch (snapshot.state) {
                         case 'paused':
@@ -61,7 +61,6 @@ const ReviewModal = (props) => {
             );
         }
         reviewAvatarImg && uploadReviewAvatarImg();
-
     }, [reviewAvatarImg])
 
     const fileInputRef = useRef(null);
@@ -74,7 +73,6 @@ const ReviewModal = (props) => {
             reviewAvatarImg: reviewAvatarImgRef,
             timeStamp: timeStamp
         });
-
 
         if (fileInputRef.current) {
             fileInputRef.current.value = "";
@@ -98,17 +96,16 @@ const ReviewModal = (props) => {
             }
         };
         getReviewData();
-        const handleResetAndTransition = setTimeout(() => {
+        setSubmitLoadTime(true)
+        setTimeout(() => {
+            handleReviewModal();
+            setSubmitLoadTime(false)
             setReviewInfoName("")
             setReviewInfoDesc("")
             setReviewInfoRating("")
             setReviewAvatarImg(null)
-            handleReviewModal();
         }, 1000);
-
     }
-
-
 
     useEffect(() => {
         setStarSet([
@@ -121,7 +118,6 @@ const ReviewModal = (props) => {
 
         if (reviewModalTracker) {
             document.getElementById("reviewStart").scrollIntoView({ behavior: "smooth" })
-
         }
     }, [reviewModalTracker])
 
@@ -132,11 +128,11 @@ const ReviewModal = (props) => {
             img: i < index ? fill : blank,
             idx: i + 1,
         }));
-
         setStarSet(newSet);
     }
 
-    const isSubmitButtonDisabled = loadTime < 100 && reviewAvatarImg !== null;
+    const isSubmitButtonDisabled = itsLoadTime && reviewAvatarImg !== null;
+
     return (
         <div className={`${reviewModalTracker ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
             <div className="w-full h-full bg-blue-200 absolute blur" >
@@ -158,7 +154,7 @@ const ReviewModal = (props) => {
                             <label className="font-bold mb-2">Photo(optional):</label>
                             <div className="flex w-full justify-evenly items-center">
                                 <input className="w-[260px]" type="file" ref={fileInputRef} onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
-                                {loadTime < 100 && reviewAvatarImg !== null ?
+                                {itsLoadTime && reviewAvatarImg !== null ?
                                     <div class="loader">
                                         <div></div>
                                         <div></div>
@@ -192,7 +188,15 @@ const ReviewModal = (props) => {
                             </div>
                         </div>
 
-                        <button className={`${isSubmitButtonDisabled ? "bg-red-400" : "beigeBg"} px-3 py-1  text-black w-[100px] rounded`} type="submit"  disabled={isSubmitButtonDisabled}>{isSubmitButtonDisabled ? "Loading": "Submit" }</button>
+                        <button className={`${isSubmitButtonDisabled || submitLoadTime ? "darkBg" : "beigeBg"} px-3 py-1  text-black  rounded`} type="submit" disabled={isSubmitButtonDisabled}>{isSubmitButtonDisabled || submitLoadTime ?
+                            <div class="loader">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div> :
+                            "Submit"}</button>
                     </form>
                 </div>
 
