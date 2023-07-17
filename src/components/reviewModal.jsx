@@ -68,10 +68,7 @@ const ReviewModal = (props) => {
             timeStamp: timeStamp
         });
 
-        setReviewInfoName("")
-        setReviewInfoDesc("")
-        setReviewInfoRating("")
-        setReviewAvatarImg(null)
+
         if (fileInputRef.current) {
             fileInputRef.current.value = "";
         }
@@ -94,7 +91,13 @@ const ReviewModal = (props) => {
             }
         };
         getReviewData();
-        handleReviewModal();
+        setTimeout(() => {
+            setReviewInfoName("")
+            setReviewInfoDesc("")
+            setReviewInfoRating("")
+            setReviewAvatarImg(null)
+            handleReviewModal();
+        }, 1000);
     }
 
 
