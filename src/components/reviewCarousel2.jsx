@@ -25,24 +25,30 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker }) 
 
     //HANDLE SLIDE TRANSITION
     const handleSet = (newIndex) => {
+        //NEW SET
         const newSet = reviewData.slice(newIndex, newIndex + 4);
+        //HANDLE TRANSITION
         setTimeout(() => {
             setIsActiveSetDisplayed(true);
-        }, 200);
+        }, 250);
+        //ACTIVE SET
         setActiveSet(newSet);
         setIsActiveSetDisplayed(false);
-        setActiveSetDisplayDirection(newIndex > currentIndex);
+        setActiveSetDisplayDirection(newIndex < currentIndex);
+        //HANDLE INDEX
         setCurrentIndex(newIndex);
     };
 
     //HANDLE NEXT SLIDE IN CAROUSEL
     const handleNextSet = () => {
+        //HANDLE INDEX
         const newIndex = currentIndex + 4;
         handleSet(newIndex);
     };
 
     //HANDLE PREV SLIDE IN CAROUSEL 
     const handlePrevSet = () => {
+        //HANDLE INDEX
         const newIndex = currentIndex - 4;
         handleSet(newIndex);
     };
