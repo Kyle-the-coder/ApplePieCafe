@@ -7,7 +7,7 @@ import fill from "../assets/images/starFill.png"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 
-const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) => {
+const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker }) => {
     //INDEX
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -23,38 +23,28 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) =
         }
     }, [reviewDataTracker, reviewModalTracker])
 
+    //HANDLE SLIDE TRANSITION
+    const handleSet = (newIndex) => {
+        const newSet = reviewData.slice(newIndex, newIndex + 4);
+        setTimeout(() => {
+            setIsActiveSetDisplayed(true);
+        }, 200);
+        setActiveSet(newSet);
+        setIsActiveSetDisplayed(false);
+        setActiveSetDisplayDirection(newIndex > currentIndex);
+        setCurrentIndex(newIndex);
+    };
+
     //HANDLE NEXT SLIDE IN CAROUSEL
     const handleNextSet = () => {
-        //MOVE INDEX FORWARD
         const newIndex = currentIndex + 4;
-        const newSet = reviewData.slice(newIndex, newIndex + 4);
-        //HANDLE TRANSITION
-        setTimeout(() => {
-            setIsActiveSetDisplayed(true)
-        }, 200);
-        // ACTIVE SET
-        setActiveSet(newSet)
-        setIsActiveSetDisplayed(false);
-        setActiveSetDisplayDirection(false)
-        //INDEX
-        setCurrentIndex(newIndex);
+        handleSet(newIndex);
     };
 
     //HANDLE PREV SLIDE IN CAROUSEL 
     const handlePrevSet = () => {
-        //MOVE INDEX BACKWARDS
         const newIndex = currentIndex - 4;
-        const newSet = reviewData.slice(newIndex, newIndex + 4);
-        //HANDLE TRANSITION
-        setTimeout(() => {
-            setIsActiveSetDisplayed(true)
-        }, 200);
-        //ACTIVE SET
-        setActiveSet(newSet)
-        setIsActiveSetDisplayed(false)
-        setActiveSetDisplayDirection(true)
-        //INDEX
-        setCurrentIndex(newIndex);
+        handleSet(newIndex);
     };
 
     //HANDLE BUTTON DISABLE
@@ -112,7 +102,7 @@ const ActiveReviewCard = ({ activeSet, isActiveSetDisplayed, activeSetDisplayDir
                             <div className="reviewCardTitleNameContainer">
                                 <h1 className="font-bold">{data.reviewInfoName}</h1>
                             </div>
-                        </div>  
+                        </div>
                         {/* REVIEW DESCRIPTION */}
                         <div className="reviewCardDescriptionContainer" >
                             <p className="reviewCardDescription">{data.reviewInfoDescription}</p>
