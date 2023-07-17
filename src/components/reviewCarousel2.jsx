@@ -1,7 +1,5 @@
 
 import { useEffect, useState } from "react";
-import { getDocs, collection } from "firebase/firestore";
-import { db } from "../config/firebase";
 import "../styles/scrollbar.css"
 import "../styles/reviewCard.css"
 import blank from "../assets/images/whiteStar.png"
@@ -10,9 +8,6 @@ import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 
 const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) => {
-    //DATA
-
-
     //INDEX
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -21,9 +16,7 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) =
     const [isActiveSetDisplayed, setIsActiveSetDisplayed] = useState(true)
     const [activeSetDisplayDirection, setActiveSetDisplayDirection] = useState(false)
 
-    //TimeStamp
-    const [orderedByTimeArr, setOrderedByTimeArr] = useState([])
-
+    //GET FIRST 4 IN DATA
     useEffect(() => {
         if (reviewDataTracker && reviewModalTracker === false) {
             setActiveSet(reviewData.slice(0, 4))
@@ -34,10 +27,11 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) =
     const handleNextSet = () => {
         const newIndex = currentIndex + 4;
         const newSet = reviewData.slice(newIndex, newIndex + 4);
+        //HANDLE TRANSITION
         setTimeout(() => {
             setIsActiveSetDisplayed(true)
         }, 200);
-        // Active Set
+        // ACTIVE SET
         setActiveSet(newSet)
         setIsActiveSetDisplayed(false);
         setActiveSetDisplayDirection(false)
@@ -62,7 +56,6 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) =
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
-    console.log(orderedByTimeArr)
     return (
         <div className="w-full flex justify-center flex-col ">
 
