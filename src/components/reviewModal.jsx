@@ -24,6 +24,7 @@ const ReviewModal = (props) => {
     const [reviewAvatarImg, setReviewAvatarImg] = useState(null)
     const [reviewAvatarImgRef, setReviewAvatarImgRef] = useState("")
     const [loadTime, setLoadTime] = useState(0)
+    const [submitLoadTime, setSubmitLoadTime] = useState(0)
 
     useEffect(() => {
         const uploadReviewAvatarImg = () => {
@@ -97,13 +98,14 @@ const ReviewModal = (props) => {
             }
         };
         getReviewData();
-        setTimeout(() => {
+        const handleResetAndTransition = setTimeout(() => {
             setReviewInfoName("")
             setReviewInfoDesc("")
             setReviewInfoRating("")
             setReviewAvatarImg(null)
             handleReviewModal();
         }, 1000);
+
     }
 
 
@@ -134,8 +136,7 @@ const ReviewModal = (props) => {
         setStarSet(newSet);
     }
 
-    console.log(loadTime)
-
+    const isSubmitButtonDisabled = loadTime < 100 && reviewAvatarImg !== null;
     return (
         <div className={`${reviewModalTracker ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
             <div className="w-full h-full bg-blue-200 absolute blur" >
@@ -191,7 +192,7 @@ const ReviewModal = (props) => {
                             </div>
                         </div>
 
-                        <button className="px-3 py-1 beigeBg text-black w-[100px] rounded" type="submit">Submit</button>
+                        <button className={`${isSubmitButtonDisabled ? "bg-red-400" : "beigeBg"} px-3 py-1  text-black w-[100px] rounded`} type="submit"  disabled={isSubmitButtonDisabled}>{isSubmitButtonDisabled ? "Loading": "Submit" }</button>
                     </form>
                 </div>
 
