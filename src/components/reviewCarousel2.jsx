@@ -25,6 +25,7 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) =
 
     //HANDLE NEXT SLIDE IN CAROUSEL
     const handleNextSet = () => {
+        //MOVE INDEX FORWARD
         const newIndex = currentIndex + 4;
         const newSet = reviewData.slice(newIndex, newIndex + 4);
         //HANDLE TRANSITION
@@ -35,24 +36,28 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker}) =
         setActiveSet(newSet)
         setIsActiveSetDisplayed(false);
         setActiveSetDisplayDirection(false)
-        //Index
+        //INDEX
         setCurrentIndex(newIndex);
     };
 
     //HANDLE PREV SLIDE IN CAROUSEL 
     const handlePrevSet = () => {
+        //MOVE INDEX BACKWARDS
         const newIndex = currentIndex - 4;
         const newSet = reviewData.slice(newIndex, newIndex + 4);
+        //HANDLE TRANSITION
         setTimeout(() => {
             setIsActiveSetDisplayed(true)
         }, 200);
+        //ACTIVE SET
         setActiveSet(newSet)
         setIsActiveSetDisplayed(false)
         setActiveSetDisplayDirection(true)
-        //Index
+        //INDEX
         setCurrentIndex(newIndex);
     };
 
+    //HANDLE BUTTON DISABLE
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
@@ -92,25 +97,27 @@ const ActiveReviewCard = ({ activeSet, isActiveSetDisplayed, activeSetDisplayDir
     return (
         <div className="w-full flex h-full justify-evenly overflow-hidden">
 
-            {/* Review Card */}
+            {/* REVIEW CARD */}
             {activeSet == null ? "" : activeSet.map((data, index) => (
 
                 <div className={` ${isActiveSetDisplayed ? "transform-all duration-1000 translate-x-0 " : activeSetDisplayDirection ? "absolute opacity-0 -translate-x-[1000px] z-[-1] " : "absolute opacity-0 translate-x-[1000px] z-[-1] "}   reviewCard`} key={index}>
 
                     <div className="reviewCardInner">
                         <div className="reviewCardTitle">
+                            {/* USER IMAGE */}
                             <div className="reviewCardAvatarImgContainer">
                                 <img src={data.reviewAvatarImg} className="reviewCardAvatarImg" />
                             </div>
+                            {/* USER NAME */}
                             <div className="reviewCardTitleNameContainer">
                                 <h1 className="font-bold">{data.reviewInfoName}</h1>
                             </div>
-                        </div>
-
+                        </div>  
+                        {/* REVIEW DESCRIPTION */}
                         <div className="reviewCardDescriptionContainer" >
                             <p className="reviewCardDescription">{data.reviewInfoDescription}</p>
                         </div>
-
+                        {/* REVIEW RATING */}
                         <div className="flex mt-3 ">
                             {[1, 2, 3, 4, 5].map((rating) => (
                                 <img
