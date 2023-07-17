@@ -36,7 +36,9 @@ const ReviewModal = (props) => {
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     
-                    setLoadTime(progress)
+                    setTimeout(() => {
+                        setLoadTime(progress)
+                    }, 2000);
                     console.log('Upload is ' + progress + '% done');
                     switch (snapshot.state) {
                         case 'paused':
