@@ -40,13 +40,26 @@
     border-top-right-radius: .5rem;
     justify-content: center;
     align-items: center;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
 }
 
-.reviewListDataDisplay{
+.reviewListDataDisplay {
     width: 100%;
-    flex-grow: 1;
-    padding: 10px 5px 10px 5px;
+    height: 80%;
     border-bottom-right-radius: 3rem;
     border-bottom-left-radius: .5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewListDataDisplay::-webkit-scrollbar {
+    display: none;
+}
+
+
+.reviewDataSingleContainer {
+    width: 100%;
+    padding: 5px 5px 5px 5px;
+    border-top: 2px solid black;
 }
