@@ -40,10 +40,13 @@
     border-top-right-radius: .5rem;
     justify-content: center;
     align-items: center;
+    border-bottom: 2px solid;
 }
 
 .reviewListDataDisplay{
     width: 100%;
     flex-grow: 1;
-    
+    padding: 10px 5px 10px 5px;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
 }
