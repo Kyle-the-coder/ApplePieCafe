@@ -20,6 +20,7 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker }) 
     useEffect(() => {
         if (reviewDataTracker && reviewModalTracker === false) {
             setActiveSet(reviewData.slice(0, 4))
+            setCurrentIndex(0)
         }
     }, [reviewDataTracker, reviewModalTracker])
 
@@ -57,6 +58,7 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker }) 
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
+    console.log(currentIndex)
     return (
         <div className="w-full flex justify-center flex-col ">
 
