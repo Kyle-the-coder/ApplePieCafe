@@ -136,17 +136,17 @@ const ReviewModal = (props) => {
 
     return (
         <div className={`${reviewModalTracker ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
-            <div className="w-full h-full bg-blue-200 absolute blur" >
-                <img src={applePie} className="w-full h-full object-cover" />
+            <div className="w-full h-full bg-blue-200 absolute bg-gradient-to-r from-orange-200 to-red-400 " >
+                <img src={applePie} className="w-full h-full object-cover " />
             </div>
             <div className="w-full h-[10px]" id="reviewStart">
             </div>
-            <div className="w-[800px] h-content beigeBg z-[10] mb-5  flex flex-col items-center justify-between mt-5 ">
-                <div className="w-full py-2 darkBg rounded flex justify-center reviewModalOutside" >
+            <div className="w-[800px] h-content beigeBg z-[10] mb-5  flex flex-col items-center justify-between mt-5 reviewModalOutside ">
+                <div className="w-full py-2 darkBg rounded flex justify-center reviewModalTop" >
                     <img src={logo} width="200px" />
                 </div>
                 <div className="w-full py-10 flex justify-center">
-                    <form className="flex flex-col items-center darkBg text-white w-3/4 p-5" onSubmit={handleAdd}>
+                    <form className="flex flex-col items-center darkBg text-white w-3/4 p-5 reviewModalOutside" onSubmit={handleAdd}>
                         <div className="mb-3s fontWriting text-2xl">
                             <h1>Leave us a Review!</h1>
                         </div>
