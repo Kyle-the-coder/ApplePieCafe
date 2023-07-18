@@ -75,7 +75,6 @@ const ReviewStats = (props) => {
 
             // CALCULATE SPECIFIC NUM AVERAGE
             const total = reviews.length
-
             const targetNum1 = 1;
             const count1 = reviews.filter((number) => number === targetNum1).length;
             const percentage1 = (count1 / total) * 100
