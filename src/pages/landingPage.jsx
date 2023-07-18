@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
-import ReviewCarousel from "../components/reviewCarousel"
 import ReviewModal from "../components/reviewModal"
 import ReviewStats from "../components/reviewStats"
 import "../styles/font.css"
@@ -113,7 +112,7 @@ const LandingPage = () => {
                             setReviewDataTracker={setReviewDataTracker} />
                     </div>
                     <div className="w-full">
-                        <ReviewList />
+                        <ReviewList reviewData={reviewData} />
                     </div>
                 </div>
 
