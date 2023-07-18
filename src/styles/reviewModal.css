@@ -1,0 +1,6 @@
+.reviewModalOutside{
+    border-top-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    border-top-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+}
