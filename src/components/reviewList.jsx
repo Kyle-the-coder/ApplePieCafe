@@ -8,7 +8,7 @@ const ReviewList = () => {
         <div className="reviewListDataTop beigeBg">
             <h1 className="fontWriting text-2xl">All Reviews</h1>
         </div>
-        <div className="reviewListDataDisplay">
+        <div className="reviewListDataDisplay darkRedBg">
             <h1>list</h1>
         </div>
         </div>
