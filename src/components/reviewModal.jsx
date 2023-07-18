@@ -189,7 +189,7 @@ const ReviewModal = (props) => {
                             </div>
                         </div>
 
-                        <button className={`${isSubmitButtonDisabled ? "darkRedBg text-white" : "beigeBg"} px-3 py-1  text-black  rounded`} type="submit" disabled={isSubmitButtonDisabled}>
+                        <button className={`${!isSubmitButtonDisabled && submitLoadTime ? "darkBg": "beigeBg"} ${isSubmitButtonDisabled ? "darkRedBg text-white" : ""}  px-3 py-1  text-black  rounded`} type="submit" disabled={isSubmitButtonDisabled}>
                             {isSubmitButtonDisabled ? "Loading..." : submitLoadTime ?
                                 <div class="loader">
                                     <div></div>
