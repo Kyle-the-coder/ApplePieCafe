@@ -10,6 +10,7 @@ import { getDocs } from "firebase/firestore";
 import avatarPic from "../assets/images/avatar.png"
 import "../styles/bgColors.css"
 import "../styles/loader.css"
+import "../styles/reviewModal.css"
 
 const ReviewModal = (props) => {
     const { handleReviewModal } = props
@@ -140,8 +141,8 @@ const ReviewModal = (props) => {
             </div>
             <div className="w-full h-[10px]" id="reviewStart">
             </div>
-            <div className="w-[800px] h-content beigeBg z-[10] mb-5 rounded flex flex-col items-center justify-between mt-5">
-                <div className="w-full py-2 darkBg rounded flex justify-center" >
+            <div className="w-[800px] h-content beigeBg z-[10] mb-5  flex flex-col items-center justify-between mt-5 ">
+                <div className="w-full py-2 darkBg rounded flex justify-center reviewModalOutside" >
                     <img src={logo} width="200px" />
                 </div>
                 <div className="w-full py-10 flex justify-center">
