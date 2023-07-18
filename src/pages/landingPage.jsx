@@ -12,6 +12,7 @@ import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import morning from "../assets/images/morning.webp"
 import ReviewCarousel2 from "../components/reviewCarousel2"
+import ReviewList from "../components/reviewList";
 
 
 
@@ -103,12 +104,17 @@ const LandingPage = () => {
                         <img src={morning} className="w-full h-full object-cover opacity-60" />
                     </div>
                 </div>
-                <div className="w-full darkBg py-5">
-                    <ReviewStats
-                        reviewData={reviewData}
-                        setReviewData={setReviewData}
-                        reviewDataTracker={reviewDataTracker}
-                        setReviewDataTracker={setReviewDataTracker} />
+                <div className="w-full darkBg py-5 flex">
+                    <div className="w-full">
+                        <ReviewStats
+                            reviewData={reviewData}
+                            setReviewData={setReviewData}
+                            reviewDataTracker={reviewDataTracker}
+                            setReviewDataTracker={setReviewDataTracker} />
+                    </div>
+                    <div className="w-full">
+                        <ReviewList />
+                    </div>
                 </div>
 
             </section>
