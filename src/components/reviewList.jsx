@@ -1,16 +1,16 @@
 import "../styles/reviewList.css"
 import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
-import dropDownIcon from "../assets/images/down.png"
+import dropDownIcon from "../assets/images/chevron.png"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
                 <div className="reviewListDataContainer bg-white">
-                    <div className="reviewListDataTop beigeBg">
-                        <h1 className="fontWriting text-3xl font-bold">All Reviews</h1>
-                        <img src={dropDownIcon} className="w-[30px] h-[30px]" />
+                    <div className="reviewListDataTop darkBg">
+                        <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
+                        <img src={dropDownIcon} className="w-[35px] h-[35px]" />
                     </div>
                     <div className="reviewListDataDisplay">
                         {reviewDataTracker && reviewData.map((data, index) => (
