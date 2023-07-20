@@ -182,8 +182,8 @@ const ReviewStats = (props) => {
                                     <div className="w-11/12 flex justify-between items-center">
                                         <h1>5:</h1>
                                         <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
-                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
-                                            <rect width={`${reviewNum5Percentage}%`} height="100%" fill="rgb(19, 212, 19)" />
+                                            <rect x="0" width="100%" height="10%" fill="rgb(201, 201, 201)" />
+                                            <rect x="0" y="0" width={`${reviewNum5Percentage}%`} height="110%" fill="rgb(19, 212, 19)" rx="5" ry="5" />
                                         </svg>
                                         <div className="w-[45px] flex justify-start">
                                             <h1>{reviewNum5Percentage}%</h1>
@@ -193,7 +193,7 @@ const ReviewStats = (props) => {
                                     <div className="w-11/12 flex justify-between items-center">
                                         <h1>4:</h1>
                                         <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
-                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
+                                            <rect x="0" width="100%" height="10%" fill="rgb(201, 201, 201)" />
                                             <rect width={`${reviewNum4Percentage}%`} height="100%" fill="rgb(172, 226, 34)" />
                                         </svg>
                                         <div className="w-[45px] flex justify-start">
@@ -204,7 +204,7 @@ const ReviewStats = (props) => {
                                     <div className="w-11/12 flex justify-between items-center">
                                         <h1>3:</h1>
                                         <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
-                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
+                                            <rect x="0" width="100%" height="10%" fill="rgb(201, 201, 201)" />
                                             <rect width={`${reviewNum3Percentage}%`} height="100%" fill="rgb(235, 225, 40)" />
                                         </svg>
                                         <div className="w-[45px] flex justify-start">
@@ -215,7 +215,7 @@ const ReviewStats = (props) => {
                                     <div className="w-11/12 flex justify-between items-center">
                                         <h1>2:</h1>
                                         <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
-                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
+                                            <rect x="0" width="100%" height="10%" fill="rgb(201, 201, 201)" />
                                             <rect width={`${reviewNum2Percentage}%`} height="100%" fill="rgb(236, 170, 46)" />
                                         </svg>
                                         <div className="w-[45px] flex justify-start">
@@ -226,7 +226,7 @@ const ReviewStats = (props) => {
                                     <div className="w-11/12 flex justify-between items-center">
                                         <h1>1:</h1>
                                         <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
-                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
+                                            <rect x="0" width="100%" height="10%" fill="rgb(201, 201, 201)" />
                                             <rect width={`${reviewNum1Percentage}%`} height="100%" fill="rgb(236, 52, 46)" />
                                         </svg>
                                         <div className="w-[45px] flex justify-start">
