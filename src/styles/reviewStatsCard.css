@@ -39,6 +39,7 @@
     display: flex;
     border-top-left-radius: 3rem;
     border-top-right-radius: .5rem;
+    border-bottom: 2px solid black;
 }
 
 .reviewAverageCardNumberContainer {
@@ -74,7 +75,7 @@
     width: 50%;
     height: 100%;
     border-top-right-radius: .5rem;
-    border-bottom: 2px solid black;
+    
 }
 
 .reviewStatsInfoContainer {
