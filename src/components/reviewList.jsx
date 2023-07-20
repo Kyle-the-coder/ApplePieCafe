@@ -7,14 +7,14 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
-                <div className="reviewListDataContainer darkBg">
+                <div className="reviewListDataContainer bg-white">
                     <div className="reviewListDataTop beigeBg">
                         <h1 className="fontWriting text-3xl font-bold">All Reviews</h1>
                         <img src={dropDownIcon} className="w-[30px] h-[30px]" />
                     </div>
-                    <div className="reviewListDataDisplay darkRedBg">
+                    <div className="reviewListDataDisplay">
                         {reviewDataTracker && reviewData.map((data, index) => (
-                            <div className="reviewDataSingleContainer darkBg" key={index}>
+                            <div className="reviewDataSingleContainer" key={index}>
                                 <img src={data.reviewAvatarImg} className="reviewListDataImg" />
                                 <div className="reviewListStarContainer">
                                     {[1, 2, 3, 4, 5].map((rating) => (
