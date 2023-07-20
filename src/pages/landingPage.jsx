@@ -119,7 +119,7 @@ const LandingPage = () => {
             </section>
 
             {/* REVIEW MODAL FORM */}
-            <section>
+            <section className="bg-white">
                 <div className="py-5" >
                     <h1 className="fontWriting text-3xl mb-3">Recently visited?</h1>
                     <button className="px-3 py-1 darkRedBg text-white rounded " onClick={() => handleReviewModal()}>Leave a review!</button>
