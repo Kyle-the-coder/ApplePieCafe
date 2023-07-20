@@ -136,7 +136,7 @@ const ReviewStats = (props) => {
         <div className="reviewAverageCardContainer">
             <div className="reviewCardBorder">
 
-                <div className="reviewAverageCard beigeBg">
+                <div className="reviewAverageCard ">
 
                     {/* REVIEW STATS TOP */}
                     <div className="reviewAverageCardTop">
@@ -144,7 +144,7 @@ const ReviewStats = (props) => {
                         {/* REVIEW STATS NUMBER LEFT SIDE */}
                         <div className="reviewAverageCardNumberContainer darkBg cursor-pointer" onClick={handleCircleStyleTracker}>
                             <div>
-                                <h1 className="text-white mb-1">Overall:</h1>
+                                <h1 className="mb-1 text-white">Overall:</h1>
                             </div>
                             <div className="reviewAverageCardNumberOuterCircle">
                                 <div className="reviewAverageCardNumberInnerCircle ml-1">
@@ -157,7 +157,7 @@ const ReviewStats = (props) => {
                                 width="80%" height="80%">
                                 <defs>
                                     <linearGradient id="gradientColor" >
-                                        <stop offest="0%" stopColor="#e1c7a8" />
+                                        <stop offest="0%" stopColor="#e7d2ba" />
                                         <stop offset="100%" stopColor="#ff5101" />
                                     </linearGradient>
                                 </defs>
@@ -169,7 +169,7 @@ const ReviewStats = (props) => {
                         </div>
 
                         {/* REVIEW STATS DISPLAY RIGHT SIDE */}
-                        <div className="reviewAverageCardStatsContainer">
+                        <div className="reviewAverageCardStatsContainer ">
                             <div className="reviewStatsInfoContainer">
 
                                 <h1>Average:</h1>
@@ -180,35 +180,13 @@ const ReviewStats = (props) => {
                                 <div className="flex flex-col w-full items-start ml-3">
 
                                     <div className="w-11/12 flex justify-between items-center">
-                                        <h1>1:</h1>
+                                        <h1>5:</h1>
                                         <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
                                             <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
-                                            <rect width={`${reviewNum1Percentage}%`} height="100%" fill="rgb(29, 28, 28)" />
+                                            <rect width={`${reviewNum5Percentage}%`} height="100%" fill="rgb(19, 212, 19)" />
                                         </svg>
                                         <div className="w-[45px] flex justify-start">
-                                            <h1>{reviewNum1Percentage}%</h1>
-                                        </div>
-                                    </div>
-
-                                    <div className="w-11/12 flex justify-between items-center">
-                                        <h1>2:</h1>
-                                        <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
-                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
-                                            <rect width={`${reviewNum2Percentage}%`} height="100%" fill="rgb(29, 28, 28)" />
-                                        </svg>
-                                        <div className="w-[45px] flex justify-start">
-                                            <h1>{reviewNum2Percentage}%</h1>
-                                        </div>
-                                    </div>
-
-                                    <div className="w-11/12 flex justify-between items-center">
-                                        <h1>3:</h1>
-                                        <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
-                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
-                                            <rect width={`${reviewNum3Percentage}%`} height="100%" fill="rgb(29, 28, 28)" />
-                                        </svg>
-                                        <div className="w-[45px] flex justify-start">
-                                            <h1>{reviewNum3Percentage}%</h1>
+                                            <h1>{reviewNum5Percentage}%</h1>
                                         </div>
                                     </div>
 
@@ -216,7 +194,7 @@ const ReviewStats = (props) => {
                                         <h1>4:</h1>
                                         <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
                                             <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
-                                            <rect width={`${reviewNum4Percentage}%`} height="100%" fill="rgb(29, 28, 28)" />
+                                            <rect width={`${reviewNum4Percentage}%`} height="100%" fill="rgb(172, 226, 34)" />
                                         </svg>
                                         <div className="w-[45px] flex justify-start">
                                             <h1>{reviewNum4Percentage}%</h1>
@@ -224,15 +202,38 @@ const ReviewStats = (props) => {
                                     </div>
 
                                     <div className="w-11/12 flex justify-between items-center">
-                                        <h1>5:</h1>
+                                        <h1>3:</h1>
                                         <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
                                             <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
-                                            <rect width={`${reviewNum5Percentage}%`} height="100%" fill="rgb(29, 28, 28)" />
+                                            <rect width={`${reviewNum3Percentage}%`} height="100%" fill="rgb(235, 225, 40)" />
                                         </svg>
                                         <div className="w-[45px] flex justify-start">
-                                            <h1>{reviewNum5Percentage}%</h1>
+                                            <h1>{reviewNum3Percentage}%</h1>
                                         </div>
                                     </div>
+
+                                    <div className="w-11/12 flex justify-between items-center">
+                                        <h1>2:</h1>
+                                        <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
+                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
+                                            <rect width={`${reviewNum2Percentage}%`} height="100%" fill="rgb(236, 170, 46)" />
+                                        </svg>
+                                        <div className="w-[45px] flex justify-start">
+                                            <h1>{reviewNum2Percentage}%</h1>
+                                        </div>
+                                    </div>
+
+                                    <div className="w-11/12 flex justify-between items-center">
+                                        <h1>1:</h1>
+                                        <svg className="num1Svg" xmlns="http://www.w3.org/2000/svg" width="60%" height="10">
+                                            <rect width="100%" height="100%" fill="rgb(201, 201, 201)" />
+                                            <rect width={`${reviewNum1Percentage}%`} height="100%" fill="rgb(236, 52, 46)" />
+                                        </svg>
+                                        <div className="w-[45px] flex justify-start">
+                                            <h1>{reviewNum1Percentage}%</h1>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
