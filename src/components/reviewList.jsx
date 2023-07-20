@@ -1,5 +1,5 @@
 import "../styles/reviewList.css"
-import blank from "../assets/images/whiteStar.png"
+import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
 import dropDownIcon from "../assets/images/down.png"
 
