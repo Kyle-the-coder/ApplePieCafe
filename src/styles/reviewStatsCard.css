@@ -101,10 +101,6 @@ circle {
     margin-top: 30px;
 }
 
-.num1Svg {
-    background-color: aliceblue;
-}
-
 @keyframes anim {
     0% {
         stroke-dashoffset: 500;
