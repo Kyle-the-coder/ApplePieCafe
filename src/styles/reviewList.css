@@ -72,7 +72,7 @@
     align-items: center;
     top: 105%;
     left: -2px;
-    transition: all .8s;
+    transition: all .8s ease-out;
     
 }
 
@@ -92,7 +92,7 @@
     overflow: hidden;
 }
 
-.reviewListDataDisplay {
+.reviewListDataDisplay1 {
     width: 100%;
     height: 80%;
     border-bottom-right-radius: 3rem;
@@ -100,6 +100,18 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
+}
+
+.reviewListDataDisplay2{
+    width: 100%;
+    height: 80%;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .reviewListDataDisplay::-webkit-scrollbar {
