@@ -1,11 +1,17 @@
+import { useEffect, useState } from "react";
 import "../styles/reviewList.css"
 import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
 import dropDownIcon from "../assets/images/chevron.png"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
+    const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
 
-    reviewData.sort((a, b) => {
+    const displayDropdownToggle = ()=>{
+        setIsDropdownDisplayed(!isDropdownDisplayed)
+    }
+
+    const infoRatingSort = reviewData.sort((a, b) => {
         const dateA = a.reviewInfoRating;
         const dateB = b.reviewInfoRating;
         return dateB - dateA;
@@ -16,8 +22,13 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                 <div className="reviewListDataContainer bg-white">
                     <div className="reviewListDataTop darkBg">
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
-                        <div>
+                        <div className="reviewListDataDropdownContainer" onClick={displayDropdownToggle}>
                             <img src={dropDownIcon} className="w-[25px] h-[25px]" />
+                            { isDropdownDisplayed && 
+                            <div className="reviewListDataDropdownMenu">
+
+                            </div>
+                            }
                         </div>
                     </div>
                     <div className="reviewListDataDisplay">
