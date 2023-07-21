@@ -4,13 +4,21 @@ import fill from "../assets/images/starFill.png"
 import dropDownIcon from "../assets/images/chevron.png"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
+
+    reviewData.sort((a, b) => {
+        const dateA = a.reviewInfoRating;
+        const dateB = b.reviewInfoRating;
+        return dateB - dateA;
+    });
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
                 <div className="reviewListDataContainer bg-white">
                     <div className="reviewListDataTop darkBg">
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
-                        <img src={dropDownIcon} className="w-[35px] h-[35px]" />
+                        <div>
+                            <img src={dropDownIcon} className="w-[25px] h-[25px]" />
+                        </div>
                     </div>
                     <div className="reviewListDataDisplay">
                         {reviewDataTracker && reviewData.map((data, index) => (
