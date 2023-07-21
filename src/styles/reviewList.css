@@ -73,6 +73,7 @@
     top: 105%;
     left: -2px;
     transition: all .8s;
+    
 }
 
 .reviewListDataDropdownMenu.active {
@@ -87,6 +88,8 @@
     border-bottom-left-radius: 3rem;
     border-top-left-radius: .5rem;
     border-bottom-right-radius: .5rem;
+    padding: 5px 3px 5px 3px;
+    overflow: hidden;
 }
 
 .reviewListDataDisplay {
