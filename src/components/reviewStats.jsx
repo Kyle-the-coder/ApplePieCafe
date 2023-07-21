@@ -5,6 +5,7 @@ import { db } from "../config/firebase";
 import "../styles/reviewStatsCard.css"
 import APLogo from "../assets/images/ApcBlack.PNG"
 import avatar from "../assets/images/avatar.png"
+
 const ReviewStats = (props) => {
     const { reviewData, setReviewData } = props
     const { reviewDataTracker, setReviewDataTracker } = props
