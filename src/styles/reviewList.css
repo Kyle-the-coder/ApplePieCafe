@@ -47,7 +47,7 @@
     margin-left: 30%;
 }
 
-.reviewListDataTop>img {
+.reviewListDataTop>div {
     margin-right: 18%;
     cursor: pointer;
     border-width: 1.5px;
