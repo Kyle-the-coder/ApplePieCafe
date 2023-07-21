@@ -44,7 +44,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         setSelectedSortOption(optionName)
         setTimeout(() => {
             setIsSelectedSortDisplayed(true)
-        }, 100);
+        }, 2000);
     }
 
     const infoRatingSortLeastToMost = () => reviewDataTracker && reviewData.sort((a, b) => {
@@ -100,8 +100,8 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                             }
                         </div>
                     </div>
-                    <div className="reviewListDataDisplay">
-                        {isSelectedSortDisplayed && selectedSortOption.map((data, index) => (
+                    <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay1" : "reviewListDataDisplay2"}`}>
+                        {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
                             <div className="reviewDataSingleContainer" key={index}>
                                 <img src={data.reviewAvatarImg} className="reviewListDataImg" />
                                 <div className="reviewListStarContainer">
@@ -115,7 +115,13 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                     ))}
                                 </div>
                             </div>
-                        ))}
+                        )) :  <div class="loader2">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div> }
                     </div>
                 </div>
             </div>
