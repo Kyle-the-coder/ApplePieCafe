@@ -39,10 +39,7 @@ const ReviewStats = (props) => {
             const docSnap = await getDoc(docRef)
 
             if (docSnap.exists()) {
-                console.log("yes")
                 setReviewFavData(docSnap.data())
-            } else {
-                console.log("no")
             }
         }
 
@@ -68,7 +65,6 @@ const ReviewStats = (props) => {
                 return sum + weights[rating];
             }, 0);
             const averageRating = sumWeightedRatings / sumWeights;
-            console.log(averageRating)
             const newAvgRating = parseFloat(averageRating.toFixed(1))
             const newAvgStarRating = Math.trunc(newAvgRating);
             setReviewStarAverage(newAvgStarRating)
