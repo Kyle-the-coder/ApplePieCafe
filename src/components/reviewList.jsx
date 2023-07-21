@@ -15,7 +15,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         selectedSortOption.length !== 0 && setIsSelectedSortDisplayed(true)
     }, [reviewDataTracker])
 
-    const displayDropdownToggle = () => {
+    const handleDropdownActive = () => {
         if (isDropdownDisplayed) {
             setIsActive("")
             setTimeout(() => {
@@ -26,9 +26,6 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
             setIsActive("")
             setIsDropdownDisplayed(true)
         }
-    }
-
-    const handleDropdownActive = () => {
         if (isActive === "") {
             setTimeout(() => {
                 setIsActive("active")
@@ -37,6 +34,13 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         if (isActive === "active") {
             setIsActive("")
         }
+    }
+
+    const handleDeactivateDropdown = () =>{
+        setIsActive("")
+        setTimeout(() => {
+            setIsDropdownDisplayed(false)
+        }, 760);
     }
 
     const handleDropdownSort = (optionName) => {
@@ -85,7 +89,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                     <div className="reviewListDataTop darkBg">
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
                         <div className={`reviewListDataDropdownContainer`} >
-                            <img src={dropDownIcon} className="w-[25px] h-[25px]" onClick={() => { displayDropdownToggle(); handleDropdownActive() }} />
+                            <img src={dropDownIcon} className="w-[25px] h-[25px]" onClick={() => { handleDropdownActive() }} />
                             {isDropdownDisplayed &&
                                 <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? isActive : ""}`}>
                                     <div className="reviewListDataDropdownContentContainer">
@@ -100,7 +104,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                             }
                         </div>
                     </div>
-                    <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay1" : "reviewListDataDisplay2"}`}>
+                    <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay1" : "reviewListDataDisplay2"}`} onClick={() => handleDeactivateDropdown()}>
                         {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
                             <div className="reviewDataSingleContainer" key={index}>
                                 <img src={data.reviewAvatarImg} className="reviewListDataImg" />
@@ -115,13 +119,13 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                     ))}
                                 </div>
                             </div>
-                        )) :  <div class="loader2">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div> }
+                        )) : <div class="loader2">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>}
                     </div>
                 </div>
             </div>
