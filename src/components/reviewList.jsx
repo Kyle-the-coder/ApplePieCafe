@@ -12,15 +12,15 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
 
     useEffect(() => {
         setSelectedSortOption(reviewData)
-        setIsSelectedSortDisplayed(true)
-    }, [])
+        selectedSortOption.length !==0 && setIsSelectedSortDisplayed(true)
+    }, [reviewDataTracker])
 
     const displayDropdownToggle = () => {
         if (isDropdownDisplayed) {
             setIsActive("")
             setTimeout(() => {
                 setIsDropdownDisplayed(false)
-            }, 1000);
+            }, 760);
         }
         if (!isDropdownDisplayed) {
             setIsActive("")
@@ -40,22 +40,27 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     }
 
     const handleDropdownSort = (optionName) => {
-        if (selectedSortOption === optionName) {
-            setSelectedSortOption(null); // Deselect the option if it's already selected
-        } else {
-            setSelectedSortOption(optionName); // Set the selected option
-        }
+        setIsSelectedSortDisplayed(false)
+        setSelectedSortOption(optionName)
+        setTimeout(() => {
+            setIsSelectedSortDisplayed(true)
+        }, 100);
     }
 
-    const infoRatingSortMostToLeast = reviewDataTracker && reviewData.sort((a, b) => {
+    const infoRatingSortLeastToMost = () => reviewDataTracker && reviewData.sort((a, b) => {
+        const dateA = a.reviewInfoRating;
+        const dateB = b.reviewInfoRating;
+        return dateA - dateB;
+    });
+    const infoRatingSortMostToLeast = () => reviewDataTracker && reviewData.sort((a, b) => {
         const dateA = a.reviewInfoRating;
         const dateB = b.reviewInfoRating;
         return dateB - dateA;
     });
-    const infoRatingSortLeastToMost = reviewDataTracker && reviewData.sort((a, b) => {
-        const dateA = a.reviewInfoRating;
-        const dateB = b.reviewInfoRating;
-        return dateA - dateB;
+    const mostRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
+        const dateA = a.timeStamp?.toDate?.();
+        const dateB = b.timeStamp?.toDate?.();
+        return dateB?.getTime?.() - dateA?.getTime?.();
     });
 
     const sortListContent = [
@@ -66,6 +71,10 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         {
             name: "Rating Least->Most",
             function: infoRatingSortLeastToMost
+        },
+        {
+            name: "Most Recent",
+            function: mostRecentRatingSort
         }
     ]
 
@@ -81,7 +90,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                             {isDropdownDisplayed &&
                                 <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? isActive : ""}`}>
                                     <div className="reviewListDataDropdownContentContainer">
-                                        <h1>Sort List:</h1>
+                                        <h1 className="fontWriting text-xl underline">Sort List:</h1>
                                         {sortListContent.map((option, index) => (
                                             <div key={index} onClick={() => handleDropdownSort(option.function)}>
                                                 <h1>{option.name}</h1>
