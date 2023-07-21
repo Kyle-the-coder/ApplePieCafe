@@ -6,12 +6,31 @@ import dropDownIcon from "../assets/images/chevron.png"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
-    const [isActive, setIsActive] = useState(false)
+    const [isActive, setIsActive] = useState("")
 
-    const displayDropdownToggle = ()=>{
-        setIsDropdownDisplayed(!isDropdownDisplayed)
 
-        
+    const displayDropdownToggle = () => {
+        if (isDropdownDisplayed) {
+            setIsActive("")
+            setTimeout(() => {
+                setIsDropdownDisplayed(false)
+            }, 1000);
+        }
+        if (!isDropdownDisplayed) {
+            setIsActive("")
+            setIsDropdownDisplayed(true)
+        }
+    }
+
+    const handleDropdownActive = () => {
+        if (isActive === "") {
+            setTimeout(() => {
+                setIsActive("active")
+            }, 100);
+        }
+        if (isActive === "active") {
+            setIsActive("")
+        }
     }
 
     const infoRatingSort = reviewDataTracker && reviewData.sort((a, b) => {
@@ -20,19 +39,20 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         return dateB - dateA;
     });
 
-    console.log(isDropdownDisplayed)
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
                 <div className="reviewListDataContainer bg-white">
                     <div className="reviewListDataTop darkBg">
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
-                        <div className={`reviewListDataDropdownContainer`} onClick={displayDropdownToggle}>
+                        <div className={`reviewListDataDropdownContainer`} onClick={() => { displayDropdownToggle(); handleDropdownActive() }}>
                             <img src={dropDownIcon} className="w-[25px] h-[25px]" />
-                            { isDropdownDisplayed && 
-                            <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? "active" : ""}`}>
-
-                            </div>
+                            {isDropdownDisplayed &&
+                                <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? isActive : ""}`}>
+                                    <div className="reviewListDataDropdownContentContainer">
+                                        <h1>Sort List:</h1>
+                                    </div>
+                                </div>
                             }
                         </div>
                     </div>
