@@ -13,8 +13,6 @@ import morning from "../assets/images/morning.webp"
 import ReviewCarousel2 from "../components/reviewCarousel2"
 import ReviewList from "../components/reviewList";
 
-
-
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
     const [reviewData, setReviewData] = useState({})
