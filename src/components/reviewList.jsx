@@ -6,26 +6,31 @@ import dropDownIcon from "../assets/images/chevron.png"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
+    const [isActive, setIsActive] = useState(false)
 
     const displayDropdownToggle = ()=>{
         setIsDropdownDisplayed(!isDropdownDisplayed)
+
+        
     }
 
-    const infoRatingSort = reviewData.sort((a, b) => {
+    const infoRatingSort = reviewDataTracker && reviewData.sort((a, b) => {
         const dateA = a.reviewInfoRating;
         const dateB = b.reviewInfoRating;
         return dateB - dateA;
     });
+
+    console.log(isDropdownDisplayed)
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
                 <div className="reviewListDataContainer bg-white">
                     <div className="reviewListDataTop darkBg">
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
-                        <div className="reviewListDataDropdownContainer" onClick={displayDropdownToggle}>
+                        <div className={`reviewListDataDropdownContainer`} onClick={displayDropdownToggle}>
                             <img src={dropDownIcon} className="w-[25px] h-[25px]" />
                             { isDropdownDisplayed && 
-                            <div className="reviewListDataDropdownMenu">
+                            <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? "active" : ""}`}>
 
                             </div>
                             }
