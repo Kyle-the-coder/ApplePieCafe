@@ -12,7 +12,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
 
     useEffect(() => {
         setSelectedSortOption(reviewData)
-        selectedSortOption.length !==0 && setIsSelectedSortDisplayed(true)
+        selectedSortOption.length !== 0 && setIsSelectedSortDisplayed(true)
     }, [reviewDataTracker])
 
     const displayDropdownToggle = () => {
@@ -78,7 +78,6 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         }
     ]
 
-    console.log(selectedSortOption)
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
