@@ -114,7 +114,7 @@
     align-items: center;
 }
 
-.reviewListDataDisplay::-webkit-scrollbar {
+.reviewListDataDisplay1::-webkit-scrollbar {
     display: none;
 }
 
