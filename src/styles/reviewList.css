@@ -1,3 +1,4 @@
+/* WHOLE CONTAINER */
 .reviewListContainer {
     display: flex;
     justify-content: center;
@@ -32,6 +33,7 @@
     border: 3px solid black;
 }
 
+/* TOP SECTION W/DROPDOWN */
 .reviewListDataTop {
     width: 100%;
     height: 20%;
@@ -46,7 +48,6 @@
 .reviewListDataTop>h1 {
     margin-left: 30%;
 }
-
 
 .reviewListDataDropdownContainer {
     margin-right: 18%;
@@ -73,14 +74,13 @@
     top: 105%;
     left: -2px;
     transition: all .5s;
-    
 }
 
 .reviewListDataDropdownMenu.active {
     height: 300px;
 }
 
-.reviewListDataDropdownContentContainer{
+.reviewListDataDropdownContentContainer {
     width: 95%;
     height: 95%;
     background-color: white;
@@ -92,6 +92,15 @@
     overflow: hidden;
 }
 
+.reviewListDataDropdownOption {
+    width: 100%;
+    background-color: #e1c7a8;
+    display: flex;
+    justify-content: left;
+    padding: 4px 5px 4px 5px;
+}
+
+/* LIST STYLES FOR DATA AND LOADER */
 .reviewListDataDisplay1 {
     width: 100%;
     height: 80%;
@@ -102,7 +111,7 @@
     flex-direction: column;
 }
 
-.reviewListDataDisplay2{
+.reviewListDataDisplay2 {
     width: 100%;
     height: 80%;
     border-bottom-right-radius: 3rem;
@@ -138,7 +147,7 @@
 }
 
 .reviewListStarContainer {
-    width: 290px;
+    width: 310px;
     display: flex;
     justify-content: space-evenly;
     margin-right: 10%;
