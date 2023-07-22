@@ -101,10 +101,10 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         <div className="reviewListContainer">
             <div className="reviewListBorder">
                 <div className="reviewListDataContainer bg-white">
-                    <div className="reviewListDataTop darkBg">
+                    <div className="reviewListDataTop darkBg " >
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
-                        <div className={`reviewListDataDropdownContainer`} >
-                            <img src={dropDownIcon} className="w-[25px] h-[25px]" onClick={() => { handleDropdownActive() }} />
+                        <div className={`reviewListDataDropdownContainer `} onMouseLeave={()=>handleDeactivateDropdown()} >
+                            <img src={dropDownIcon} className="w-[25px] h-[25px]" onClick={() => { handleDropdownActive() }}  />
                             {isDropdownDisplayed &&
                                 <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? isActive : ""}`}>
                                     <div className="reviewListDataDropdownContentContainer">
