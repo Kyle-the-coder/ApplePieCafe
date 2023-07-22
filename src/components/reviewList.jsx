@@ -20,7 +20,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
             setIsActive("")
             setTimeout(() => {
                 setIsDropdownDisplayed(false)
-            }, 760);
+            }, 360);
         }
         if (!isDropdownDisplayed) {
             setIsActive("")
@@ -40,7 +40,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         setIsActive("")
         setTimeout(() => {
             setIsDropdownDisplayed(false)
-        }, 760);
+        }, 360);
     }
 
     const handleDropdownSort = (optionName) => {
