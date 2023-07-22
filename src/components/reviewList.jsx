@@ -69,6 +69,10 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
 
     const sortListContent = [
         {
+            name: "Most Recent",
+            function: mostRecentRatingSort
+        },
+        {
             name: "Rating Most->Least",
             function: infoRatingSortMostToLeast
         },
@@ -76,10 +80,6 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
             name: "Rating Least->Most",
             function: infoRatingSortLeastToMost
         },
-        {
-            name: "Most Recent",
-            function: mostRecentRatingSort
-        }
     ]
 
     return (
@@ -95,8 +95,8 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                     <div className="reviewListDataDropdownContentContainer">
                                         <h1 className="fontWriting text-xl underline">Sort List:</h1>
                                         {sortListContent.map((option, index) => (
-                                            <div key={index} onClick={() => handleDropdownSort(option.function)}>
-                                                <h1>{option.name}</h1>
+                                            <div key={index} className="reviewListDataDropdownOption" onClick={() => handleDropdownSort(option.function)}>
+                                                <h1>-{option.name}</h1>
                                             </div>
                                         ))}
                                     </div>
