@@ -60,7 +60,7 @@
 }
 
 .reviewListDataDropdownMenu {
-    width: 200px;
+    width: 210px;
     height: 0px;
     background: linear-gradient(to right, #e1c7a8, #ff5101);
     border-top-right-radius: 3rem;
@@ -72,7 +72,7 @@
     justify-content: center;
     align-items: center;
     top: 105%;
-    left: -2px;
+    left: -5px;
     transition: all .5s;
 }
 
@@ -92,12 +92,21 @@
     overflow: hidden;
 }
 
-.reviewListDataDropdownOption {
+.reviewListDataDropdownOptionContainer {
     width: 100%;
-    background-color: #e1c7a8;
     display: flex;
     justify-content: left;
-    padding: 4px 5px 4px 5px;
+    padding: 5px 0px 5px 0px;
+}
+
+.reviewListDataDropdownOptionHighlight{
+    background-color: #ff5101;
+    padding: 5px;
+    border-radius: .6rem;
+}
+.reviewListDataDropdownOption{
+    padding: 5px;
+    border-radius: .6rem;
 }
 
 /* LIST STYLES FOR DATA AND LOADER */
