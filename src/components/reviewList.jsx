@@ -9,6 +9,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [isActive, setIsActive] = useState("")
     const [selectedSortOption, setSelectedSortOption] = useState([]);
     const [isSelectedSortDisplayed, setIsSelectedSortDisplayed] = useState(false)
+    const [dropdownHighlight, setDropdownHighlight] = useState("")
 
     useEffect(() => {
         setSelectedSortOption(reviewData)
@@ -95,8 +96,8 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                     <div className="reviewListDataDropdownContentContainer">
                                         <h1 className="fontWriting text-xl underline">Sort List:</h1>
                                         {sortListContent.map((option, index) => (
-                                            <div key={index} className="reviewListDataDropdownOption" onClick={() => handleDropdownSort(option.function)}>
-                                                <h1>-{option.name}</h1>
+                                            <div key={index} className="reviewListDataDropdownOptionContainer" onClick={() => handleDropdownSort(option.function)}>
+                                                <h1 className="reviewList">-{option.name}</h1>
                                             </div>
                                         ))}
                                     </div>
