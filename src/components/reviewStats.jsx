@@ -4,7 +4,7 @@ import starFill from "../assets/images/starFill.png"
 import { db } from "../config/firebase";
 import "../styles/reviewStatsCard.css"
 import APLogo from "../assets/images/ApcBlack.PNG"
-import avatar from "../assets/images/userImage.png"
+import avatar from "../assets/images/avatar.png"
 
 const ReviewStats = (props) => {
     const { reviewData, setReviewData } = props
