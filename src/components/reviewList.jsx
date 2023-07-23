@@ -3,7 +3,7 @@ import "../styles/reviewList.css"
 import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
 import dropDownIcon from "../assets/images/chevron.png"
-import avatar from "../assets/images/avatar.png"
+import avatar from "../assets/images/userImage2.png"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
