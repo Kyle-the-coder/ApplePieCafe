@@ -3,6 +3,7 @@ import "../styles/reviewList.css"
 import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
 import dropDownIcon from "../assets/images/chevron.png"
+import avatar from "../assets/images/avatar.png"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
@@ -122,7 +123,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                     <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay1" : "reviewListDataDisplay2"}`}>
                         {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
                             <div className="reviewDataSingleContainer" key={index}>
-                                <img src={data.reviewAvatarImg} className="reviewListDataImg" />
+                                <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
                                 <div className="reviewListStarContainer">
                                     {[1, 2, 3, 4, 5].map((rating) => (
                                         <img
