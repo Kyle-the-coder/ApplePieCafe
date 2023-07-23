@@ -6,6 +6,7 @@ import blank from "../assets/images/whiteStar.png"
 import fill from "../assets/images/starFill.png"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
+import userImage from "../assets/images/user.png"
 
 const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker }) => {
     //INDEX
@@ -58,7 +59,6 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker }) 
     const isPrevButtonDisabled = currentIndex === 0;
     const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
 
-    console.log(currentIndex)
     return (
         <div className="w-full flex justify-center flex-col ">
 
@@ -104,7 +104,7 @@ const ActiveReviewCard = ({ activeSet, isActiveSetDisplayed, activeSetDisplayDir
                         <div className="reviewCardTitle">
                             {/* USER IMAGE */}
                             <div className="reviewCardAvatarImgContainer">
-                                <img src={data.reviewAvatarImg} className="reviewCardAvatarImg" />
+                                <img src={data.reviewAvatarImg === "" ? userImage : data.reviewAvatarImg} className="reviewCardAvatarImg" />
                             </div>
                             {/* USER NAME */}
                             <div className="reviewCardTitleNameContainer">
