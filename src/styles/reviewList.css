@@ -139,6 +139,7 @@
 
 .reviewListDataSingleContainer {
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -151,11 +152,19 @@
     width: 100%;
     background-color: #ff5101;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     padding: 8px 5px 8px 5px;
     border-top: 2px solid black;
     transition: all .8s;
+}
+
+.reviewListDataDetailDescription{
+    width: 100%;
+    height: 150px;
+    background-color: white;
+    overflow-y: auto;
 }
 
 .reviewListDataSingleContainerExpandButton{
