@@ -12,6 +12,8 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [isSelectedSortDisplayed, setIsSelectedSortDisplayed] = useState(false)
     const [dropdownHighlight, setDropdownHighlight] = useState(true)
     const [dropdownHighlightName, setDropdownHighlightName] = useState("Most Recent")
+    const [listDetailExpanded, setListDetailExpanded] = useState(false)
+    const [listDetailExpandName, setListDetailExpandName] = useState(null)
 
     useEffect(() => {
         setSelectedSortOption(reviewData)
@@ -98,6 +100,17 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         }
     }
 
+    const handleExpandListDetail = (optionName) => {
+        if(listDetailExpandName === optionName){
+            setListDetailExpandName(optionName)
+            setListDetailExpanded(true)
+        } else if(listDetailExpandName !== optionName){
+            setListDetailExpandName(optionName)
+            setListDetailExpanded(true)
+        }
+    }
+    console.log(listDetailExpandName)
+    console.log(listDetailExpanded)
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
@@ -122,7 +135,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                     </div>
                     <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay1" : "reviewListDataDisplay2"}`}>
                         {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
-                            <div className="reviewDataSingleContainer" key={index}>
+                            <div className={`${listDetailExpanded && listDetailExpandName === data.reviewInfoName ? "reviewListDataSingleContainerExpand" : "reviewListDataSingleContainer"} `} key={index}>
                                 <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
                                 <div className="reviewListStarContainer">
                                     {[1, 2, 3, 4, 5].map((rating) => (
@@ -133,6 +146,9 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                             alt={`Rating ${rating}`}
                                         />
                                     ))}
+                                </div>
+                                <div className="reviewListDataSingleContainerExpandButton" onClick={()=>handleExpandListDetail(data.reviewInfoName)}>
+                                        <h1>details</h1>
                                 </div>
                             </div>
                         )) : <div className="loader2">
