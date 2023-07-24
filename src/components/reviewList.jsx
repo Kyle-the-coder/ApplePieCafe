@@ -137,6 +137,10 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                         {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
                             <div className={`${listDetailExpanded && listDetailExpandName === data.reviewInfoName ? "reviewListDataSingleContainerExpand" : "reviewListDataSingleContainer"} `} key={index}>
                                 <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
+                                {listDetailExpanded && listDetailExpandName == data.reviewInfoName && 
+                                <div className="reviewListDataDetailDescription">
+                                    <p>{data.reviewInfoDescription}</p>
+                                </div>}
                                 <div className="reviewListStarContainer">
                                     {[1, 2, 3, 4, 5].map((rating) => (
                                         <img
