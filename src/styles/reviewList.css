@@ -132,32 +132,55 @@
     align-items: center;
 }
 
+.reviewListDataDisplay1.active {
+    width: 100%;
+    height: 80%;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewListDataDisplay2.active {
+    width: 100%;
+    height: 80%;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+    overflow-y: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .reviewListDataDisplay1::-webkit-scrollbar {
     display: none;
 }
 
-
 .reviewListDataSingleContainer {
     width: 100%;
-    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 8px 5px 8px 5px;
     border-top: 2px solid black;
     transition: all .8s;
+    flex-grow: 0;
 }
 
-.reviewListDataSingleContainerExpand {
+.reviewListDataSingleContainer.expanded {
     width: 100%;
-    background-color: #ff5101;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: #ff5101;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 8px 5px 8px 5px;
     border-top: 2px solid black;
     transition: all .8s;
+    flex-grow: 2;
 }
 
 .reviewListDataDetailDescription{
@@ -174,8 +197,6 @@
     text-decoration: underline;
     cursor: pointer;
 }
-
-
 
 .reviewListDataImg {
     width: 120px;
