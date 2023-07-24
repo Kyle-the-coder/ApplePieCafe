@@ -102,11 +102,14 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
 
     const handleExpandListDetail = (optionName) => {
         if(listDetailExpandName === optionName){
-            setListDetailExpandName(optionName)
-            setListDetailExpanded(!listDetailExpanded)
+            if(listDetailExpanded){
+                setListDetailExpanded(false)
+            } else if(!listDetailExpanded){
+                setListDetailExpanded(true)
+            }
         } else if(listDetailExpandName !== optionName){
             setListDetailExpandName(optionName)
-            setListDetailExpanded(!listDetailExpanded)
+            setListDetailExpanded(true)
         }
     }
 
