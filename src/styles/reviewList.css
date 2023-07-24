@@ -63,14 +63,11 @@
     width: 230px;
     height: 0px;
     background: linear-gradient(to right, #e1c7a8, #ff5101);
-    border-top-right-radius: 3rem;
-    border-bottom-left-radius: 3rem;
-    border-top-left-radius: .5rem;
-    border-bottom-right-radius: .5rem;
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: .5rem;
     top: 105%;
     left: -25px;
     transition: all .5s;
@@ -84,10 +81,7 @@
     width: 95%;
     height: 95%;
     background-color: rgb(29, 28, 28);
-    border-top-right-radius: 3rem;
-    border-bottom-left-radius: 3rem;
-    border-top-left-radius: .5rem;
-    border-bottom-right-radius: .5rem;
+    border-radius: .5rem;
     padding: 5px 3px 5px 3px;
     overflow: hidden;
     color: white;
