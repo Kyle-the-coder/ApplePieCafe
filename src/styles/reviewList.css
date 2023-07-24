@@ -137,14 +137,36 @@
 }
 
 
-.reviewDataSingleContainer {
+.reviewListDataSingleContainer {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 8px 5px 8px 5px;
     border-top: 2px solid black;
+    transition: all .8s;
 }
+
+.reviewListDataSingleContainerExpand {
+    width: 100%;
+    background-color: #ff5101;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 8px 5px 8px 5px;
+    border-top: 2px solid black;
+    transition: all .8s;
+}
+
+.reviewListDataSingleContainerExpandButton{
+    margin-right: 3px;
+    padding: 3px;
+    color: rgb(0, 132, 255);
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
 
 .reviewListDataImg {
     width: 120px;
@@ -159,5 +181,5 @@
     width: 310px;
     display: flex;
     justify-content: space-evenly;
-    margin-right: 10%;
 }
+
