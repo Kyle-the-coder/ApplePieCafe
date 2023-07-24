@@ -52,11 +52,16 @@
 .reviewListDataDropdownContainer {
     margin-right: 18%;
     cursor: pointer;
+    position: relative;
+}
+
+.reviewListDataDropdownIcon{
+    width: 42px;
+    height: 42px;
     border-width: 1.5px;
     border-image: linear-gradient(to bottom, #e1c7a8, #ff5101);
     border-image-slice: 1;
-    padding: 6px;
-    position: relative;
+    padding: 5px;
 }
 
 .reviewListDataDropdownMenu {
