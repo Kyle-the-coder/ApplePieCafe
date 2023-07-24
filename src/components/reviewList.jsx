@@ -10,8 +10,8 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [isActive, setIsActive] = useState("")
     const [selectedSortOption, setSelectedSortOption] = useState([]);
     const [isSelectedSortDisplayed, setIsSelectedSortDisplayed] = useState(false)
-    const [dropdownHighlight, setDropdownHighlight] = useState(false)
-    const [dropdownHighlightIdx, setDropdownHighlightIdx] = useState("")
+    const [dropdownHighlight, setDropdownHighlight] = useState(true)
+    const [dropdownHighlightName, setDropdownHighlightName] = useState("Most Recent")
 
     useEffect(() => {
         setSelectedSortOption(reviewData)
@@ -88,13 +88,13 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         },
     ]
 
-    const handleDropdownHighlight = (idx, optionIdx) => {
-        console.log(idx, optionIdx)
-        if (idx === optionIdx) {
-            setDropdownHighlightIdx(optionIdx)
+    const handleDropdownHighlight = (optionName) => {
+        if (dropdownHighlightName !== optionName) {
+            setDropdownHighlightName(optionName)
             setDropdownHighlight(true)
-        } else if (idx !== optionIdx) {
-            setDropdownHighlight(false)
+        } else if (dropdownHighlightName === optionName) {
+            setDropdownHighlightName(optionName)
+            setDropdownHighlight(true)
         }
     }
 
@@ -105,14 +105,14 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                     <div className="reviewListDataTop darkBg " >
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
                         <div className={`reviewListDataDropdownContainer `} onMouseLeave={() => handleDeactivateDropdown()} >
-                            <img src={dropDownIcon} className="w-[25px] h-[25px]" onClick={() => { handleDropdownActive() }} />
+                            <img src={dropDownIcon} className="reviewListDataDropdownIcon" onClick={() => { handleDropdownActive() }} />
                             {isDropdownDisplayed &&
                                 <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? isActive : ""}`}>
                                     <div className="reviewListDataDropdownContentContainer">
                                         <h1 className="fontWriting text-xl underline">Sort List:</h1>
                                         {sortListContent.map((option, index) => (
                                             <div key={index} className="reviewListDataDropdownOptionContainer" onClick={() => handleDropdownSort(option.function)}>
-                                                <h1 className={`${dropdownHighlight && dropdownHighlightIdx === option.idx ? "reviewListDataDropdownOptionHighlight" : "reviewListDataDropdownOption"}`} onClick={() => handleDropdownHighlight(index, option.idx)}>-{option.name}</h1>
+                                                <h1 className={`${dropdownHighlight && dropdownHighlightName === option.name ? "reviewListDataDropdownOptionHighlight" : "reviewListDataDropdownOption"}`} onClick={() => handleDropdownHighlight(option.name)}>-{option.name}</h1>
                                             </div>
                                         ))}
                                     </div>
