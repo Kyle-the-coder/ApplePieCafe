@@ -103,14 +103,13 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const handleExpandListDetail = (optionName) => {
         if(listDetailExpandName === optionName){
             setListDetailExpandName(optionName)
-            setListDetailExpanded(true)
+            setListDetailExpanded(!listDetailExpanded)
         } else if(listDetailExpandName !== optionName){
             setListDetailExpandName(optionName)
-            setListDetailExpanded(true)
+            setListDetailExpanded(!listDetailExpanded)
         }
     }
-    console.log(listDetailExpandName)
-    console.log(listDetailExpanded)
+
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
@@ -133,9 +132,9 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                             }
                         </div>
                     </div>
-                    <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay1" : "reviewListDataDisplay2"}`}>
+                    <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay1" : "reviewListDataDisplay2"} ${listDetailExpanded ? "active" : ""}`}>
                         {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
-                            <div className={`${listDetailExpanded && listDetailExpandName === data.reviewInfoName ? "reviewListDataSingleContainerExpand" : "reviewListDataSingleContainer"} `} key={index}>
+                            <div className={` reviewListDataSingleContainer ${listDetailExpanded && listDetailExpandName === data.reviewInfoName ? "expanded" : ""} `} key={index}>
                                 <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
                                 {listDetailExpanded && listDetailExpandName == data.reviewInfoName && 
                                 <div className="reviewListDataDetailDescription">
