@@ -29,7 +29,10 @@ const LandingPage = () => {
     const getReviewData = async () => {
         try {
             const querySnapshot = await getDocs(collection(db, "reviewInfo"));
-            const documents = querySnapshot.docs.map((doc) => doc.data());
+            const documents = querySnapshot.docs.map((doc) => ({
+                id: doc.id, // Add the document ID to the data object
+                ...doc.data(),
+            }));
             documents.sort((a, b) => {
                 const dateA = a.timeStamp?.toDate?.();
                 const dateB = b.timeStamp?.toDate?.();
