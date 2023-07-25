@@ -137,7 +137,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                         </div>
                     </div>
                     {listDetailExpanded ?
-                        <div className="reviewSingleDataContainer">
+                        <div className="reviewSingleDataContainerMain">
                             <DisplayOneReview singleReviewData={singleReviewData} setListDetailExpanded={setListDetailExpanded} />
                         </div>
                         :
@@ -146,6 +146,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                 <div className={` reviewListDataSingleContainer`} key={index}>
                                     <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
                                     <div className="reviewListStarContainer">
+
                                         {[1, 2, 3, 4, 5].map((rating) => (
                                             <img
                                                 src={rating <= data.reviewInfoRating ? fill : blank}
@@ -195,7 +196,9 @@ const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
                     />
                 ))}
             </div>
-            <p onClick={() => handleBackToListButton()}>close</p>
+            <div className="reviewSingleDataCloseButton darkRedBg">
+                <p onClick={() => handleBackToListButton()}>close</p>
+            </div>
         </div>
     )
 }
