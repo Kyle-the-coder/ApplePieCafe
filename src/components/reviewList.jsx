@@ -181,13 +181,15 @@ const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
     }
     return (
         <div className="reviewSingleDataContainer">
-            <img src={singleReviewData.reviewAvatarImg} className="reviewListDataImg" />
-            <p>{singleReviewData.reviewInfoDescription}</p>
-            <div className="reviewListStarContainer">
+            <img src={singleReviewData.reviewAvatarImg} className="reviewSingleDataContainerImg" />
+            <div className="reviewSingleDataDescriptionContainer">
+                <p>{singleReviewData.reviewInfoDescription}</p>
+            </div>
+            <div className="reviewSingleDataStarContainer">
                 {[1, 2, 3, 4, 5].map((rating) => (
                     <img
                         src={rating <= singleReviewData.reviewInfoRating ? fill : blank}
-                        className="w-[50px] h-[50px]"
+                        className="w-[40px] h-[40px]"
                         key={rating}
                         alt={`Rating ${rating}`}
                     />
