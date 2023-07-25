@@ -209,3 +209,26 @@
     border-bottom-left-radius: .5rem;
 }
 
+.reviewSingleDataContainerImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all .8s;
+}
+
+.reviewSingleDataDescriptionContainer{
+    width: 50%;
+    height: 100px;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.reviewSingleDataStarContainer{
+    width: 210px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+}
+
