@@ -181,7 +181,7 @@ const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
     }
     return (
         <div className="reviewSingleDataContainer">
-            <img src={singleReviewData.reviewAvatarImg} className="reviewSingleDataContainerImg" />
+            <img src={singleReviewData.reviewAvatarImg === "" ? avatar : singleReviewData.reviewAvatarImg} className="reviewSingleDataContainerImg" />
             <div className="reviewSingleDataDescriptionContainer">
                 <p>{singleReviewData.reviewInfoDescription}</p>
             </div>
