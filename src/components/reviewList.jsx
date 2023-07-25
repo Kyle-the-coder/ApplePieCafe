@@ -137,8 +137,8 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                         </div>
                     </div>
                     {listDetailExpanded ?
-                        <div>
-                            <DisplayOneReview singleReviewData={singleReviewData} listDetailExpanded={listDetailExpanded} />
+                        <div className="reviewSingleDataContainer">
+                            <DisplayOneReview singleReviewData={singleReviewData} setListDetailExpanded={setListDetailExpanded} />
                         </div>
                         :
                         <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay" : "reviewListDataDisplayLoader"}`}>
@@ -174,26 +174,26 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     )
 }
 
-const DisplayOneReview = ({ singleReviewData, listDetailExpanded }) => {
-    return (
-        <div>
-            <div>
-                <div>
-                    <img src={singleReviewData.reviewAvatarImg} />
-                    <p>{singleReviewData.reviewInfoDescription}</p>
-                    <div>
-                        {[1, 2, 3, 4, 5].map((rating) => (
-                            <img
-                                src={rating <= singleReviewData.reviewInfoRating ? fill : blank}
-                                className="w-[50px] h-[50px]"
-                                key={rating}
-                                alt={`Rating ${rating}`}
-                            />
-                        ))}
-                    </div>
-                </div>
-            </div>
+const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
 
+    const handleBackToListButton = () => {
+        setListDetailExpanded(false)
+    }
+    return (
+        <div className="reviewSingleDataContainer">
+            <img src={singleReviewData.reviewAvatarImg} className="reviewListDataImg" />
+            <p>{singleReviewData.reviewInfoDescription}</p>
+            <div className="reviewListStarContainer">
+                {[1, 2, 3, 4, 5].map((rating) => (
+                    <img
+                        src={rating <= singleReviewData.reviewInfoRating ? fill : blank}
+                        className="w-[50px] h-[50px]"
+                        key={rating}
+                        alt={`Rating ${rating}`}
+                    />
+                ))}
+            </div>
+            <p onClick={() => handleBackToListButton()}>close</p>
         </div>
     )
 }
