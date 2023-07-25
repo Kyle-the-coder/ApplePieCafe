@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../config/firebase";
 import "../styles/reviewList.css"
 import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
@@ -14,6 +16,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [dropdownHighlightName, setDropdownHighlightName] = useState("Most Recent")
     const [listDetailExpanded, setListDetailExpanded] = useState(false)
     const [listDetailExpandName, setListDetailExpandName] = useState(null)
+    const [singleReviewData, setSingleReviewData] = useState([])
 
     useEffect(() => {
         setSelectedSortOption(reviewData)
@@ -100,19 +103,17 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         }
     }
 
-    const handleExpandListDetail = (optionName) => {
-        if(listDetailExpandName === optionName){
-            if(listDetailExpanded){
-                setListDetailExpanded(false)
-            } else if(!listDetailExpanded){
-                setListDetailExpanded(true)
-            }
-        } else if(listDetailExpandName !== optionName){
-            setListDetailExpandName(optionName)
+    const handleExpandListDetail = async (optionId) => {
+        const docRef = doc(db, "reviewInfo", optionId)
+        const docSnap = await getDoc(docRef)
+
+        if (docSnap.exists()) {
+            setSingleReviewData(docSnap.data())
             setListDetailExpanded(true)
         }
-    }
-
+    };
+    console.log(singleReviewData)
+    console.log(listDetailExpanded)
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
@@ -135,38 +136,64 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                             }
                         </div>
                     </div>
-                    <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay" : "reviewListDataDisplayLoader"} ${listDetailExpanded ? "active" : ""}`}>
-                        {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
-                            <div className={` reviewListDataSingleContainer ${listDetailExpanded && listDetailExpandName === data.reviewInfoName ? "expanded" : ""} `} key={index}>
-                                <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
-                                {listDetailExpanded && listDetailExpandName == data.reviewInfoName && 
-                                <div className="reviewListDataDetailDescription">
-                                    <p>{data.reviewInfoDescription}</p>
-                                </div>}
-                                <div className="reviewListStarContainer">
-                                    {[1, 2, 3, 4, 5].map((rating) => (
-                                        <img
-                                            src={rating <= data.reviewInfoRating ? fill : blank}
-                                            className="w-[50px] h-[50px]"
-                                            key={rating}
-                                            alt={`Rating ${rating}`}
-                                        />
-                                    ))}
-                                </div>
-                                <div className="reviewListDataSingleContainerExpandButton" onClick={()=>handleExpandListDetail(data.reviewInfoName)}>
+                    {listDetailExpanded ?
+                        <div>
+                            <DisplayOneReview singleReviewData={singleReviewData} listDetailExpanded={listDetailExpanded} />
+                        </div>
+                        :
+                        <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay" : "reviewListDataDisplayLoader"}`}>
+                            {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
+                                <div className={` reviewListDataSingleContainer`} key={index}>
+                                    <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
+                                    <div className="reviewListStarContainer">
+                                        {[1, 2, 3, 4, 5].map((rating) => (
+                                            <img
+                                                src={rating <= data.reviewInfoRating ? fill : blank}
+                                                className="w-[50px] h-[50px]"
+                                                key={rating}
+                                                alt={`Rating ${rating}`}
+                                            />
+                                        ))}
+                                    </div>
+                                    <div className="reviewListDataSingleContainerExpandButton" onClick={() => handleExpandListDetail(data.id)}>
                                         <h1>details</h1>
+                                    </div>
                                 </div>
-                            </div>
-                        )) : <div className="loader2">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>}
+                            )) : <div className="loader2">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>}
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    )
+}
+
+const DisplayOneReview = ({ singleReviewData, listDetailExpanded }) => {
+    return (
+        <div>
+            <div>
+                <div>
+                    <img src={singleReviewData.reviewAvatarImg} />
+                    <p>{singleReviewData.reviewInfoDescription}</p>
+                    <div>
+                        {[1, 2, 3, 4, 5].map((rating) => (
+                            <img
+                                src={rating <= singleReviewData.reviewInfoRating ? fill : blank}
+                                className="w-[50px] h-[50px]"
+                                key={rating}
+                                alt={`Rating ${rating}`}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
+
         </div>
     )
 }
