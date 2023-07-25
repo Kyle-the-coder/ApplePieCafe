@@ -211,7 +211,6 @@
 .reviewSingleDataContainer {
     width: 100%;
     height: 100%;
-    background-color: #e1c7a8;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
