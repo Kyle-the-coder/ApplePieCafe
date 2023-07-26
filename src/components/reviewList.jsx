@@ -15,7 +15,6 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const [dropdownHighlight, setDropdownHighlight] = useState(true)
     const [dropdownHighlightName, setDropdownHighlightName] = useState("Most Recent")
     const [listDetailExpanded, setListDetailExpanded] = useState(false)
-    const [listDetailExpandName, setListDetailExpandName] = useState(null)
     const [singleReviewData, setSingleReviewData] = useState([])
 
     useEffect(() => {
