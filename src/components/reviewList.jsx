@@ -111,8 +111,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
             setListDetailExpanded(true)
         }
     };
-    console.log(singleReviewData)
-    console.log(listDetailExpanded)
+
     return (
         <div className="reviewListContainer">
             <div className="reviewListBorder">
