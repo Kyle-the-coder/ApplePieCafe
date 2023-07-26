@@ -206,6 +206,7 @@
     align-items: center;
     border-bottom-right-radius: 3rem;
     border-bottom-left-radius: .5rem;
+    padding: 5px;
 }
 
 .reviewSingleDataContainer {
@@ -226,11 +227,11 @@
     object-fit: cover;
     object-position: center;
     transition: all .8s;
+    margin-bottom: 10px;
 }
 
 .reviewSingleDataDescriptionContainer {
     width: 70%;
-    height: 130px;
     background-color: white;
     overflow-y: auto;
 }
@@ -239,6 +240,8 @@
     width: 210px;
     display: flex;
     justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .reviewSingleDataCloseButton {
