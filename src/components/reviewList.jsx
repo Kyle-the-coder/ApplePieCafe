@@ -73,6 +73,11 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         const dateB = b.timeStamp?.toDate?.();
         return dateB?.getTime?.() - dateA?.getTime?.();
     });
+    const leastRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
+        const dateA = a.timeStamp?.toDate?.();
+        const dateB = b.timeStamp?.toDate?.();
+        return dateA?.getTime?.() - dateB?.getTime?.();
+    });
 
     const sortListContent = [
         {
@@ -81,14 +86,19 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
             idx: 0
         },
         {
+            name: "Least Recent",
+            function: leastRecentRatingSort,
+            idx: 1
+        },
+        {
             name: "Rating Most->Least",
             function: infoRatingSortMostToLeast,
-            idx: 1
+            idx: 2
         },
         {
             name: "Rating Least->Most",
             function: infoRatingSortLeastToMost,
-            idx: 2
+            idx: 3
         },
     ]
 
@@ -105,7 +115,6 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     const handleExpandListDetail = async (optionId) => {
         const docRef = doc(db, "reviewInfo", optionId)
         const docSnap = await getDoc(docRef)
-
         if (docSnap.exists()) {
             setSingleReviewData(docSnap.data())
             setListDetailExpanded(true)
