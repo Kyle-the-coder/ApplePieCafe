@@ -18,7 +18,8 @@
     border-bottom-right-radius: 3rem;
     border-top-right-radius: .5rem;
     border-bottom-left-radius: .5rem;
-    box-shadow: 8px 10px 10px 5px rgba(23, 23, 23, 0.5);
+    box-shadow: 8px 10px 10px 5px rgba(221, 220, 220, 0.5);
+    transition: all .8s;
 }
 
 .reviewListDataContainer {
@@ -32,6 +33,7 @@
     flex-direction: column;
     border: 3px solid black;
 }
+
 
 /* TOP SECTION W/DROPDOWN */
 .reviewListDataTop {
@@ -247,6 +249,6 @@
 .reviewSingleDataCloseButton {
     color: white;
     padding: 5px 20px 5px 20px;
-    border-radius: .5rem;  
+    border-radius: .5rem;
     cursor: pointer;
 }
