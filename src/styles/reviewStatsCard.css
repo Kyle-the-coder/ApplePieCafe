@@ -17,7 +17,12 @@
     border-bottom-right-radius: 3rem;
     border-top-right-radius: .5rem;
     border-bottom-left-radius: .5rem;
-    box-shadow: 8px 10px 10px 5px rgba(23, 23, 23, 0.5);
+    box-shadow: 8px 10px 10px 5px rgba(221, 220, 220, 0.5);
+    transition: all .8s;
+}
+
+.reviewCardBorder:hover {
+    box-shadow: -3px -5px 5px 5px #ff5101;
 }
 
 .reviewAverageCard {
