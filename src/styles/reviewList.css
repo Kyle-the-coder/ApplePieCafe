@@ -238,6 +238,10 @@
     overflow-y: auto;
 }
 
+.reviewSingleDataNameContainer{
+    margin-bottom: 5px;
+}
+
 .reviewSingleDataStarContainer {
     width: 210px;
     display: flex;
