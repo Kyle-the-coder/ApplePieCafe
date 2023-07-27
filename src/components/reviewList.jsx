@@ -190,6 +190,9 @@ const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
     return (
         <div className="reviewSingleDataContainer">
             <img src={singleReviewData.reviewAvatarImg === "" ? avatar : singleReviewData.reviewAvatarImg} className="reviewSingleDataContainerImg" />
+            <div>
+                <h1 className="fontWriting">{singleReviewData.reviewInfoName}</h1>
+            </div>
             <div className="reviewSingleDataDescriptionContainer">
                 <p>{singleReviewData.reviewInfoDescription}</p>
             </div>
