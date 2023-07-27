@@ -5,3 +5,4 @@ const NewFile = () => {
         </div>
     )
 }
+export default NewFile;
