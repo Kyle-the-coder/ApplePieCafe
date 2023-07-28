@@ -153,7 +153,6 @@
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     padding: 8px 5px 8px 5px;
     border-top: 2px solid black;
     transition: all .8s;
@@ -211,6 +210,8 @@
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 5px;
+    background-color: #76dbe9;
+    padding: 8px 2px 8px 4px;
 }
 
 /* SINGLE REVIEW STYLES */
