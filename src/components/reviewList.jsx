@@ -109,7 +109,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         return dateA?.getTime?.() - dateB?.getTime?.();
     });
 
-    
+    //OPTIONS FOR DROPDOWN MENU
     const sortListContent = [
         {
             name: "Most Recent",
@@ -133,6 +133,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         },
     ]
 
+    //HANDLE DROPDOWN NAME HIGHLIGHT
     const handleDropdownHighlight = (optionName) => {
         if (dropdownHighlightName !== optionName) {
             setDropdownHighlightName(optionName)
