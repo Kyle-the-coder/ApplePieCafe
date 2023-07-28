@@ -1,28 +1,34 @@
 import { useEffect, useState, useRef } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
-import "../styles/reviewList.css"
 import blank from "../assets/images/starBlank.png"
 import fill from "../assets/images/starFill.png"
 import dropDownIcon from "../assets/images/chevron.png"
 import avatar from "../assets/images/user.png"
+import "../styles/reviewList.css"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
+    //DROPDOWN MENU STATES AND REF
     const componentRef = useRef(null);
     const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
+    const [dropdownHighlight, setDropdownHighlight] = useState(true)
+    const [dropdownHighlightName, setDropdownHighlightName] = useState("Most Recent")
+    //DROPDOWN OPTION HIGHTLIGHT STATES
     const [isActive, setIsActive] = useState("")
     const [selectedSortOption, setSelectedSortOption] = useState([]);
     const [isSelectedSortDisplayed, setIsSelectedSortDisplayed] = useState(false)
-    const [dropdownHighlight, setDropdownHighlight] = useState(true)
-    const [dropdownHighlightName, setDropdownHighlightName] = useState("Most Recent")
+    //STATES FOR REVIEW LIST AND SINGLE REVIEW
     const [listDetailExpanded, setListDetailExpanded] = useState(false)
     const [singleReviewData, setSingleReviewData] = useState([])
 
+    //SETTING LIST AS MOST RECENT SORT
     useEffect(() => {
         setSelectedSortOption(reviewData)
+        //COMPONENT DID MOUNT SO RENDER TO DOM
         selectedSortOption.length !== 0 && setIsSelectedSortDisplayed(true)
     }, [reviewDataTracker])
 
+    //HANDLING DROPDOWN MENU CLOSE
     useEffect(() => {
         const handleOutsideClick = (event) => {
             console.log(componentRef.current)
@@ -34,19 +40,20 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                 }, 360);
             }
         };
-
         // Attach the event listener to the document
         document.addEventListener('click', handleOutsideClick);
-
         return () => {
             // Cleanup: remove the event listener when the component unmounts
             document.removeEventListener('click', handleOutsideClick);
         };
     }, []);
 
+    //HANDLE DROPDOWN TOGGLE
     const handleDropdownActive = () => {
         if (isDropdownDisplayed) {
+            //TRANSITION
             setIsActive("")
+            //REMOVE FROM DOM
             setTimeout(() => {
                 setIsDropdownDisplayed(false)
             }, 360);
