@@ -186,18 +186,18 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                         :
                         <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay" : "reviewListDataDisplayLoader"}`}>
                             {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
-                                <div className={` reviewListDataSingleContainer`} key={index}>
+                                <div className="reviewListDataSingleContainer" key={index}>
                                     <div className="reviewListDataImgAndNameContainer">
                                         <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
-                                        <div>
-                                            <h1>{data.reviewInfoName}</h1>
+                                        <div className="reviewListDataNameContainer">
+                                            <h1 className="fontWriting text-sm">{data.reviewInfoName}</h1>
                                         </div>
                                     </div>
                                     <div className="reviewListStarContainer">
                                         {[1, 2, 3, 4, 5].map((rating) => (
                                             <img
                                                 src={rating <= data.reviewInfoRating ? fill : blank}
-                                                className="w-[55px] h-[55px]"
+                                                className="w-[45px] h-[45px]"
                                                 key={rating}
                                                 alt={`Rating ${rating}`}
                                             />
