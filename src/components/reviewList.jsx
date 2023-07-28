@@ -187,12 +187,17 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                         <div className={`${isSelectedSortDisplayed ? "reviewListDataDisplay" : "reviewListDataDisplayLoader"}`}>
                             {isSelectedSortDisplayed ? selectedSortOption.map((data, index) => (
                                 <div className={` reviewListDataSingleContainer`} key={index}>
-                                    <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
+                                    <div className="reviewListDataImgAndNameContainer">
+                                        <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
+                                        <div>
+                                            <h1>{data.reviewInfoName}</h1>
+                                        </div>
+                                    </div>
                                     <div className="reviewListStarContainer">
                                         {[1, 2, 3, 4, 5].map((rating) => (
                                             <img
                                                 src={rating <= data.reviewInfoRating ? fill : blank}
-                                                className="w-[50px] h-[50px]"
+                                                className="w-[45px] h-[45px]"
                                                 key={rating}
                                                 alt={`Rating ${rating}`}
                                             />
