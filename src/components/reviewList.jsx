@@ -84,27 +84,32 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         }, 2000);
     }
 
+    //SORT BY RATING LOW TO HIGH
     const infoRatingSortLeastToMost = () => reviewDataTracker && reviewData.sort((a, b) => {
         const dateA = a.reviewInfoRating;
         const dateB = b.reviewInfoRating;
         return dateA - dateB;
     });
+    //SORT BY RATING HIGH TO LOW
     const infoRatingSortMostToLeast = () => reviewDataTracker && reviewData.sort((a, b) => {
         const dateA = a.reviewInfoRating;
         const dateB = b.reviewInfoRating;
         return dateB - dateA;
     });
+    //SORT BY MOST RECENT
     const mostRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
         const dateA = a.timeStamp?.toDate?.();
         const dateB = b.timeStamp?.toDate?.();
         return dateB?.getTime?.() - dateA?.getTime?.();
     });
+    //SORT BY LEAST RECENT
     const leastRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
         const dateA = a.timeStamp?.toDate?.();
         const dateB = b.timeStamp?.toDate?.();
         return dateA?.getTime?.() - dateB?.getTime?.();
     });
 
+    
     const sortListContent = [
         {
             name: "Most Recent",
