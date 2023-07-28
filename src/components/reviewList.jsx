@@ -218,6 +218,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
     )
 }
 
+//SINGLE REVIEW DISPLAY
 const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
     //HANDLE CLOSE BUTTON
     const handleBackToListButton = () => {
@@ -242,6 +243,7 @@ const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
                     />
                 ))}
             </div>
+            {/* CLOSE BUTTON */}
             <div className="reviewSingleDataCloseButton darkRedBg">
                 <p onClick={() => handleBackToListButton()}>close</p>
             </div>
