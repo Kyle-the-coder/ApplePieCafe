@@ -25,6 +25,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
 
     useEffect(() => {
         const handleOutsideClick = (event) => {
+            console.log(componentRef.current)
             // Check if the click is outside the component
             if (componentRef.current && !componentRef.current.contains(event.target)) {
                 setIsActive("")
