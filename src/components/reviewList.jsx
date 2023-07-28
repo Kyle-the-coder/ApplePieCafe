@@ -158,8 +158,10 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         <div className="reviewListContainer">
             <div className="reviewListBorder">
                 <div className="reviewListDataContainer bg-white">
+                    {/* TOP OF LIST CONTAINER */}
                     <div className="reviewListDataTop darkBg " >
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
+                        {/* DROPDOWN MENU */}
                         <div className={`reviewListDataDropdownContainer `} ref={componentRef} >
                             <img src={dropDownIcon} className="reviewListDataDropdownIcon" onClick={() => { handleDropdownActive() }} />
                             {isDropdownDisplayed &&
@@ -176,6 +178,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                             }
                         </div>
                     </div>
+                    {/* DISPLAY SINGLE REVIEW OR REVIEW LIST */}
                     {listDetailExpanded ?
                         <div className="reviewSingleDataContainerMain">
                             <DisplayOneReview singleReviewData={singleReviewData} setListDetailExpanded={setListDetailExpanded} />
@@ -216,7 +219,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
 }
 
 const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
-
+    //HANDLE CLOSE BUTTON
     const handleBackToListButton = () => {
         setListDetailExpanded(false)
     }
