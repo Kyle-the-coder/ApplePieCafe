@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
 import "../styles/reviewList.css"
@@ -8,6 +8,7 @@ import dropDownIcon from "../assets/images/chevron.png"
 import avatar from "../assets/images/user.png"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
+    const componentRef = useRef(null);
     const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
     const [isActive, setIsActive] = useState("")
     const [selectedSortOption, setSelectedSortOption] = useState([]);
@@ -21,6 +22,26 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         setSelectedSortOption(reviewData)
         selectedSortOption.length !== 0 && setIsSelectedSortDisplayed(true)
     }, [reviewDataTracker])
+
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            // Check if the click is outside the component
+            if (componentRef.current && !componentRef.current.contains(event.target)) {
+                setIsActive("")
+                setTimeout(() => {
+                    setIsDropdownDisplayed(false)
+                }, 360);
+            }
+        };
+
+        // Attach the event listener to the document
+        document.addEventListener('click', handleOutsideClick);
+
+        return () => {
+            // Cleanup: remove the event listener when the component unmounts
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
 
     const handleDropdownActive = () => {
         if (isDropdownDisplayed) {
@@ -127,7 +148,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                 <div className="reviewListDataContainer bg-white">
                     <div className="reviewListDataTop darkBg " >
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
-                        <div className={`reviewListDataDropdownContainer `} onMouseLeave={() => handleDeactivateDropdown()} >
+                        <div className={`reviewListDataDropdownContainer `} ref={componentRef} >
                             <img src={dropDownIcon} className="reviewListDataDropdownIcon" onClick={() => { handleDropdownActive() }} />
                             {isDropdownDisplayed &&
                                 <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? isActive : ""}`}>
