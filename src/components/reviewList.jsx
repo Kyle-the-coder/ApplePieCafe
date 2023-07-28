@@ -72,16 +72,13 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         }
     }
 
-    const handleDeactivateDropdown = () => {
-        setIsActive("")
-        setTimeout(() => {
-            setIsDropdownDisplayed(false)
-        }, 360);
-    }
-
+    //HANDLE SORTING LIST
     const handleDropdownSort = (optionName) => {
+        //DISPLAY LOADER
         setIsSelectedSortDisplayed(false)
+        //MOUNT COMPONENT
         setSelectedSortOption(optionName)
+        //RENDER TO UI
         setTimeout(() => {
             setIsSelectedSortDisplayed(true)
         }, 2000);
