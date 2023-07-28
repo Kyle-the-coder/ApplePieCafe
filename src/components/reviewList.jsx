@@ -144,6 +144,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         }
     }
 
+    //GET INFO FOR ONE REVIEW AND HANDLE DISPLAY
     const handleExpandListDetail = async (optionId) => {
         const docRef = doc(db, "reviewInfo", optionId)
         const docSnap = await getDoc(docRef)
