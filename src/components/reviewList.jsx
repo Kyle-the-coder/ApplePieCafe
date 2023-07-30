@@ -63,14 +63,14 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                     <div className="reviewListDataImgAndNameContainer">
                                         <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
                                         <div className="reviewListDataNameContainer">
-                                            <h1 className="fontWriting text-sm">{data.reviewInfoName}</h1>
+                                            <h1 className="fontWriting">{data.reviewInfoName}</h1>
                                         </div>
                                     </div>
                                     <div className="reviewListStarContainer">
                                         {[1, 2, 3, 4, 5].map((rating) => (
                                             <img
                                                 src={rating <= data.reviewInfoRating ? fill : blank}
-                                                className="w-[45px] h-[45px]"
+                                                className="w-[50px] h-[50px]"
                                                 key={rating}
                                                 alt={`Rating ${rating}`}
                                             />
