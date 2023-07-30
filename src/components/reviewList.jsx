@@ -147,11 +147,16 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
 
     //GET INFO FOR ONE REVIEW AND HANDLE DISPLAY
     const handleExpandListDetail = async (optionId) => {
-        const docRef = doc(db, "reviewInfo", optionId)
-        const docSnap = await getDoc(docRef)
-        if (docSnap.exists()) {
-            setSingleReviewData(docSnap.data())
-            setListDetailExpanded(true)
+        try {
+            const docRef = doc(db, "reviewInfo", optionId)
+            const docSnap = await getDoc(docRef)
+            if (docSnap.exists()) {
+                setSingleReviewData(docSnap.data())
+                setListDetailExpanded(true)
+            }
+        }
+        catch (error) {
+            console.log(error)
         }
     };
 
