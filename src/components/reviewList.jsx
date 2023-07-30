@@ -70,7 +70,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                         {[1, 2, 3, 4, 5].map((rating) => (
                                             <img
                                                 src={rating <= data.reviewInfoRating ? fill : blank}
-                                                className="w-[50px] h-[50px]"
+                                                className="w-[55px] h-[55px]"
                                                 key={rating}
                                                 alt={`Rating ${rating}`}
                                             />
