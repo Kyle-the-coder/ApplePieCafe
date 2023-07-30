@@ -42,14 +42,12 @@
     display: flex;
     border-top-left-radius: 2.8rem;
     border-top-right-radius: .2rem;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     border-bottom: 1px solid;
 }
 
-.reviewListDataTop>h1 {
-    margin-left: 30%;
-}
+
 
 .reviewListDataDropdownContainer {
     margin-right: 18%;
