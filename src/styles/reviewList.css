@@ -8,7 +8,7 @@
 }
 
 .reviewListBorder {
-    width: 80%;
+    width: 95%;
     height: 100%;
     background: linear-gradient(to right, #e1c7a8, #ff5101);
     display: flex;
@@ -155,6 +155,7 @@
     align-items: center;
     padding: 8px 2px 8px 5px;
     transition: all .8s;
+    margin-left: 10px;
 }
 
 .reviewListDataDetailDescription {
@@ -180,14 +181,14 @@
 }
 
 .reviewListDataImgAndNameContainer{
-    width: 175px;
+    width: 200px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     margin-top: 5px;
-    padding: 8px;
+    padding: 10px 8px 10px 8px;
     margin-left: 3px;
     border-radius: .3rem;
     border: 3px solid #9d4032;
@@ -197,8 +198,8 @@
 }
 
 .reviewListDataImg {
-    width: 130px;
-    height: 130px;
+    width: 150px;
+    height: 150px;
     border-radius: 100%;
     object-fit: cover;
     object-position: center;
@@ -210,10 +211,11 @@
     background-color: white;
     padding: 2px 8px 2px 8px;
     border-radius: .7rem;
+    font-size: 1.1rem;
 }
 
 .reviewListStarContainer {
-    width: 280px;
+    width: 300px;
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 5px;
