@@ -1,7 +1,7 @@
 /* WHOLE CONTAINER */
 .reviewListContainer {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 100%;
     height: 500px;
