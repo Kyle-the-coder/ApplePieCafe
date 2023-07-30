@@ -241,7 +241,7 @@ const ReviewStats = (props) => {
                         {/* REVIEW STATS BOTTOM TITLE/LOGO */}
                         <div className="reviewFavoriteTitleContainer ">
                             <img src={APLogo} className="w-[90px] h-[90px]" />
-                            <h1 className="fontWriting flex justify-center w-5/6">Apple Pie Cafe Favorite Review:</h1>
+                            <h1 className="fontWriting flex w-full justify-center">Apple Pie Cafe Favorite Review:</h1>
                         </div>
                         {/* REVIEW STATS FAV INFO W/CARD FLIP */}
                         <div className="reviewFavoriteDataFlipCard">
