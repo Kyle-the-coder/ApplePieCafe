@@ -63,7 +63,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                                     <div className="reviewListDataImgAndNameContainer">
                                         <img src={data.reviewAvatarImg === "" ? avatar : data.reviewAvatarImg} className="reviewListDataImg" />
                                         <div className="reviewListDataNameContainer">
-                                            <h1 className="fontWriting">{data.reviewInfoName}</h1>
+                                            <h1 className="fontWriting ">{data.reviewInfoName}</h1>
                                         </div>
                                     </div>
                                     <div className="reviewListStarContainer">
