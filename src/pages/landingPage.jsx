@@ -112,7 +112,7 @@ const LandingPage = () => {
                             reviewDataTracker={reviewDataTracker}
                             setReviewDataTracker={setReviewDataTracker} />
                     </div>
-                    <div className="w-full mr-2">
+                    <div className="w-full ">
                         <ReviewList reviewData={reviewData} reviewDataTracker={reviewDataTracker} />
                     </div>
                 </div>
