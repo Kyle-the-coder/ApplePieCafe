@@ -42,17 +42,16 @@
     display: flex;
     border-top-left-radius: 2.8rem;
     border-top-right-radius: .2rem;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    justify-content: center;
     border-bottom: 1px solid;
 }
 
-
-
 .reviewListDataDropdownContainer {
-    margin-right: 18%;
     cursor: pointer;
     position: relative;
+    margin-left: 15px;
 }
 
 .reviewListDataDropdownIcon {
