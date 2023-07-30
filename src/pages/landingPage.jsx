@@ -105,14 +105,14 @@ const LandingPage = () => {
                     </div>
                 </div>
                 <div className="w-full darkBg py-5 flex">
-                    <div className="w-full">
+                    <div className="w-11/12">
                         <ReviewStats
                             reviewData={reviewData}
                             setReviewData={setReviewData}
                             reviewDataTracker={reviewDataTracker}
                             setReviewDataTracker={setReviewDataTracker} />
                     </div>
-                    <div className="w-full">
+                    <div className="w-full mr-2">
                         <ReviewList reviewData={reviewData} reviewDataTracker={reviewDataTracker} />
                     </div>
                 </div>

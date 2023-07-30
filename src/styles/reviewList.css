@@ -190,10 +190,10 @@
     margin-top: 5px;
     padding: 10px 8px 10px 8px;
     margin-left: 3px;
-    border-radius: .3rem;
     border: 3px solid #9d4032;
     border-right: 8px solid #9d4032;
     border-bottom: 8px solid #9d4032;
+    border-radius: .3rem;
     box-shadow: 8px 10px 10px 5px rgb(117, 116, 116);
 }
 
@@ -215,7 +215,7 @@
 }
 
 .reviewListStarContainer {
-    width: 310px;
+    width: 330px;
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 5px;
