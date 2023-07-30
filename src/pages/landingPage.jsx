@@ -5,13 +5,13 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import ReviewModal from "../components/reviewModal"
 import ReviewStats from "../components/reviewStats"
-import "../styles/font.css"
-import "../styles/bgColors.css"
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import morning from "../assets/images/morning.webp"
 import ReviewCarousel from "../components/reviewCarousel"
 import ReviewList from "../components/reviewList";
+import "../styles/font.css"
+import "../styles/bgColors.css"
 
 const LandingPage = () => {
     const [reviewModalTracker, setReviewModalTracker] = useState(false)
