@@ -8,13 +8,7 @@ import avatar from "../assets/images/user.png"
 import "../styles/reviewList.css"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
-    //DROPDOWN MENU STATES AND REF
-    const componentRef = useRef(null);
-    const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
-    const [dropdownHighlight, setDropdownHighlight] = useState(true)
-    const [dropdownHighlightName, setDropdownHighlightName] = useState("Most Recent")
     //DROPDOWN OPTION HIGHTLIGHT STATES
-    const [isActive, setIsActive] = useState("")
     const [selectedSortOption, setSelectedSortOption] = useState([]);
     const [isSelectedSortDisplayed, setIsSelectedSortDisplayed] = useState(false)
     //STATES FOR REVIEW LIST AND SINGLE REVIEW
@@ -27,123 +21,6 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
         //COMPONENT DID MOUNT SO RENDER TO DOM
         selectedSortOption.length !== 0 && setIsSelectedSortDisplayed(true)
     }, [reviewDataTracker])
-
-    //HANDLING DROPDOWN MENU CLOSE
-    useEffect(() => {
-        const handleOutsideClick = (event) => {
-            console.log(componentRef.current)
-            // Check if the click is outside the component
-            if (componentRef.current && !componentRef.current.contains(event.target)) {
-                setIsActive("")
-                setTimeout(() => {
-                    setIsDropdownDisplayed(false)
-                }, 360);
-            }
-        };
-        // Attach the event listener to the document
-        document.addEventListener('click', handleOutsideClick);
-        return () => {
-            // Cleanup: remove the event listener when the component unmounts
-            document.removeEventListener('click', handleOutsideClick);
-        };
-    }, []);
-
-    //HANDLE DROPDOWN TOGGLE
-    const handleDropdownActive = () => {
-        if (isDropdownDisplayed) {
-            //TRANSITION
-            setIsActive("")
-            //REMOVE FROM DOM
-            setTimeout(() => {
-                setIsDropdownDisplayed(false)
-            }, 360);
-        }
-        //TOGGLE FUNCTIONALITY
-        if (!isDropdownDisplayed) {
-            setIsActive("")
-            setIsDropdownDisplayed(true)
-        }
-        if (isActive === "") {
-            setTimeout(() => {
-                setIsActive("active")
-            }, 100);
-        }
-        if (isActive === "active") {
-            setIsActive("")
-        }
-    }
-
-    //HANDLE SORTING LIST
-    const handleDropdownSort = (optionName) => {
-        //DISPLAY LOADER
-        setIsSelectedSortDisplayed(false)
-        //MOUNT COMPONENT
-        setSelectedSortOption(optionName)
-        //RENDER TO UI
-        setTimeout(() => {
-            setIsSelectedSortDisplayed(true)
-        }, 2000);
-    }
-
-    //SORT BY RATING LOW TO HIGH
-    const infoRatingSortLeastToMost = () => reviewDataTracker && reviewData.sort((a, b) => {
-        const dateA = a.reviewInfoRating;
-        const dateB = b.reviewInfoRating;
-        return dateA - dateB;
-    });
-    //SORT BY RATING HIGH TO LOW
-    const infoRatingSortMostToLeast = () => reviewDataTracker && reviewData.sort((a, b) => {
-        const dateA = a.reviewInfoRating;
-        const dateB = b.reviewInfoRating;
-        return dateB - dateA;
-    });
-    //SORT BY MOST RECENT
-    const mostRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
-        const dateA = a.timeStamp?.toDate?.();
-        const dateB = b.timeStamp?.toDate?.();
-        return dateB?.getTime?.() - dateA?.getTime?.();
-    });
-    //SORT BY LEAST RECENT
-    const leastRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
-        const dateA = a.timeStamp?.toDate?.();
-        const dateB = b.timeStamp?.toDate?.();
-        return dateA?.getTime?.() - dateB?.getTime?.();
-    });
-
-    //OPTIONS FOR DROPDOWN MENU
-    const sortListContent = [
-        {
-            name: "Most Recent",
-            function: mostRecentRatingSort,
-            idx: 0
-        },
-        {
-            name: "Least Recent",
-            function: leastRecentRatingSort,
-            idx: 1
-        },
-        {
-            name: "Rating Most->Least",
-            function: infoRatingSortMostToLeast,
-            idx: 2
-        },
-        {
-            name: "Rating Least->Most",
-            function: infoRatingSortLeastToMost,
-            idx: 3
-        },
-    ]
-
-    //HANDLE DROPDOWN NAME HIGHLIGHT
-    const handleDropdownHighlight = (optionName) => {
-        if (dropdownHighlightName !== optionName) {
-            setDropdownHighlightName(optionName)
-            setDropdownHighlight(true)
-        } else if (dropdownHighlightName === optionName) {
-            setDropdownHighlightName(optionName)
-            setDropdownHighlight(true)
-        }
-    }
 
     //GET INFO FOR ONE REVIEW AND HANDLE DISPLAY
     const handleExpandListDetail = async (optionId) => {
@@ -168,21 +45,11 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                     <div className="reviewListDataTop darkBg " >
                         <h1 className="fontWriting text-3xl text-white font-bold">All Reviews</h1>
                         {/* DROPDOWN MENU */}
-                        <div className={`reviewListDataDropdownContainer `} ref={componentRef} >
-                            <img src={dropDownIcon} className="reviewListDataDropdownIcon" onClick={() => { handleDropdownActive() }} />
-                            {isDropdownDisplayed &&
-                                <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? isActive : ""}`}>
-                                    <div className="reviewListDataDropdownContentContainer">
-                                        <h1 className="fontWriting text-xl underline">Sort List:</h1>
-                                        {sortListContent.map((option, index) => (
-                                            <div key={index} className="reviewListDataDropdownOptionContainer" onClick={() => handleDropdownSort(option.function)}>
-                                                <h1 className={`${dropdownHighlight && dropdownHighlightName === option.name ? "reviewListDataDropdownOptionHighlight" : "reviewListDataDropdownOption"}`} onClick={() => handleDropdownHighlight(option.name)}>-{option.name}</h1>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            }
-                        </div>
+                        <DropdownDisplay
+                            reviewData={reviewData} reviewDataTracker={reviewDataTracker}
+                            selectedSortOption={selectedSortOption} setSelectedSortOption={setSelectedSortOption}
+                            isSelectedSortDisplayed={isSelectedSortDisplayed} setIsSelectedSortDisplayed={setIsSelectedSortDisplayed}
+                        />
                     </div>
                     {/* DISPLAY SINGLE REVIEW OR REVIEW LIST */}
                     {listDetailExpanded ?
@@ -259,6 +126,151 @@ const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
             <div className="reviewSingleDataCloseButton darkRedBg">
                 <p onClick={() => handleBackToListButton()}>close</p>
             </div>
+        </div>
+    )
+}
+
+//DROPDOWN DISPLAY
+const DropdownDisplay = ({ reviewData, reviewDataTracker, selectedSortOption, setSelectedSortOption, isSelectedSortDisplayed, setIsSelectedSortDisplayed }) => {
+    //DROPDOWN MENU STATES AND REF
+    const componentRef = useRef(null);
+    const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
+    const [dropdownHighlight, setDropdownHighlight] = useState(true)
+    const [dropdownHighlightName, setDropdownHighlightName] = useState("Most Recent")
+    //DROPDOWN OPTION HIGHTLIGHT STATES
+    const [isActive, setIsActive] = useState("")
+
+    //HANDLING DROPDOWN MENU CLOSE
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            console.log(componentRef.current)
+            // Check if the click is outside the component
+            if (componentRef.current && !componentRef.current.contains(event.target)) {
+                setIsActive("")
+                setTimeout(() => {
+                    setIsDropdownDisplayed(false)
+                }, 360);
+            }
+        };
+        // Attach the event listener to the document
+        document.addEventListener('click', handleOutsideClick);
+        return () => {
+            // Cleanup: remove the event listener when the component unmounts
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
+
+    //HANDLE DROPDOWN TOGGLE
+    const handleDropdownActive = () => {
+        if (isDropdownDisplayed) {
+            //TRANSITION
+            setIsActive("")
+            //REMOVE FROM DOM
+            setTimeout(() => {
+                setIsDropdownDisplayed(false)
+            }, 360);
+        }
+        //TOGGLE FUNCTIONALITY
+        if (!isDropdownDisplayed) {
+            setIsActive("")
+            setIsDropdownDisplayed(true)
+        }
+        if (isActive === "") {
+            setTimeout(() => {
+                setIsActive("active")
+            }, 100);
+        }
+        if (isActive === "active") {
+            setIsActive("")
+        }
+    }
+
+    //SORT BY RATING LOW TO HIGH
+    const infoRatingSortLeastToMost = () => reviewDataTracker && reviewData.sort((a, b) => {
+        const dateA = a.reviewInfoRating;
+        const dateB = b.reviewInfoRating;
+        return dateA - dateB;
+    });
+    //SORT BY RATING HIGH TO LOW
+    const infoRatingSortMostToLeast = () => reviewDataTracker && reviewData.sort((a, b) => {
+        const dateA = a.reviewInfoRating;
+        const dateB = b.reviewInfoRating;
+        return dateB - dateA;
+    });
+    //SORT BY MOST RECENT
+    const mostRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
+        const dateA = a.timeStamp?.toDate?.();
+        const dateB = b.timeStamp?.toDate?.();
+        return dateB?.getTime?.() - dateA?.getTime?.();
+    });
+    //SORT BY LEAST RECENT
+    const leastRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
+        const dateA = a.timeStamp?.toDate?.();
+        const dateB = b.timeStamp?.toDate?.();
+        return dateA?.getTime?.() - dateB?.getTime?.();
+    });
+
+    //OPTIONS FOR DROPDOWN MENU
+    const sortListContent = [
+        {
+            name: "Most Recent",
+            function: mostRecentRatingSort,
+            idx: 0
+        },
+        {
+            name: "Least Recent",
+            function: leastRecentRatingSort,
+            idx: 1
+        },
+        {
+            name: "Rating Most->Least",
+            function: infoRatingSortMostToLeast,
+            idx: 2
+        },
+        {
+            name: "Rating Least->Most",
+            function: infoRatingSortLeastToMost,
+            idx: 3
+        },
+    ]
+
+    //HANDLE SORTING LIST
+    const handleDropdownSort = (optionName) => {
+        //DISPLAY LOADER
+        setIsSelectedSortDisplayed(false)
+        //MOUNT COMPONENT
+        setSelectedSortOption(optionName)
+        //RENDER TO UI
+        setTimeout(() => {
+            setIsSelectedSortDisplayed(true)
+        }, 2000);
+    }
+
+    //HANDLE DROPDOWN NAME HIGHLIGHT
+    const handleDropdownHighlight = (optionName) => {
+        if (dropdownHighlightName !== optionName) {
+            setDropdownHighlightName(optionName)
+            setDropdownHighlight(true)
+        } else if (dropdownHighlightName === optionName) {
+            setDropdownHighlightName(optionName)
+            setDropdownHighlight(true)
+        }
+    }
+    return (
+        <div className={`reviewListDataDropdownContainer `} ref={componentRef} >
+            <img src={dropDownIcon} className="reviewListDataDropdownIcon" onClick={() => { handleDropdownActive() }} />
+            {isDropdownDisplayed &&
+                <div className={`reviewListDataDropdownMenu ${isDropdownDisplayed ? isActive : ""}`}>
+                    <div className="reviewListDataDropdownContentContainer">
+                        <h1 className="fontWriting text-xl underline">Sort List:</h1>
+                        {sortListContent.map((option, index) => (
+                            <div key={index} className="reviewListDataDropdownOptionContainer" onClick={() => handleDropdownSort(option.function)}>
+                                <h1 className={`${dropdownHighlight && dropdownHighlightName === option.name ? "reviewListDataDropdownOptionHighlight" : "reviewListDataDropdownOption"}`} onClick={() => handleDropdownHighlight(option.name)}>-{option.name}</h1>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            }
         </div>
     )
 }
