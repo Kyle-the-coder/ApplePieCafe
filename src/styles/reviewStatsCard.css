@@ -7,7 +7,7 @@
 }
 
 .reviewCardBorder {
-    width: 80%;
+    width: 85%;
     height: 100%;
     background: linear-gradient(to right, #e1c7a8, #ff5101);
     display: flex;
