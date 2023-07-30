@@ -131,7 +131,7 @@ const DisplayOneReview = ({ singleReviewData, setListDetailExpanded }) => {
 }
 
 //DROPDOWN DISPLAY
-const DropdownDisplay = ({ reviewData, reviewDataTracker, selectedSortOption, setSelectedSortOption, isSelectedSortDisplayed, setIsSelectedSortDisplayed }) => {
+const DropdownDisplay = ({ reviewData, reviewDataTracker,  setSelectedSortOption, setIsSelectedSortDisplayed, selectedSortOption }) => {
     //DROPDOWN MENU STATES AND REF
     const componentRef = useRef(null);
     const [isDropdownDisplayed, setIsDropdownDisplayed] = useState(false)
@@ -186,25 +186,25 @@ const DropdownDisplay = ({ reviewData, reviewDataTracker, selectedSortOption, se
     }
 
     //SORT BY RATING LOW TO HIGH
-    const infoRatingSortLeastToMost = () => reviewDataTracker && reviewData.sort((a, b) => {
+    const infoRatingSortLeastToMost = () => reviewDataTracker && selectedSortOption.sort((a, b) => {
         const dateA = a.reviewInfoRating;
         const dateB = b.reviewInfoRating;
         return dateA - dateB;
     });
     //SORT BY RATING HIGH TO LOW
-    const infoRatingSortMostToLeast = () => reviewDataTracker && reviewData.sort((a, b) => {
+    const infoRatingSortMostToLeast = () => reviewDataTracker && selectedSortOption.sort((a, b) => {
         const dateA = a.reviewInfoRating;
         const dateB = b.reviewInfoRating;
         return dateB - dateA;
     });
     //SORT BY MOST RECENT
-    const mostRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
+    const mostRecentRatingSort = () => reviewDataTracker && selectedSortOption.sort((a, b) => {
         const dateA = a.timeStamp?.toDate?.();
         const dateB = b.timeStamp?.toDate?.();
         return dateB?.getTime?.() - dateA?.getTime?.();
     });
     //SORT BY LEAST RECENT
-    const leastRecentRatingSort = () => reviewDataTracker && reviewData.sort((a, b) => {
+    const leastRecentRatingSort = () => reviewDataTracker && selectedSortOption.sort((a, b) => {
         const dateA = a.timeStamp?.toDate?.();
         const dateB = b.timeStamp?.toDate?.();
         return dateA?.getTime?.() - dateB?.getTime?.();
