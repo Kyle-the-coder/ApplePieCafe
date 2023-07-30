@@ -58,6 +58,7 @@ const ReviewList = ({ reviewData, reviewDataTracker }) => {
                 setIsDropdownDisplayed(false)
             }, 360);
         }
+        //TOGGLE FUNCTIONALITY
         if (!isDropdownDisplayed) {
             setIsActive("")
             setIsDropdownDisplayed(true)
