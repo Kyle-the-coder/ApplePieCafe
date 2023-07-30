@@ -10,7 +10,7 @@ import "../styles/bgColors.css"
 import applePie from "../assets/images/apphoto.jpeg"
 import restInside from "../assets/images/restInside.jpeg"
 import morning from "../assets/images/morning.webp"
-import ReviewCarousel2 from "../components/reviewCarousel2"
+import ReviewCarousel from "../components/reviewCarousel"
 import ReviewList from "../components/reviewList";
 
 const LandingPage = () => {
@@ -95,7 +95,7 @@ const LandingPage = () => {
             {/* REVIEW CAROUSEL SECTION */}
             <section className=" flex items-center flex-col relative" ref={reviewButton}>
                 <div className="w-full flex relative py-4 overflow-hidden">
-                    <ReviewCarousel2
+                    <ReviewCarousel
                         setReviewData={setReviewData}
                         reviewData={reviewData}
                         reviewDataTracker={reviewDataTracker}
