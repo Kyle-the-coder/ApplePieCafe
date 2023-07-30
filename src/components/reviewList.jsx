@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../config/firebase";
-import blank from "../assets/images/starBlank.png"
+import blank from "../assets/images/starWhite.jpg"
 import fill from "../assets/images/starFill.png"
 import dropDownIcon from "../assets/images/chevron.png"
 import avatar from "../assets/images/user.png"
