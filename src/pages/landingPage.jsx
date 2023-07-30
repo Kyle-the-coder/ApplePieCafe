@@ -104,7 +104,7 @@ const LandingPage = () => {
                         <img src={morning} className="w-full h-full object-cover opacity-60" />
                     </div>
                 </div>
-                <div className="w-full darkBg py-5 flex">
+                <div className="w-full darkBg py-8 flex">
                     <div className="w-11/12">
                         <ReviewStats
                             reviewData={reviewData}
