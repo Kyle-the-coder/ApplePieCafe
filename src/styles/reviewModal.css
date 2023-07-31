@@ -9,3 +9,8 @@
     border-top-right-radius: .5rem;
     border-top-left-radius: 3rem;
 }
+
+.reviewModalErrMessages{
+    color: rgb(228, 64, 64);
+    margin-top: 4px;
+}
