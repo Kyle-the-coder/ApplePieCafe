@@ -26,6 +26,7 @@ const ReviewModal = (props) => {
     const [reviewAvatarImgRef, setReviewAvatarImgRef] = useState("")
     const [itsLoadTime, setItsLoadTime] = useState(false)
     const [submitLoadTime, setSubmitLoadTime] = useState(false)
+    const [errMessageDisplayed, setErrMessageDisplayed] = useState(false)
     const [errMessage, setErrMessage] = useState("")
 
     useEffect(() => {
@@ -109,6 +110,25 @@ const ReviewModal = (props) => {
         }, 1000);
     }
 
+    const handleFormValidation = (e) => {
+        e.preventDefault()
+        if (reviewInfoDesc == "") {
+            setErrMessage("Please add your review")
+            setErrMessageDisplayed(true)
+        }
+        if (reviewInfoRating == "") {
+            setErrMessage("Please add your rating")
+            setErrMessageDisplayed(true)
+        }
+        if(reviewInfoName == ""){
+            setErrMessage("Please add a name")
+        }
+        if( reviewInfoDesc !== "" && reviewInfoRating !== "" && reviewInfoName !== ""){
+            handleAdd(e)
+        }
+        
+    }
+
     useEffect(() => {
         setStarSet([
             { img: blank, idx: 1 },
@@ -147,7 +167,7 @@ const ReviewModal = (props) => {
                     <img src={logo} width="200px" />
                 </div>
                 <div className="w-full py-10 flex justify-center">
-                    <form className="flex flex-col items-center darkBg text-white w-3/4 p-5 reviewModalOutside" onSubmit={handleAdd}>
+                    <form className="flex flex-col items-center darkBg text-white w-3/4 p-5 reviewModalOutside" onSubmit={handleFormValidation}>
                         <div className="mb-3s fontWriting text-2xl">
                             <h1>Leave us a Review!</h1>
                         </div>
@@ -172,11 +192,13 @@ const ReviewModal = (props) => {
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Name:</label>
                             <input className="w-full p-1 text-black" value={reviewInfoName} type="text" onChange={(e) => setReviewInfoName(e.target.value)} />
+                            {errMessageDisplayed && errMessage=="Please add a name" && <h1>{errMessage}</h1>}
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Review:</label>
                             <textarea col="10" rows="10" value={reviewInfoDesc} className="w-full p-1 text-black" type="text" onChange={(e) => setReviewInfoDesc(e.target.value)} />
+                            {errMessageDisplayed && errMessage=="Please add your review" && <h1>{errMessage}</h1>}
                         </div>
 
                         <div className="flex flex-col py-2 mb-4">
@@ -188,9 +210,10 @@ const ReviewModal = (props) => {
                                     </div>
                                 ))}
                             </div>
+                            {errMessageDisplayed && errMessage=="Please add your rating" && <h1>{errMessage}</h1>}
                         </div>
 
-                        <button className={`${!isSubmitButtonDisabled && submitLoadTime ? "darkBg": "beigeBg"} ${isSubmitButtonDisabled ? "darkRedBg text-white" : ""}  px-3 py-1  text-black  rounded`} type="submit" disabled={isSubmitButtonDisabled}>
+                        <button className={`${!isSubmitButtonDisabled && submitLoadTime ? "darkBg" : "beigeBg"} ${isSubmitButtonDisabled ? "darkRedBg text-white" : ""}  px-3 py-1  text-black  rounded`} type="submit" disabled={isSubmitButtonDisabled}>
                             {isSubmitButtonDisabled ? "Loading..." : submitLoadTime ?
                                 <div class="loader">
                                     <div></div>
