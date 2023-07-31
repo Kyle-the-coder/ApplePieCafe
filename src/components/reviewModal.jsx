@@ -125,6 +125,7 @@ const ReviewModal = (props) => {
             setErrMessageDisplayed(true)
         }
         if (reviewInfoDesc !== "" && reviewInfoRating !== "" && reviewInfoName !== "") {
+            setErrMessageDisplayed(false)
             handleAdd(e)
         }
     }
@@ -160,6 +161,9 @@ const ReviewModal = (props) => {
         setReviewInfoRating("")
         fileInputRef.current.value = "";
         setErrMessageDisplayed(false)
+        setNameErrMessage("")
+        setDescErrMessage("")
+        setRatingErrMessage("")
     }
 
     const isSubmitButtonDisabled = itsLoadTime && reviewAvatarImg !== null;
@@ -201,13 +205,17 @@ const ReviewModal = (props) => {
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Name:</label>
                             <input className="w-full p-1 text-black" value={reviewInfoName} type="text" onChange={(e) => setReviewInfoName(e.target.value)} />
-                            {errMessageDisplayed && nameErrMessage !== "" && <h1 className="reviewModalErrMessages">{nameErrMessage}</h1>}
+                            <div className=" reviewModalErrMessageContainer">
+                                {errMessageDisplayed && nameErrMessage !== "" && <h1 className="reviewModalErrMessages">{nameErrMessage}</h1>}
+                            </div>
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
                             <label className="font-bold mb-2">Review:</label>
                             <textarea col="10" rows="10" value={reviewInfoDesc} className="w-full p-1 text-black" type="text" onChange={(e) => setReviewInfoDesc(e.target.value)} />
-                            {errMessageDisplayed && descErrMessage !== "" && <h1 className="reviewModalErrMessages">{descErrMessage}</h1>}
+                            <div className=" reviewModalErrMessageContainer">
+                                {errMessageDisplayed && descErrMessage !== "" && <h1 className="reviewModalErrMessages">{descErrMessage}</h1>}
+                            </div>
                         </div>
 
                         <div className="flex flex-col py-2 mb-4">
@@ -219,7 +227,9 @@ const ReviewModal = (props) => {
                                     </div>
                                 ))}
                             </div>
-                            {errMessageDisplayed && ratingErrMessage !== "" && <h1 className="reviewModalErrMessages">{ratingErrMessage}</h1>}
+                            <div className=" reviewModalErrMessageContainer">
+                                {errMessageDisplayed && ratingErrMessage !== "" && <h1 className="reviewModalErrMessages">{ratingErrMessage}</h1>}
+                            </div>
                         </div>
 
                         <button className={`${!isSubmitButtonDisabled && submitLoadTime ? "darkBg" : "beigeBg"} ${isSubmitButtonDisabled ? "darkRedBg text-white" : ""}  px-3 py-1  text-black  rounded`} type="submit" disabled={isSubmitButtonDisabled}>
@@ -237,7 +247,7 @@ const ReviewModal = (props) => {
                 </div>
 
 
-                <button className="px-3 py-1 darkRedBg text-white rounded mb-10" onClick={() => {handleReviewModal(); handleStatesAfterCloseButton()}}>Close</button>
+                <button className="px-3 py-1 darkRedBg text-white rounded mb-10" onClick={() => { handleReviewModal(); handleStatesAfterCloseButton() }}>Close</button>
             </div>
         </div>
     )
