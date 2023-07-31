@@ -26,6 +26,7 @@ const ReviewModal = (props) => {
     const [reviewAvatarImgRef, setReviewAvatarImgRef] = useState("")
     const [itsLoadTime, setItsLoadTime] = useState(false)
     const [submitLoadTime, setSubmitLoadTime] = useState(false)
+    const [errMessage, setErrMessage] = useState("")
 
     useEffect(() => {
         const uploadReviewAvatarImg = () => {
