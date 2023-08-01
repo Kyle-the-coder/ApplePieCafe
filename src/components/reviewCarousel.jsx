@@ -1,12 +1,12 @@
 
 import { useEffect, useState } from "react";
-import "../styles/scrollbar.css"
-import "../styles/reviewCard.css"
 import blank from "../assets/images/whiteStar.png"
 import fill from "../assets/images/starFill.png"
 import pieRight from "../assets/images/modalArrowRight.png"
 import pieLeft from "../assets/images/modalArrowLeft.png"
 import userImage from "../assets/images/user.png"
+import "../styles/scrollbar.css"
+import "../styles/landingPage/reviewCard.css"
 
 const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker }) => {
     //INDEX
