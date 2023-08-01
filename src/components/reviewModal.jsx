@@ -229,7 +229,7 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
 
                         <div className="flex flex-col w-full items-center justify-center py-2">
                             <label className="font-bold mb-2">Photo(optional):</label>
-                            <div className="flex w-full justify-evenly items-center">
+                            <div className="flex w-full justify-evenly items-center h-[110px]">
                                 <input className="w-[260px]" type="file" ref={fileInputRef} onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
                                 {itsLoadTime && reviewAvatarImg !== null ?
                                     <div class="loader">
