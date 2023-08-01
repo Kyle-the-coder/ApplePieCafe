@@ -5,7 +5,7 @@ import blank from "../assets/images/starWhite.PNG"
 import fill from "../assets/images/starFill.png"
 import dropDownIcon from "../assets/images/chevron.png"
 import avatar from "../assets/images/user.png"
-import "../styles/reviewList.css"
+import "../styles/landingPage/reviewList.css"
 
 const ReviewList = ({ reviewData, reviewDataTracker }) => {
     //DROPDOWN OPTION HIGHTLIGHT STATES
