@@ -230,7 +230,7 @@ const ReviewModal = (props) => {
                                         <div></div>
                                         <div></div>
                                     </div> :
-                                    <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" />
+                                    <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" alt="avatar"/>
                                 }
                             </div>
                         </div>
