@@ -1,0 +1,286 @@
+/* WHOLE CONTAINER */
+.reviewListContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+}
+
+.reviewListBorder {
+    width: 95%;
+    height: 100%;
+    background: linear-gradient(to right, #e1c7a8, #ff5101);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    border-top-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    box-shadow: 8px 10px 10px 5px rgba(221, 220, 220, 0.5);
+    transition: all .8s;
+}
+
+.reviewListDataContainer {
+    width: 95%;
+    height: 95%;
+    border-top-left-radius: 3rem;
+    border-bottom-right-radius: 3rem;
+    border-top-right-radius: .5rem;
+    border-bottom-left-radius: .5rem;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid black;
+}
+
+
+/* TOP SECTION W/DROPDOWN */
+.reviewListDataTop {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    border-top-left-radius: 2.8rem;
+    border-top-right-radius: .2rem;
+    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid;
+}
+
+.reviewListDataDropdownContainer {
+    cursor: pointer;
+    position: relative;
+    margin-left: 15px;
+}
+
+.reviewListDataDropdownIcon {
+    width: 42px;
+    height: 42px;
+    border-width: 1.5px;
+    border-image: linear-gradient(to bottom, #e1c7a8, #ff5101);
+    border-image-slice: 1;
+    padding: 5px;
+}
+
+.reviewListDataDropdownMenu {
+    width: 230px;
+    height: 0px;
+    background: linear-gradient(to right, #e1c7a8, #ff5101);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: .5rem;
+    top: 105%;
+    left: -25px;
+    transition: all .5s;
+}
+
+.reviewListDataDropdownMenu.active {
+    height: 300px;
+}
+
+.reviewListDataDropdownContentContainer {
+    width: 95%;
+    height: 95%;
+    background-color: rgb(29, 28, 28);
+    border-radius: .5rem;
+    padding: 5px 3px 5px 3px;
+    overflow: hidden;
+    color: white;
+}
+
+.reviewListDataDropdownOptionContainer {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    padding: 10px 3px 10px 3px;
+}
+
+.reviewListDataDropdownOptionHighlight {
+    background: linear-gradient(to right, #e1c7a8, #ff5101);
+    padding: 10px;
+    border-radius: .6rem;
+    color: black;
+}
+
+.reviewListDataDropdownOption {
+    padding: 5px;
+}
+
+/* LIST STYLES FOR DATA AND LOADER */
+.reviewListDataDisplay {
+    width: 100%;
+    height: 80%;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewListDataDisplay.active {
+    width: 100%;
+    height: 80%;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+    overflow-y: auto;
+    display: grid;
+    place-items: center;
+}
+
+.reviewListDataDisplayLoader {
+    width: 100%;
+    height: 80%;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.reviewListDataDisplay::-webkit-scrollbar {
+    display: none;
+}
+
+.reviewListDataSingleContainer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px 2px 8px 5px;
+    transition: all .8s;
+    margin-left: 10px;
+}
+
+.reviewListDataDetailDescription {
+    width: 50%;
+    height: 130px;
+    background-color: white;
+    padding: 3px;
+    overflow-y: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.reviewListDataSingleContainerExpandButton {
+    padding: 3px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    background-color: rgb(29, 28, 28);
+    color: white;
+    padding: 8px;
+    border-radius: .8rem;
+    box-shadow: 8px 10px 10px 5px rgb(117, 116, 116);
+    margin-right: 3px;
+}
+
+.reviewListDataImgAndNameContainer{
+    width: 230px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    padding: 10px 8px 10px 8px;
+    margin-left: 3px;
+    border: 3px solid #9d4032;
+    border-right: 8px solid #9d4032;
+    border-bottom: 8px solid #9d4032;
+    border-radius: .3rem;
+    box-shadow: 8px 10px 10px 5px rgb(117, 116, 116);
+}
+
+.reviewListDataImg {
+    width: 170px;
+    height: 170px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all .8s;
+}
+
+.reviewListDataNameContainer{
+    margin-top: 10px;
+    background-color: white;
+    padding: 2px 8px 2px 8px;
+    border-radius: .7rem;
+    font-size: 1.1rem;
+}
+
+.reviewListStarContainer {
+    width: 330px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+    background-color: #9d4032;
+    border-top-right-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding: 10px 5px 10px 0px;
+    box-shadow: 8px 10px 10px 5px rgb(117, 116, 116);
+    border-top: 3px solid rgb(29, 28, 28);
+    border-right: 3px solid rgb(29, 28, 28);
+    border-bottom: 3px solid rgb(29, 28, 28);
+}
+
+/* SINGLE REVIEW STYLES */
+.reviewSingleDataContainerMain {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+    padding: 5px;
+}
+
+.reviewSingleDataContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    border-bottom-right-radius: 3rem;
+    border-bottom-left-radius: .5rem;
+}
+
+.reviewSingleDataContainerImg {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: all .8s;
+    margin-bottom: 10px;
+}
+
+.reviewSingleDataDescriptionContainer {
+    width: 70%;
+    background-color: white;
+    overflow-y: auto;
+}
+
+.reviewSingleDataNameContainer{
+    margin-bottom: 5px;
+}
+
+.reviewSingleDataStarContainer {
+    width: 210px;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.reviewSingleDataCloseButton {
+    color: white;
+    padding: 5px 20px 5px 20px;
+    border-radius: .5rem;
+    cursor: pointer;
+}
