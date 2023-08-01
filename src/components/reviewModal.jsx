@@ -73,6 +73,7 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
 
     //FILE INPUT VARIABLE FOR FORM IMAGE
     const fileInputRef = useRef(null);
+
     //HANDLE FORM SUBMISSION FUNCTION
     const handleAdd = async (e) => {
         e.preventDefault()
