@@ -10,7 +10,7 @@ import fill from "../assets/images/starFill.png"
 import avatarPic from "../assets/images/avatar.png"
 import "../styles/bgColors.css"
 import "../styles/loader.css"
-import "../styles/reviewModal.css"
+import "../styles/landingPage/reviewModal.css"
 
 const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, setReviewDataTracker, }) => {
     //STATES FOR FORM INPUT
