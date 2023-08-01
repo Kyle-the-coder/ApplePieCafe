@@ -1,36 +1,36 @@
-import applePie from "../assets/images/apphoto.jpeg"
-import logo from "../assets/images/ApcWhite.PNG"
-import blank from "../assets/images/whiteStar.png"
-import fill from "../assets/images/starFill.png"
 import { useEffect, useState, useRef } from "react"
 import { db, storage, timeStamp } from "../config/firebase"
 import { addDoc, collection } from "firebase/firestore"
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage"
 import { getDocs } from "firebase/firestore";
+import applePie from "../assets/images/apphoto.jpeg"
+import logo from "../assets/images/ApcWhite.PNG"
+import blank from "../assets/images/whiteStar.png"
+import fill from "../assets/images/starFill.png"
 import avatarPic from "../assets/images/avatar.png"
 import "../styles/bgColors.css"
 import "../styles/loader.css"
 import "../styles/reviewModal.css"
 
-const ReviewModal = (props) => {
-    const { handleReviewModal } = props
-    const { reviewModalTracker } = props
-    const { setReviewData } = props
-    const { setReviewDataTracker } = props
-    const [starFillTracker, setStarFillTracker] = useState(true)
-    const [starSet, setStarSet] = useState([])
+const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, setReviewDataTracker, }) => {
+    //STATES FOR FORM INPUT
     const [reviewInfoName, setReviewInfoName] = useState("")
     const [reviewInfoDesc, setReviewInfoDesc] = useState("")
     const [reviewInfoRating, setReviewInfoRating] = useState("")
     const [reviewAvatarImg, setReviewAvatarImg] = useState(null)
     const [reviewAvatarImgRef, setReviewAvatarImgRef] = useState("")
+    const [starFillTracker, setStarFillTracker] = useState(true)
+    const [starSet, setStarSet] = useState([])
+    //STATES FOR LOADER
     const [itsLoadTime, setItsLoadTime] = useState(false)
     const [submitLoadTime, setSubmitLoadTime] = useState(false)
+    //STATES FOR FORM VALIDATION
     const [errMessageDisplayed, setErrMessageDisplayed] = useState(false)
     const [nameErrMessage, setNameErrMessage] = useState("")
     const [descErrMessage, setDescErrMessage] = useState("")
     const [ratingErrMessage, setRatingErrMessage] = useState("")
 
+    //UPLOADING IMG TO DATABASE UPON FILE BEING CHOSEN
     useEffect(() => {
         const uploadReviewAvatarImg = () => {
             const name = new Date().getTime() + reviewAvatarImg.name
@@ -71,7 +71,9 @@ const ReviewModal = (props) => {
         reviewAvatarImg && uploadReviewAvatarImg();
     }, [reviewAvatarImg])
 
+    //FILE INPUT VARIABLE FOR FORM IMAGE
     const fileInputRef = useRef(null);
+    //HANDLE FORM SUBMISSION FUNCTION
     const handleAdd = async (e) => {
         e.preventDefault()
         await addDoc(collection(db, "reviewInfo"), {
@@ -180,7 +182,7 @@ const ReviewModal = (props) => {
             </div>
             <div className="w-[800px] h-content beigeBg z-[10] mb-5  flex flex-col items-center justify-between mt-5 reviewModalOutside ">
                 <div className="w-full py-2 darkBg rounded flex justify-center reviewModalTop" >
-                    <img src={logo} width="200px" alt="Apple Pie Cafe logo"/>
+                    <img src={logo} width="200px" alt="Apple Pie Cafe logo" />
                 </div>
                 <div className="w-full py-10 flex justify-center">
                     <form className="flex flex-col items-center darkBg text-white w-3/4 p-5 reviewModalOutside" onSubmit={handleFormValidation}>
@@ -230,7 +232,7 @@ const ReviewModal = (props) => {
                                         <div></div>
                                         <div></div>
                                     </div> :
-                                    <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" alt="avatar"/>
+                                    <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" alt="avatar" />
                                 }
                             </div>
                         </div>
