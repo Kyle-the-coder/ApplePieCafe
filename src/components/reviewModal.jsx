@@ -185,24 +185,7 @@ const ReviewModal = (props) => {
                             <h1>Leave us a Review!</h1>
                         </div>
 
-                        <div className="flex flex-col w-full items-center justify-center py-2">
-                            <label className="font-bold mb-2">Photo(optional):</label>
-                            <div className="flex w-full justify-evenly items-center">
-                                <input className="w-[260px]" type="file" ref={fileInputRef} onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
-                                {itsLoadTime && reviewAvatarImg !== null ?
-                                    <div class="loader">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                    </div> :
-                                    <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" />
-                                }
-                            </div>
-                        </div>
-
-                        <div className="flex flex-col py-2 w-full">
+                        <div className="flex flex-col py-2 w-full mt-3">
                             <label className="font-bold mb-2">Name:</label>
                             <input className="w-full p-1 text-black" value={reviewInfoName} type="text" onChange={(e) => setReviewInfoName(e.target.value)} />
                             <div className=" reviewModalErrMessageContainer">
@@ -211,7 +194,7 @@ const ReviewModal = (props) => {
                         </div>
 
                         <div className="flex flex-col py-2 w-full">
-                            <label className="font-bold mb-2">Review:</label>
+                            <label className="font-bold mb-2">Your Experience:</label>
                             <textarea col="10" rows="10" value={reviewInfoDesc} className="w-full p-1 text-black" type="text" onChange={(e) => setReviewInfoDesc(e.target.value)} />
                             <div className=" reviewModalErrMessageContainer">
                                 {errMessageDisplayed && descErrMessage !== "" && <h1 className="reviewModalErrMessages">{descErrMessage}</h1>}
@@ -229,6 +212,23 @@ const ReviewModal = (props) => {
                             </div>
                             <div className=" reviewModalErrMessageContainer">
                                 {errMessageDisplayed && ratingErrMessage !== "" && <h1 className="reviewModalErrMessages">{ratingErrMessage}</h1>}
+                            </div>
+                        </div>
+
+                        <div className="flex flex-col w-full items-center justify-center py-2">
+                            <label className="font-bold mb-2">Photo(optional):</label>
+                            <div className="flex w-full justify-evenly items-center">
+                                <input className="w-[260px]" type="file" ref={fileInputRef} onChange={(e) => setReviewAvatarImg(e.target.files[0])} />
+                                {itsLoadTime && reviewAvatarImg !== null ?
+                                    <div class="loader">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div> :
+                                    <img src={reviewAvatarImg == null ? avatarPic : reviewAvatarImgRef} className="w-[100px] h-[100px] rounded-full object-cover object-center" />
+                                }
                             </div>
                         </div>
 
