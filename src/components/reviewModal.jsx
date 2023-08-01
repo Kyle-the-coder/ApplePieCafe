@@ -117,6 +117,7 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
         }, 1000);
     }
 
+    //FORM VALIDATION FUNCTION
     const handleFormValidation = (e) => {
         e.preventDefault()
         if (reviewInfoDesc === "") {
@@ -137,6 +138,7 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
         }
     }
 
+    //CREATING THE STAR RATING STATE AND AUTO SCROLL FUNCTIONALITY
     useEffect(() => {
         setStarSet([
             { img: blank, idx: 1 },
@@ -151,9 +153,9 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
         }
     }, [reviewModalTracker])
 
+    //HANDLING THE ABILITY TO RATE USING STAR PNG'S
     const handleStarFill = (index) => {
         setStarFillTracker(!starFillTracker);
-
         const newSet = Array.from({ length: 5 }, (_, i) => ({
             img: i < index ? fill : blank,
             idx: i + 1,
@@ -161,6 +163,7 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
         setStarSet(newSet);
     }
 
+    //IF NO FORM IS SUBMITTED AND MODAL IS CLOSED INSTEAD
     const handleStatesAfterCloseButton = () => {
         setReviewAvatarImg(null)
         setReviewInfoDesc("")
@@ -173,6 +176,7 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
         setRatingErrMessage("")
     }
 
+    //SUBMIT BUTTON DISABLER
     const isSubmitButtonDisabled = itsLoadTime && reviewAvatarImg !== null;
 
     return (
