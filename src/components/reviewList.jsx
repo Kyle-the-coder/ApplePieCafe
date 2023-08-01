@@ -223,12 +223,12 @@ const DropdownDisplay = ({ reviewData, reviewDataTracker,  setSelectedSortOption
             idx: 1
         },
         {
-            name: "Rating Most->Least",
+            name: "Rating High->Low",
             function: infoRatingSortMostToLeast,
             idx: 2
         },
         {
-            name: "Rating Least->Most",
+            name: "Rating Low->High",
             function: infoRatingSortLeastToMost,
             idx: 3
         },
