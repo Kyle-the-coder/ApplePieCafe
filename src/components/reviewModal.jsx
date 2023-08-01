@@ -87,7 +87,7 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
             fileInputRef.current.value = "";
         }
         setReviewDataTracker(false)
-        // GET REVIEW DATA
+        //UPDATE REVIEW DATA WITH NEW FORM SUBMISSION
         const getReviewData = async () => {
             try {
                 const querySnapshot = await getDocs(collection(db, "reviewInfo"));
@@ -104,7 +104,9 @@ const ReviewModal = ({ handleReviewModal, reviewModalTracker, setReviewData, set
             }
         };
         getReviewData();
+        //DISPLAY LOADER
         setSubmitLoadTime(true)
+        //AFTER REVIEW DATA IS UPDATED RESET STATES AND CLOSE MODAL
         setTimeout(() => {
             handleReviewModal();
             setSubmitLoadTime(false)
