@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getDocs, collection, doc, getDoc } from "firebase/firestore";
 import starFill from "../assets/images/starFill.png"
 import { db } from "../config/firebase";
-import "../styles/reviewStatsCard.css"
+import "../styles/landingPage/reviewStatsCard.css"
 import APLogo from "../assets/images/ApcBlack.PNG"
 import avatar from "../assets/images/user.png"
 
