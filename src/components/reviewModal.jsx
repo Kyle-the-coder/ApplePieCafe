@@ -40,7 +40,7 @@ const ReviewModal = (props) => {
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     setItsLoadTime(true)
-                    if (progress == 100) {
+                    if (progress === 100) {
                         setTimeout(() => {
                             setItsLoadTime(false)
                         }, 2000);
@@ -52,6 +52,9 @@ const ReviewModal = (props) => {
                             break;
                         case 'running':
                             console.log('Upload is running');
+                            break;
+                        default:
+                            console.log("default")
                             break;
                     }
                 },
@@ -112,15 +115,15 @@ const ReviewModal = (props) => {
 
     const handleFormValidation = (e) => {
         e.preventDefault()
-        if (reviewInfoDesc == "") {
+        if (reviewInfoDesc === "") {
             setDescErrMessage("Please add your review")
             setErrMessageDisplayed(true)
         }
-        if (reviewInfoRating == "") {
+        if (reviewInfoRating === "") {
             setRatingErrMessage("Please add your rating")
             setErrMessageDisplayed(true)
         }
-        if (reviewInfoName == "") {
+        if (reviewInfoName === "") {
             setNameErrMessage("Please add a name")
             setErrMessageDisplayed(true)
         }
@@ -171,13 +174,13 @@ const ReviewModal = (props) => {
     return (
         <div className={`${reviewModalTracker ? "opacity-100 z-[1]" : "opacity-0 z-[-1]"} transition-all duration-1000 w-full flex-col items-center absolute bottom-0 left-0 h-[3200px] flex justify-center items-end `}>
             <div className="w-full h-full bg-blue-200 absolute bg-gradient-to-r from-orange-200 to-red-400 " >
-                <img src={applePie} className="w-full h-full object-cover " />
+                <img src={applePie} className="w-full h-full object-cover " alt="apple pie background" />
             </div>
             <div className="w-full h-[10px]" id="reviewStart">
             </div>
             <div className="w-[800px] h-content beigeBg z-[10] mb-5  flex flex-col items-center justify-between mt-5 reviewModalOutside ">
                 <div className="w-full py-2 darkBg rounded flex justify-center reviewModalTop" >
-                    <img src={logo} width="200px" />
+                    <img src={logo} width="200px" alt="Apple Pie Cafe logo"/>
                 </div>
                 <div className="w-full py-10 flex justify-center">
                     <form className="flex flex-col items-center darkBg text-white w-3/4 p-5 reviewModalOutside" onSubmit={handleFormValidation}>
@@ -206,7 +209,7 @@ const ReviewModal = (props) => {
                             <div className="flex w-full">
                                 {starSet.map((star, index) => (
                                     <div key={index} className="w-full">
-                                        <img src={star.img} className="w-[50px] mx-[2px] cursor-pointer" onClick={() => { handleStarFill(star.idx); setReviewInfoRating(star.idx) }} />
+                                        <img src={star.img} className="w-[50px] mx-[2px] cursor-pointer" onClick={() => { handleStarFill(star.idx); setReviewInfoRating(star.idx) }} alt="rating using stars" />
                                     </div>
                                 ))}
                             </div>
