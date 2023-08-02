@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
 import { useRef } from "react"
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
@@ -14,10 +13,11 @@ import "../styles/font.css"
 import "../styles/bgColors.css"
 
 const LandingPage = () => {
-    const [reviewModalTracker, setReviewModalTracker] = useState(false)
+    //REVIEW DATA STATES
     const [reviewData, setReviewData] = useState({})
     const [reviewDataTracker, setReviewDataTracker] = useState(false)
-    const navigate = useNavigate()
+    //REVIEW FORM MODAL STATES
+    const [reviewModalTracker, setReviewModalTracker] = useState(false)
     const reviewButton = useRef(null)
 
     const handleReviewModal = () => {
