@@ -11,7 +11,6 @@ const APNavbar = () => {
 
             <div className="flex justify-evenly w-[500px] fontWriting text-2xl text-white">
                 <Link to="/">Home</Link>
-                <Link to="/menu">Menu</Link>
                 <Link to="/admin">Admin</Link>
             </div>
 
