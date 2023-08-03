@@ -61,7 +61,7 @@ const LandingPage = () => {
                     <div className="w-[300px] h-full border-[20px] borderStyle  absolute top-0 left-3">
 
                     </div>
-                    <div className="w-[400px] h-full border-x-[10px] borderStyle  absolute top-0 right-[10%]">
+                    <div className="w-[220px] h-full border-x-[10px] borderStyle  absolute top-0 right-[10%]">
 
                     </div>
                 </div>
