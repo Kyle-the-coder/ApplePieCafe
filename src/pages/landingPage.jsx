@@ -56,8 +56,14 @@ const LandingPage = () => {
 
             {/* OPENING IMAGE SECTION */}
             <section>
-                <div className="w-full h-[600px]">
+                <div className="w-full h-[600px] relative ">
                     <img src={applePie} className="w-full h-full object-cover" />
+                    <div className="w-[300px] h-full border-[20px] borderStyle  absolute top-0 left-3">
+
+                    </div>
+                    <div className="w-[400px] h-full border-x-[10px] borderStyle  absolute top-0 right-[10%]">
+
+                    </div>
                 </div>
             </section>
 
