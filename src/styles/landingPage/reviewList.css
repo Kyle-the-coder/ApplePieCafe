@@ -18,12 +18,11 @@
     border-bottom-right-radius: 3rem;
     border-top-right-radius: .5rem;
     border-bottom-left-radius: .5rem;
-    box-shadow: 8px 10px 10px 5px rgba(221, 220, 220, 0.5);
     transition: all .8s;
 }
 
 .reviewListDataContainer {
-    width: 95%;
+    width: 96%;
     height: 95%;
     border-top-left-radius: 3rem;
     border-bottom-right-radius: 3rem;
