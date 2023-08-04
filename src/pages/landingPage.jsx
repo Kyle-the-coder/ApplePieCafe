@@ -4,7 +4,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { db } from "../config/firebase";
 import ReviewModal from "../components/reviewModal"
 import ReviewStats from "../components/reviewStats"
-import applePie from "../assets/images/apphoto.jpeg"
+import applePie from "../assets/videos/applePie.mp4"
 import restInside from "../assets/images/restInside.jpeg"
 import morning from "../assets/images/morning.webp"
 import ReviewCarousel from "../components/reviewCarousel"
@@ -57,9 +57,11 @@ const LandingPage = () => {
             {/* OPENING IMAGE SECTION */}
             <section>
                 <div className="w-full h-[600px] relative ">
-                    <img src={applePie} className="w-full h-full object-cover" />
+                    <video src={applePie} className="w-full h-full object-cover" ></video>
                     <div className="w-[300px] h-full border-[20px] borderStyle  absolute top-0 left-3">
+                        <div className="w-full rounded bg-slate-200">
 
+                        </div>
                     </div>
                     <div className="w-[220px] h-full border-x-[10px] borderStyle  absolute top-0 right-[10%]">
 
