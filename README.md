@@ -21,5 +21,5 @@ https://github.com/Kyle-the-coder/RestuarantSite/assets/111798115/3b6eba7b-df99-
 https://github.com/Kyle-the-coder/RestuarantSite/assets/111798115/df62f604-7357-410e-81d2-69eb6b7a2bcc
 
 ---
-In conclusion, I found great satisfaction in developing this project, which served as a multifaceted test of my skills across various domains. Throughout the development process, I encountered challenges, particularly in ensuring seamless updates upon form submission. However, through tenacity and resourcefulness, I successfully surmounted these obstacles, achieving the desired functionality. Thank you for taking the time to review my fictitious restaurant app project; it has been a rewarding and enriching experience. If you visit the site please feel free to leave a review yourself!
+In conclusion, I found great satisfaction in developing this project, which served as a multifaceted test of my skills across various domains. Throughout the development process, I encountered challenges, particularly in ensuring seamless updates upon form submission. However, through tenacity and resourcefulness, I successfully surmounted these obstacles, achieving the desired functionality. Thank you for taking the time to review my fictitious restaurant app project; it has been a rewarding and enriching experience. If you visit the site please feel free to leave a review!
 
