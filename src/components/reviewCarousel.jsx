@@ -57,8 +57,8 @@ const ReviewCarousel2 = ({ reviewModalTracker, reviewData, reviewDataTracker }) 
 
     //HANDLE BUTTON DISABLE
     const isPrevButtonDisabled = currentIndex === 0;
-    const isNextButtonDisabled = currentIndex + 4 >= reviewData.length;
-
+    const isNextButtonDisabled = currentIndex >= 8;
+    console.log(currentIndex)
     return (
         <div className="w-full flex justify-center flex-col ">
 
