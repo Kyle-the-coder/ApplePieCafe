@@ -57,7 +57,7 @@ const LandingPage = () => {
             {/* OPENING IMAGE SECTION */}
             <section>
                 <div className="w-full h-[600px] relative ">
-                    <video src={applePie} loop muted autoPlay controls=''  className="w-full h-full object-cover object-bottom "  ></video>
+                    <video src={applePie} muted autoPlay controls=''  className="w-full h-full object-cover object-bottom "  ></video>
                     <div className="w-[300px] h-full border-[20px] borderStyle  absolute top-0 left-3">
                         <div className="w-full rounded bg-slate-200">
 
